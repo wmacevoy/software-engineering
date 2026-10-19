@@ -1,0 +1,91 @@
+#!/usr/bin/env node
+// Checks the guide's own consistency, so the conventions are enforced rather than hoped for (O3):
+// every relative link and anchor resolves, every principle link points at the file that defines it,
+// and README's principle index matches the chapter headings exactly. Exits nonzero on any problem.
+// Usage: node tools/check.js
+const fs = require('fs');
+const path = require('path');
+
+const root = path.resolve(__dirname, '..');
+const GH = 'https://github.com/wmacevoy/software-engineering/blob/main/';
+const GH_README = 'https://github.com/wmacevoy/software-engineering#';
+const HEADING = /^### <a id="([a-z0-9]+)"><\/a>([A-Z]\d+)\. (.*)$/;
+
+const files = [];
+(function walk(dir) {
+  for (const name of fs.readdirSync(dir)) {
+    if (name === '.git' || name === 'docs' || name === 'node_modules') continue;
+    const p = path.join(dir, name);
+    if (fs.statSync(p).isDirectory()) walk(p);
+    else if (p.endsWith('.md')) files.push(p);
+  }
+})(root);
+
+// GitHub's heading slug, close enough for the headings used here.
+const slug = (h) => h.trim().toLowerCase().replace(/[^\p{L}\p{N}\s_-]/gu, '').replace(/\s/g, '-');
+
+function anchorsOf(file) {
+  const text = fs.readFileSync(file, 'utf8');
+  const anchors = new Set();
+  for (const line of text.split('\n')) {
+    if (/^#{1,6} /.test(line)) anchors.add(slug(line.replace(/^#+ /, '').replace(/<a id="[^"]+"><\/a>/, '')));
+  }
+  for (const m of text.matchAll(/<a id="([^"]+)">/g)) anchors.add(m[1]);
+  return anchors;
+}
+
+const definedIn = new Map(); // principle ID -> chapter file
+const headings = [];         // index lines README must contain
+for (const f of files.filter((f) => f.includes(`${path.sep}guide${path.sep}`)).sort()) {
+  for (const line of fs.readFileSync(f, 'utf8').split('\n')) {
+    const m = line.match(HEADING);
+    if (!m) continue;
+    if (definedIn.has(m[2])) problem(`${m[2]} defined twice`);
+    definedIn.set(m[2], f);
+    headings.push(`- [**${m[2]}**](guide/${path.basename(f)}#${m[1]}) ${m[3]}`);
+  }
+}
+
+let problems = 0;
+function problem(msg) { console.log(msg); problems++; }
+
+for (const f of files) {
+  const text = fs.readFileSync(f, 'utf8');
+  for (const m of text.matchAll(/\[([^\]]+)\]\(([^)]+)\)/g)) {
+    let [, label, href] = m;
+    if (href.startsWith(GH)) href = path.relative(path.dirname(f), path.join(root, href.slice(GH.length)));
+    else if (href.startsWith(GH_README)) href = path.relative(path.dirname(f), path.join(root, 'README.md')) + '#' + href.slice(GH_README.length);
+    else if (/^[a-z]+:/.test(href)) continue;
+    const [target, anchor] = href.split('#');
+    const targetFile = target ? path.resolve(path.dirname(f), target) : f;
+    const where = `${path.relative(root, f)}: ${m[0]}`;
+    if (!fs.existsSync(targetFile)) { problem(`missing file   ${where}`); continue; }
+    if (anchor && !anchorsOf(targetFile).has(anchor)) problem(`missing anchor ${where}`);
+    const id = label.replace(/\*/g, '');
+    if (/^[A-Z]\d+$/.test(id)) {
+      if (!definedIn.has(id)) problem(`unknown ID     ${where}`);
+      else if (definedIn.get(id) !== targetFile) problem(`wrong file     ${where} (defined in ${path.relative(root, definedIn.get(id))})`);
+    }
+  }
+}
+
+// Chapter numbers: the file prefix, the title, and every link label that names a chapter agree.
+const chapterTitle = new Map(); // "07-operating.md" -> "7. Operating"
+for (const f of files.filter((f) => /guide[\\/]\d\d-[a-z-]+\.md$/.test(f))) {
+  const title = fs.readFileSync(f, 'utf8').split('\n')[0].replace(/^# /, '');
+  const n = parseInt(path.basename(f), 10);
+  if (!title.startsWith(`${n}. `)) problem(`title number   ${path.relative(root, f)}: "${title}"`);
+  chapterTitle.set(path.basename(f), title);
+}
+for (const f of files) {
+  for (const m of fs.readFileSync(f, 'utf8').matchAll(/\[(\d+)\. ([^\]]+)\]\(([^)#]*?)(\d\d-[a-z-]+\.md)\)/g)) {
+    const title = chapterTitle.get(m[4]);
+    if (title && `${m[1]}. ${m[2]}` !== title) problem(`chapter label  ${path.relative(root, f)}: ${m[0]} (title is "${title}")`);
+  }
+}
+
+const readme = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
+for (const line of headings) if (!readme.includes(line)) problem(`README index out of date: ${line}`);
+
+console.log(`${files.length} files, ${definedIn.size} principles, ${problems} problems`);
+process.exit(problems ? 1 : 0);
