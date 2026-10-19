@@ -8,12 +8,13 @@ replaceable without renegotiating a requirement ([R5](../guide/04-requirements.m
 | Component | Layer | Kind | Contract (one line) | Holds state? |
 | --------- | ----- | ---- | ------------------- | ------------ |
 
-A component may depend only on strictly lower layers; a check enforces it ([D10](../guide/05-design.md#d10)).
+A component may depend only on strictly lower layers; a check enforces it
+([D10](../guide/05-design.md#d10)).
 
 ## State
 
-For every piece of state: owner, copies, how stale each copy may be, and what a user sees while it is
-wrong ([D1](../guide/05-design.md#d1)–[D6](../guide/05-design.md#d6)).
+For every piece of state: owner, copies, how stale each copy may be, and what a user sees while it
+is wrong ([D1](../guide/05-design.md#d1)–[D6](../guide/05-design.md#d6)).
 
 | State | Owner (authoritative) | Copies | Max staleness | While wrong, the user sees |
 | ----- | --------------------- | ------ | ------------- | -------------------------- |
@@ -24,7 +25,8 @@ Five to fifteen lines, each traceable to a requirement ID ([D8](../guide/05-desi
 
 ## One-way doors
 
-Each with its review: who reviewed it, what assumption they did not share ([D11](../guide/05-design.md#d11)).
+Each with its review: who reviewed it, what assumption they did not share
+([D11](../guide/05-design.md#d11)).
 
 ## Decisions
 

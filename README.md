@@ -11,22 +11,29 @@ copy of the user list can go stale; how stale? (D2)"*.
 ## The argument in ten lines
 
 1. **Engineering is making reliable things** on time, within constraints, while managing everyone's
-   discomfort. Reliable means it works — *and says so when it doesn't* ([P1](guide/01-purpose.md#p1), [P2](guide/01-purpose.md#p2)).
+   discomfort. Reliable means it works — *and says so when it doesn't*
+   ([P1](guide/01-purpose.md#p1), [P2](guide/01-purpose.md#p2)).
 2. **Every practice retires a named fear.** A practice that retires none gets dropped; one that
    relieves the fear without reducing the risk is worse than nothing ([P4](guide/01-purpose.md#p4)).
 3. **Building is discovering what you didn't know**, in the right order, at the right price. The
-   dangerous kind is confident and wrong, and only reality or another person finds it ([U2](guide/02-unknowing.md#u2), [U3](guide/02-unknowing.md#u3)).
-4. **Software's tests are cheap, and software has no mass.** The first makes certainty affordable; the
-   second makes it necessary, because a bad design never sags or cracks ([F1](guide/03-feedback.md#f1), [F4](guide/03-feedback.md#f4)).
+   dangerous kind is confident and wrong, and only reality or another person finds it
+   ([U2](guide/02-unknowing.md#u2), [U3](guide/02-unknowing.md#u3)).
+4. **Software's tests are cheap, and software has no mass.** The first makes certainty affordable;
+   the second makes it necessary, because a bad design never sags or cracks
+   ([F1](guide/03-feedback.md#f1), [F4](guide/03-feedback.md#f4)).
 5. **Nobody hands you the problem.** Write requirements specific enough to be wrong, and get them
    rejected early ([R1](guide/04-requirements.md#r1), [R2](guide/04-requirements.md#r2)).
-6. **Every input can be absent, late, wrong, or lying**, and each case needs a stated answer ([R6](guide/04-requirements.md#r6)).
-7. **State is the material.** Name your caches, own your copies, and keep logic away from I/O ([D1](guide/05-design.md#d1), [D2](guide/05-design.md#d2), [D7](guide/05-design.md#d7)).
-8. **A test you have never seen fail proves nothing**, and a flaky one is worse than none ([T3](guide/06-testing.md#t3), [T4](guide/06-testing.md#t4), [T5](guide/06-testing.md#t5)).
+6. **Every input can be absent, late, wrong, or lying**, and each case needs a stated answer
+   ([R6](guide/04-requirements.md#r6)).
+7. **State is the material.** Name your caches, own your copies, and keep logic away from I/O
+   ([D1](guide/05-design.md#d1), [D2](guide/05-design.md#d2), [D7](guide/05-design.md#d7)).
+8. **A test you have never seen fail proves nothing**, and a flaky one is worse than none
+   ([T3](guide/06-testing.md#t3), [T4](guide/06-testing.md#t4), [T5](guide/06-testing.md#t5)).
 9. **Choose the method per decision by the cost of being wrong once**: loop fast around reversible
-   choices, slow down around one-way doors ([W4](guide/08-work.md#w4), [O7](guide/07-operating.md#o7)).
-10. **Nothing important may live only in a head** — because teammates leave, and agents were never in
-    the room ([U6](guide/02-unknowing.md#u6), [W10](guide/08-work.md#w10)).
+   choices, slow down around one-way doors ([W4](guide/08-work.md#w4),
+   [D11](guide/05-design.md#d11)).
+10. **Nothing important may live only in a head** — because teammates leave, and agents were never
+    in the room ([U6](guide/02-unknowing.md#u6), [W10](guide/08-work.md#w10)).
 
 ## How to read it
 
@@ -74,26 +81,28 @@ service** for a stadium's lots.
 - **The collector** polls every sensor, checks each reading, and decides whether that lot's count is
   `live`, `stale` (too old to trust), or `unreachable`.
 - **The app** shows drivers which lots have space, and gives operators a screen of their own.
-- **Signed readings.** Each sensor signs its readings with its own private key; a **device registry**
-  holds the matching public keys, so anyone can check later which sensor sent a reading and that it
-  was not altered.
-- **A control plane for faults.** In tests, a sensor can be told to misbehave on request — go silent,
-  answer slowly, freeze its count, report nonsense, flap, or drift its clock — so the handling of each
-  failure can be seen to work.
+- **Signed readings.** Each sensor signs its readings with its own private key; a **device
+  registry** holds the matching public keys, so anyone can check later which sensor sent a reading
+  and that it was not altered.
+- **A control plane for faults.** In tests, a sensor can be told to misbehave on request — go
+  silent, answer slowly, freeze its count, report nonsense, flap, or drift its clock — so the
+  handling of each failure can be seen to work.
 - **The client** is the stadium's operations manager, who wants "an app that shows which lots have
   spaces."
 
 A complete worked version, with requirements, design, and code, lives in the
 [fall 2026 course repository](https://github.com/wmacevoy/software-engineering-wmacevoy-fall-2026).
+Its requirement IDs (such as `T-3`) are that project's own and unrelated to this guide's principle
+IDs (such as `T3`).
 
 ## Principle index
 
-IDs are permanent from the first published version of this guide. A principle may be reworded, but its ID never moves to a different idea; a
-retired principle keeps its ID with a note saying where its content went, and new principles take
-the next number in their chapter. The letters are the chapters: **P**urpose, **U**nknowing,
-**F**eedback, **R**equirements, **D**esign, **T**esting, **O**perating, **W**ork, **H**umans (people),
-**A**gents. (Requirement IDs in your own project should use a different form, such as `UI-1`, so they
-are never confused with these.)
+IDs are permanent from the first published version of this guide. A principle may be reworded, but
+its ID never moves to a different idea; a retired principle keeps its ID with a note saying where
+its content went, and new principles take the next number in their chapter. The letters are the
+chapters: **P**urpose, **U**nknowing, **F**eedback, **R**equirements, **D**esign, **T**esting,
+**O**perating, **W**ork, **H**umans (people), **A**gents. (Requirement IDs in your own project
+should use a different form, such as `UI-1`, so they are never confused with these.)
 
 **[1. Purpose](guide/01-purpose.md)**
 
@@ -247,9 +256,13 @@ chapter headings. Reword freely; never reuse an ID for a different idea.
 
 Refactored from the essays and guidebooks of a software engineering course (fall 2026), with the
 course-specific material removed and the ideas reorganized into one set of principles. The testing
-chapter generalizes the ArduinoUnit guidebook, *The Zen of Testing*. Drafts were tested for clarity by
-having AI agents read them as a newcomer, review them as a senior engineer, answer scenario questions
-from them, and follow AGENTS.md on a task with traps in it; the findings shaped this version. See
-[READING.md](READING.md) for the sources the arguments lean on.
+chapter generalizes the ArduinoUnit guidebook, *The Zen of Testing*. Drafts were tested for clarity
+by having AI agents read them as a newcomer, review them as a senior engineer, answer scenario
+questions from them, and follow AGENTS.md on a task with traps in it; the findings shaped this
+version. See [READING.md](READING.md) for the sources the arguments lean on.
+
+**This repository is the authority for these principles** ([D6](guide/05-design.md#d6)). The
+course repository's essays are where they started, not a second copy: where the two disagree, this
+guide wins, and changes to the principles are made here first.
 
 Licensed under the [MIT License](LICENSE).

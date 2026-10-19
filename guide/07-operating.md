@@ -21,9 +21,9 @@ of what happens next, in the order you will meet it:
   report pass or fail ([O3](#o3)).
 - **Staging and production.** *Production* is the copy real users use. *Staging* is a copy set up
   the same way, where you try a release first.
-- **Health check.** An endpoint like `/health` that answers "I'm working" only if the app and what it
-  depends on really are. A deploy is **health-gated** when it is not considered finished until the
-  health check passes ([O6](#o6)).
+- **Health check.** An endpoint like `/health` that answers "I'm working" only if the app really is
+  ([O4](#o4) splits this into two checks). A deploy is **health-gated** when it is not considered
+  finished until the health check passes ([O6](#o6)).
 - **Rollback.** Putting the previous version back when the new one fails. When the system does it
   by itself because the health check failed, that is an *automatic revert*.
 - **Logs, metrics, alerts.** Logs are lines the app writes about what it did; metrics are numbers it
@@ -55,9 +55,9 @@ load-bearing. Not knowing which you chose is the only wrong answer.
 
 **An image is only as repeatable as its inputs.** A tag like `node:20` floats to whatever is newest
 at pull time; a digest (`node:20@sha256:…`) pins it — and only a per-platform digest names exact
-bytes, since a multi-platform digest still resolves to a different image on each architecture. A package install without a lock
-file resolves at build time — so two builds a week apart can contain different library versions, and
-nothing records which.
+bytes, since a multi-platform digest still resolves to a different image on each architecture. A
+package install without a lock file resolves at build time — so two builds a week apart can contain
+different library versions, and nothing records which.
 
 **When a container is the wrong tool**, a package manager that understands platforms (`conda`,
 `pixi`) describes the environment as constraints and records one exact resolution *per platform* in
@@ -96,8 +96,9 @@ your tool's rules before trusting a range.)
 | every direct dependency pinned exactly, no lock | partly — the libraries *those* use still float | someone edits pins; without a bot doing it, this tends to be *never* |
 | **major.minor in manifest, exact in lock**    | yes, by the lock | update, run the suite, commit the new lock — usually **hours**, not weeks |
 
-The balance is **repeatability against survivability.** A hand-pinned manifest nobody updates is
-maximally repeatable and dies of neglect. Two practices keep updates cheap, whichever policy you use:
+The balance is **repeatability against survivability.** Pin everything and never update, and the
+build stays the same while the software dies of neglect. Two practices keep updates cheap, whichever
+policy you use:
 
 - **The update is followed by the suite.** *The quality of your tests sets the price of every
   security fix you will ever take.* A team with a suite it trusts merges the update the day it
@@ -108,7 +109,8 @@ maximally repeatable and dies of neglect. Two practices keep updates cheap, whic
 When a CVE is already open: check whether the vulnerable code is reachable from yours, take the fix
 now if it is, and record in `FINDINGS` how long it sat — that delay is the real finding.
 
-Install with the command that refuses drift: `npm ci`, `cargo build --locked`, `pixi install --locked`.
+Install with the command that refuses drift: `npm ci`, `cargo build --locked`, `pixi install
+--locked`.
 
 > **Ask:** "What does a CVE in a dependency cost us, in hours?"
 
@@ -124,11 +126,12 @@ on my machine" and "we only ever built it on one kind of machine." Two rules mak
 
 **Build there, and run there.** Compiling for a platform and running on it are different claims; a
 cross-compiler can make only the first. If you ship to two architectures or three operating systems,
-test on each, with fail-fast off — when it breaks, the interesting question is *which* platforms broke.
+test on each, with fail-fast off — when it breaks, the interesting question is *which* platforms
+broke.
 
-**A convention CI does not enforce is not a policy.** If a rule matters — formatting, the type check,
-signed commits, the dependency rule, conformance — a check enforces it, so review can spend its
-attention on what no tool can see ([F3](03-feedback.md#f3), [W11](08-work.md#w11)).
+**A convention CI does not enforce is not a policy.** If a rule matters — formatting, the type
+check, signed commits, the dependency rule, conformance — a check enforces it, so review can spend
+its attention on what no tool can see ([F3](03-feedback.md#f3), [W11](08-work.md#w11)).
 
 > **Ask:** "Is CI running the command I run, on the machines I ship to?"
 
@@ -143,8 +146,8 @@ The second half of reliability is detectable error status. In production that me
 - **Metrics for the questions you will ask at 3am**: request rate, error rate, latency percentiles,
   saturation (queue depth, pool usage, disk). Sized from the numbers in the requirements
   ([R7](04-requirements.md#r7)).
-- **Alerts on symptoms users feel** — the page is failing, the counts are stale — rather than on every
-  cause. Each alert names its runbook ([O9](#o9)).
+- **Alerts on symptoms users feel** — the page is failing, the counts are stale — rather than on
+  every cause. Each alert names its runbook ([O9](#o9)).
 - **Status that can be trusted.** Two health checks, not one: *liveness* ("this process is running;
   restart me if not") checks only the process itself, while *readiness* ("I can serve requests right
   now") also checks what it depends on. Mixing them up makes a shared database outage restart every
@@ -160,8 +163,8 @@ brokenness is invisible until the night it was needed ([T4](06-testing.md#t4)). 
   2am backup teaches its operators to ignore red;
 - steady-state success is sampled or logged at low severity, so the transitions stand out.
 
-Alerts and dashboards are code: test them by injecting the fault they are meant to catch and watching
-them fire.
+Alerts and dashboards are code: test them by injecting the fault they are meant to catch and
+watching them fire.
 
 > **Ask:** "If this broke at 3am, what would tell us — and would anyone believe it?"
 
@@ -175,11 +178,11 @@ Every call across a network needs a stated answer for absent, late, wrong, and l
 - **Retries are bounded, spaced, and safe.** Retry only operations that are idempotent or carry an
   idempotency key ([D4](05-design.md#d4)); back off exponentially with random jitter so a thousand
   callers do not retry in lockstep; cap the total number of retries, so a struggling dependency is
-  not finished off by its callers. Retry at one layer only: three attempts at each of three layers is
-  twenty-seven calls for one user click.
+  not finished off by its callers. Retry at one layer only: three attempts at each of three layers
+  is twenty-seven calls for one user click.
 - **Stop calling what is clearly down.** A *circuit breaker* counts recent failures to a dependency
-  and, past a threshold, fails immediately for a while instead of waiting on timeouts — then lets one
-  trial request through to see whether it has recovered.
+  and, past a threshold, fails immediately for a while instead of waiting on timeouts — then lets
+  one trial request through to see whether it has recovered.
 - **Choose fail-fast or degrade, per dependency, and say which.** Refuse, serve the last good value
   *with its age*, or show *unknown* — and the user can tell which happened.
 - **Protect yourself from overload.** Bound queues and pools; when full, shed load early rather than
@@ -243,7 +246,8 @@ common attacks expensive before anyone has to be clever:
   ([T2](06-testing.md#t2)).
 - **Dependencies are trust** ([O2](#o2)). Prefer few, maintained ones; know which you have; update
   them on a schedule.
-- **Demonstrate the attacks in your threat model** before trusting the defense ([T8](06-testing.md#t8)).
+- **Demonstrate the attacks in your threat model** before trusting the defense
+  ([T8](06-testing.md#t8)).
 
 > **Ask:** "What can an attacker reach from here, and have we tried?"
 
@@ -256,8 +260,8 @@ common attacks expensive before anyone has to be clever:
 - **Runbooks are real only if someone has run them** — the restore, the failover, the rollback —
   timed, recently, on a copy ([R7](04-requirements.md#r7)).
 - **Afterward, write it up without blame** ([H12](09-people.md#h12)): what happened, how it was
-  detected, how long each phase took, what would have caught it sooner — and change a test, an alert,
-  a runbook, or a checklist so nobody pays again. The write-up goes in `FINDINGS`.
+  detected, how long each phase took, what would have caught it sooner — and change a test, an
+  alert, a runbook, or a checklist so nobody pays again. The write-up goes in `FINDINGS`.
 
 > **Ask:** "What is the fastest way to stop the harm — and who is leading?"
 
@@ -266,10 +270,10 @@ common attacks expensive before anyone has to be clever:
 Do not optimize what is not slow: measure first — with a profiler, which shows where the time
 actually goes — and note where it would matter. Judge speed by percentiles (the 95th or 99th), not
 averages: the average hides the slowest requests, and those are the ones users remember. But *do*
-test at the numbers the requirements state ([R7](04-requirements.md#r7)) — a load test at the event-peak rate,
-with production-sized data — because performance and capacity are requirements, and a requirement
-nobody has tested is a hope. Run the load test again when the data grows, not only when the code
-changes.
+test at the numbers the requirements state ([R7](04-requirements.md#r7)) — a load test at the
+event-peak rate, with production-sized data — because performance and capacity are requirements, and
+a requirement nobody has tested is a hope. Run the load test again when the data grows, not only
+when the code changes.
 
 > **Ask:** "Have we run it at the peak we promised, against data the size we will have?"
 

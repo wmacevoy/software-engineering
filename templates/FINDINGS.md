@@ -1,8 +1,8 @@
 # Findings
 
 What we learned the expensive way: surprises, dead ends, measurements, the attack that worked. The
-only document reality writes ([W10](../guide/08-work.md#w10)). Blameless: say what would have found it,
-not who should have asked ([H12](../guide/09-people.md#h12)).
+only document reality writes ([W10](../guide/08-work.md#w10)). Blameless: say what would have found
+it, not who should have asked ([H12](../guide/09-people.md#h12)).
 
 ## _yyyy-mm-dd_ — _one-line title_
 

@@ -52,7 +52,7 @@ one rather than all. Grouped by the chapter they support most.
   circuit breakers, health checks, and the deploy as a test.
 - **Betsy Beyer et al., *Site Reliability Engineering*** (Google) — error budgets, symptom-based
   alerting, and blameless postmortems, from people who run very large systems.
-- **Martin Fowler, "ParallelChange"** — expand and contract, in one short article.
+- **Danilo Sato, "ParallelChange"** (martinfowler.com) — expand and contract, in one short article.
 - **OWASP Top Ten** (owasp.org) — the most common ways web applications are attacked, with defenses.
 
 **Work** ([8](guide/08-work.md))

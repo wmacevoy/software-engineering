@@ -17,9 +17,9 @@ labels `K0`–`K4` are used throughout the guide.
 ### <a id="u1"></a>U1. K0 through K3 are in order of expense; K4 is a choice
 
 K0 costs nothing; you already know it. Finding out a K1 is cheap — you know the question, so you can
-look it up or ask. A K2 costs a rewrite, because it arrives as a surprise after you have built on the
-wrong picture. A K3 costs the most: whatever was built on top of the belief, discovered at the worst
-possible moment.
+look it up or ask. A K2 costs a rewrite, because it arrives as a surprise after you have built on
+the wrong picture. A K3 costs the most: whatever was built on top of the belief, discovered at the
+worst possible moment.
 
 K4 is not on that ladder at all. It is a decision, and usually a good one.
 
@@ -46,23 +46,23 @@ there is nothing to look for.
 
 **Only two things find K3: reality, and someone who does not share your assumption.** That is the
 whole justification for running the code instead of reasoning about it, for integrating early, and
-for review by another person rather than by yourself an hour later. It is also why other people
-should say what needs testing: you cannot see past your own design, and a reviewer, the client at a
-demo, or an attacker can.
+for review by another person rather than by yourself an hour later — and for letting other people
+say what needs testing: you cannot see past your own design, and a reviewer, the client at a demo,
+or an attacker can.
 
-It is also why an attack should be *demonstrated before its defense is built*. "Users can't see each
-other's orders" is K3 until you have logged in as one user, requested another user's order by ID,
-and watched the request be refused. The same holds for any check that guards against misuse — a
-signature check, an input validator, a permission rule: you have not seen it work until you have
-seen it say no.
+The same reasoning says an attack should be *demonstrated before its defense is trusted*
+([T8](06-testing.md#t8)). "Users can't see each other's orders" is K3 until you have logged in as
+one user, requested another user's order by ID, and watched the request be refused. The same holds
+for any check that guards against misuse — a signature check, an input validator, a permission rule:
+you have not seen it work until you have seen it say no.
 
 > **Ask:** "What would I see if I were wrong about this — and have I looked?"
 
 ### <a id="u4"></a>U4. Every abstraction rests on chosen falsehoods; write down where they are load-bearing
 
 An abstraction is a simplified picture you agree to work with — "a network call returns a value,"
-"`now()` tells the time" — and every simplified picture is false somewhere. You cannot build anything
-without these K4s. A typical system holds a stack of them:
+"`now()` tells the time" — and every simplified picture is false somewhere. You cannot build
+anything without these K4s. A typical system holds a stack of them:
 
 - The clock is correct.
 - The network delivers.
@@ -91,8 +91,8 @@ schedule governed by K2.
 | K2                 | nothing; it can only be **time-boxed** |
 
 Say which kind you are handing over. When it is unclear which category the work is in — integrating
-with a vendor's API nobody on the team has used, say — treat it as K2: time-box a short spike to find
-out what you don't know, then give a range for the rest.
+with a vendor's API nobody on the team has used, say — treat it as K2: time-box a short spike to
+find out what you don't know, then give a range for the rest.
 
 > **Ask:** "Is this an estimate, a range, or a time box?"
 

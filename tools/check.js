@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Checks the guide's own consistency, so the conventions are enforced rather than hoped for (O3):
 // every relative link and anchor resolves, every principle link points at the file that defines it,
-// and README's principle index matches the chapter headings exactly. Exits nonzero on any problem.
+// every bare citation such as "(A8, D9)" names a real principle, chapter numbers agree, and README's
+// principle index matches the chapter headings exactly. Exits nonzero on any problem.
 // Usage: node tools/check.js
 const fs = require('fs');
 const path = require('path');
@@ -14,7 +15,7 @@ const HEADING = /^### <a id="([a-z0-9]+)"><\/a>([A-Z]\d+)\. (.*)$/;
 const files = [];
 (function walk(dir) {
   for (const name of fs.readdirSync(dir)) {
-    if (name === '.git' || name === 'docs' || name === 'node_modules') continue;
+    if (name === '.git' || name === 'node_modules') continue;
     const p = path.join(dir, name);
     if (fs.statSync(p).isDirectory()) walk(p);
     else if (p.endsWith('.md')) files.push(p);
@@ -34,6 +35,9 @@ function anchorsOf(file) {
   return anchors;
 }
 
+let problems = 0;
+function problem(msg) { console.log(msg); problems++; }
+
 const definedIn = new Map(); // principle ID -> chapter file
 const headings = [];         // index lines README must contain
 for (const f of files.filter((f) => f.includes(`${path.sep}guide${path.sep}`)).sort()) {
@@ -45,9 +49,6 @@ for (const f of files.filter((f) => f.includes(`${path.sep}guide${path.sep}`)).s
     headings.push(`- [**${m[2]}**](guide/${path.basename(f)}#${m[1]}) ${m[3]}`);
   }
 }
-
-let problems = 0;
-function problem(msg) { console.log(msg); problems++; }
 
 for (const f of files) {
   const text = fs.readFileSync(f, 'utf8');
@@ -65,6 +66,16 @@ for (const f of files) {
     if (/^[A-Z]\d+$/.test(id)) {
       if (!definedIn.has(id)) problem(`unknown ID     ${where}`);
       else if (definedIn.get(id) !== targetFile) problem(`wrong file     ${where} (defined in ${path.relative(root, definedIn.get(id))})`);
+    }
+  }
+}
+
+// Bare citations — the form AGENTS.md uses, so it stays short when copied into other repositories.
+// Only the chapter letters count, so "(K3)" and other parentheticals are left alone.
+for (const f of files) {
+  for (const m of fs.readFileSync(f, 'utf8').matchAll(/\(([PUFRDTOWHA]\d+(?:,\s*[PUFRDTOWHA]\d+)*)\)/g)) {
+    for (const id of m[1].split(/,\s*/)) {
+      if (!definedIn.has(id)) problem(`unknown ID     ${path.relative(root, f)}: ${m[0]}`);
     }
   }
 }

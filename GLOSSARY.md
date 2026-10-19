@@ -33,7 +33,7 @@ guide using one of these loosely, that is a bug.
 | **Expand / contract** | Changing a shape in steps: add the new beside the old, move every reader, then remove the old. |
 | **Feature flag** | A setting that turns a feature on or off without a new deploy. |
 | **Fence**               | A checkpoint that proves something: a demo, a check that exits nonzero, a deploy. A meeting is not one. |
-| **Health check** | An endpoint that reports working only if the app and what it depends on really are. A deploy is *health-gated* when it waits for it. |
+| **Health check** | An endpoint that reports whether the app is working; split into *liveness* and *readiness* (below). A deploy is *health-gated* when it waits for it. |
 | **Idempotency key** | A unique value a caller attaches to a request so that sending it twice has the effect of sending it once. |
 | **Idempotent**          | Doing it twice equals doing it once.                                                                 |
 | **Idiot light**         | One pass/fail signal visible from across the room.                                                   |

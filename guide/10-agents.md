@@ -1,7 +1,7 @@
 # 10. Agents
 
-An agent is an extremely fast writer with no memory and no stake in the outcome. This chapter is what
-changes when one is in the loop — for the humans directing it, and for the agent itself. The
+An agent is an extremely fast writer with no memory and no stake in the outcome. This chapter is
+what changes when one is in the loop — for the humans directing it, and for the agent itself. The
 operational rules are collected in [AGENTS.md](../AGENTS.md).
 
 ---
@@ -29,17 +29,18 @@ run and one to reset.
 ### <a id="a3"></a>A3. An agent arrives knowing nothing and leaves remembering nothing
 
 Every session starts from the repository. A constraint that lives only in a head is K2 to the agent
-([U6](02-unknowing.md#u6)), and it will hand you a clean, tested, plausible violation of that constraint
-faster than you can read the diff. The hallway correction — "no, not like that" — is gone.
+([U6](02-unknowing.md#u6)), and it will hand you a clean, tested, plausible violation of that
+constraint faster than you can read the diff. The hallway correction — "no, not like that" — is
+gone.
 
-So the agent's memory is the [working set](08-work.md) — requirements, design, queue, findings — plus a
-repository guide (a `CLAUDE.md`, `AGENTS.md`, or equivalent) that says how to run, test, and reset, and
-where the seams are. Anything said only in chat does not exist for the next session.
+So the agent's memory is the [working set](08-work.md#w10) — requirements, design, queue, findings —
+plus a repository guide (a `CLAUDE.md`, `AGENTS.md`, or equivalent) that says how to run, test, and
+reset, and where the seams are. Anything said only in chat does not exist for the next session.
 
 - **The client never talks to the agent.** What the client said reaches the agent only through the
   requirements.
-- **The contract comes before the code.** Otherwise the agent invents one, fluently — and every session
-  invents a different one.
+- **The contract comes before the code.** Otherwise the agent invents one, fluently — and every
+  session invents a different one.
 - **The K4s are written down.** An unwritten assumption is a K2 to the agent.
 
 > **Ask:** "What would a competent stranger need to read to get this right the first time — and is it
@@ -48,8 +49,8 @@ where the seams are. Anything said only in chat does not exist for the next sess
 ### <a id="a4"></a>A4. Context is a budget, and it resets every session
 
 On a real system an agent cannot read the whole project: it does not fit, and even where it fits,
-reading everything to change one thing is the wrong price. So *how does a competent stranger find the
-five files that matter, in ten minutes, without reading the other five hundred?* becomes a
+reading everything to change one thing is the wrong price. So *how does a competent stranger find
+the five files that matter, in ten minutes, without reading the other five hundred?* becomes a
 load-bearing property of the repository.
 
 The good news: it is the same property that makes a codebase habitable for people — clear component
@@ -72,13 +73,14 @@ code cannot say *why*, and everything durable in the working set, where both kin
 ### <a id="a5"></a>A5. Spend the speed on lowering the cost of testing
 
 Fixtures, harnesses, seed data, fault scripts, conformance checks, the boring second and third test
-case. That work multiplies against every future change ([F2](03-feedback.md#f2)). More features do not.
+case. That work multiplies against every future change ([F2](03-feedback.md#f2)). More features do
+not.
 
 ### <a id="a6"></a>A6. Review capacity is the bottleneck
 
-An agent will happily produce three hundred lines. A diff you cannot review is a diff you cannot sign.
-Ask for the smallest change that does the job, one concern at a time, with nothing bundled in that was
-not asked for ([W11](08-work.md#w11)). Make rejection cheap.
+An agent will happily produce three hundred lines. A diff you cannot review is a diff you cannot
+sign. Ask for the smallest change that does the job, one concern at a time, with nothing bundled in
+that was not asked for ([W11](08-work.md#w11)). Make rejection cheap.
 
 ### <a id="a7"></a>A7. Delegation is not abdication
 
@@ -87,28 +89,30 @@ defend it. **Working code nobody can explain is a liability, not an asset.**
 
 - Read the whole diff, not the summary. The line you skipped is the one that added a dependency,
   reformatted a file nobody asked about, or asserted nothing.
-- Credit the agent and keep the authority: a `Co-Authored-By:` line at the end of the commit message (a *trailer*) says who drafted it; the
-  human's signature says *I have read this and I stand behind it.* Both are true, and they are
-  different claims ([D13](05-design.md#d13)).
+- Credit the agent and keep the authority: a `Co-Authored-By:` line at the end of the commit message
+  (a *trailer*) says who drafted it; the human's signature says *I have read this and I stand behind
+  it.* Both are true, and they are different claims ([D13](05-design.md#d13)).
 - The agent does not commit, push, or publish unless asked. A push is a publication.
 
 ### <a id="a8"></a>A8. Agents move the human up the waterfall
 
 Agents are fastest at the bottom of the waterfall — code, tests, fixtures, migrations. At the top,
 where the work is conversations with people, laws, and a client's sense of proportion, they can
-search and draft ([A9](#a9)) but cannot decide. They
-are very good at accidental complexity and much less help with essential complexity, because essential
-complexity is *what the problem is* ([D8](05-design.md#d8)). So the speedup is real and concentrated in
-the part that was never the hard part.
+search and draft ([A9](#a9)) but cannot decide. They are very good at accidental complexity and much
+less help with essential complexity, because essential complexity is *what the problem is*
+([D8](05-design.md#d8)). So the speedup is real and concentrated in the part that was never the hard
+part.
 
-That moves the human *up*: to requirements, vocabulary, one-way doors, and coherence. An agent produces
-a locally reasonable design every session and remembers no conventions between them, so **humans own
-the structure; agents author and advise** ([D9](05-design.md#d9)). The requirements document is the
-railing that keeps a machine-speed descent from becoming a machine-speed fall ([W8](08-work.md#w8)).
+That moves the human *up*: to requirements, vocabulary, one-way doors, and coherence. An agent
+produces a locally reasonable design every session and remembers no conventions between them, so
+**humans own the structure; agents author and advise** ([D9](05-design.md#d9)). The requirements
+document is the railing that keeps a machine-speed descent from becoming a machine-speed fall
+([W8](08-work.md#w8)).
 
 The five-minute flag is the canonical failure: asked for a feature that touches a scope decision, an
-agent adds a boolean column and a table and is done before anyone has opened the requirements
-([case study](09-people.md)). The costing comes before the prompt.
+agent adds a boolean column and a table and is done before anyone has opened the requirements ([case
+study](09-people.md#case-study-it-does-the-vip-spaces-too-right)). The costing comes before the
+prompt.
 
 ### <a id="a9"></a>A9. Hand it the search-shaped work; keep the decisions
 
@@ -124,16 +128,17 @@ agent adds a boolean column and a table and is done before anyone has opened the
 ### <a id="a10"></a>A10. Ask your agents, and write the answers down
 
 Specific advice about prompting, how much to hand over, or what an agent can be trusted to do
-unsupervised has a short shelf life — this chapter's included. The durable move is to ask the model you
-are actually using:
+unsupervised has a short shelf life — this chapter's included. The durable move is to ask the model
+you are actually using:
 
 - *What did you have to read that you should not have needed?*
 - *What would have let you get this right the first time?*
 - *What did you assume because nobody wrote it down?*
 
 Put the answers in the repository, not the chat, where the next session — human or not — will find
-them. That is how an agent joins a team: not by remembering, but by the team writing down what it would
-have needed to remember. Treat the answers as proposals from something with no stake in the outcome.
+them. That is how an agent joins a team: not by remembering, but by the team writing down what it
+would have needed to remember. Treat the answers as proposals from something with no stake in the
+outcome.
 
 
 ---

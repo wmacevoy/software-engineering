@@ -29,9 +29,10 @@ goes to the first half. The second half — a failure nobody can see — is what
 into a long outage, because nothing starts the repair.
 
 Reliability also compounds downward. N independent parts, each working with probability P, work
-together with probability Pᴺ. Ten parts at 90% is 35%. For ten parts to give 99%, each must be 99.9%.
-**When every part must work, bigger systems need more reliable parts.** (Redundancy — two parts where
-either will do — is the other way out, and it only helps if the two do not fail for the same reason.)
+together with probability Pᴺ. Ten parts at 90% is 35%. For ten parts to give 99%, each must be
+99.9%. **When every part must work, bigger systems need more reliable parts.** (Redundancy — two
+parts where either will do — is the other way out, and it only helps if the two do not fail for the
+same reason.)
 
 > **Ask:** "When this is broken, how does anyone find out?"
 
@@ -76,9 +77,9 @@ Two consequences, and both are load-bearing:
   room — users, bystanders, the people whose data you hold ([R8](04-requirements.md#r8)) — not just
   the team's.
 - **A practice that reduces anxiety without reducing risk is worse than nothing.** A backup nobody
-  has restored. A test suite that cannot fail. A green dashboard measuring the wrong thing. These are
-  the most dangerous artifacts in engineering, because they quiet the alarm and leave the danger in
-  place.
+  has restored. A test suite that cannot fail. A green dashboard measuring the wrong thing. These
+  are the most dangerous artifacts in engineering, because they quiet the alarm and leave the danger
+  in place.
 
 > **Ask:** "Which fear does this practice retire — and does it retire the risk, or only the fear?"
 
@@ -111,9 +112,9 @@ from them:
   nothing occupies the space another part will need, so most schedule dependencies are optional
   ([W5](08-work.md#w5)).
 
-The two pull in opposite directions. Cheap tests make certainty affordable; the absence of mass makes
-it necessary to go buy some, because a bad design will hold itself up indefinitely, at full speed,
-with the tests passing.
+The two pull in opposite directions. Cheap tests make certainty affordable; the absence of mass
+makes it necessary to go buy some, because a bad design will hold itself up indefinitely, at full
+speed, with the tests passing.
 
 ---
 

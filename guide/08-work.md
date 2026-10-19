@@ -19,8 +19,8 @@ what deadlines do to people, and the failure that looks exactly like progress.
 (In iterative work, Maintain stops being a separate step — see [W3](#w3).)
 
 The order is right in every method: you cannot design against a requirement you do not have, or
-deploy what you have not built. The disagreement is about **how much goes through each step at once**
-and **whether the test comes at the end or inside every step.**
+deploy what you have not built. The disagreement is about **how much goes through each step at
+once** and **whether the test comes at the end or inside every step.**
 
 ### <a id="w2"></a>W2. Waterfall is correct when the only real test is expensive
 
@@ -31,8 +31,8 @@ drawing and dropped the warning.
 
 Be fair to it: where the only real test costs a million dollars and a year, it is right. Those
 disciplines still iterate — on prototypes, models, and test articles — but the final build is done
-once, so the rational response is to move everything checkable *before* that test. Waterfall is what a
-discipline looks like when it cannot afford to be wrong twice.
+once, so the rational response is to move everything checkable *before* that test. Waterfall is what
+a discipline looks like when it cannot afford to be wrong twice.
 
 | What waterfall retires                                   | What it creates, when tests are cheap                          |
 | -------------------------------------------------------- | -------------------------------------------------------------- |
@@ -77,20 +77,20 @@ There is no Maintain step. After the first deploy, every iteration is maintenanc
 | a distributed private key                     | cannot be unleaked                               | small waterfall, and a ceremony                 |
 | what data about people you collect            | cannot be un-collected; a regulator sets the deadline | **small waterfall, before anything else**  |
 
-Around a one-way door, run a small waterfall *inside* the loop: get the requirement exactly, design it
-on paper, review it with someone who does not share your assumption, and do it once. Everywhere else,
-loop. **Methodology is a function of the cost of being wrong once, and that cost can change twice in
-an afternoon.**
+Around a one-way door, run a small waterfall *inside* the loop: get the requirement exactly, design
+it on paper, review it with someone who does not share your assumption, and do it once. Everywhere
+else, loop. **Methodology is a function of the cost of being wrong once, and that cost can change
+twice in an afternoon.**
 
 > **Ask:** "What does it cost to be wrong about this once?"
 
 ### <a id="w5"></a>W5. Flatten the schedule: a dependency is an unwritten interface
 
-Drywall goes up after plumbing because the pipe occupies the space the wall will cover. Every arrow in
-a physical schedule is, at bottom, a fact about mass. Software is massless: you can write code that
-calls a function before that function exists, as long as you know its signature. So when a software schedule says *"we can't start B until A is done,"* the arrow
-is almost never a fact about the world. It is a fact about the design: **B does not know what A will
-look like.**
+Drywall goes up after plumbing because the pipe occupies the space the wall will cover. Every arrow
+in a physical schedule is, at bottom, a fact about mass. Software is massless: you can write code
+that calls a function before that function exists, as long as you know its signature. So when a
+software schedule says *"we can't start B until A is done,"* the arrow is almost never a fact about
+the world. It is a fact about the design: **B does not know what A will look like.**
 
 | The dependency says          | The artifact that dissolves it                    |
 | ---------------------------- | ------------------------------------------------- |
@@ -105,43 +105,44 @@ The cost is real: flattening converts a **scheduling** risk into an **integratio
 good trade only if you integrate continuously ([T6](06-testing.md#t6)). And some orderings genuinely
 survive: **sequence around irreversibility, not around incompleteness.** Do the one-way doors in
 order, carefully ([W4](#w4)). And when you genuinely must learn something before you can design
-against it, run a spike first — it stands in for the missing knowledge the way a mock stands in for a
-missing component.
+against it, run a spike first — it stands in for the missing knowledge the way a mock stands in for
+a missing component.
 
 > **Ask:** "Is this arrow a fact about the world, or an interface nobody wrote down?"
 
 ### <a id="w6"></a>W6. Build a thin vertical slice first, then thicken it
 
 A slice from click to route to query to response, built early and then widened, crosses the gap.
-Horizontal layers — all of the database, then all of the API, then all of the UI — finish at the same
-time: never. Iteration one of the parking system is one lot, one sensor with its fault switchboard, the
-collector polling it, and the driver page showing live, stale, and unknown. Not eight languages, not
-firmware. Enough to set a sensor `stuck` in front of the client and watch what they say.
+Horizontal layers — all of the database, then all of the API, then all of the UI — finish at the
+same time: never. Iteration one of the parking system is one lot, one sensor with its control plane
+for faults, the collector polling it, and the driver page showing live, stale, and unknown. Not
+translations, not firmware updates. Enough to set a sensor `stuck` in front of the client and watch
+what they say.
 
-Carry the load-bearing idea in the first slice (here, signed readings), so the bridge is tested under
-the weight it will have to bear.
+Carry the load-bearing idea in the first slice (here, signed readings), so the bridge is tested
+under the weight it will have to bear.
 
 ### <a id="w7"></a>W7. Deadlines produce an avoidance gradient; change the terrain, not the willpower
 
 In a classic experiment, a rat that has learned one end of its cage gives a shock is tied to a
 string and drawn toward that end; how hard it pulls away is measured along the way. The pull is
-nearly flat far from the danger and rises steeply close to it — an *avoidance gradient*. Deadlines do
-this to people: the month before feels like nothing, the last week is unbearable. The surge of fear
-arrives exactly when the project can least afford what it produces: skipped tests, bundled diffs, unreviewed merges,
-"we'll clean it up after launch." That feedback loop, not incompetence, is how most projects fail.
+nearly flat far from the danger and rises steeply close to it — an *avoidance gradient*. Deadlines
+do this to people: the month before feels like nothing, the last week is unbearable. The surge of
+fear arrives exactly when the project can least afford what it produces: skipped tests, bundled
+diffs, unreviewed merges, "we'll clean it up after launch." That feedback loop, not incompetence, is
+how most projects fail.
 
 - **Remove the danger.** If deploying is routine and reversible, the deadline stops being the
   shocking end of the cage. An always-releasable main branch means shipping is not an event.
 - **Cross the gap early** with the thin slice ([W6](#w6)), so the last week thickens something that
   already works.
-- **Put real fences along the way.** A demo to an actual client, a check that exits nonzero, a deploy
-  that happened. A status meeting is not a fence; nothing was proved.
+- **Put real fences along the way.** A demo to an actual client, a check that exits nonzero, a
+  deploy that happened. A status meeting is not a fence; nothing was proved.
 - **Keep slack.** A plan at full utilization cannot absorb K2, and K2 is guaranteed. Think of a
   checkout line: when the cashier is busy half the time, a new customer barely waits; when the
   cashier is busy 95% of the time, any small burst builds a line that takes ages to clear. Waiting
   grows much faster than load as you approach 100%, and a plan at 95% has almost no room for a
-  surprise. Slack is the budget line for the
-  unknown unknown.
+  surprise. Slack is the budget line for the unknown unknown.
 - **Estimate the category** ([U5](02-unknowing.md#u5)).
 - **Bad news early is a gift; bad news late is a betrayal** ([H9](09-people.md#h9)).
 
@@ -152,18 +153,19 @@ arrives exactly when the project can least afford what it produces: skipped test
 The failure looks like a productive week. A team asked for a campus parking app has, by Tuesday, a
 normalized schema — `students`, `vehicles`, `sightings(plate, lot, seen_at)` — an index, a view that
 joins all three, and a query answering "where did this student park last Thursday" in eleven
-milliseconds. In week four someone finally asks whether student identity may be joined to a location.
-The answer is no. The sightings table cannot exist in that form; the join, the view, the query, and the
-UI built on it are all forbidden. A rule from the top of the waterfall, discovered after four weeks at
-the bottom. One requirement — *counts, not locations* — would have saved the month, and no amount of
-normalization would ever have produced it. It comes from a question, not a design.
+milliseconds. In week four someone finally asks whether student identity may be joined to a
+location. The answer is no. The sightings table cannot exist in that form; the join, the view, the
+query, and the UI built on it are all forbidden. A rule from the top of the waterfall, discovered
+after four weeks at the bottom. One requirement — *counts, not locations* — would have saved the
+month, and no amount of normalization would ever have produced it. It comes from a question, not a
+design.
 
-**Why the slope is there: the comfort gradient.** Each step down is more concrete, more familiar, more
-solitary, and produces something you can see. Each step up is more ambiguous and more social, and
-produces a document nobody grades. Reading a privacy law is uncomfortable; normalizing a schema is a
-pleasure. People go where their own discomfort is lowest and leave the client's for later. Agents make
-the slope steeper: an agent produces the schema and fifty queries in a minute and never asks about the
-registrar unless a requirement tells it to.
+**Why the slope is there: the comfort gradient.** Each step down is more concrete, more familiar,
+more solitary, and produces something you can see. Each step up is more ambiguous and more social,
+and produces a document nobody grades. Reading a privacy law is uncomfortable; normalizing a schema
+is a pleasure. People go where their own discomfort is lowest and leave the client's for later.
+Agents make the slope steeper: an agent produces the schema and fifty queries in a minute and never
+asks about the registrar unless a requirement tells it to.
 
 **The tells.** You are falling if any of these is true before the client has objected to a numbered
 requirement:
@@ -177,20 +179,21 @@ requirement:
 
 **The railing.**
 
-1. **Ask the expensive questions first** — the ones that could invalidate the plan ([R3](04-requirements.md#r3)).
-2. **Write the answers where they cannot be missed** — `Scope decisions`, `Non-goals`, and a section for
-   security, law, and ethics ([R8](04-requirements.md#r8), [R9](04-requirements.md#r9)).
+1. **Ask the expensive questions first** — the ones that could invalidate the plan
+   ([R3](04-requirements.md#r3)).
+2. **Write the answers where they cannot be missed** — `Scope decisions`, `Non-goals`, and a section
+   for security, law, and ethics ([R8](04-requirements.md#r8), [R9](04-requirements.md#r9)).
 3. **Read the assumptions back** as questions: "We're assuming a record of where a person parked is
    fine to keep. True?"
-4. **Then descend on purpose.** A **spike** is a permitted descent: time-boxed, aimed at one question,
-   its code thrown away. Falling is a descent with no question and no time box.
+4. **Then descend on purpose.** A **spike** is a permitted descent: time-boxed, aimed at one
+   question, its code thrown away. Falling is a descent with no question and no time box.
 
 > **Ask:** "What will I know when this spike stops?" — and — "What has the client objected to so far?"
 
 ### <a id="w9"></a>W9. An iteration is time-boxed, ends on a fence, and produces four things
 
-One to two weeks. When the period ends, scope moves, not the date. Without the time box the loop is a
-spiral. An iteration that produces three of these is not done:
+One to two weeks. When the period ends, scope moves, not the date. Without the time box the loop is
+a spiral. An iteration that produces three of these is not done:
 
 1. **A running thing** the client can touch, from a clean reset, on data shaped like theirs.
 2. **A diff to the requirements** — `v(n)` to `v(n+1)` — if anything changed, including `Non-goals`.
@@ -201,8 +204,9 @@ And one question at the end: *what can we delete?* ([D12](05-design.md#d12))
 
 ### <a id="w10"></a>W10. Keep the working set in the repository
 
-The state of the project has to be observable from where every party stands ([U6](02-unknowing.md#u6)).
-Four documents, versioned alongside the code — not in a wiki, not in chat, not in a notebook:
+The state of the project has to be observable from where every party stands
+([U6](02-unknowing.md#u6)). Four documents, versioned alongside the code — not in a wiki, not in
+chat, not in a notebook:
 
 | Document          | Answers                                                                     | Written by        |
 | ----------------- | --------------------------------------------------------------------------- | ----------------- |
@@ -211,11 +215,12 @@ Four documents, versioned alongside the code — not in a wiki, not in chat, not
 | `QUEUE`           | what is being worked, in what order, by whom, and what would make it done   | us                |
 | `FINDINGS`        | what we learned the expensive way — surprises, dead ends, measurements, the attack that worked | reality |
 
-- **Versioned**, because a superseded requirement is not deleted knowledge ([R10](04-requirements.md#r10)).
+- **Versioned**, because a superseded requirement is not deleted knowledge
+  ([R10](04-requirements.md#r10)).
 - **`QUEUE` is the shared cursor.** Without one, two workers do the same task, or each assumes the
   other has it — a failure now cheap to hit ten times an hour.
-- **`FINDINGS` is the K2/K3 ledger**, and the only one reality writes. A fact discovered at full price
-  and not written down gets rediscovered at full price.
+- **`FINDINGS` is the K2/K3 ledger**, and the only one reality writes. A fact discovered at full
+  price and not written down gets rediscovered at full price.
 
 Each retires a fear — "we are building different things," "nobody knows what state this is in," "we
 already learned this once." A document that retires no fear should be dropped, not maintained.
@@ -225,32 +230,37 @@ Starting skeletons are in [templates/](../templates/).
 
 **A definition of done is a checklist a change fully passes — not most of it.** A typical one:
 
-- It satisfies a stated requirement, and the change names the requirement's ID.
-- A test names that same ID and fails without the change.
+- It satisfies a stated requirement, and the change names the requirement's ID — or it is labeled a
+  chore (below).
+- A test names that same ID and has been seen to fail without the change.
 - The system builds and runs from a clean checkout.
 - The full check suite passes locally.
 - Anything the change made untrue in the requirements, design, or repository guide is updated in the
   same change. Documentation that drifts is worse than none, because people trust it.
 - New behavior that can fail has a way to make it fail on demand.
-- The change is signed by the person who stands behind it.
+- It is one concern, and its description says what was deliberately left out.
+- Someone other than the author reviewed it.
+- It is signed by a person who has read all of it and stands behind it.
 
-**One concern per change.** Reviewer attention is the scarce resource, and a bundled diff spends it on
-separating things that should never have been joined. A change description says what changed, which
-requirements, how it was verified, and **what was deliberately left out** — silent omissions are the
-expensive kind.
+The same list, as boxes to tick, is in [CHECKLISTS.md](../CHECKLISTS.md); keep the two in step.
 
-**Review** is the loop that catches unclear intent and bad design ([F3](03-feedback.md#f3)). It works
-when the author reviews their own diff first, the change is small enough to read in one sitting, it
-comes back within a day, and style is left to the formatter and linter ([O3](07-operating.md#o3)).
-Reviewers ask three questions, in order:
+**One concern per change.** Reviewer attention is the scarce resource, and a bundled diff spends it
+on separating things that should never have been joined. A change description says what changed,
+which requirements, how it was verified, and **what was deliberately left out** — silent omissions
+are the expensive kind.
+
+**Review** is the loop that catches unclear intent and bad design ([F3](03-feedback.md#f3)). It
+works when the author reviews their own diff first, the change is small enough to read in one
+sitting, it comes back within a day, and style is left to the formatter and linter
+([O3](07-operating.md#o3)). Reviewers ask three questions, in order:
 
 1. Does it do what the requirement says, and does the test prove it?
 2. Could the next maintainer read this in a month and explain why it is here?
 3. What does it make harder later?
 
-Not every change serves a requirement. A typo, a dependency update, or a pure refactor is a **chore**:
-it says so in its description, and its proof is that the existing suite still passes (a refactor's
-tests must have been seen to fail — [T3](06-testing.md#t3)).
+Not every change serves a requirement. A typo, a dependency update, or a pure refactor is a
+**chore**: it says so in its description, and its proof is that the existing suite still passes (a
+refactor's tests must have been seen to fail — [T3](06-testing.md#t3)).
 
 > **Ask:** "Could I review this in one sitting?"
 

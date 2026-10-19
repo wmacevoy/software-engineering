@@ -4,7 +4,8 @@ What must be observably true, and what is not being built. Changes only with the
 a new version (`REQUIREMENTS_v2.md`), never an edit to this one. See
 [R1–R11](../guide/04-requirements.md).
 
-Client (the one voice who can decide): _name_ · Date sent: _yyyy-mm-dd_ · *Tell us what is wrong with it.*
+Client (the one voice who can decide): _name_ · Date sent: _yyyy-mm-dd_ · *Tell us what is wrong
+with it.*
 
 ## Glossary
 
@@ -39,7 +40,8 @@ Mark invented numbers *(invented)*.
 ## Operating envelope
 
 - **Scale:** _how many, and in two years_ — and what we are explicitly not designing for.
-- **Speed:** _latency, percentile, at what load_ (e.g. 95% of page loads under 1 s at the event peak).
+- **Speed:** _latency, percentile, at what load_ (e.g. 95% of page loads under 1 s at the event
+  peak).
 - **Recovery:** _per component: behavior while down; how to get back, by whom, how long (timed)._
   How much data may we lose?
 - **Availability:** _budget, period, beneficiary, maintenance window._

@@ -49,9 +49,9 @@ be wrong cannot teach you anything.
 This is the same move as a test that fails before the fix: state the claim precisely so that reality
 is *able* to reject it.
 
-Requirements are therefore **numbered** (so tests, commits, and reviews can cite them), **observable**
-(so they can be checked), and contain **numbers** — invented ones marked as invented. An invented
-number that is written down can be challenged. An assumed one cannot.
+Requirements are therefore **numbered** (so tests, commits, and reviews can cite them),
+**observable** (so they can be checked), and contain **numbers** — invented ones marked as invented.
+An invented number that is written down can be challenged. An assumed one cannot.
 
 > **Ask:** "Could the client read this sentence and say 'no'?"
 
@@ -98,7 +98,7 @@ A sentence must pass both tests to be a requirement:
 | A stale count is never presented as current.             | The collector stamps receipt time; staleness is computed from elapsed time. |
 | Every reading is attributable to a device.               | Each device signs readings with its own key; a registry holds the public keys. |
 | One command returns the system to a known state.         | A script that deletes the database volume and reloads the seed data.   |
-| A revoked device is rejected by the next poll.           | The collector reads the device table every cycle, so there is no cache. |
+| A revoked device is rejected by the next poll.           | The collector re-reads the device table every cycle, so there is nothing to invalidate. |
 | A person's identity is never joined to a location.       | The sightings table has no person column, and no view that could add one. |
 
 The tells that a requirement has design in it: a table name, a library, a language, an HTTP status
@@ -126,8 +126,8 @@ For every input a component depends on, state an answer for each case:
 | **Lying**  | `200 OK`, plausible data, frozen since Tuesday   | how would anyone notice?                    |
 
 A system that only works when its inputs behave is not finished. And an adversary is just the
-unknown that optimizes: **security is this same discipline applied to an input chosen specifically to
-find your K3.**
+unknown that optimizes: **security is this same discipline applied to an input chosen specifically
+to find your K3.**
 
 > **Ask:** "What happens when this input is absent, late, wrong, or lying?"
 
@@ -139,27 +139,27 @@ sentence. Later they cost a migration, a rewrite, or an outage.
 
 **Scale** is an order of magnitude plus a horizon. "A city" is a mood; "a hundred lots, a hundred
 thousand spaces, one sensor per lot reporting every five seconds, an event crowd arriving over two
-hours, ninety days of history" is a design input. Ask "and in two years?" Then write down the number you are explicitly *not*
-designing for. Do arithmetic on the answers: if the thousand-space lot nearest the gate fills in
-the first twelve minutes, that is 1.4 cars a second, so a count ten seconds old is already wrong by
-fourteen spaces. That is how a staleness threshold (say, fifteen seconds) should be chosen: derived
-from the client's numbers, not picked because it is round.
+hours, ninety days of history" is a design input. Ask "and in two years?" Then write down the number
+you are explicitly *not* designing for. Do arithmetic on the answers: if the thousand-space lot
+nearest the gate fills in the first twelve minutes, that is 1.4 cars a second, so a count ten
+seconds old is already wrong by fourteen spaces. That is how a staleness threshold (say, fifteen
+seconds) should be chosen: derived from the client's numbers, not picked because it is round.
 
 **Speed** belongs here too. "Fast" is a mood; "the driver page loads in under a second for 95% of
 requests at the event peak" is a requirement — a latency, a percentile, and the load it holds
 under.
 
 **Recovery** is two questions, and the second is the one that gets skipped. What does the system do
-*while* X is down — degrade, wait, refuse, serve stale — and does the user learn which? And what does
-it take to get back: who, which command, which backup, how long? That answer is real only if someone
-has run it and timed it. Answer per component, not for "the system." And **how much data may we lose**
-is itself a requirement, to be decided by someone entitled to decide it.
+*while* X is down — degrade, wait, refuse, serve stale — and does the user learn which? And what
+does it take to get back: who, which command, which backup, how long? That answer is real only if
+someone has run it and timed it. Answer per component, not for "the system." And **how much data may
+we lose** is itself a requirement, to be decided by someone entitled to decide it.
 
 **Availability** is a budget with a period and a beneficiary: the driver page may be down forty
 minutes a month; the ops screen a day; a missed sensor poll bothers nobody. Different parts deserve
 different budgets — that is what lets you spend money where it matters. Unstated, people assume
-100%, which quietly forbids deploys, restarts, and migrations. The number chooses the architecture, mostly by choosing whether a human is allowed in
-the loop:
+100%, which quietly forbids deploys, restarts, and migrations. The number chooses the architecture,
+mostly by choosing whether a human is allowed in the loop:
 
 | Budget  | Down per month | What it implies                                         |
 | ------- | -------------- | ------------------------------------------------------- |
@@ -191,8 +191,8 @@ In practice:
 - **Law.** Mostly about data: what you collect, how long you keep it, who you must notify, what you
   may reuse. Also licensing, and the provenance of code — including code an agent produced.
 - **Ethics.** The people affected who are not in the room. Parking data is location data about
-  people; *"counts, not locations"* is an ethical decision wearing technical clothes — nearly free to
-  make now, nearly impossible to retrofit. **The safest record is the one you never kept.**
+  people; *"counts, not locations"* is an ethical decision wearing technical clothes — nearly free
+  to make now, nearly impossible to retrofit. **The safest record is the one you never kept.**
   Accessibility and translation live here too.
 
 The cheapest moment to satisfy all three is while the requirements are still soft. After that you
@@ -266,7 +266,8 @@ Two consequences:
 
 Name each test by the requirement it covers. Then a test run stops being a count of passes and
 becomes a scoreboard — *these stories are green, that one turned green today* — which a client can
-read without reading code. It is honest only while every green could have been red ([F5](03-feedback.md#f5)).
+read without reading code. It is honest only while every green could have been red
+([F5](03-feedback.md#f5)).
 
 > **Ask:** "What does the test have to observe to assert this?"
 
