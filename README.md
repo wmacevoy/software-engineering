@@ -201,6 +201,7 @@ should use a different form, such as `UI-1`, so they are never confused with the
 - [**W9**](guide/08-work.md#w9) An iteration is time-boxed, ends on a fence, and produces four things
 - [**W10**](guide/08-work.md#w10) Keep the working set in the repository
 - [**W11**](guide/08-work.md#w11) Done means all of it, one concern per change, reviewed by someone else
+- [**W12**](guide/08-work.md#w12) Joining late: rebuild the working set, and mark what you inferred
 
 **[9. People](guide/09-people.md)**
 

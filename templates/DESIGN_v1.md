@@ -30,7 +30,8 @@ Each with its review: who reviewed it, what assumption they did not share
 
 ## Decisions
 
-- **_Decision_** — _requirement IDs_ — _why_ — _rejected alternatives and why_
+- **_Decision_** — _requirement IDs_ — _why_ — _rejected alternatives and why_ — _source: commit,
+  issue, or person; or *(inferred)* ([W12](https://github.com/wmacevoy/software-engineering/blob/main/guide/08-work.md#w12))_
 
 ## Deferred
 

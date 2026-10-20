@@ -264,6 +264,27 @@ refactor's tests must have been seen to fail — [T3](06-testing.md#t3)).
 
 > **Ask:** "Could I review this in one sitting?"
 
+### <a id="w12"></a>W12. Joining late: rebuild the working set, and mark what you inferred
+
+Most projects meet this guide with code already written. The working set can be rebuilt from the
+code and its history, but the rebuild has a trap: it invents reasons. A commit says what changed;
+*why* was in a head, and a reconstruction fills the gap with a plausible story — a K3 in the making
+([U3](02-unknowing.md#u3)). In order:
+
+1. **Requirements from behavior.** Write what the code observably does today as numbered
+   requirements, each marked *(inferred)* until someone who can decide confirms it — as invented
+   numbers are marked *(invented)*.
+2. **Design from structure; reasons from evidence.** Record components and state as they are. Give
+   each decision its source — a commit, an issue, a person — or mark the reason *(inferred)*.
+3. **`FINDINGS` from history.** Reverts, hotfixes, and fixes of fixes are findings nobody wrote down.
+4. **`QUEUE` from the gaps.** Every requirement with no test is a queue item, not a failure; so is
+   every inherited claim nobody has measured — a footprint, a speed, "runs under the sanitizer."
+5. **Read it back** ([H6](09-people.md#h6)). The *(inferred)* marks are the questions.
+
+A reconstruction that marks nothing as inferred is claiming more than it knows.
+
+> **Ask:** "Which of these reasons did somebody say, and which did we make up?"
+
 
 ---
 

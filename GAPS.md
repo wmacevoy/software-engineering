@@ -62,6 +62,9 @@ I had to add an *(inferred)* marker so the maintainer could tell reconstruction 
 every inferred reason *(inferred)* until a person confirms it, seed FINDINGS from the commit log,
 and treat each "test: none" in the requirements as a queue item.
 
+**Closed:** new [W12](guide/08-work.md#w12); the requirements and design templates carry the
+*(inferred)* marker.
+
 ### 4. Requirement-to-test traceability fights versioning
 
 [R11](guide/04-requirements.md#r11) wants every "must" to have a test ID, and the checklist asks for
