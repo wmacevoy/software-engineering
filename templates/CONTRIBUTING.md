@@ -28,4 +28,5 @@ edited; requirements are versioned, never edited in place._
 
 - **Working set:** `docs/` — `REQUIREMENTS_vX`, `DESIGN_vX`, `QUEUE`, `FINDINGS`
   ([W10](https://github.com/wmacevoy/software-engineering/blob/main/guide/08-work.md#w10))
-- **Agents:** read [AGENTS.md](https://github.com/wmacevoy/software-engineering/blob/main/AGENTS.md) and this file before acting.
+- **Agents:** read `AGENTS.md` in this repository (copied from the
+  [guide](https://github.com/wmacevoy/software-engineering/blob/main/AGENTS.md)) and this file before acting.

@@ -4,7 +4,8 @@ What must be observably true, and what is not being built. Changes only with the
 a new version (`REQUIREMENTS_v2.md`), never an edit to this one. See
 [R1–R11](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md).
 
-Client (the one voice who can decide): _name_ · Date sent: _yyyy-mm-dd_ · *Tell us what is wrong
+Client (the one voice who can decide — or, with none in the room, the named proxy for the users;
+see [H5](https://github.com/wmacevoy/software-engineering/blob/main/guide/09-people.md#h5)): _name_ · Date sent: _yyyy-mm-dd_ · *Tell us what is wrong
 with it.*
 
 ## Glossary
@@ -74,3 +75,10 @@ applies, and who said so.
 Guesses nobody has agreed to.
 
 - _Question_ — _who can answer, by when_
+
+## Deferred
+
+Wanted and agreed, but not in this version — named so it is not mistaken for an oversight
+([R9](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r9)).
+
+- _Not yet: …_ — _reason, and what would trigger it_

@@ -32,7 +32,7 @@ category to a cheaper one — before it charges full price:
 | ---- | ------ | ----------------------------------------------------------------------------------------------------------- |
 | K0   | stays  | Write it down so it stays known. Tests are executable knowledge, and unlike prose they complain when they go stale. |
 | K1   | K0     | Spikes, prototypes, reading the source, asking the client. The only category you can simply decide to spend time on. |
-| K2   | K1     | Exposure to reality, early and repeatedly: integrate, deploy, demo, inject faults, watch real use. You cannot search for these; you can only arrange to be surprised sooner and more cheaply. |
+| K2   | K1     | Exposure to reality, early and repeatedly: integrate, deploy, demo, inject faults, watch real use. You cannot search for these; you can only arrange to be surprised sooner and more cheaply — and asking someone who knows a domain you don't is the cheapest exposure there is ([R8](04-requirements.md#r8)). |
 | K3   | K0     | Evidence: a test that could have failed, an output you actually looked at, a signature you checked, a second person who does not share your assumption. |
 | K4   | chosen | Name the falsehood, write down where it is load-bearing, know the blast radius when it comes due.          |
 

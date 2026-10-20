@@ -140,7 +140,7 @@ closing it is the team's job, because only the team knows what the assumptions a
 | doesn't show up      | Nominate a teammate to speak for them. Write invented numbers, marked invented. Demo on schedule anyway, and say so in the status. |
 | changes their mind   | `REQUIREMENTS_v(n+1)`. Never edit `v(n)`; the diff is the most useful thing you will show them.          |
 | wants everything     | Price it. "Yes, and here is what it moves."                                                              |
-| is you               | The worst case: every guess confirmed by the only person who could dispute it. Nominate an actual human and get corrected on a schedule. |
+| is you               | The worst case: every guess confirmed by the only person who could dispute it. Name a proxy for the users, below, and get corrected on a schedule. |
 | is surprised         | You failed, not them. Find the delay between knowing and telling; that delay is the bug.                 |
 
 **When the client is the maintainer** — a solo or open-source project — the users are real but never
