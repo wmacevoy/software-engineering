@@ -9,8 +9,11 @@ factory ([SE1/U7](guide/02-unknowing.md#u7)), so every change is visible in thre
 - **In every copy**: AGENTS.md and the templates link to the release they came from, so a copy that
   is behind says so.
 
-`tools/check.js` keeps the three in step. Within SE1, a minor release (v1.1) may add principles,
-reword them, or extend what they ask; it never moves an ID ([principle index](README.md#principle-index)).
+`tools/check.js` keeps the three in step, and compares every principle with the last release tag:
+one whose text changed must have a marker for a later release, or — for wording only — be named
+under that release's *Also changed*. Work toward a release goes under `## v1.2 — unreleased`; give it
+a date when you tag it. Within SE1, a minor release may add principles, reword them, or extend what
+they ask; it never moves an ID ([principle index](README.md#principle-index)).
 
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
