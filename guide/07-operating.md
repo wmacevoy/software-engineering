@@ -22,8 +22,8 @@ of what happens next, in the order you will meet it:
 - **Staging and production.** *Production* is the copy real users use. *Staging* is a copy set up
   the same way, where you try a release first.
 - **Health check.** An endpoint like `/health` that answers "I'm working" only if the app really is
-  ([SE1/O4](#o4) splits this into two checks). A deploy is **health-gated** when it is not considered
-  finished until the health check passes ([SE1/O6](#o6)).
+  ([SE1/O4](#o4) splits this into two checks). A deploy is **health-gated** when it is not
+  considered finished until the health check passes ([SE1/O6](#o6)).
 - **Rollback.** Putting the previous version back when the new one fails. When the system does it
   by itself because the health check failed, that is an *automatic revert*.
 - **Logs, metrics, alerts.** Logs are lines the app writes about what it did; metrics are numbers it
@@ -119,8 +119,9 @@ Install with the command that refuses drift: `npm ci`, `cargo build --locked`, `
 
 ### <a id="o3"></a>O3. CI runs the command you run, everywhere you ship — and enforces what matters
 
-Continuous integration is the idiot light with a URL ([SE1/T2](06-testing.md#t2)). It retires "it works
-on my machine" and "we only ever built it on one kind of machine." Two rules make it worth trusting:
+Continuous integration is the idiot light with a URL ([SE1/T2](06-testing.md#t2)). It retires "it
+works on my machine" and "we only ever built it on one kind of machine." Two rules make it worth
+trusting:
 
 - **CI runs the same command you do.** If the workflow's step is `./check.sh` and so is yours, there
   is no second recipe to drift.
@@ -143,9 +144,9 @@ its attention on what no tool can see ([SE1/F3](03-feedback.md#f3), [SE1/W11](08
 The second half of reliability is detectable error status. In production that means:
 
 - **Logs that explain decisions**, not just events: *"marked lot 3 stale: age 47 s exceeded 15 s"*,
-  with the inputs that produced it ([SE1/D6](05-design.md#d6)). Structured (key–value), so they can be
-  searched. **Never log secrets or personal data** — logs are copied, shipped, and kept far longer
-  than the system they came from.
+  with the inputs that produced it ([SE1/D6](05-design.md#d6)). Structured (key–value), so they can
+  be searched. **Never log secrets or personal data** — logs are copied, shipped, and kept far
+  longer than the system they came from.
 - **Metrics for the questions you will ask at 3am**: request rate, error rate, latency percentiles,
   saturation (queue depth, pool usage, disk). Sized from the numbers in the requirements
   ([SE1/R7](04-requirements.md#r7)).
@@ -179,10 +180,10 @@ Every call across a network needs a stated answer for absent, late, wrong, and l
 - **Every remote call has an explicit timeout**, shorter than the caller's own deadline. A missing
   timeout is a decision to wait forever, made by nobody.
 - **Retries are bounded, spaced, and safe.** Retry only operations that are idempotent or carry an
-  idempotency key ([SE1/D4](05-design.md#d4)); back off exponentially with random jitter so a thousand
-  callers do not retry in lockstep; cap the total number of retries, so a struggling dependency is
-  not finished off by its callers. Retry at one layer only: three attempts at each of three layers
-  is twenty-seven calls for one user click.
+  idempotency key ([SE1/D4](05-design.md#d4)); back off exponentially with random jitter so a
+  thousand callers do not retry in lockstep; cap the total number of retries, so a struggling
+  dependency is not finished off by its callers. Retry at one layer only: three attempts at each of
+  three layers is twenty-seven calls for one user click.
 - **Stop calling what is clearly down.** A *circuit breaker* counts recent failures to a dependency
   and, past a threshold, fails immediately for a while instead of waiting on timeouts — then lets
   one trial request through to see whether it has recovered.
@@ -203,8 +204,8 @@ the system should be the one to notice.** Health-gated, with automatic revert, w
 timed *before* the maintenance window opens.
 
 Concretely: a staging environment from the same definition as production; the health endpoint polled
-with a timeout as the power-on self test ([SE1/T2](06-testing.md#t2)); the integration suite run against
-it; promotion only on green. The deploy script is the one you run by hand.
+with a timeout as the power-on self test ([SE1/T2](06-testing.md#t2)); the integration suite run
+against it; promotion only on green. The deploy script is the one you run by hand.
 
 Automatic revert only works if the old code can run against the new data. A schema change that the
 previous version cannot read makes revert impossible — which is why data and interfaces change in
@@ -234,8 +235,8 @@ condition, not a moment. So:
 
 ### <a id="o8"></a>O8. Secure by default
 
-The threat model says who the adversary is ([SE1/R8](04-requirements.md#r8)); these defaults make the
-common attacks expensive before anyone has to be clever:
+The threat model says who the adversary is ([SE1/R8](04-requirements.md#r8)); these defaults make
+the common attacks expensive before anyone has to be clever:
 
 - **Least privilege.** Each component, key, and account gets only the access its job needs. An
   administrator's login is not the key that signs releases ([SE1/D13](05-design.md#d13)).
@@ -243,12 +244,12 @@ common attacks expensive before anyone has to be clever:
   secret store; refer to them by name, never by value. A leaked secret is rotated, not deleted.
 - **Authorize every request, on the server.** Hiding a button in the UI is presentation, not
   security; every endpoint checks its own permissions.
-- **Treat every input as possibly lying** ([SE1/R6](04-requirements.md#r6)). Validate at the boundary;
-  use parameterized queries and proper escaping, never string-built SQL or HTML.
+- **Treat every input as possibly lying** ([SE1/R6](04-requirements.md#r6)). Validate at the
+  boundary; use parameterized queries and proper escaping, never string-built SQL or HTML.
 - **No insecure fallbacks.** A missing secret or certificate is an exit code, not a default
   ([SE1/T2](06-testing.md#t2)).
-- **Dependencies are trust** ([SE1/O2](#o2)). Prefer few, maintained ones; know which you have; update
-  them on a schedule.
+- **Dependencies are trust** ([SE1/O2](#o2)). Prefer few, maintained ones; know which you have;
+  update them on a schedule.
 - **Demonstrate the attacks in your threat model** before trusting the defense
   ([SE1/T8](06-testing.md#t8)).
 
@@ -282,14 +283,14 @@ when the code changes.
 
 ### <a id="o11"></a>O11. A release you cannot roll back is a one-way door; ship it like one
 
-Most of this chapter assumes a service you run: you deploy it, watch it, and put the previous version
-back. A library, firmware, an installed app, or a file format has none of that. The deploy is
-someone else's, months later, on hardware you will never see — and what it writes, such as bytes on
-a user's card, stays written after you fix the bug. [SE1/O6](#o6)'s health gate and [SE1/O7](#o7)'s rollback
-have nothing to pull. What replaces them:
+Most of this chapter assumes a service you run: you deploy it, watch it, and put the previous
+version back. A library, firmware, an installed app, or a file format has none of that. The deploy
+is someone else's, months later, on hardware you will never see — and what it writes, such as bytes
+on a user's card, stays written after you fix the bug. [SE1/O6](#o6)'s health gate and
+[SE1/O7](#o7)'s rollback have nothing to pull. What replaces them:
 
-- **Every release is a one-way door** ([SE1/D11](05-design.md#d11)): reviewed by someone who does not
-  share the assumption, a release checklist run every time, and a version number that tells
+- **Every release is a one-way door** ([SE1/D11](05-design.md#d11)): reviewed by someone who does
+  not share the assumption, a release checklist run every time, and a version number that tells
   integrators what changed.
 - **Refuse rather than guess.** Every feature an input can announce has a stated answer — refuse,
   read-only, or read-write ([SE1/R6](04-requirements.md#r6)) — and one you have never heard of gets

@@ -5,8 +5,8 @@ explains it; if an item retires no fear on your project, drop it and say why
 ([SE1/P4](guide/01-purpose.md#p4)).
 
 The "before leaving…" lists are not phase gates for a waterfall. In iterative work each iteration
-passes through all of them in small ([SE1/W3](guide/08-work.md#w3)); use them whenever a piece of work
-moves from one kind of step to the next.
+passes through all of them in small ([SE1/W3](guide/08-work.md#w3)); use them whenever a piece of
+work moves from one kind of step to the next.
 
 ## Starting
 
@@ -17,15 +17,15 @@ moves from one kind of step to the next.
       ([SE1/R1](guide/04-requirements.md#r1))
 - [ ] A census of everyone the system touches, and who is treated differently.
       ([SE1/H7](guide/09-people.md#h7))
-- [ ] Numbers with horizons; downtime budget; data about people. ([SE1/R7](guide/04-requirements.md#r7),
-      [SE1/R8](guide/04-requirements.md#r8))
+- [ ] Numbers with horizons; downtime budget; data about people.
+      ([SE1/R7](guide/04-requirements.md#r7), [SE1/R8](guide/04-requirements.md#r8))
 - [ ] The assumptions read back as questions. ([SE1/H6](guide/09-people.md#h6))
 
 **Before leaving Requirements for Design**
 
 - [ ] Every requirement is numbered and observable, and the client — or, with no client in the room,
-      a named proxy for the users — has objected to at least one. ([SE1/R2](guide/04-requirements.md#r2),
-      [SE1/H5](guide/09-people.md#h5))
+      a named proxy for the users — has objected to at least one.
+      ([SE1/R2](guide/04-requirements.md#r2), [SE1/H5](guide/09-people.md#h5))
 - [ ] `Scope decisions`, `Non-goals`, `Not yet answered`, and `Deferred` exist and have been read
       aloud. ([SE1/R9](guide/04-requirements.md#r9))
 - [ ] The questions with a regulator attached have named answers: what data about people, who may
@@ -63,8 +63,8 @@ moves from one kind of step to the next.
 - [ ] A test exists that fails today.
 - [ ] Both sides can start tomorrow without talking. ([SE1/H4](guide/09-people.md#h4))
 
-**Definition of done, for every change** ([SE1/W11](guide/08-work.md#w11), which has the reasons; keep
-the two in step)
+**Definition of done, for every change** ([SE1/W11](guide/08-work.md#w11), which has the reasons;
+keep the two in step)
 
 - [ ] It satisfies a stated requirement, and the change names the ID — or it is labeled a chore.
 - [ ] A test names that same ID and has been seen to fail without the change.
@@ -123,7 +123,8 @@ wrong (K3) ([SE1/H9](guide/09-people.md#h9), [SE1/H12](guide/09-people.md#h12), 
 
 ## Trusting
 
-**Before trusting a test suite** ([SE1/T5](guide/06-testing.md#t5), [SE1/T3](guide/06-testing.md#t3))
+**Before trusting a test suite** ([SE1/T5](guide/06-testing.md#t5),
+[SE1/T3](guide/06-testing.md#t3))
 
 - [ ] Every test owns its state, or owns a unique shard of it.
 - [ ] The suite passes in any order and in parallel. Try it.
@@ -131,9 +132,11 @@ wrong (K3) ([SE1/H9](guide/09-people.md#h9), [SE1/H12](guide/09-people.md#h12), 
 - [ ] Every test has been seen red.
 - [ ] Every instrument — sanitizer, coverage, linter, warning flag — has been seen to fire on the
       code it claims to cover, or a check proves it is engaged.
-- [ ] CI runs the command you run, on every platform you ship to. ([SE1/O3](guide/07-operating.md#o3))
+- [ ] CI runs the command you run, on every platform you ship to.
+      ([SE1/O3](guide/07-operating.md#o3))
 
-**Before trusting an environment** ([SE1/O1](guide/07-operating.md#o1), [SE1/O2](guide/07-operating.md#o2))
+**Before trusting an environment** ([SE1/O1](guide/07-operating.md#o1),
+[SE1/O2](guide/07-operating.md#o2))
 
 - [ ] The manifest names the major and minor; the lock names the exact version; both are committed.
 - [ ] The install refuses to run when the lock and manifest disagree.
@@ -152,8 +155,9 @@ wrong (K3) ([SE1/H9](guide/09-people.md#h9), [SE1/H12](guide/09-people.md#h12), 
 - [ ] The previous version can still run against the data after this deploy.
       ([SE1/O7](guide/07-operating.md#o7))
 
-**Before trusting production** ([SE1/O4](guide/07-operating.md#o4), [SE1/O5](guide/07-operating.md#o5),
-[SE1/O8](guide/07-operating.md#o8), [SE1/O10](guide/07-operating.md#o10))
+**Before trusting production** ([SE1/O4](guide/07-operating.md#o4),
+[SE1/O5](guide/07-operating.md#o5), [SE1/O8](guide/07-operating.md#o8),
+[SE1/O10](guide/07-operating.md#o10))
 
 - [ ] Every alert fires on a symptom users feel, names a runbook, and has been seen to fire.
 - [ ] Logs record the inputs to decisions, and contain no secrets or personal data.

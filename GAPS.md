@@ -31,10 +31,10 @@ Chapter 7 assumes a running service: deploys, health checks, rollbacks, alerts. 
 of them. What it has instead is harder:
 
 - **Releases you cannot roll back.** Firmware in the field, and bytes written to a user's card, stay
-  written. [SE1/O6](guide/07-operating.md#o6) and [SE1/O7](guide/07-operating.md#o7) have no answer for
-  "the deploy is someone else's, months later, on hardware you'll never see".
-- **An interface you didn't define.** [SE1/D11](guide/05-design.md#d11) covers promises you make. Here
-  the promise was made by Linux, and the only judge of correctness is Linux's own tools
+  written. [SE1/O6](guide/07-operating.md#o6) and [SE1/O7](guide/07-operating.md#o7) have no answer
+  for "the deploy is someone else's, months later, on hardware you'll never see".
+- **An interface you didn't define.** [SE1/D11](guide/05-design.md#d11) covers promises you make.
+  Here the promise was made by Linux, and the only judge of correctness is Linux's own tools
   (`e2fsck`, `debugfs`). Testing against a reference implementation you don't own — differential
   testing with an external oracle — was the single most valuable practice on the project, and the
   guide doesn't name it. [SE1/T6](guide/06-testing.md#t6) is the closest.
@@ -47,9 +47,9 @@ releases as one-way doors, external oracles, conformance to a format someone els
 "refuse, read-only, or read-write" as the stated answer for every feature an input can announce.
 
 **Closed:** new [SE1/O11](guide/07-operating.md#o11) (releases you cannot roll back) and
-[SE1/T11](guide/06-testing.md#t11) (differential testing against an oracle). An announced, unsupported
-feature is treated as a kind of *wrong* in [SE1/R6](guide/04-requirements.md#r6) rather than a fifth
-case, so the four cases cited across the guide and in copies of AGENTS.md stay true.
+[SE1/T11](guide/06-testing.md#t11) (differential testing against an oracle). An announced,
+unsupported feature is treated as a kind of *wrong* in [SE1/R6](guide/04-requirements.md#r6) rather
+than a fifth case, so the four cases cited across the guide and in copies of AGENTS.md stay true.
 
 ### 3. Adopting the guide on an existing codebase
 
@@ -67,17 +67,17 @@ and treat each "test: none" in the requirements as a queue item.
 
 ### 4. Requirement-to-test traceability fights versioning
 
-[SE1/R11](guide/04-requirements.md#r11) wants every "must" to have a test ID, and the checklist asks for
-it, but the template has no place for it. Putting a test column in the requirements made every new
-test an edit to a versioned document, which [SE1/R10](guide/04-requirements.md#r10) forbids — the
-project needed a `REQUIREMENTS_v2` partly for bookkeeping.
+[SE1/R11](guide/04-requirements.md#r11) wants every "must" to have a test ID, and the checklist asks
+for it, but the template has no place for it. Putting a test column in the requirements made every
+new test an edit to a versioned document, which [SE1/R10](guide/04-requirements.md#r10) forbids —
+the project needed a `REQUIREMENTS_v2` partly for bookkeeping.
 
 **Proposal:** say where traceability lives. Either requirements carry only the test *ID* (stable,
 assigned when the requirement is written) and the test's status lives in QUEUE, or a separate
 unversioned trace table maps requirement → test → status.
 
-**Closed:** the first option, simplified. [SE1/R11](guide/04-requirements.md#r11) says the trace lives
-in test names; requirements never list tests, and a *must* with no test is a `QUEUE` item.
+**Closed:** the first option, simplified. [SE1/R11](guide/04-requirements.md#r11) says the trace
+lives in test names; requirements never list tests, and a *must* with no test is a `QUEUE` item.
 
 ### 5. Provenance of code, for agents
 
@@ -119,8 +119,8 @@ integrators, and whoever reads the card on Linux — are not in the room.
 (an issue tracker, a downstream project, a second maintainer), and treat their bug reports as the
 read-back.
 
-**Closed:** a paragraph in [SE1/H5](guide/09-people.md#h5); the *Before leaving Requirements* checklist
-accepts a named proxy's objection.
+**Closed:** a paragraph in [SE1/H5](guide/09-people.md#h5); the *Before leaving Requirements*
+checklist accepts a named proxy's objection.
 
 ### 8. The operating envelope has no resource budget
 

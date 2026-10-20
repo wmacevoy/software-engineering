@@ -17,8 +17,8 @@ specification, verification, review, ownership. The bottleneck is no longer typi
 ### <a id="a2"></a>A2. An agent is a K3 factory; never let confidence substitute for a run
 
 Fluent, confident, plausible, and occasionally wrong is the precise shape of erroneous certainty,
-arriving faster than anyone can check it ([SE1/U3](02-unknowing.md#u3)). That is not an argument against
-agents. It is an argument about where to spend the time they save.
+arriving faster than anyone can check it ([SE1/U3](02-unknowing.md#u3)). That is not an argument
+against agents. It is an argument about where to spend the time they save.
 
 "This should work" is K3 by construction. The agent runs the check; the human runs it again before
 signing. An agent that cannot run the system cannot check its own claim — so give it one command to
@@ -73,8 +73,8 @@ code cannot say *why*, and everything durable in the working set, where both kin
 ### <a id="a5"></a>A5. Spend the speed on lowering the cost of testing
 
 Fixtures, harnesses, seed data, fault scripts, conformance checks, the boring second and third test
-case. That work multiplies against every future change ([SE1/F2](03-feedback.md#f2)). More features do
-not.
+case. That work multiplies against every future change ([SE1/F2](03-feedback.md#f2)). More features
+do not.
 
 ### <a id="a6"></a>A6. Review capacity is the bottleneck
 
@@ -98,10 +98,10 @@ defend it. **Working code nobody can explain is a liability, not an asset.**
 
 Agents are fastest at the bottom of the waterfall — code, tests, fixtures, migrations. At the top,
 where the work is conversations with people, laws, and a client's sense of proportion, they can
-search and draft ([SE1/A9](#a9)) but cannot decide. They are very good at accidental complexity and much
-less help with essential complexity, because essential complexity is *what the problem is*
-([SE1/D8](05-design.md#d8)). So the speedup is real and concentrated in the part that was never the hard
-part.
+search and draft ([SE1/A9](#a9)) but cannot decide. They are very good at accidental complexity and
+much less help with essential complexity, because essential complexity is *what the problem is*
+([SE1/D8](05-design.md#d8)). So the speedup is real and concentrated in the part that was never the
+hard part.
 
 That moves the human *up*: to requirements, vocabulary, one-way doors, and coherence. An agent
 produces a locally reasonable design every session and remembers no conventions between them, so

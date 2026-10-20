@@ -148,7 +148,8 @@ version, not on demonstrating range.
   the actual output, including failures. (SE1/A2)
 - **Watch the test fail first.** A new test must fail without the change and pass with it. For a
   test of existing behavior, break the code on purpose, see red, and restore it. (SE1/T3)
-- **Name the requirement in the test**, and assert the behavior — never just the name. (SE1/F5, SE1/R11)
+- **Name the requirement in the test**, and assert the behavior — never just the name. (SE1/F5,
+  SE1/R11)
 - **Never weaken an assertion to make a test pass.** If you think a test is wrong, that is a
   stop-and-ask.
 - **Keep new tests repeatable.** No wall clock, no unseeded randomness, no shared mutable state, no

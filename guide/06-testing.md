@@ -90,8 +90,8 @@ prove the flag reached the compiler.
 
 Flaky tests train a team to ignore red, and after that the suite that would have caught the real
 failure has been disarmed. Unseeded randomness, the wall clock, shared mutable state, and fixed
-ports are banned from tests for this reason, not for tidiness ([SE1/T5](#t5)). Fix or quarantine a flaky
-test the day it is found; a suite with known-flaky tests is a suite nobody reads.
+ports are banned from tests for this reason, not for tidiness ([SE1/T5](#t5)). Fix or quarantine a
+flaky test the day it is found; a suite with known-flaky tests is a suite nobody reads.
 
 The same holds for production alarms ([SE1/O4](07-operating.md#o4)).
 
@@ -99,8 +99,8 @@ The same holds for production alarms ([SE1/O4](07-operating.md#o4)).
 
 ### <a id="t5"></a>T5. Repeatability is a property of the state a test touches
 
-A flaky test trains a team to ignore red ([SE1/T4](#t4)). Repeatability is not a property of the test;
-it is a property of **the state the test touches**, and that state has exactly three scopes:
+A flaky test trains a team to ignore red ([SE1/T4](#t4)). Repeatability is not a property of the
+test; it is a property of **the state the test touches**, and that state has exactly three scopes:
 
 | Scope       | What it means                                         | Repeatable?                                                    | Examples |
 | ----------- | ----------------------------------------------------- | -------------------------------------------------------------- | -------- |
@@ -114,8 +114,8 @@ machine, where you cannot see why. Everything you have heard about flaky tests i
 
 Fixes, in order of preference:
 
-1. **Make the state local.** Pull the logic out of the state ([SE1/D7](05-design.md#d7)) and pass the
-   dependency in.
+1. **Make the state local.** Pull the logic out of the state ([SE1/D7](05-design.md#d7)) and pass
+   the dependency in.
 2. **Shard it.** Give each worker a slice with a key it owns: its own database schema, its own
    records, its own mock sensor. Two tests that share one mock sensor and each tell it to misbehave
    differently are racing; give each test its own sensor and the race is gone.
@@ -148,8 +148,8 @@ yet. Two rules keep it honest:
   specification, checkable from outside, so swapping them is an event with a result rather than a
   discovery.
 - **Integrate continuously.** A mock converts a scheduling risk into an integration risk
-  ([SE1/W5](08-work.md#w5)). Mock everything and integrate at the end, and every piece arrives on time
-  into a system that does not work.
+  ([SE1/W5](08-work.md#w5)). Mock everything and integrate at the end, and every piece arrives on
+  time into a system that does not work.
 
 > **Ask:** "Does the mock fail the way the real thing fails — and does one test check both?"
 
@@ -222,8 +222,8 @@ wrong. Three techniques check the rest, and each is cheap to start:
 - **Fuzzing** feeds malformed and hostile input to a parser or endpoint until something crashes:
   the *wrong* and *lying* cases of [SE1/R6](04-requirements.md#r6), automated.
 - **Mutation testing** makes small changes to the code — flips a `<`, deletes a line — and reports
-  every change the suite did *not* catch. It is [SE1/T3](#t3) at scale: it finds the tests that cannot
-  fail.
+  every change the suite did *not* catch. It is [SE1/T3](#t3) at scale: it finds the tests that
+  cannot fail.
 
 > **Ask:** "What rule must hold for every input — and does a test check it?"
 
@@ -241,10 +241,10 @@ disagreement is either your bug or a behavior the specification never mentioned 
 a `FINDINGS` entry, because it is the K2 the document could not tell you
 ([SE1/U2](02-unknowing.md#u2)).
 
-Use the oracle as a black box: run it, pin its version ([SE1/O2](07-operating.md#o2)), and test against
-the versions your users actually have. Do not copy it, and on a clean-room project do not read its
-source ([SE1/R8](04-requirements.md#r8)). Fed generated inputs ([SE1/T10](#t10)), it finds cases neither you
-nor the specification thought of.
+Use the oracle as a black box: run it, pin its version ([SE1/O2](07-operating.md#o2)), and test
+against the versions your users actually have. Do not copy it, and on a clean-room project do not
+read its source ([SE1/R8](04-requirements.md#r8)). Fed generated inputs ([SE1/T10](#t10)), it finds
+cases neither you nor the specification thought of.
 
 > **Ask:** "Who decides whether this output is correct — and does a test ask them?"
 

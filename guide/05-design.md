@@ -201,8 +201,8 @@ nobody.
 
 If you can name one, the complexity is essential, and the conversation is with the client about
 whether that requirement is worth its price. If the honest answer is "none," it is accidental, and
-it must justify its carrying cost ([SE1/D12](05-design.md#d12)). Most design arguments are **category
-disputes conducted as taste disputes** — "this is too complicated" versus "the problem is
+it must justify its carrying cost ([SE1/D12](05-design.md#d12)). Most design arguments are
+**category disputes conducted as taste disputes** — "this is too complicated" versus "the problem is
 complicated" — and the question turns an argument with no end into a question with an answer.
 
 The trap: **accidental complexity you introduced is invisible to you, because you understand it.**
@@ -248,8 +248,8 @@ is fine when it is written down with its reason.
 
 **Somebody has to hold it.** Coherence lives *between* the parts, so no amount of careful local work
 produces it and no test checks it. One person holds the whole shape, and most of that job is saying
-no — especially to good ideas ([SE1/H3](09-people.md#h3)). This is also why agents author and humans own
-the structure: each agent session sees a part, and ten locally reasonable designs compose into
+no — especially to good ideas ([SE1/H3](09-people.md#h3)). This is also why agents author and humans
+own the structure: each agent session sees a part, and ten locally reasonable designs compose into
 something nobody can hold ([SE1/A8](10-agents.md#a8)).
 
 > **Ask:** "Is that the same thing we called something else on Tuesday?"
@@ -299,9 +299,9 @@ What locality justifies:
 
 Renaming a variable is free to undo. A data format with data in it, a published URL, a distributed
 key, an artifact someone installed — those are **one-way doors**, and they get careful, front-loaded
-work ([SE1/W4](08-work.md#w4) says how to choose). Most arguments in software are conducted at the wrong
-intensity for their reversibility. On a class project the one-way door is usually the database:
-renaming a column is free until you have entered real data, and then it is a migration.
+work ([SE1/W4](08-work.md#w4) says how to choose). Most arguments in software are conducted at the
+wrong intensity for their reversibility. On a class project the one-way door is usually the
+database: renaming a column is free until you have entered real data, and then it is a migration.
 
 **The moment a second party depends on your interface, it stops being a decision and becomes a
 promise.** Versioning is the mechanism for keeping the promise while still being allowed to change:

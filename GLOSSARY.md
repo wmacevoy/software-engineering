@@ -1,7 +1,7 @@
 # Glossary
 
-The terms this guide uses precisely. One thing, one word ([SE1/D9](guide/05-design.md#d9)): if you find the
-guide using one of these loosely, that is a bug.
+The terms this guide uses precisely. One thing, one word ([SE1/D9](guide/05-design.md#d9)): if you
+find the guide using one of these loosely, that is a bug.
 
 | Term                    | Meaning                                                                                              |
 | ----------------------- | ---------------------------------------------------------------------------------------------------- |

@@ -102,11 +102,11 @@ None of the three requires A to exist. The dependency is not sequenced; it is **
 contract layer is built first, and the promise is what unblocks, not the implementation.
 
 The cost is real: flattening converts a **scheduling** risk into an **integration** risk, which is a
-good trade only if you integrate continuously ([SE1/T6](06-testing.md#t6)). And some orderings genuinely
-survive: **sequence around irreversibility, not around incompleteness.** Do the one-way doors in
-order, carefully ([SE1/W4](#w4)). And when you genuinely must learn something before you can design
-against it, run a spike first — it stands in for the missing knowledge the way a mock stands in for
-a missing component.
+good trade only if you integrate continuously ([SE1/T6](06-testing.md#t6)). And some orderings
+genuinely survive: **sequence around irreversibility, not around incompleteness.** Do the one-way
+doors in order, carefully ([SE1/W4](#w4)). And when you genuinely must learn something before you
+can design against it, run a spike first — it stands in for the missing knowledge the way a mock
+stands in for a missing component.
 
 > **Ask:** "Is this arrow a fact about the world, or an interface nobody wrote down?"
 
@@ -134,8 +134,8 @@ how most projects fail.
 
 - **Remove the danger.** If deploying is routine and reversible, the deadline stops being the
   shocking end of the cage. An always-releasable main branch means shipping is not an event.
-- **Cross the gap early** with the thin slice ([SE1/W6](#w6)), so the last week thickens something that
-  already works.
+- **Cross the gap early** with the thin slice ([SE1/W6](#w6)), so the last week thickens something
+  that already works.
 - **Put real fences along the way.** A demo to an actual client, a check that exits nonzero, a
   deploy that happened. A status meeting is not a fence; nothing was proved.
 - **Keep slack.** A plan at full utilization cannot absorb K2, and K2 is guaranteed. Think of a

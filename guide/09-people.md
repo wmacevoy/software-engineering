@@ -73,8 +73,8 @@ iteration so knowledge spreads.
   through this role into the requirements, or it did not happen.
 - **Planner** keeps the cursor. Nothing enters the queue without a sentence saying what would make
   it done.
-- **Toolsmith** owns the cost of a test ([SE1/F2](03-feedback.md#f2)). When something is hard to test,
-  the Toolsmith takes that to the Architect as design information.
+- **Toolsmith** owns the cost of a test ([SE1/F2](03-feedback.md#f2)). When something is hard to
+  test, the Toolsmith takes that to the Architect as design information.
 
 Rotation costs a hand-off each iteration. The hand-off is where you discover which knowledge was
 living in one head. That is not the cost of rotation; it is the point.
@@ -145,10 +145,10 @@ closing it is the team's job, because only the team knows what the assumptions a
 
 **When the client is the maintainer** — a solo or open-source project — the users are real but never
 in the room: integrators, downstream projects, whoever opens the file on another system. Name who
-stands in for them: the issue tracker, a downstream project's maintainer, a second maintainer who did
-not write the requirement. Send them the requirements with the same sentence, *tell us what is wrong
-with it*, and treat their bug reports as the read-back ([SE1/H6](#h6)): each one is a K3 you held about
-them.
+stands in for them: the issue tracker, a downstream project's maintainer, a second maintainer who
+did not write the requirement. Send them the requirements with the same sentence, *tell us what is
+wrong with it*, and treat their bug reports as the read-back ([SE1/H6](#h6)): each one is a K3 you
+held about them.
 
 ### <a id="h6"></a>H6. Read your assumptions to the client
 
@@ -286,11 +286,11 @@ design that was not expecting it:
 For one space in five hundred.
 
 **The first casualty is a word.** `available` now means *physically free* to the sensor and *free
-and not held* to a driver — one word, two things ([SE1/D9](05-design.md#d9)). Before any code moves, the
-Architect settles the vocabulary: `available` keeps its meaning; a **zone** is part of a lot with a
-class and a capacity; a **hold** is a claim on one space in a zone, by a **holder**, for a bounded
-time, and is `held`, `arrived`, `expired`, or `released`. Three new nouns and one protected old one.
-That is the whole pivot at the level where it is cheap.
+and not held* to a driver — one word, two things ([SE1/D9](05-design.md#d9)). Before any code moves,
+the Architect settles the vocabulary: `available` keeps its meaning; a **zone** is part of a lot
+with a class and a capacity; a **hold** is a claim on one space in a zone, by a **holder**, for a
+bounded time, and is `held`, `arrived`, `expired`, or `released`. Three new nouns and one protected
+old one. That is the whole pivot at the level where it is cheap.
 
 **Why it was late.** It was findable in week one, at K1 price, by any of three questions already on
 the intake list: the census of people ("season-ticket holders get the VIP rows"), the bad-day walk

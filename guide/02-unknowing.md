@@ -51,10 +51,10 @@ say what needs testing: you cannot see past your own design, and a reviewer, the
 or an attacker can.
 
 The same reasoning says an attack should be *demonstrated before its defense is trusted*
-([SE1/T8](06-testing.md#t8)). "Users can't see each other's orders" is K3 until you have logged in as
-one user, requested another user's order by ID, and watched the request be refused. The same holds
-for any check that guards against misuse — a signature check, an input validator, a permission rule:
-you have not seen it work until you have seen it say no.
+([SE1/T8](06-testing.md#t8)). "Users can't see each other's orders" is K3 until you have logged in
+as one user, requested another user's order by ID, and watched the request be refused. The same
+holds for any check that guards against misuse — a signature check, an input validator, a permission
+rule: you have not seen it work until you have seen it say no.
 
 > **Ask:** "What would I see if I were wrong about this — and have I looked?"
 

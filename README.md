@@ -4,10 +4,10 @@ A guide to building reliable, tested, maintainable software — written for huma
 agents working beside them.
 
 It is organized as **numbered principles** (`SE1/T3`, `SE1/D2`, `SE1/R6`, …). Each states one idea
-and says why it is true; most end with a question you can ask out loud in a meeting or a code review.
-The IDs are versioned so that people and agents can cite them and still mean the same thing later:
-*"this test has never been seen red (SE1/T3)"*, *"this copy of the user list can go stale; how stale?
-(SE1/D2)"*.
+and says why it is true; most end with a question you can ask out loud in a meeting or a code
+review. The IDs are versioned so that people and agents can cite them and still mean the same thing
+later: *"this test has never been seen red (SE1/T3)"*, *"this copy of the user list can go stale;
+how stale? (SE1/D2)"*.
 
 ## The argument in ten lines
 
@@ -15,7 +15,8 @@ The IDs are versioned so that people and agents can cite them and still mean the
    discomfort. Reliable means it works — *and says so when it doesn't*
    ([SE1/P1](guide/01-purpose.md#p1), [SE1/P2](guide/01-purpose.md#p2)).
 2. **Every practice retires a named fear.** A practice that retires none gets dropped; one that
-   relieves the fear without reducing the risk is worse than nothing ([SE1/P4](guide/01-purpose.md#p4)).
+   relieves the fear without reducing the risk is worse than nothing
+   ([SE1/P4](guide/01-purpose.md#p4)).
 3. **Building is discovering what you didn't know**, in the right order, at the right price. The
    dangerous kind is confident and wrong, and only reality or another person finds it
    ([SE1/U2](guide/02-unknowing.md#u2), [SE1/U3](guide/02-unknowing.md#u3)).
@@ -29,9 +30,11 @@ The IDs are versioned so that people and agents can cite them and still mean the
 6. **Every input can be absent, late, wrong, or lying**, and each case needs a stated answer
    ([SE1/R6](guide/04-requirements.md#r6)).
 7. **State is the material.** Name your caches, own your copies, and keep logic away from I/O
-   ([SE1/D1](guide/05-design.md#d1), [SE1/D2](guide/05-design.md#d2), [SE1/D7](guide/05-design.md#d7)).
+   ([SE1/D1](guide/05-design.md#d1), [SE1/D2](guide/05-design.md#d2),
+   [SE1/D7](guide/05-design.md#d7)).
 8. **A test you have never seen fail proves nothing**, and a flaky one is worse than none
-   ([SE1/T3](guide/06-testing.md#t3), [SE1/T4](guide/06-testing.md#t4), [SE1/T5](guide/06-testing.md#t5)).
+   ([SE1/T3](guide/06-testing.md#t3), [SE1/T4](guide/06-testing.md#t4),
+   [SE1/T5](guide/06-testing.md#t5)).
 9. **Choose the method per decision by the cost of being wrong once**: loop fast around reversible
    choices, slow down around one-way doors ([SE1/W4](guide/08-work.md#w4),
    [SE1/D11](guide/05-design.md#d11)).
