@@ -49,9 +49,13 @@ be wrong cannot teach you anything.
 This is the same move as a test that fails before the fix: state the claim precisely so that reality
 is *able* to reject it.
 
-Requirements are therefore **numbered** (so tests, commits, and reviews can cite them),
-**observable** (so they can be checked), and contain **numbers** — invented ones marked as invented.
-An invented number that is written down can be challenged. An assumed one cannot.
+Requirements are therefore **numbered** *and versioned* (so tests, commits, and reviews can cite
+them), **observable** (so they can be checked), and contain **numbers** — invented ones marked as
+invented. An invented number that is written down can be challenged. An assumed one cannot.
+
+Because requirements and design change, unversioned references to requirements and design documents
+are K3 factories: the citation keeps looking current after the text it pointed at has moved
+([SE1/R10](#r10)).
 
 > **Ask:** "Could the client read this sentence and say 'no'?"
 
@@ -251,6 +255,13 @@ the diff between `v1` and `v2` is the most useful conversation you will ever hav
 Once a second party depends on a statement, changing it is a version, not an edit — the same rule as
 a published interface ([SE1/D11](05-design.md#d11)).
 
+**Cite the version that last changed it.** A requirement is cited as `REQ2/UI-1`: UI-1 as worded in
+`REQUIREMENTS_v2`. Each requirement carries the version that last changed it — `UI-1` *(since v2)* —
+and citations use that version, not the newest. If v3 carries UI-1 over unchanged, `REQ2/UI-1` is
+still exact and nothing is renamed. If v3 changes it, every `REQ2/UI-1` — in a test name, a commit,
+a `QUEUE` item — is now visibly stale, and a search for it finds exactly the work to revisit. A
+design is cited the same way: `DESIGN_v2`, never a bare `DESIGN`.
+
 ### <a id="r11"></a>R11. An API is the set of observables your acceptance tests need
 
 The chain from a story to an interface runs through five artifacts, and the step people skip is
@@ -298,8 +309,8 @@ read without reading code. It is honest only while every green could have been r
 
 **The trace lives in the test names, not in the requirements.** A requirements document that lists
 its tests turns every new test into an edit to a versioned document ([SE1/R10](#r10)). The test
-carries the requirement ID instead, so a search for `UI-1` across the tests is the trace and the
-test run is the status. A *must* with no test yet is a `QUEUE` item, not an empty column.
+carries the versioned requirement ID instead ([SE1/R10](#r10)), so a search for `REQ2/UI-1` across
+the tests is the trace and the test run is the status. A *must* with no test yet is a `QUEUE` item, not an empty column.
 
 > **Ask:** "What does the test have to observe to assert this?"
 

@@ -113,7 +113,7 @@ at its tag. The version is on every citation, not declared once per document, so
 into a commit message, an issue, or another repository still says which guide it means. The letters
 are the chapters: **P**urpose, **U**nknowing, **F**eedback, **R**equirements, **D**esign, **T**esting,
 **O**perating, **W**ork, **H**umans (people), **A**gents. (Requirement IDs in your own project
-should use a different form, such as `UI-1`, so they are never confused with these.)
+should use a different form, such as `REQ2/UI-1`, so they are never confused with these.)
 
 **[1. Purpose](guide/01-purpose.md)**
 

@@ -235,8 +235,8 @@ Starting skeletons for the four, and for the repository guide, are listed in the
 
 **A definition of done is a checklist a change fully passes — not most of it.** A typical one:
 
-- It satisfies a stated requirement, and the change names the requirement's ID — or it is labeled a
-  chore (below).
+- It satisfies a stated requirement, and the change names the requirement's versioned ID
+  (`REQ2/UI-1`, [SE1/R10](04-requirements.md#r10)) — or it is labeled a chore (below).
 - A test names that same ID and has been seen to fail without the change.
 - The system builds and runs from a clean checkout.
 - The full check suite passes locally.

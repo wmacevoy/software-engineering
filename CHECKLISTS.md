@@ -66,7 +66,8 @@ work moves from one kind of step to the next.
 **Definition of done, for every change** ([SE1/W11](guide/08-work.md#w11), which has the reasons;
 keep the two in step)
 
-- [ ] It satisfies a stated requirement, and the change names the ID — or it is labeled a chore.
+- [ ] It satisfies a stated requirement, and the change names its versioned ID (`REQ2/UI-1`) — or it
+      is labeled a chore.
 - [ ] A test names that same ID and has been seen to fail without the change.
 - [ ] It builds and runs from a clean checkout.
 - [ ] The full check suite passes locally.
@@ -81,7 +82,7 @@ keep the two in step)
 **Handing a task to an agent** ([SE1/A3](guide/10-agents.md#a3)–[SE1/A7](guide/10-agents.md#a7),
 [SE1/A10](guide/10-agents.md#a10))
 
-- [ ] The task is a done sentence with a requirement ID.
+- [ ] The task is a done sentence with a versioned requirement ID.
 - [ ] The relevant constraints are in the repository, not only in your head or the chat.
 - [ ] The agent can run the system and the checks, and reset it.
 - [ ] You asked for the smallest diff, one concern, named files.

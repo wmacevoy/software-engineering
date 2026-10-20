@@ -59,7 +59,7 @@ find the guide using one of these loosely, that is a bug.
 | **Provenance**          | Who made a claim, and how to check it later without asking them again.                               |
 | **Reliable**            | Works when in good repair and used correctly, and has detectable error status when broken or misused. |
 | **Repository guide** | The file that says how to build, run, test, and reset this repository, and its local rules — `CONTRIBUTING.md`, `CLAUDE.md`, or equivalent ([SE1/W10](guide/08-work.md#w10)). Not `AGENTS.md`, which it overrides. |
-| **Requirement**         | A numbered, observable statement of what must be true. Changes only with the client.                 |
+| **Requirement**         | A numbered, observable statement of what must be true. Changes only with the client. Cited with the version that last changed it: `REQ2/UI-1` ([SE1/R10](guide/04-requirements.md#r10)). |
 | **Roles** | Architect (holds the design), Liaison (one voice to the client), Planner (holds the queue), Toolsmith (holds tests, CI, and the reset). See SE1/H3. |
 | **Rollback** | Putting the previous version back. Done by the system itself on a failed health check, it is an *automatic revert*. |
 | **Runbook** | A written, step-by-step procedure for a known problem, which someone has actually run. |

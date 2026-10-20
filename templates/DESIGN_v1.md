@@ -23,7 +23,7 @@ is wrong
 
 ## Essential complexity
 
-Five to fifteen lines, each traceable to a requirement ID
+Five to fifteen lines, each traceable to a versioned requirement ID (`REQ1/UI-1`)
 ([SE1/D8](https://github.com/wmacevoy/software-engineering/blob/v1.0/guide/05-design.md#d8)).
 
 ## One-way doors
@@ -33,7 +33,7 @@ Each with its review: who reviewed it, what assumption they did not share
 
 ## Decisions
 
-- **_Decision_** — _requirement IDs_ — _why_ — _rejected alternatives and why_ — _source: commit,
+- **_Decision_** — _versioned requirement IDs_ — _why_ — _rejected alternatives and why_ — _source: commit,
   issue, or person; or *(inferred)*
   ([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.0/guide/08-work.md#w12))_
 

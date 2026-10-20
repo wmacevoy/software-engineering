@@ -53,8 +53,8 @@ question for the human, not a task.
   (SE1/A3, SE1/W10)
 - **Search `Non-goals` and `Scope decisions`** for the task's key nouns before writing anything. A
   match is a collision to raise, not a detail to work around.
-- **Find the requirement.** A task should trace to a requirement with an ID and a *done* sentence
-  that can be checked from outside. If it traces to none, or its *done* is "it works," say so and
+- **Find the requirement.** A task should trace to a requirement with a versioned ID (`REQ2/UI-1`)
+  and a *done* sentence that can be checked from outside. If it traces to none, or its *done* is "it works," say so and
   ask. Chores — a typo, a dependency update, a pure refactor — are the exception; call them chores.
   (SE1/R2, SE1/W11)
 - **Never assert something about the code you have not opened the file to check.** (SE1/A2)
@@ -148,8 +148,9 @@ version, not on demonstrating range.
   the actual output, including failures. (SE1/A2)
 - **Watch the test fail first.** A new test must fail without the change and pass with it. For a
   test of existing behavior, break the code on purpose, see red, and restore it. (SE1/T3)
-- **Name the requirement in the test**, and assert the behavior — never just the name. (SE1/F5,
-  SE1/R11)
+- **Name the requirement in the test, with its version** (`REQ2/UI-1`), and assert the behavior —
+  never just the name. A citation whose version is older than the requirement's is stale: raise it.
+  (SE1/F5, SE1/R10, SE1/R11)
 - **Never weaken an assertion to make a test pass.** If you think a test is wrong, that is a
   stop-and-ask.
 - **Keep new tests repeatable.** No wall clock, no unseeded randomness, no shared mutable state, no
