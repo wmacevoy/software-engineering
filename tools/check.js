@@ -10,7 +10,8 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.resolve(__dirname, '..');
-const GH = 'https://github.com/wmacevoy/software-engineering/blob/main/';
+// Copies of AGENTS.md and the templates link to the release tag; the guide's own pages may link to main.
+const GH = /^https:\/\/github\.com\/wmacevoy\/software-engineering\/blob\/(main|v1\.0)\//;
 const GH_README = 'https://github.com/wmacevoy/software-engineering#';
 const HEADING = /^### <a id="([a-z0-9]+)"><\/a>([A-Z]\d+)\. (.*)$/;
 // Every citation carries the major version (README, "Principle index"); headings define IDs bare.
@@ -58,7 +59,9 @@ for (const f of files) {
   const text = fs.readFileSync(f, 'utf8');
   for (const m of text.matchAll(/\[([^\]]+)\]\(([^)]+)\)/g)) {
     let [, label, href] = m;
-    if (href.startsWith(GH)) href = path.relative(path.dirname(f), path.join(root, href.slice(GH.length)));
+    const gh = href.match(GH);
+    if (!gh && href.startsWith('https://github.com/wmacevoy/software-engineering/blob/')) { problem(`unknown ref    ${path.relative(root, f)}: ${m[0]}`); continue; }
+    if (gh) href = path.relative(path.dirname(f), path.join(root, href.slice(gh[0].length)));
     else if (href.startsWith(GH_README)) href = path.relative(path.dirname(f), path.join(root, 'README.md')) + '#' + href.slice(GH_README.length);
     else if (/^[a-z]+:/.test(href)) continue;
     const [target, anchor] = href.split('#');
