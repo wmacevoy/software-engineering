@@ -139,7 +139,7 @@ to find your K3.**
 ### <a id="r7"></a>R7. Scale, recovery, and availability are answered whether or not anyone writes them down
 
 Unstated, the answer is whatever the implementation happened to do — chosen by nobody, discovered in
-production. All three are **client answers**, not engineering choices, and on day one each costs a
+production. All of them are **client answers**, not engineering choices, and on day one each costs a
 sentence. Later they cost a migration, a rewrite, or an outage.
 
 **Scale** is an order of magnitude plus a horizon. "A city" is a mood; "a hundred lots, a hundred

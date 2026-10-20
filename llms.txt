@@ -20,7 +20,7 @@ bears on the task. Principle anchors are lowercase IDs, e.g. guide/10-agents.md#
 - [4. Requirements](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/04-requirements.md): where the problem comes from, and how to write it down
 - [5. Design](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/05-design.md): state, complexity, coherence, interfaces, and carrying cost
 - [6. Testing](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/06-testing.md): tests worth trusting
-- [7. Operating](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/07-operating.md): environments, CI, observability, failure handling, deploys, migrations, security, incidents
+- [7. Operating](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/07-operating.md): environments, CI, observability, failure handling, deploys, migrations, security, incidents, releases you cannot roll back
 - [8. Work](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/08-work.md): the shape of the work: loops, waterfalls, deadlines, done
 - [9. People](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/09-people.md): the team, the client, and what passes between them
 - [10. Agents](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/10-agents.md): what changes when a teammate has no memory and no stake

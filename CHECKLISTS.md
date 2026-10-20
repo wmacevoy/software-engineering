@@ -30,8 +30,8 @@ moves from one kind of step to the next.
       aloud. ([R9](guide/04-requirements.md#r9))
 - [ ] The questions with a regulator attached have named answers: what data about people, who may
       see it, what rule applies, and who said so. ([R8](guide/04-requirements.md#r8))
-- [ ] Scale, recovery, and availability have numbers, with horizons and periods.
-      ([R7](guide/04-requirements.md#r7))
+- [ ] Scale, speed, recovery, and availability have numbers, with horizons and periods — and so do
+      resources and interruption, where they apply. ([R7](guide/04-requirements.md#r7))
 - [ ] Every input has an answer for absent, late, wrong, and lying.
       ([R6](guide/04-requirements.md#r6))
 - [ ] A glossary exists. ([D9](guide/05-design.md#d9))

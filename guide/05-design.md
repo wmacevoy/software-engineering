@@ -151,20 +151,24 @@ function that takes values and returns values. Keep the ruling to a few thin lin
 put the logic in functions that serve.
 
 ```js
-// Rules and serves at once: untestable without a database and a frozen clock.
-async function staleLots(db) {
-  const rows = await db.query('SELECT id, reported_at FROM lots');
-  return rows.filter(r => Date.now() - r.reported_at > 15000).map(r => r.id);
+// Rules and serves at once: untestable without a live store and a frozen clock.
+function staleLots(store) {
+  return store.latest()
+    .filter(r => performance.now() - r.receivedMs + r.heldMs > 15000)
+    .map(r => r.id);
 }
 
 // Split: the logic serves; one thin function rules.
-function staleIds(rows, now, thresholdMs) {                 // pure — test it with plain arrays
-  return rows.filter(r => now - r.reported_at > thresholdMs).map(r => r.id);
+function staleIds(readings, nowMs, thresholdMs) {           // pure — test it with plain arrays
+  return readings.filter(r => nowMs - r.receivedMs + r.heldMs > thresholdMs).map(r => r.id);
 }
-async function staleLotsNow(db) {                           // the only line that touches the world
-  return staleIds(await db.query('SELECT id, reported_at FROM lots'), Date.now(), 15000);
+function staleLotsNow(store) {                               // the only line that touches the world
+  return staleIds(store.latest(), performance.now(), 15000);
 }
 ```
+
+(`receivedMs` is the receiver's monotonic clock when the reading arrived, and `heldMs` is the age the
+sender reported for it: elapsed times only, as [D5](#d5) requires.)
 
 The split costs essentially nothing at run time — it is the same work, arranged differently — and
 the pure half can now be tested against numbers you chose.

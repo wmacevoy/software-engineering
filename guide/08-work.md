@@ -228,7 +228,8 @@ how to build, run, test, and reset the system ([A2](10-agents.md#a2)).
 
 Each retires a fear — "we are building different things," "nobody knows what state this is in," "we
 already learned this once." A document that retires no fear should be dropped, not maintained.
-Starting skeletons for all five are listed in the [README](../README.md#contents).
+Starting skeletons for the four, and for the repository guide, are listed in the
+[README](../README.md#contents).
 
 ### <a id="w11"></a>W11. Done means all of it, one concern per change, reviewed by someone else
 
@@ -243,7 +244,8 @@ Starting skeletons for all five are listed in the [README](../README.md#contents
   same change. Documentation that drifts is worse than none, because people trust it.
 - New behavior that can fail has a way to make it fail on demand.
 - It is one concern, and its description says what was deliberately left out.
-- Someone other than the author reviewed it.
+- Someone other than the author reviewed it. For an agent-drafted change, the human who reads all of it
+  and signs counts; a one-way door deserves a second human.
 - It is signed by a person who has read all of it and stands behind it.
 
 The same list, as boxes to tick, is in [CHECKLISTS.md](../CHECKLISTS.md); keep the two in step.
