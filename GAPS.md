@@ -119,6 +119,9 @@ integrators, and whoever reads the card on Linux — are not in the room.
 (an issue tracker, a downstream project, a second maintainer), and treat their bug reports as the
 read-back.
 
+**Closed:** a paragraph in [H5](guide/09-people.md#h5); the *Before leaving Requirements* checklist
+accepts a named proxy's objection.
+
 ### 8. The operating envelope has no resource budget
 
 The requirements template's envelope covers scale, speed, recovery, and availability

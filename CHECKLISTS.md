@@ -23,8 +23,9 @@ moves from one kind of step to the next.
 
 **Before leaving Requirements for Design**
 
-- [ ] Every requirement is numbered and observable, and the client has objected to at least one.
-      ([R2](guide/04-requirements.md#r2))
+- [ ] Every requirement is numbered and observable, and the client — or, with no client in the room,
+      a named proxy for the users — has objected to at least one. ([R2](guide/04-requirements.md#r2),
+      [H5](guide/09-people.md#h5))
 - [ ] `Scope decisions`, `Non-goals`, `Not yet answered`, and `Deferred` exist and have been read
       aloud. ([R9](guide/04-requirements.md#r9))
 - [ ] The questions with a regulator attached have named answers: what data about people, who may

@@ -143,6 +143,13 @@ closing it is the team's job, because only the team knows what the assumptions a
 | is you               | The worst case: every guess confirmed by the only person who could dispute it. Nominate an actual human and get corrected on a schedule. |
 | is surprised         | You failed, not them. Find the delay between knowing and telling; that delay is the bug.                 |
 
+**When the client is the maintainer** — a solo or open-source project — the users are real but never
+in the room: integrators, downstream projects, whoever opens the file on another system. Name who
+stands in for them: the issue tracker, a downstream project's maintainer, a second maintainer who did
+not write the requirement. Send them the requirements with the same sentence, *tell us what is wrong
+with it*, and treat their bug reports as the read-back ([H6](#h6)): each one is a K3 you held about
+them.
+
 ### <a id="h6"></a>H6. Read your assumptions to the client
 
 The cheapest question in this guide. Every scope decision and every K4 in the requirements is a
