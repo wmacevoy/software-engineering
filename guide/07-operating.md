@@ -39,6 +39,9 @@ At class-project scale most of this is a sentence each: a lock file committed, o
 `/health` endpoint, a note saying how to put the previous version back, and logs you have actually
 read. The principles below are what those sentences grow into.
 
+If what you ship is a library, firmware, or a file format rather than a service you run, the deploys
+and rollbacks below belong to someone else; [O11](#o11) says what replaces them.
+
 ---
 
 ### <a id="o1"></a>O1. Repeatability is also a property of the environment
@@ -276,6 +279,31 @@ a requirement nobody has tested is a hope. Run the load test again when the data
 when the code changes.
 
 > **Ask:** "Have we run it at the peak we promised, against data the size we will have?"
+
+### <a id="o11"></a>O11. A release you cannot roll back is a one-way door; ship it like one
+
+Most of this chapter assumes a service you run: you deploy it, watch it, and put the previous version
+back. A library, firmware, an installed app, or a file format has none of that. The deploy is
+someone else's, months later, on hardware you will never see — and what it writes, such as bytes on
+a user's card, stays written after you fix the bug. [O6](#o6)'s health gate and [O7](#o7)'s rollback
+have nothing to pull. What replaces them:
+
+- **Every release is a one-way door** ([D11](05-design.md#d11)): reviewed by someone who does not
+  share the assumption, a release checklist run every time, and a version number that tells
+  integrators what changed.
+- **Refuse rather than guess.** Every feature an input can announce has a stated answer — refuse,
+  read-only, or read-write ([R6](04-requirements.md#r6)) — and one you have never heard of gets
+  refuse, or read-only if reading provably changes nothing.
+- **Conformance to a format you don't own** is tested against the implementation that owns it
+  ([T11](06-testing.md#t11)).
+- **The device is part of the envelope**: code size, memory, stack, energy, and power lost at any
+  instant ([R7](04-requirements.md#r7)). On a device, a cut mid-write is a normal event, not an
+  incident, and a test makes it happen.
+- **The signal comes back late, through other people**: bug reports, crash dumps, a downstream
+  project's CI. Make them easy to send and cheap to reproduce ([T9](06-testing.md#t9)); they are
+  your monitoring ([O4](#o4)).
+
+> **Ask:** "If this release is wrong, what will already be written that we cannot take back?"
 
 ---
 

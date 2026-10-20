@@ -227,6 +227,27 @@ wrong. Three techniques check the rest, and each is cheap to start:
 
 > **Ask:** "What rule must hold for every input — and does a test check it?"
 
+### <a id="t11"></a>T11. When someone else owns "correct," test against their implementation
+
+Some interfaces were defined by someone else: a file format, a wire protocol, a standard. Their
+specification is a K4 — it says what its authors meant. What everybody's data actually looks like is
+decided by the implementation that owns the format, and that implementation is the only judge whose
+verdict matters.
+
+**Differential testing** makes it the oracle. Write with your code and check with theirs; write
+with theirs and read with yours; compare. For a file-system library: create an image, run the
+platform's own checker on it, then let the platform's tools change it and read it back. Every
+disagreement is either your bug or a behavior the specification never mentioned — and the second is
+a `FINDINGS` entry, because it is the K2 the document could not tell you
+([U2](02-unknowing.md#u2)).
+
+Use the oracle as a black box: run it, pin its version ([O2](07-operating.md#o2)), and test against
+the versions your users actually have. Do not copy it, and on a clean-room project do not read its
+source ([R8](04-requirements.md#r8)). Fed generated inputs ([T10](#t10)), it finds cases neither you
+nor the specification thought of.
+
+> **Ask:** "Who decides whether this output is correct — and does a test ask them?"
+
 
 ---
 

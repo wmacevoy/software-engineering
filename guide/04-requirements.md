@@ -125,6 +125,11 @@ For every input a component depends on, state an answer for each case:
 | **Wrong**  | it reports more cars than the lot has spaces     | reject, clamp, or flag — and which is a fault? |
 | **Lying**  | `200 OK`, plausible data, frozen since Tuesday   | how would anyone notice?                    |
 
+One kind of *wrong* looks valid: an input that **announces a feature you do not support** — a
+version number, a feature bit in a file header, a capability in a handshake. State an answer per
+feature: **refuse**, **read-only** (use what you understand, change nothing), or **read-write**.
+"Ignore it" is not an answer; it is how a program comes to write data it had no right to write.
+
 A system that only works when its inputs behave is not finished. And an adversary is just the
 unknown that optimizes: **security is this same discipline applied to an input chosen specifically
 to find your K3.**

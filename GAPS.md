@@ -46,6 +46,11 @@ of them. What it has instead is harder:
 releases as one-way doors, external oracles, conformance to a format someone else owns, and
 "refuse, read-only, or read-write" as the stated answer for every feature an input can announce.
 
+**Closed:** new [O11](guide/07-operating.md#o11) (releases you cannot roll back) and
+[T11](guide/06-testing.md#t11) (differential testing against an oracle). An announced, unsupported
+feature is treated as a kind of *wrong* in [R6](guide/04-requirements.md#r6) rather than a fifth
+case, so the four cases cited across the guide and in copies of AGENTS.md stay true.
+
 ### 3. Adopting the guide on an existing codebase
 
 The guide starts at the first client conversation ([H7](guide/09-people.md#h7)). Most adoptions

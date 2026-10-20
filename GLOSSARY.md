@@ -28,6 +28,7 @@ guide using one of these loosely, that is a bug.
 | **Control plane** | A side channel — such as a test-only endpoint — that tells a component how to behave: slow, down, stuck, wrong. |
 | **CVE** | A published security vulnerability, with an ID, in a specific version of some software. |
 | **Design**              | The mechanism chosen to satisfy the requirements, and what was rejected. Changes with the team.      |
+| **Differential testing** | Checking your implementation against another one that owns the definition of correct, by running both on the same inputs ([T11](guide/06-testing.md#t11)). |
 | **Digest** | A content hash that names an exact image (per platform) rather than a tag that can move. |
 | **Essential complexity**  | Complexity in the problem; it survives every rewrite.                                              |
 | **Expand / contract** | Changing a shape in steps: add the new beside the old, move every reader, then remove the old. |

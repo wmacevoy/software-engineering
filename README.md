@@ -58,7 +58,7 @@ instruction file at it), and start your working set from the templates listed un
 | [4. Requirements](guide/04-requirements.md) | where the problem comes from, and how to write it down          |
 | [5. Design](guide/05-design.md)             | state, complexity, coherence, interfaces, and carrying cost     |
 | [6. Testing](guide/06-testing.md)           | tests worth trusting                                            |
-| [7. Operating](guide/07-operating.md)       | environments, CI, observability, failure handling, deploys, migrations, security, incidents |
+| [7. Operating](guide/07-operating.md)       | environments, CI, observability, failure handling, deploys, migrations, security, incidents, releases you cannot roll back |
 | [8. Work](guide/08-work.md)                 | the shape of the work: loops, waterfalls, deadlines, done       |
 | [9. People](guide/09-people.md)             | the team, the client, and what passes between them              |
 | [10. Agents](guide/10-agents.md)            | what changes when a teammate has no memory and no stake         |
@@ -172,6 +172,7 @@ should use a different form, such as `UI-1`, so they are never confused with the
 - [**T8**](guide/06-testing.md#t8) When you don't know how to build it, write the tests that would pass when it works
 - [**T9**](guide/06-testing.md#t9) A bug you cannot reproduce is a rumor
 - [**T10**](guide/06-testing.md#t10) Let the machine generate the cases you would not think of
+- [**T11**](guide/06-testing.md#t11) When someone else owns "correct," test against their implementation
 
 **[7. Operating](guide/07-operating.md)**
 
@@ -185,6 +186,7 @@ should use a different form, such as `UI-1`, so they are never confused with the
 - [**O8**](guide/07-operating.md#o8) Secure by default
 - [**O9**](guide/07-operating.md#o9) In an incident, restore service first; learn afterward
 - [**O10**](guide/07-operating.md#o10) Measure before you optimize; test at the scale you promised
+- [**O11**](guide/07-operating.md#o11) A release you cannot roll back is a one-way door; ship it like one
 
 **[8. Work](guide/08-work.md)**
 
