@@ -54,8 +54,8 @@ them), **observable** (so they can be checked), and contain **numbers** — inve
 invented. An invented number that is written down can be challenged. An assumed one cannot.
 
 Because requirements and design change, unversioned references to requirements and design documents
-are K3 factories: the citation keeps looking current after the text it pointed at has moved
-([SE1/R10](#r10)).
+are K3 factories ([SE1/U7](02-unknowing.md#u7)): the citation keeps looking current after the
+text it pointed at has moved ([SE1/R10](#r10)).
 
 > **Ask:** "Could the client read this sentence and say 'no'?"
 

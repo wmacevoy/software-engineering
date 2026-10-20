@@ -68,8 +68,8 @@ part is a system that has noticed it is insane and keeps answering.
 ### <a id="t3"></a>T3. A test that cannot fail proves nothing
 
 Watch every test fail before you trust it: write it, run it against the code without the change, see
-red, then make it green. A test written after the fact and never observed red is a K3 generator with
-a green checkmark.
+red, then make it green. A test written after the fact and never observed red is a K3 factory
+([SE1/U7](02-unknowing.md#u7)) with a green checkmark.
 
 Tests that pin down behavior that already exists — before a refactor, or for legacy code — cannot
 fail "without the change," because there is no change. Break the code on purpose instead (flip a

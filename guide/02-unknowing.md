@@ -106,10 +106,46 @@ It used to be a survivable liability: the person holding the constraint sat near
 and said "no, not like that." Teammates leave, get sick, and forget. Agents were never in the room
 ([SE1/A3](10-agents.md#a3)). So the state of a project has to be **observable from where every party
 stands**, in the repository, versioned with the code ([SE1/W10](08-work.md#w10),
-[templates](../templates/)).
+[templates](../README.md#contents)).
 
 > **Ask:** "If the person who knows this vanished on Friday, what could the rest of us not do on
 > Monday?"
+
+### <a id="u7"></a>U7. Find the K3 factories: anything that keeps saying "fine" with no way to say "wrong"
+
+A K3 is one wrong belief ([SE1/U3](#u3)). A **K3 factory** is whatever keeps producing them: a signal
+that says "fine," costs nothing to keep believing, and has no path by which it could say "wrong." It
+makes confidence faster than evidence, and every belief it makes is found last. Some that are cheap
+to fix once named:
+
+- **Conversations that never move into documents.** Everyone in the room agreed; nobody else can find
+  out what ([SE1/U6](#u6)).
+- **Unversioned references** to requirements and design. The citation still resolves after the text
+  it pointed at has moved ([SE1/R10](04-requirements.md#r10)).
+- **Agent compaction.** When an agent's context is summarized to make room, the summary replaces what
+  was said, and the agent carries on exactly as confidently ([SE1/A4](10-agents.md#a4)).
+- **Documentation a small model could have written from the code**: a block that restates *what* the
+  code does, away from the line it describes. It reads as documented, carries no *why*, and drifts.
+  Put the comment at the line it explains, and let the code be the document of *what*.
+- **Code and documents that cannot be searched for a concept.** A concept with three names, or none,
+  returns nothing to a search, and "nothing found" reads as "we don't do that"
+  ([SE1/D9](05-design.md#d9)).
+- **A status with no *since*.** "Blocked" reads as current when it is three days old
+  ([SE1/H4](09-people.md#h4)).
+- **An alert never seen firing.** Silence looks exactly like health ([SE1/O4](07-operating.md#o4)).
+- **A default nobody chose** — a timeout, a retention period, an unpinned version. It works, so
+  nobody asks who decided ([SE1/R6](04-requirements.md#r6), [SE1/O2](07-operating.md#o2)).
+
+Three cures, each the opposite of what makes a factory:
+
+1. **Give the signal a way to fail, and watch it fail once** — a test seen red, an alert seen firing,
+   an attack seen refused ([SE1/T3](06-testing.md#t3)).
+2. **Make it age visibly** — a version on the citation, an age on the cached value, a *since* on the
+   status ([SE1/R10](04-requirements.md#r10), [SE1/D2](05-design.md#d2)).
+3. **Make its source checkable** — who said it, where it is written, and how to check it without
+   asking them again ([SE1/D13](05-design.md#d13)).
+
+> **Ask:** "What here would keep saying 'fine' if it were wrong?"
 
 
 ---

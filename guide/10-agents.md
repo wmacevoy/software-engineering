@@ -17,7 +17,8 @@ specification, verification, review, ownership. The bottleneck is no longer typi
 ### <a id="a2"></a>A2. An agent is a K3 factory; never let confidence substitute for a run
 
 Fluent, confident, plausible, and occasionally wrong is the precise shape of erroneous certainty,
-arriving faster than anyone can check it ([SE1/U3](02-unknowing.md#u3)). That is not an argument
+arriving faster than anyone can check it ([SE1/U3](02-unknowing.md#u3),
+[SE1/U7](02-unknowing.md#u7)). That is not an argument
 against agents. It is an argument about where to spend the time they save.
 
 "This should work" is K3 by construction. The agent runs the check; the human runs it again before

@@ -9,6 +9,7 @@ find the guide using one of these loosely, that is a bug.
 | **K1**                  | A known unknown. Cheap: you can go find out.                                                         |
 | **K2**                  | An unknown unknown. Only reality tells you; you can arrange to be told sooner.                       |
 | **K3**                  | Erroneous certainty: feels like K0, is false. Triggers no search, so it is found last.               |
+| **K3 factory**          | Anything that keeps saying "fine" with no way to say "wrong" — and so keeps producing K3s ([SE1/U7](guide/02-unknowing.md#u7)). |
 | **K4**                  | A chosen falsehood: held on purpose because it is useful, with a note on where it is load-bearing.   |
 | **Absent, late, wrong, lying** | The four failure cases every input needs a stated answer for.                                  |
 | **Accidental complexity** | Complexity from how you chose to build it; it must justify its carry.                             |

@@ -131,6 +131,7 @@ should use a different form, such as `REQ2/UI-1`, so they are never confused wit
 - [**SE1/U4**](guide/02-unknowing.md#u4) Every abstraction rests on chosen falsehoods; write down where they are load-bearing
 - [**SE1/U5**](guide/02-unknowing.md#u5) Estimate the category, not the task
 - [**SE1/U6**](guide/02-unknowing.md#u6) Nothing important may live only in a head
+- [**SE1/U7**](guide/02-unknowing.md#u7) Find the K3 factories: anything that keeps saying "fine" with no way to say "wrong"
 
 **[3. Feedback](guide/03-feedback.md)**
 
