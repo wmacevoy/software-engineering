@@ -18,6 +18,12 @@ they ask; it never moves an ID ([principle index](README.md#principle-index)).
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.2 — unreleased
+
+[Changes on main since v1.1](https://github.com/wmacevoy/software-engineering/compare/v1.1...main)
+
+Nothing yet.
+
 ## v1.1 — 2026-10-20
 
 [Full diff from v1.0](https://github.com/wmacevoy/software-engineering/compare/v1.0...v1.1) · 97
