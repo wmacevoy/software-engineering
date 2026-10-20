@@ -22,7 +22,9 @@ copy of the user list can go stale; how stale? (D2)"*.
    the second makes it necessary, because a bad design never sags or cracks
    ([F1](guide/03-feedback.md#f1), [F4](guide/03-feedback.md#f4)).
 5. **Nobody hands you the problem.** Write requirements specific enough to be wrong, and get them
-   rejected early ([R1](guide/04-requirements.md#r1), [R2](guide/04-requirements.md#r2)).
+   rejected early. They always include security, law, and ethics: nobody asks for those, and they
+   are the most expensive to discover late ([R1](guide/04-requirements.md#r1),
+   [R2](guide/04-requirements.md#r2), [R8](guide/04-requirements.md#r8)).
 6. **Every input can be absent, late, wrong, or lying**, and each case needs a stated answer
    ([R6](guide/04-requirements.md#r6)).
 7. **State is the material.** Name your caches, own your copies, and keep logic away from I/O
@@ -139,7 +141,7 @@ should use a different form, such as `UI-1`, so they are never confused with the
 - [**R5**](guide/04-requirements.md#r5) A requirement says what must be observably true; a design says how
 - [**R6**](guide/04-requirements.md#r6) Every input has four failure cases: absent, late, wrong, and lying
 - [**R7**](guide/04-requirements.md#r7) Scale, recovery, and availability are answered whether or not anyone writes them down
-- [**R8**](guide/04-requirements.md#r8) Security, law, and ethics are requirements
+- [**R8**](guide/04-requirements.md#r8) Security, law, and ethics are always requirements
 - [**R9**](guide/04-requirements.md#r9) Write down what you decided not to do
 - [**R10**](guide/04-requirements.md#r10) Version requirements; never edit them in place
 - [**R11**](guide/04-requirements.md#r11) An API is the set of observables your acceptance tests need

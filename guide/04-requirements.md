@@ -185,15 +185,31 @@ point — "the data on disk is the old version or the new one, never a mix" — 
 > **Ask:** "How many, in two years? How fast, at the peak? What happens when it breaks, and how long
 > to get back? How long may it be down, for whom?"
 
-### <a id="r8"></a>R8. Security, law, and ethics are requirements
+### <a id="r8"></a>R8. Security, law, and ethics are always requirements
 
-They are the easiest to postpone: no user files a ticket for them, they compete with visible
-features, and their absence looks exactly like their presence until it doesn't. Two properties make
-deferring them a mistake rather than a trade-off:
+They are the easiest to postpone, because they are not software. No test fails without them, no user
+files a ticket for them, they compete with visible features, and their absence looks exactly like
+their presence until it doesn't. They are requirements on every project whether or not anyone states
+them: a class project that logs license plates keeps location data about people, and a library
+hands its license and its vulnerabilities to everyone who ships it. Two properties make deferring
+them a mistake rather than a trade-off:
 
 - **Their deadline is set by someone else** — a breach, an audit, a complaint, a regulator.
 - **Violations are irreversible.** Leaked data cannot be unleaked. A person harmed is not fixed by a
   patch.
+
+Left out, they are where a project keeps its most expensive unknowns ([U1](02-unknowing.md#u1)):
+
+- **K2** — the rule nobody on the team had heard of: a privacy law, an accessibility requirement, a
+  license term on a dependency.
+- **K3** — the sentence everyone was sure of: "we don't store anything personal," "nobody would try
+  that," "this code is ours to use" — while the logs hold plates, someone tries it, and the snippet
+  came from a GPL file.
+
+The usual cure for K2, exposure to reality ([U2](02-unknowing.md#u2)), arrives here as the breach or
+the lawsuit. So do not wait to be surprised: ask, early, someone who knows the rule — the client, a
+lawyer, a security reviewer, the people the data is about — and turn each into a K1 with an answer
+written down.
 
 In practice:
 
