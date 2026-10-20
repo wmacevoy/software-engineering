@@ -38,3 +38,4 @@ bears on the task. Principle anchors are lowercase IDs, e.g. guide/10-agents.md#
 - [templates/DESIGN_v1.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/templates/DESIGN_v1.md): starting point for a design
 - [templates/QUEUE.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/templates/QUEUE.md): starting point for a work queue
 - [templates/FINDINGS.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/templates/FINDINGS.md): starting point for findings
+- [templates/CONTRIBUTING.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/templates/CONTRIBUTING.md): starting point for the repository guide: build, run, test, reset

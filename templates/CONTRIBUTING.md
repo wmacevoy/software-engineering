@@ -1,0 +1,31 @@
+# Contributing
+
+How to work on this repository — for a new teammate and for an agent, who both arrive knowing nothing
+([A3](https://github.com/wmacevoy/software-engineering/blob/main/guide/10-agents.md#a3)). Keep it short and true: a change that makes a line here untrue
+updates it in the same change ([W11](https://github.com/wmacevoy/software-engineering/blob/main/guide/08-work.md#w11)).
+
+## Run it
+
+- **Prerequisites:** _tools and versions, and how to get them_
+- **Build:** `_command_`
+- **Run:** `_command_` — _what you should see_
+- **Reset to a known state:** `_command_` — _what it wipes, and about how long it takes_
+  ([T5](https://github.com/wmacevoy/software-engineering/blob/main/guide/06-testing.md#t5))
+
+## Check it
+
+- **The full check:** `_command_` — the same one CI runs ([O3](https://github.com/wmacevoy/software-engineering/blob/main/guide/07-operating.md#o3))
+- **Success prints:** `_the line that means it passed_`
+- **Instruments:** _sanitizers, coverage, linters it runs, and how to see each one fire_
+  ([T3](https://github.com/wmacevoy/software-engineering/blob/main/guide/06-testing.md#t3))
+
+## Rules for this repository
+
+Constraints the code cannot show: _for example, no code from GPL sources; `gen/` is generated, never
+edited; requirements are versioned, never edited in place._
+
+## Where things are
+
+- **Working set:** `docs/` — `REQUIREMENTS_vX`, `DESIGN_vX`, `QUEUE`, `FINDINGS`
+  ([W10](https://github.com/wmacevoy/software-engineering/blob/main/guide/08-work.md#w10))
+- **Agents:** read [AGENTS.md](https://github.com/wmacevoy/software-engineering/blob/main/AGENTS.md) and this file before acting.

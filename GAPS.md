@@ -104,6 +104,10 @@ shape.
 `templates/CONTRIBUTING.md`: how to build, run, test, and reset; the full check command and what
 success prints; the repository-specific rules; where the working set is.
 
+**Closed:** [W10](guide/08-work.md#w10) says `docs/` unless the repository has a convention, and
+names the repository guide; [templates/CONTRIBUTING.md](templates/CONTRIBUTING.md) added. The
+templates now link to the guide by absolute URL, so a copy in another repository still resolves.
+
 ### 7. When the client is the maintainer
 
 On a solo or open-source project, the person who writes the requirements is the one who approves

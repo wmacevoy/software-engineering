@@ -222,9 +222,13 @@ chat, not in a notebook:
 - **`FINDINGS` is the K2/K3 ledger**, and the only one reality writes. A fact discovered at full
   price and not written down gets rediscovered at full price.
 
+Put them in `docs/` unless the repository already has a convention, and say where in the
+**repository guide** — the `CONTRIBUTING.md` (or equivalent) that tells a newcomer, human or agent,
+how to build, run, test, and reset the system ([A2](10-agents.md#a2)).
+
 Each retires a fear — "we are building different things," "nobody knows what state this is in," "we
 already learned this once." A document that retires no fear should be dropped, not maintained.
-Starting skeletons are in [templates/](../templates/).
+Starting skeletons for all five are listed in the [README](../README.md#contents).
 
 ### <a id="w11"></a>W11. Done means all of it, one concern per change, reviewed by someone else
 

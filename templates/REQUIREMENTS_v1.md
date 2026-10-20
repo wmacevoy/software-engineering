@@ -2,14 +2,14 @@
 
 What must be observably true, and what is not being built. Changes only with the client; a change is
 a new version (`REQUIREMENTS_v2.md`), never an edit to this one. See
-[R1–R11](../guide/04-requirements.md).
+[R1–R11](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md).
 
 Client (the one voice who can decide): _name_ · Date sent: _yyyy-mm-dd_ · *Tell us what is wrong
 with it.*
 
 ## Glossary
 
-Ten to thirty terms, one line each. A new noun is a decision ([D9](../guide/05-design.md#d9)).
+Ten to thirty terms, one line each. A new noun is a decision ([D9](https://github.com/wmacevoy/software-engineering/blob/main/guide/05-design.md#d9)).
 
 | Term   | Meaning |
 | ------ | ------- |
