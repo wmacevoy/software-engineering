@@ -8,6 +8,8 @@ rather than merely obeyed.
 The IDs are defined in the guide at https://github.com/wmacevoy/software-engineering. Its
 [principle index](https://github.com/wmacevoy/software-engineering#principle-index) lists them all,
 and each has an anchor in its chapter (for example, `guide/10-agents.md#a8`).
+The Markdown in that repository is the canonical text; the site at
+https://wmacevoy.github.io/software-engineering/ is a rendering of it for human readers.
 
 The repository's own guide (`CLAUDE.md`, `CONTRIBUTING.md`, or equivalent) wins over this file where
 they disagree. It knows the local mechanics; this file only knows the principles.

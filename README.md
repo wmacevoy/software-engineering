@@ -46,7 +46,7 @@ follows this guide. Then read the chapter that bears on the task (design → 5, 
 production → 7). Cite principles by ID when you raise a concern or explain a choice.
 
 **Teams adopting it:** copy [AGENTS.md](AGENTS.md) into your repository (or point your agent's
-instruction file at it), and start your working set from [templates/](templates/).
+instruction file at it), and start your working set from the templates listed under [Contents](#contents).
 
 ## Contents
 
@@ -69,7 +69,7 @@ instruction file at it), and start your working set from [templates/](templates/
 | [CHECKLISTS.md](CHECKLISTS.md)     | every checklist, in the order a project meets them              |
 | [GLOSSARY.md](GLOSSARY.md)         | the terms used precisely                                        |
 | [READING.md](READING.md)           | the longer arguments, one line each                             |
-| [templates/](templates/)           | starting points for `REQUIREMENTS`, `DESIGN`, `QUEUE`, `FINDINGS` |
+| `templates/`                       | starting points: [REQUIREMENTS](templates/REQUIREMENTS_v1.md), [DESIGN](templates/DESIGN_v1.md), [QUEUE](templates/QUEUE.md), [FINDINGS](templates/FINDINGS.md) |
 
 ## The running example
 

@@ -1,0 +1,54 @@
+# GitHub Pages site for the guide. The Markdown files are the source; this only renders them.
+# Page titles and order live here rather than in front matter, so the .md files stay clean for
+# GitHub and for agents reading them raw.
+title: Software Engineering
+description: A guide to building reliable, tested, maintainable software, for humans and the AI agents working beside them.
+
+# Pinned so the site does not change under us when the theme releases.
+remote_theme: just-the-docs/just-the-docs@v0.10.1
+plugins:
+  - jekyll-remote-theme
+
+aux_links:
+  "Source on GitHub":
+    - "https://github.com/wmacevoy/software-engineering"
+
+exclude:
+  - tools/
+
+defaults:
+  - scope: { path: "" }
+    values: { layout: default }
+  - scope: { path: "README.md" }
+    values: { title: Home, nav_order: 1 }
+  - scope: { path: "guide/01-purpose.md" }
+    values: { title: 1. Purpose, nav_order: 2 }
+  - scope: { path: "guide/02-unknowing.md" }
+    values: { title: 2. Unknowing, nav_order: 3 }
+  - scope: { path: "guide/03-feedback.md" }
+    values: { title: 3. Feedback, nav_order: 4 }
+  - scope: { path: "guide/04-requirements.md" }
+    values: { title: 4. Requirements, nav_order: 5 }
+  - scope: { path: "guide/05-design.md" }
+    values: { title: 5. Design, nav_order: 6 }
+  - scope: { path: "guide/06-testing.md" }
+    values: { title: 6. Testing, nav_order: 7 }
+  - scope: { path: "guide/07-operating.md" }
+    values: { title: 7. Operating, nav_order: 8 }
+  - scope: { path: "guide/08-work.md" }
+    values: { title: 8. Work, nav_order: 9 }
+  - scope: { path: "guide/09-people.md" }
+    values: { title: 9. People, nav_order: 10 }
+  - scope: { path: "guide/10-agents.md" }
+    values: { title: 10. Agents, nav_order: 11 }
+  - scope: { path: "AGENTS.md" }
+    values: { title: AGENTS.md, nav_order: 12 }
+  - scope: { path: "CHECKLISTS.md" }
+    values: { title: Checklists, nav_order: 13 }
+  - scope: { path: "GLOSSARY.md" }
+    values: { title: Glossary, nav_order: 14 }
+  - scope: { path: "READING.md" }
+    values: { title: Reading, nav_order: 15 }
+  # Templates are reachable from links but are starting files, not part of the book.
+  - scope: { path: "templates" }
+    values: { nav_exclude: true }

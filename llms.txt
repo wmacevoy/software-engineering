@@ -1,0 +1,39 @@
+# Software Engineering
+
+> A guide to building reliable, tested, maintainable software, organized as numbered principles with
+> stable IDs (T3, D2, R6, ...) that people and agents cite. The Markdown files linked below are the
+> canonical source; the GitHub Pages site is a rendering of them.
+
+Agents working in a repository that follows this guide: read AGENTS.md first, then the chapter that
+bears on the task. Principle anchors are lowercase IDs, e.g. guide/10-agents.md#a8.
+
+## Start here
+
+- [AGENTS.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/AGENTS.md): the working agreement for agents, portable to any repository
+- [README.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/README.md): the argument in ten lines, the running example, and the principle index
+
+## Chapters, in reading order
+
+- [1. Purpose](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/01-purpose.md): what engineering is for, and what "reliable" means
+- [2. Unknowing](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/02-unknowing.md): the five kinds of not-knowing (K0–K4), and which to fear
+- [3. Feedback](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/03-feedback.md): what a test costs, and why software must build its own signals
+- [4. Requirements](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/04-requirements.md): where the problem comes from, and how to write it down
+- [5. Design](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/05-design.md): state, complexity, coherence, interfaces, and carrying cost
+- [6. Testing](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/06-testing.md): tests worth trusting
+- [7. Operating](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/07-operating.md): environments, CI, observability, failure handling, deploys, migrations, security, incidents
+- [8. Work](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/08-work.md): the shape of the work: loops, waterfalls, deadlines, done
+- [9. People](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/09-people.md): the team, the client, and what passes between them
+- [10. Agents](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/guide/10-agents.md): what changes when a teammate has no memory and no stake
+
+## Reference
+
+- [CHECKLISTS.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/CHECKLISTS.md): every checklist, in the order a project meets them
+- [GLOSSARY.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/GLOSSARY.md): the terms used precisely
+- [READING.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/READING.md): the longer arguments, one line each
+
+## Optional
+
+- [templates/REQUIREMENTS_v1.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/templates/REQUIREMENTS_v1.md): starting point for requirements
+- [templates/DESIGN_v1.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/templates/DESIGN_v1.md): starting point for a design
+- [templates/QUEUE.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/templates/QUEUE.md): starting point for a work queue
+- [templates/FINDINGS.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/templates/FINDINGS.md): starting point for findings

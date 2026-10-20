@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 // Checks the guide's own consistency, so the conventions are enforced rather than hoped for (O3):
 // every relative link and anchor resolves, every principle link points at the file that defines it,
-// every bare citation such as "(A8, D9)" names a real principle, chapter numbers agree, and README's
-// principle index matches the chapter headings exactly. Exits nonzero on any problem.
+// every bare citation such as "(A8, D9)" names a real principle, chapter numbers agree, README's
+// principle index matches the chapter headings exactly, and every file llms.txt links to exists.
+// Exits nonzero on any problem.
 // Usage: node tools/check.js
 const fs = require('fs');
 const path = require('path');
@@ -93,6 +94,13 @@ for (const f of files) {
     const title = chapterTitle.get(m[4]);
     if (title && `${m[1]}. ${m[2]}` !== title) problem(`chapter label  ${path.relative(root, f)}: ${m[0]} (title is "${title}")`);
   }
+}
+
+// llms.txt points agents at raw files by URL, which the link check above never sees.
+const RAW = 'https://raw.githubusercontent.com/wmacevoy/software-engineering/main/';
+for (const m of fs.readFileSync(path.join(root, 'llms.txt'), 'utf8').matchAll(/\]\(([^)]+)\)/g)) {
+  if (!m[1].startsWith(RAW)) problem(`not a raw link llms.txt: ${m[0]}`);
+  else if (!fs.existsSync(path.join(root, m[1].slice(RAW.length)))) problem(`missing file   llms.txt: ${m[0]}`);
 }
 
 const readme = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
