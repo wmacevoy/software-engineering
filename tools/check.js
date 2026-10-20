@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Checks the guide's own consistency, so the conventions are enforced rather than hoped for (O3):
-// every relative link and anchor resolves, every principle link points at the file that defines it,
-// every bare citation such as "(A8, D9)" names a real principle, chapter numbers agree, README's
+// every relative link and anchor resolves, every principle citation carries the current version and
+// points at the file that defines it, every bare citation such as "(SE1/A8, SE1/D9)" names a real
+// principle, chapter numbers agree, README's
 // principle index matches the chapter headings exactly, and every file llms.txt links to exists.
 // Exits nonzero on any problem.
 // Usage: node tools/check.js
@@ -12,6 +13,8 @@ const root = path.resolve(__dirname, '..');
 const GH = 'https://github.com/wmacevoy/software-engineering/blob/main/';
 const GH_README = 'https://github.com/wmacevoy/software-engineering#';
 const HEADING = /^### <a id="([a-z0-9]+)"><\/a>([A-Z]\d+)\. (.*)$/;
+// Every citation carries the major version (README, "Principle index"); headings define IDs bare.
+const VERSION = 'SE1';
 
 const files = [];
 (function walk(dir) {
@@ -47,7 +50,7 @@ for (const f of files.filter((f) => f.includes(`${path.sep}guide${path.sep}`)).s
     if (!m) continue;
     if (definedIn.has(m[2])) problem(`${m[2]} defined twice`);
     definedIn.set(m[2], f);
-    headings.push(`- [**${m[2]}**](guide/${path.basename(f)}#${m[1]}) ${m[3]}`);
+    headings.push(`- [**${VERSION}/${m[2]}**](guide/${path.basename(f)}#${m[1]}) ${m[3]}`);
   }
 }
 
@@ -63,9 +66,13 @@ for (const f of files) {
     const where = `${path.relative(root, f)}: ${m[0]}`;
     if (!fs.existsSync(targetFile)) { problem(`missing file   ${where}`); continue; }
     if (anchor && !anchorsOf(targetFile).has(anchor)) problem(`missing anchor ${where}`);
-    const id = label.replace(/\*/g, '');
-    if (/^[A-Z]\d+$/.test(id)) {
-      if (!definedIn.has(id)) problem(`unknown ID     ${where}`);
+    const cite = label.replace(/\*/g, '');
+    if (/^[PUFRDTOWHA]\d+$/.test(cite)) { problem(`unversioned    ${where}`); continue; }
+    const v = cite.match(/^(SE\d+)\/([A-Z]\d+)$/);
+    if (v) {
+      const id = v[2];
+      if (v[1] !== VERSION) problem(`wrong version  ${where}`);
+      else if (!definedIn.has(id)) problem(`unknown ID     ${where}`);
       else if (definedIn.get(id) !== targetFile) problem(`wrong file     ${where} (defined in ${path.relative(root, definedIn.get(id))})`);
     }
   }
@@ -73,10 +80,15 @@ for (const f of files) {
 
 // Bare citations — the form AGENTS.md uses, so it stays short when copied into other repositories.
 // Only the chapter letters count, so "(K3)" and other parentheticals are left alone.
+const CITE = '(?:SE\\d+\\/)?[PUFRDTOWHA]\\d+';
 for (const f of files) {
-  for (const m of fs.readFileSync(f, 'utf8').matchAll(/\(([PUFRDTOWHA]\d+(?:,\s*[PUFRDTOWHA]\d+)*)\)/g)) {
-    for (const id of m[1].split(/,\s*/)) {
-      if (!definedIn.has(id)) problem(`unknown ID     ${path.relative(root, f)}: ${m[0]}`);
+  for (const m of fs.readFileSync(f, 'utf8').matchAll(new RegExp(`\\((${CITE}(?:,\\s*${CITE})*)\\)`, 'g'))) {
+    for (const cite of m[1].split(/,\s*/)) {
+      const where = `${path.relative(root, f)}: ${m[0]}`;
+      const [version, id] = cite.includes('/') ? cite.split('/') : [null, cite];
+      if (!version) problem(`unversioned    ${where}`);
+      else if (version !== VERSION) problem(`wrong version  ${where}`);
+      else if (!definedIn.has(id)) problem(`unknown ID     ${where}`);
     }
   }
 }

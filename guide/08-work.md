@@ -16,7 +16,7 @@ what deadlines do to people, and the failure that looks exactly like progress.
 | Deploy       | the thing running where its users are, and a way back                            | is it out there, and healthy   |
 | Maintain     | everything after: fixes, changes, upgrades, the next request                     | is it still true               |
 
-(In iterative work, Maintain stops being a separate step — see [W3](#w3).)
+(In iterative work, Maintain stops being a separate step — see [SE1/W3](#w3).)
 
 The order is right in every method: you cannot design against a requirement you do not have, or
 deploy what you have not built. The disagreement is about **how much goes through each step at
@@ -62,8 +62,8 @@ There is no Maintain step. After the first deploy, every iteration is maintenanc
 - **"(test)" means something different at each step.** Requirements are tested by a person reading a
   sentence precise enough to be wrong; design by artifacts that exist before the code; code by red
   then green; deploys by a health check and an automatic revert.
-- **The iteration ends on a fence, not on "done"** ([W9](08-work.md#w9)).
-- **The demo is the only instrument for "wrong product"** ([F3](03-feedback.md#f3)).
+- **The iteration ends on a fence, not on "done"** ([SE1/W9](08-work.md#w9)).
+- **The demo is the only instrument for "wrong product"** ([SE1/F3](03-feedback.md#f3)).
 - **The outer loop's product is knowledge**: K2 converted to K1 at the cheapest available price.
 
 ### <a id="w4"></a>W4. Choose how carefully to work per decision, by the cost of being wrong once
@@ -102,9 +102,9 @@ None of the three requires A to exist. The dependency is not sequenced; it is **
 contract layer is built first, and the promise is what unblocks, not the implementation.
 
 The cost is real: flattening converts a **scheduling** risk into an **integration** risk, which is a
-good trade only if you integrate continuously ([T6](06-testing.md#t6)). And some orderings genuinely
+good trade only if you integrate continuously ([SE1/T6](06-testing.md#t6)). And some orderings genuinely
 survive: **sequence around irreversibility, not around incompleteness.** Do the one-way doors in
-order, carefully ([W4](#w4)). And when you genuinely must learn something before you can design
+order, carefully ([SE1/W4](#w4)). And when you genuinely must learn something before you can design
 against it, run a spike first — it stands in for the missing knowledge the way a mock stands in for
 a missing component.
 
@@ -134,7 +134,7 @@ how most projects fail.
 
 - **Remove the danger.** If deploying is routine and reversible, the deadline stops being the
   shocking end of the cage. An always-releasable main branch means shipping is not an event.
-- **Cross the gap early** with the thin slice ([W6](#w6)), so the last week thickens something that
+- **Cross the gap early** with the thin slice ([SE1/W6](#w6)), so the last week thickens something that
   already works.
 - **Put real fences along the way.** A demo to an actual client, a check that exits nonzero, a
   deploy that happened. A status meeting is not a fence; nothing was proved.
@@ -143,8 +143,8 @@ how most projects fail.
   cashier is busy 95% of the time, any small burst builds a line that takes ages to clear. Waiting
   grows much faster than load as you approach 100%, and a plan at 95% has almost no room for a
   surprise. Slack is the budget line for the unknown unknown.
-- **Estimate the category** ([U5](02-unknowing.md#u5)).
-- **Bad news early is a gift; bad news late is a betrayal** ([H9](09-people.md#h9)).
+- **Estimate the category** ([SE1/U5](02-unknowing.md#u5)).
+- **Bad news early is a gift; bad news late is a betrayal** ([SE1/H9](09-people.md#h9)).
 
 > **Ask:** "What would make the last week before this deadline boring?"
 
@@ -180,9 +180,9 @@ requirement:
 **The railing.**
 
 1. **Ask the expensive questions first** — the ones that could invalidate the plan
-   ([R3](04-requirements.md#r3)).
+   ([SE1/R3](04-requirements.md#r3)).
 2. **Write the answers where they cannot be missed** — `Scope decisions`, `Non-goals`, and a section
-   for security, law, and ethics ([R8](04-requirements.md#r8), [R9](04-requirements.md#r9)).
+   for security, law, and ethics ([SE1/R8](04-requirements.md#r8), [SE1/R9](04-requirements.md#r9)).
 3. **Read the assumptions back** as questions: "We're assuming a record of where a person parked is
    fine to keep. True?"
 4. **Then descend on purpose.** A **spike** is a permitted descent: time-boxed, aimed at one
@@ -200,12 +200,12 @@ a spiral. An iteration that produces three of these is not done:
 3. **A `FINDINGS` entry**: what was learned at full price.
 4. **A `QUEUE`** saying what is next, priced, with a *done* sentence on each item.
 
-And one question at the end: *what can we delete?* ([D12](05-design.md#d12))
+And one question at the end: *what can we delete?* ([SE1/D12](05-design.md#d12))
 
 ### <a id="w10"></a>W10. Keep the working set in the repository
 
 The state of the project has to be observable from where every party stands
-([U6](02-unknowing.md#u6)). Four documents, versioned alongside the code — not in a wiki, not in
+([SE1/U6](02-unknowing.md#u6)). Four documents, versioned alongside the code — not in a wiki, not in
 chat, not in a notebook:
 
 | Document          | Answers                                                                     | Written by        |
@@ -216,7 +216,7 @@ chat, not in a notebook:
 | `FINDINGS`        | what we learned the expensive way — surprises, dead ends, measurements, the attack that worked | reality |
 
 - **Versioned**, because a superseded requirement is not deleted knowledge
-  ([R10](04-requirements.md#r10)).
+  ([SE1/R10](04-requirements.md#r10)).
 - **`QUEUE` is the shared cursor.** Without one, two workers do the same task, or each assumes the
   other has it — a failure now cheap to hit ten times an hour.
 - **`FINDINGS` is the K2/K3 ledger**, and the only one reality writes. A fact discovered at full
@@ -224,7 +224,7 @@ chat, not in a notebook:
 
 Put them in `docs/` unless the repository already has a convention, and say where in the
 **repository guide** — the `CONTRIBUTING.md` (or equivalent) that tells a newcomer, human or agent,
-how to build, run, test, and reset the system ([A2](10-agents.md#a2)).
+how to build, run, test, and reset the system ([SE1/A2](10-agents.md#a2)).
 
 Each retires a fear — "we are building different things," "nobody knows what state this is in," "we
 already learned this once." A document that retires no fear should be dropped, not maintained.
@@ -255,10 +255,10 @@ on separating things that should never have been joined. A change description sa
 which requirements, how it was verified, and **what was deliberately left out** — silent omissions
 are the expensive kind.
 
-**Review** is the loop that catches unclear intent and bad design ([F3](03-feedback.md#f3)). It
+**Review** is the loop that catches unclear intent and bad design ([SE1/F3](03-feedback.md#f3)). It
 works when the author reviews their own diff first, the change is small enough to read in one
 sitting, it comes back within a day, and style is left to the formatter and linter
-([O3](07-operating.md#o3)). Reviewers ask three questions, in order:
+([SE1/O3](07-operating.md#o3)). Reviewers ask three questions, in order:
 
 1. Does it do what the requirement says, and does the test prove it?
 2. Could the next maintainer read this in a month and explain why it is here?
@@ -266,7 +266,7 @@ sitting, it comes back within a day, and style is left to the formatter and lint
 
 Not every change serves a requirement. A typo, a dependency update, or a pure refactor is a
 **chore**: it says so in its description, and its proof is that the existing suite still passes (a
-refactor's tests must have been seen to fail — [T3](06-testing.md#t3)).
+refactor's tests must have been seen to fail — [SE1/T3](06-testing.md#t3)).
 
 > **Ask:** "Could I review this in one sitting?"
 
@@ -275,7 +275,7 @@ refactor's tests must have been seen to fail — [T3](06-testing.md#t3)).
 Most projects meet this guide with code already written. The working set can be rebuilt from the
 code and its history, but the rebuild has a trap: it invents reasons. A commit says what changed;
 *why* was in a head, and a reconstruction fills the gap with a plausible story — a K3 in the making
-([U3](02-unknowing.md#u3)). In order:
+([SE1/U3](02-unknowing.md#u3)). In order:
 
 1. **Requirements from behavior.** Write what the code observably does today as numbered
    requirements, each marked *(inferred)* until someone who can decide confirms it — as invented
@@ -285,7 +285,7 @@ code and its history, but the rebuild has a trap: it invents reasons. A commit s
 3. **`FINDINGS` from history.** Reverts, hotfixes, and fixes of fixes are findings nobody wrote down.
 4. **`QUEUE` from the gaps.** Every requirement with no test is a queue item, not a failure; so is
    every inherited claim nobody has measured — a footprint, a speed, "runs under the sanitizer."
-5. **Read it back** ([H6](09-people.md#h6)). The *(inferred)* marks are the questions.
+5. **Read it back** ([SE1/H6](09-people.md#h6)). The *(inferred)* marks are the questions.
 
 A reconstruction that marks nothing as inferred is claiming more than it knows.
 
@@ -316,11 +316,11 @@ dropped in week ten, and should be.
 | **Product owner**           | The one voice who orders the backlog and can say yes, no, and how much.                        | "the client is five people who disagree"              |
 | **Increment**               | The running thing at the end of an iteration. Usable, or it doesn't count.                     | "we have lots of parts and no product"                |
 | **Minimum viable product**  | The smallest increment that answers "would anyone use this?"                                   | "we built the whole thing before asking"              |
-| **Velocity**                | Work completed per iteration. A planning input, never a target ([F5](03-feedback.md#f5)).         | "we can't plan"                                       |
+| **Velocity**                | Work completed per iteration. A planning input, never a target ([SE1/F5](03-feedback.md#f5)).         | "we can't plan"                                       |
 | **Kanban / WIP limit**      | A board with a cap on work in progress. Finish before starting.                                | "everything is half done"                             |
 | **Pair programming**        | Two people, one keyboard. Review while writing; knowledge in two heads.                        | "only one person understands this"                    |
 | **Refactoring**             | Changing structure without changing behavior, under tests that prove it.                       | "we can't touch this"                                 |
-| **Technical debt**          | Carry taken on knowingly, to be repaid ([D12](05-design.md#d12)).                                   | "we don't know what we owe"                           |
+| **Technical debt**          | Carry taken on knowingly, to be repaid ([SE1/D12](05-design.md#d12)).                                   | "we don't know what we owe"                           |
 | **Continuous integration**  | Every push built and tested on a machine that is not yours.                                    | "it works on my machine"                              |
 | **Continuous delivery / deployment** | Every green build *could* ship / *does* ship.                                         | "release is an event"                                 |
 | **Trunk-based development** | One always-releasable branch, small steps, no long-lived branches.                             | "the merge will take a week"                          |

@@ -3,7 +3,7 @@
 Software spends most of its life running, not being written. This chapter follows it from the
 machines it is built on to the ones it runs on: keeping it repeatable, observable, safe to change,
 and recoverable once it is out there — the second half of
-"reliable": *it says so when it is broken, and someone can fix it* ([P2](01-purpose.md#p2)).
+"reliable": *it says so when it is broken, and someone can fix it* ([SE1/P2](01-purpose.md#p2)).
 
 ## If you have never deployed anything
 
@@ -13,25 +13,25 @@ of what happens next, in the order you will meet it:
 - **Container and image.** Instead of installing your app by hand on the server, you describe its
   whole environment — operating system, language runtime, libraries — in a file. Building that file
   gives an **image**; running an image gives a **container**. The same image runs the same way on
-  your laptop and on the server, almost ([O1](#o1)).
+  your laptop and on the server, almost ([SE1/O1](#o1)).
 - **Dependencies and the lock.** Your app uses libraries, which use other libraries (**transitive**
   dependencies). A **lock file** records the exact version of every one, so every install gets the
-  same code ([O2](#o2)).
+  same code ([SE1/O2](#o2)).
 - **CI workflow.** A script a service such as GitHub Actions runs on every push: build, test, and
-  report pass or fail ([O3](#o3)).
+  report pass or fail ([SE1/O3](#o3)).
 - **Staging and production.** *Production* is the copy real users use. *Staging* is a copy set up
   the same way, where you try a release first.
 - **Health check.** An endpoint like `/health` that answers "I'm working" only if the app really is
-  ([O4](#o4) splits this into two checks). A deploy is **health-gated** when it is not considered
-  finished until the health check passes ([O6](#o6)).
+  ([SE1/O4](#o4) splits this into two checks). A deploy is **health-gated** when it is not considered
+  finished until the health check passes ([SE1/O6](#o6)).
 - **Rollback.** Putting the previous version back when the new one fails. When the system does it
   by itself because the health check failed, that is an *automatic revert*.
 - **Logs, metrics, alerts.** Logs are lines the app writes about what it did; metrics are numbers it
   counts (requests, errors, response times); an **alert** is a rule that notifies — **pages** — a
-  person when a metric looks wrong ([O4](#o4)).
+  person when a metric looks wrong ([SE1/O4](#o4)).
 - **Incident and runbook.** An *incident* is any time users are being hurt by a failure right now.
   A *runbook* is the written, step-by-step procedure for a known problem — "the database is full: do
-  this" ([O9](#o9)).
+  this" ([SE1/O9](#o9)).
 - **Feature flag.** A setting that turns a feature on or off without a new deploy, so new code can
   ship switched off and be switched off again if it misbehaves.
 
@@ -40,7 +40,7 @@ At class-project scale most of this is a sentence each: a lock file committed, o
 read. The principles below are what those sentences grow into.
 
 If what you ship is a library, firmware, or a file format rather than a service you run, the deploys
-and rollbacks below belong to someone else; [O11](#o11) says what replaces them.
+and rollbacks below belong to someone else; [SE1/O11](#o11) says what replaces them.
 
 ---
 
@@ -119,7 +119,7 @@ Install with the command that refuses drift: `npm ci`, `cargo build --locked`, `
 
 ### <a id="o3"></a>O3. CI runs the command you run, everywhere you ship — and enforces what matters
 
-Continuous integration is the idiot light with a URL ([T2](06-testing.md#t2)). It retires "it works
+Continuous integration is the idiot light with a URL ([SE1/T2](06-testing.md#t2)). It retires "it works
 on my machine" and "we only ever built it on one kind of machine." Two rules make it worth trusting:
 
 - **CI runs the same command you do.** If the workflow's step is `./check.sh` and so is yours, there
@@ -134,7 +134,7 @@ broke.
 
 **A convention CI does not enforce is not a policy.** If a rule matters — formatting, the type
 check, signed commits, the dependency rule, conformance — a check enforces it, so review can spend
-its attention on what no tool can see ([F3](03-feedback.md#f3), [W11](08-work.md#w11)).
+its attention on what no tool can see ([SE1/F3](03-feedback.md#f3), [SE1/W11](08-work.md#w11)).
 
 > **Ask:** "Is CI running the command I run, on the machines I ship to?"
 
@@ -143,14 +143,14 @@ its attention on what no tool can see ([F3](03-feedback.md#f3), [W11](08-work.md
 The second half of reliability is detectable error status. In production that means:
 
 - **Logs that explain decisions**, not just events: *"marked lot 3 stale: age 47 s exceeded 15 s"*,
-  with the inputs that produced it ([D6](05-design.md#d6)). Structured (key–value), so they can be
+  with the inputs that produced it ([SE1/D6](05-design.md#d6)). Structured (key–value), so they can be
   searched. **Never log secrets or personal data** — logs are copied, shipped, and kept far longer
   than the system they came from.
 - **Metrics for the questions you will ask at 3am**: request rate, error rate, latency percentiles,
   saturation (queue depth, pool usage, disk). Sized from the numbers in the requirements
-  ([R7](04-requirements.md#r7)).
+  ([SE1/R7](04-requirements.md#r7)).
 - **Alerts on symptoms users feel** — the page is failing, the counts are stale — rather than on
-  every cause. Each alert names its runbook ([O9](#o9)).
+  every cause. Each alert names its runbook ([SE1/O9](#o9)).
 - **Status that can be trusted.** Two health checks, not one: *liveness* ("this process is running;
   restart me if not") checks only the process itself, while *readiness* ("I can serve requests right
   now") also checks what it depends on. Mixing them up makes a shared database outage restart every
@@ -158,7 +158,7 @@ The second half of reliability is detectable error status. In production that me
   more than a single green light.
 
 An alarm that fires when nothing is wrong is not a cautious alarm; it is a broken one, and its
-brokenness is invisible until the night it was needed ([T4](06-testing.md#t4)). So:
+brokenness is invisible until the night it was needed ([SE1/T4](06-testing.md#t4)). So:
 
 - an injected fault is *tagged* as injected, so it can drive the alert you are testing without
   being counted as a real error or filling the error log;
@@ -174,12 +174,12 @@ watching them fire.
 ### <a id="o5"></a>O5. Handle failure on purpose: timeouts, bounded retries, and a stated fallback
 
 Every call across a network needs a stated answer for absent, late, wrong, and lying
-([R6](04-requirements.md#r6)). In code, that means:
+([SE1/R6](04-requirements.md#r6)). In code, that means:
 
 - **Every remote call has an explicit timeout**, shorter than the caller's own deadline. A missing
   timeout is a decision to wait forever, made by nobody.
 - **Retries are bounded, spaced, and safe.** Retry only operations that are idempotent or carry an
-  idempotency key ([D4](05-design.md#d4)); back off exponentially with random jitter so a thousand
+  idempotency key ([SE1/D4](05-design.md#d4)); back off exponentially with random jitter so a thousand
   callers do not retry in lockstep; cap the total number of retries, so a struggling dependency is
   not finished off by its callers. Retry at one layer only: three attempts at each of three layers
   is twenty-seven calls for one user click.
@@ -203,12 +203,12 @@ the system should be the one to notice.** Health-gated, with automatic revert, w
 timed *before* the maintenance window opens.
 
 Concretely: a staging environment from the same definition as production; the health endpoint polled
-with a timeout as the power-on self test ([T2](06-testing.md#t2)); the integration suite run against
+with a timeout as the power-on self test ([SE1/T2](06-testing.md#t2)); the integration suite run against
 it; promotion only on green. The deploy script is the one you run by hand.
 
 Automatic revert only works if the old code can run against the new data. A schema change that the
 previous version cannot read makes revert impossible — which is why data and interfaces change in
-steps ([O7](#o7)).
+steps ([SE1/O7](#o7)).
 
 > **Ask:** "Has the rollback been run, and how long did it take?"
 
@@ -223,34 +223,34 @@ condition, not a moment. So:
   both and reads either; backfill; switch readers to the new; only then stop writing the old, and
   later remove it. Every step can be rolled back on its own.
 - **Code that reads data must tolerate what it did not write**: ignore unknown fields, give missing
-  ones a default, and never change what an existing field *means* ([D11](05-design.md#d11)).
+  ones a default, and never change what an existing field *means* ([SE1/D11](05-design.md#d11)).
 - **Deprecate on a schedule.** Announce, measure who still uses the old shape, and remove it only
   when that number is zero or the date agreed has passed.
 - **Size migrations against the data.** A migration that scans a table of hundreds of millions of
-  rows may not fit in any window you have ([D12](05-design.md#d12)); measure it on a copy first.
+  rows may not fit in any window you have ([SE1/D12](05-design.md#d12)); measure it on a copy first.
 - **Rehearse.** Run the migration and its rollback on a copy of production-sized data, timed.
 
 > **Ask:** "Can the previous version still run against the data after this change?"
 
 ### <a id="o8"></a>O8. Secure by default
 
-The threat model says who the adversary is ([R8](04-requirements.md#r8)); these defaults make the
+The threat model says who the adversary is ([SE1/R8](04-requirements.md#r8)); these defaults make the
 common attacks expensive before anyone has to be clever:
 
 - **Least privilege.** Each component, key, and account gets only the access its job needs. An
-  administrator's login is not the key that signs releases ([D13](05-design.md#d13)).
+  administrator's login is not the key that signs releases ([SE1/D13](05-design.md#d13)).
 - **Secrets never live in the repository, in prompts, or in logs.** Inject them at run time from a
   secret store; refer to them by name, never by value. A leaked secret is rotated, not deleted.
 - **Authorize every request, on the server.** Hiding a button in the UI is presentation, not
   security; every endpoint checks its own permissions.
-- **Treat every input as possibly lying** ([R6](04-requirements.md#r6)). Validate at the boundary;
+- **Treat every input as possibly lying** ([SE1/R6](04-requirements.md#r6)). Validate at the boundary;
   use parameterized queries and proper escaping, never string-built SQL or HTML.
 - **No insecure fallbacks.** A missing secret or certificate is an exit code, not a default
-  ([T2](06-testing.md#t2)).
-- **Dependencies are trust** ([O2](#o2)). Prefer few, maintained ones; know which you have; update
+  ([SE1/T2](06-testing.md#t2)).
+- **Dependencies are trust** ([SE1/O2](#o2)). Prefer few, maintained ones; know which you have; update
   them on a schedule.
 - **Demonstrate the attacks in your threat model** before trusting the defense
-  ([T8](06-testing.md#t8)).
+  ([SE1/T8](06-testing.md#t8)).
 
 > **Ask:** "What can an attacker reach from here, and have we tried?"
 
@@ -261,8 +261,8 @@ common attacks expensive before anyone has to be clever:
 - **One person leads**, one person communicates, and everyone else works on what the lead asks.
   Status goes out on a schedule, even when the news is "no news."
 - **Runbooks are real only if someone has run them** — the restore, the failover, the rollback —
-  timed, recently, on a copy ([R7](04-requirements.md#r7)).
-- **Afterward, write it up without blame** ([H12](09-people.md#h12)): what happened, how it was
+  timed, recently, on a copy ([SE1/R7](04-requirements.md#r7)).
+- **Afterward, write it up without blame** ([SE1/H12](09-people.md#h12)): what happened, how it was
   detected, how long each phase took, what would have caught it sooner — and change a test, an
   alert, a runbook, or a checklist so nobody pays again. The write-up goes in `FINDINGS`.
 
@@ -273,7 +273,7 @@ common attacks expensive before anyone has to be clever:
 Do not optimize what is not slow: measure first — with a profiler, which shows where the time
 actually goes — and note where it would matter. Judge speed by percentiles (the 95th or 99th), not
 averages: the average hides the slowest requests, and those are the ones users remember. But *do*
-test at the numbers the requirements state ([R7](04-requirements.md#r7)) — a load test at the
+test at the numbers the requirements state ([SE1/R7](04-requirements.md#r7)) — a load test at the
 event-peak rate, with production-sized data — because performance and capacity are requirements, and
 a requirement nobody has tested is a hope. Run the load test again when the data grows, not only
 when the code changes.
@@ -285,23 +285,23 @@ when the code changes.
 Most of this chapter assumes a service you run: you deploy it, watch it, and put the previous version
 back. A library, firmware, an installed app, or a file format has none of that. The deploy is
 someone else's, months later, on hardware you will never see — and what it writes, such as bytes on
-a user's card, stays written after you fix the bug. [O6](#o6)'s health gate and [O7](#o7)'s rollback
+a user's card, stays written after you fix the bug. [SE1/O6](#o6)'s health gate and [SE1/O7](#o7)'s rollback
 have nothing to pull. What replaces them:
 
-- **Every release is a one-way door** ([D11](05-design.md#d11)): reviewed by someone who does not
+- **Every release is a one-way door** ([SE1/D11](05-design.md#d11)): reviewed by someone who does not
   share the assumption, a release checklist run every time, and a version number that tells
   integrators what changed.
 - **Refuse rather than guess.** Every feature an input can announce has a stated answer — refuse,
-  read-only, or read-write ([R6](04-requirements.md#r6)) — and one you have never heard of gets
+  read-only, or read-write ([SE1/R6](04-requirements.md#r6)) — and one you have never heard of gets
   refuse, or read-only if reading provably changes nothing.
 - **Conformance to a format you don't own** is tested against the implementation that owns it
-  ([T11](06-testing.md#t11)).
+  ([SE1/T11](06-testing.md#t11)).
 - **The device is part of the envelope**: code size, memory, stack, energy, and power lost at any
-  instant ([R7](04-requirements.md#r7)). On a device, a cut mid-write is a normal event, not an
+  instant ([SE1/R7](04-requirements.md#r7)). On a device, a cut mid-write is a normal event, not an
   incident, and a test makes it happen.
 - **The signal comes back late, through other people**: bug reports, crash dumps, a downstream
-  project's CI. Make them easy to send and cheap to reproduce ([T9](06-testing.md#t9)); they are
-  your monitoring ([O4](#o4)).
+  project's CI. Make them easy to send and cheap to reproduce ([SE1/T9](06-testing.md#t9)); they are
+  your monitoring ([SE1/O4](#o4)).
 
 > **Ask:** "If this release is wrong, what will already be written that we cannot take back?"
 

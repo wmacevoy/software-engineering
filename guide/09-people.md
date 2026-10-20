@@ -9,11 +9,11 @@ partner and a grader, the ideas still apply at smaller size:
 
 | In this chapter         | On a two-person class project                                                     |
 | ----------------------- | --------------------------------------------------------------------------------- |
-| the client              | the assignment's author — ask them the questions in R3, by email or office hours |
-| roles ([H3](#h3))       | split them two ways, and swap at the halfway point                                |
-| the contract ([H4](#h4)) | the function signatures and data shapes you agree on before splitting the work  |
-| the demo ([H8](#h8))    | showing a running build to someone outside the pair before the due date           |
-| bad news ([H9](#h9))    | telling your partner the day you are stuck, not the night before it is due        |
+| the client              | the assignment's author — ask them the questions in SE1/R3, by email or office hours |
+| roles ([SE1/H3](#h3))       | split them two ways, and swap at the halfway point                                |
+| the contract ([SE1/H4](#h4)) | the function signatures and data shapes you agree on before splitting the work  |
+| the demo ([SE1/H8](#h8))    | showing a running build to someone outside the pair before the due date           |
+| bad news ([SE1/H9](#h9))    | telling your partner the day you are stuck, not the night before it is due        |
 
 ---
 
@@ -25,8 +25,8 @@ partner and a grader, the ideas still apply at smaller size:
   table is also a team structure. Choose the shape on purpose, or the system inherits "who sat
   together."
 - **Knowledge lives in heads, and heads leave.** Anything known to exactly one person has no backup
-  ([U6](02-unknowing.md#u6)); when that person leaves, it is deleted without warning.
-- **The team's fear sets its practice** ([P3](01-purpose.md#p3), [W7](08-work.md#w7)).
+  ([SE1/U6](02-unknowing.md#u6)); when that person leaves, it is deleted without warning.
+- **The team's fear sets its practice** ([SE1/P3](01-purpose.md#p3), [SE1/W7](08-work.md#w7)).
 - **Coordination cost grows faster than headcount.** Four people are six pairs; six are fifteen.
   Every pair needs an interface, and the ones nobody wrote down get negotiated in meetings. That is
   why adding people to a late project makes it later, and why the fix is a smaller, written
@@ -40,7 +40,7 @@ change, assumed by everything after. Make it on purpose and write it down.
 
 ### <a id="h2"></a>H2. A teammate fails the way an input fails
 
-Every input needs an answer for absent, late, wrong, and lying ([R6](04-requirements.md#r6)). A
+Every input needs an answer for absent, late, wrong, and lying ([SE1/R6](04-requirements.md#r6)). A
 teammate is an input, and a plan that works only when everyone is present, on time, right, and
 candid is not finished.
 
@@ -68,12 +68,12 @@ iteration so knowledge spreads.
 | **Toolsmith** | tests, CI, the one-command reset, the build           | "works on my machine"; "we can't tell whether it is broken"         |
 
 - **Architect** holds the whole design and mostly says no, especially to good ideas
-  ([D9](05-design.md#d9)). A new noun is an event that needs the Architect's decision.
+  ([SE1/D9](05-design.md#d9)). A new noun is an event that needs the Architect's decision.
 - **Liaison** is one voice each way between the team and the client. What the client says goes
   through this role into the requirements, or it did not happen.
 - **Planner** keeps the cursor. Nothing enters the queue without a sentence saying what would make
   it done.
-- **Toolsmith** owns the cost of a test ([F2](03-feedback.md#f2)). When something is hard to test,
+- **Toolsmith** owns the cost of a test ([SE1/F2](03-feedback.md#f2)). When something is hard to test,
   the Toolsmith takes that to the Architect as design information.
 
 Rotation costs a hand-off each iteration. The hand-off is where you discover which knowledge was
@@ -82,7 +82,7 @@ living in one head. That is not the cost of rotation; it is the point.
 ### <a id="h4"></a>H4. The interface between two people is a contract
 
 The interface between two developers is the same object as the interface between two modules
-([D10](05-design.md#d10)). "I'll build the collector, you build the driver page" names two
+([SE1/D10](05-design.md#d10)). "I'll build the collector, you build the driver page" names two
 components and no seam, and schedules an argument for week nine. Before splitting work:
 
 1. **Name the seam** — the call between the pieces, not the pieces.
@@ -147,7 +147,7 @@ closing it is the team's job, because only the team knows what the assumptions a
 in the room: integrators, downstream projects, whoever opens the file on another system. Name who
 stands in for them: the issue tracker, a downstream project's maintainer, a second maintainer who did
 not write the requirement. Send them the requirements with the same sentence, *tell us what is wrong
-with it*, and treat their bug reports as the read-back ([H6](#h6)): each one is a K3 you held about
+with it*, and treat their bug reports as the read-back ([SE1/H6](#h6)): each one is a K3 you held about
 them.
 
 ### <a id="h6"></a>H6. Read your assumptions to the client
@@ -168,7 +168,7 @@ client answers most in two seconds, and one makes them stop and say "well, excep
 ### <a id="h7"></a>H7. The first conversation: pain before solution, people before features, numbers before nouns
 
 Ninety minutes, in week one, at the site if there is one. The questions are the ones in
-[R3](04-requirements.md#r3); this is the order to ask them in:
+[SE1/R3](04-requirements.md#r3); this is the order to ask them in:
 
 1. **The pain** — what happens today when it goes wrong, who gets the call, what they say.
 2. **The census** — who are all the kinds of people this touches, and is any treated differently?
@@ -176,7 +176,7 @@ Ninety minutes, in week one, at the site if there is one. The questions are the 
 4. **The numbers** — how many, in two years; how fast at the peak; how long it may be down.
 5. **The edges** — what we are not building; what data about people it keeps; who is affected who is
    not in the room.
-6. **The assumptions**, read back as questions ([H6](#h6)).
+6. **The assumptions**, read back as questions ([SE1/H6](#h6)).
 
 The census is the one teams skip. It is not a features question, and its answers arrive as nouns
 you have never heard — *season-ticket holders, the VIP gate, the tow contractor.* The client
@@ -221,7 +221,7 @@ coming.
 Four moves, in order. Most arguments end at the first.
 
 1. **Is it a category dispute?** *What requirement would have to disappear for this complexity to go
-   away?* ([D8](05-design.md#d8))
+   away?* ([SE1/D8](05-design.md#d8))
 2. **Set the intensity by reversibility.** A one-way door gets the whole team and a written
    decision. Everything else is decided by whoever holds the relevant role, with the reason written
    down and a revisit date.
@@ -286,7 +286,7 @@ design that was not expecting it:
 For one space in five hundred.
 
 **The first casualty is a word.** `available` now means *physically free* to the sensor and *free
-and not held* to a driver — one word, two things ([D9](05-design.md#d9)). Before any code moves, the
+and not held* to a driver — one word, two things ([SE1/D9](05-design.md#d9)). Before any code moves, the
 Architect settles the vocabulary: `available` keeps its meaning; a **zone** is part of a lot with a
 class and a capacity; a **hold** is a claim on one space in a zone, by a **holder**, for a bounded
 time, and is `held`, `arrived`, `expired`, or `released`. Three new nouns and one protected old one.
@@ -310,7 +310,7 @@ point where a K4 that could have been chosen became a K3 that has to be excavate
 
 **The trap: "it's just a flag."** Someone — or an agent, in five minutes — proposes an `is_vip`
 column, a `reservations` table, and a subtraction in the shared query. It runs. The tests pass.
-Nothing collapses, because nothing in software has mass ([F4](03-feedback.md#f4)). Hidden in it:
+Nothing collapses, because nothing in software has mass ([SE1/F4](03-feedback.md#f4)). Hidden in it:
 `available` silently means two things; a retry double-books; the 2am migration blocks every hold and
 nobody said whether that is allowed; the membership list's failure modes are whatever the HTTP
 library does; the repeated hour expires holds early or late depending on a string comparison.
@@ -334,7 +334,7 @@ library does; the repeated hour expires holds early or late depending on a strin
 4. **Version the requirements** — `v2`, with `Non-goals` changed and a reason on the line.
 5. **Record the finding** — *VIP holds found at the week-four demo; findable in week one by the
    census question or the site walk; both are now on the intake list.*
-6. **Fix the process, not the person** ([H12](09-people.md#h12)).
+6. **Fix the process, not the person** ([SE1/H12](09-people.md#h12)).
 7. **Re-plan with slack, and do not add a person.** A cross-cutting change is coherence work, and
    coherence does not parallelize.
 8. **Ask what became deletable.**

@@ -30,7 +30,7 @@ is a family, and each member retires a different fear:
 | Space          | Is it taking too much room?                     | "it will fill up"                                                  |
 
 If you cannot say which row a test belongs to, find the row or delete the test
-([P4](01-purpose.md#p4)). And watch it fail once ([T3](06-testing.md#t3)).
+([SE1/P4](01-purpose.md#p4)). And watch it fail once ([SE1/T3](06-testing.md#t3)).
 
 > **Ask:** "Which fear does this test retire, and have I ever seen it fail?"
 
@@ -56,7 +56,7 @@ are OK, or stop.* The larger-system failure is the opposite: start anyway, log a
 wrong answers until someone reads the log. A server that falls back to `secret = "dev-secret"` when
 the real secret is missing is a self test that lets you drive off with the hood open — and the exact
 shape of every "temporary" default that reaches production. **A missing precondition is an exit
-code, not a warning**, unless someone has written down why not ([O8](07-operating.md#o8)).
+code, not a warning**, unless someone has written down why not ([SE1/O8](07-operating.md#o8)).
 
 **Sanity, with a safe state.** Invariants checked *while the system runs*, not only in the suite,
 with a stated and tested move to a safe state when one is violated: restart, fail over, serve the
@@ -74,7 +74,7 @@ a green checkmark.
 Tests that pin down behavior that already exists — before a refactor, or for legacy code — cannot
 fail "without the change," because there is no change. Break the code on purpose instead (flip a
 comparison, delete a line), watch the test go red, and restore it. Mutation testing automates
-exactly this ([T10](#t10)).
+exactly this ([SE1/T10](#t10)).
 
 The same holds for the **instruments** around the tests — sanitizers, coverage, linters, warning
 flags, type checkers. Each is a test of the tests, and each can be switched off without a sound: a
@@ -90,16 +90,16 @@ prove the flag reached the compiler.
 
 Flaky tests train a team to ignore red, and after that the suite that would have caught the real
 failure has been disarmed. Unseeded randomness, the wall clock, shared mutable state, and fixed
-ports are banned from tests for this reason, not for tidiness ([T5](#t5)). Fix or quarantine a flaky
+ports are banned from tests for this reason, not for tidiness ([SE1/T5](#t5)). Fix or quarantine a flaky
 test the day it is found; a suite with known-flaky tests is a suite nobody reads.
 
-The same holds for production alarms ([O4](07-operating.md#o4)).
+The same holds for production alarms ([SE1/O4](07-operating.md#o4)).
 
 > **Ask:** "When this goes red, does everyone believe it?"
 
 ### <a id="t5"></a>T5. Repeatability is a property of the state a test touches
 
-A flaky test trains a team to ignore red ([T4](#t4)). Repeatability is not a property of the test;
+A flaky test trains a team to ignore red ([SE1/T4](#t4)). Repeatability is not a property of the test;
 it is a property of **the state the test touches**, and that state has exactly three scopes:
 
 | Scope       | What it means                                         | Repeatable?                                                    | Examples |
@@ -114,7 +114,7 @@ machine, where you cannot see why. Everything you have heard about flaky tests i
 
 Fixes, in order of preference:
 
-1. **Make the state local.** Pull the logic out of the state ([D7](05-design.md#d7)) and pass the
+1. **Make the state local.** Pull the logic out of the state ([SE1/D7](05-design.md#d7)) and pass the
    dependency in.
 2. **Shard it.** Give each worker a slice with a key it owns: its own database schema, its own
    records, its own mock sensor. Two tests that share one mock sensor and each tell it to misbehave
@@ -138,7 +138,7 @@ hide in plain sight:
 You cannot test input handling without controlling the input, and the code that reads the real input
 is exactly the code you want to test. The answer is a mock for every input that **misbehaves on
 request** — a sensor that can be told to be slow, down, stuck, wrong, flapping, or skewed — plus a
-design that keeps the reading separate from the deciding ([D7](05-design.md#d7)).
+design that keeps the reading separate from the deciding ([SE1/D7](05-design.md#d7)).
 
 A mock is a K4: *the real thing behaves like this.* It is false the day you write it, because you
 wrote it from your idea of the real thing, and the real thing has behaviors you have not imagined
@@ -148,7 +148,7 @@ yet. Two rules keep it honest:
   specification, checkable from outside, so swapping them is an event with a result rather than a
   discovery.
 - **Integrate continuously.** A mock converts a scheduling risk into an integration risk
-  ([W5](08-work.md#w5)). Mock everything and integrate at the end, and every piece arrives on time
+  ([SE1/W5](08-work.md#w5)). Mock everything and integrate at the end, and every piece arrives on time
   into a system that does not work.
 
 > **Ask:** "Does the mock fail the way the real thing fails — and does one test check both?"
@@ -156,7 +156,7 @@ yet. Two rules keep it honest:
 ### <a id="t7"></a>T7. Test user interfaces by pulling the logic out first
 
 UI tests fail for one reason more than any other: they are global-state tests in disguise — a shared
-server, a shared browser, the real clock, animations of variable length. Every fix in [T5](#t5)
+server, a shared browser, the real clock, animations of variable length. Every fix in [SE1/T5](#t5)
 applies, and one applies first: **pull the logic out of the UI.** If the server derives a value, the
 value can be tested without a browser. If translation is a function `t(key, params)` that looks the
 text up in a table, it is a pure function; test it as one.
@@ -180,7 +180,7 @@ Planning every detail is a waste; so is charging into the woods. The map is the 
 ones that would pass when the thing works, and they tell you what the thing is — including what it
 does not have to be. For adversaries, the same rule: **for each attack in your threat model, write
 the demonstration first and do not trust the defense until you have watched it refuse**, because a
-defense nobody has seen refuse an attack is a K3 with a code review ([U3](02-unknowing.md#u3)).
+defense nobody has seen refuse an attack is a K3 with a code review ([SE1/U3](02-unknowing.md#u3)).
 Where an attack cannot be performed safely — stealing a real key, flooding a live service — perform
 it against a copy or a simulation, and say which.
 
@@ -220,9 +220,9 @@ wrong. Three techniques check the rest, and each is cheap to start:
   sorting once," "a reading parsed and re-serialized is unchanged," "`available` is never negative"
   — and let a library generate hundreds of inputs, shrinking any failure to the smallest case.
 - **Fuzzing** feeds malformed and hostile input to a parser or endpoint until something crashes:
-  the *wrong* and *lying* cases of [R6](04-requirements.md#r6), automated.
+  the *wrong* and *lying* cases of [SE1/R6](04-requirements.md#r6), automated.
 - **Mutation testing** makes small changes to the code — flips a `<`, deletes a line — and reports
-  every change the suite did *not* catch. It is [T3](#t3) at scale: it finds the tests that cannot
+  every change the suite did *not* catch. It is [SE1/T3](#t3) at scale: it finds the tests that cannot
   fail.
 
 > **Ask:** "What rule must hold for every input — and does a test check it?"
@@ -239,11 +239,11 @@ with theirs and read with yours; compare. For a file-system library: create an i
 platform's own checker on it, then let the platform's tools change it and read it back. Every
 disagreement is either your bug or a behavior the specification never mentioned — and the second is
 a `FINDINGS` entry, because it is the K2 the document could not tell you
-([U2](02-unknowing.md#u2)).
+([SE1/U2](02-unknowing.md#u2)).
 
-Use the oracle as a black box: run it, pin its version ([O2](07-operating.md#o2)), and test against
+Use the oracle as a black box: run it, pin its version ([SE1/O2](07-operating.md#o2)), and test against
 the versions your users actually have. Do not copy it, and on a clean-room project do not read its
-source ([R8](04-requirements.md#r8)). Fed generated inputs ([T10](#t10)), it finds cases neither you
+source ([SE1/R8](04-requirements.md#r8)). Fed generated inputs ([SE1/T10](#t10)), it finds cases neither you
 nor the specification thought of.
 
 > **Ask:** "Who decides whether this output is correct — and does a test ask them?"

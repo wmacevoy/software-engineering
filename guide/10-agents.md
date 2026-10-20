@@ -17,7 +17,7 @@ specification, verification, review, ownership. The bottleneck is no longer typi
 ### <a id="a2"></a>A2. An agent is a K3 factory; never let confidence substitute for a run
 
 Fluent, confident, plausible, and occasionally wrong is the precise shape of erroneous certainty,
-arriving faster than anyone can check it ([U3](02-unknowing.md#u3)). That is not an argument against
+arriving faster than anyone can check it ([SE1/U3](02-unknowing.md#u3)). That is not an argument against
 agents. It is an argument about where to spend the time they save.
 
 "This should work" is K3 by construction. The agent runs the check; the human runs it again before
@@ -29,7 +29,7 @@ run and one to reset.
 ### <a id="a3"></a>A3. An agent arrives knowing nothing and leaves remembering nothing
 
 Every session starts from the repository. A constraint that lives only in a head is K2 to the agent
-([U6](02-unknowing.md#u6)), and it will hand you a clean, tested, plausible violation of that
+([SE1/U6](02-unknowing.md#u6)), and it will hand you a clean, tested, plausible violation of that
 constraint faster than you can read the diff. The hallway correction — "no, not like that" — is
 gone.
 
@@ -73,14 +73,14 @@ code cannot say *why*, and everything durable in the working set, where both kin
 ### <a id="a5"></a>A5. Spend the speed on lowering the cost of testing
 
 Fixtures, harnesses, seed data, fault scripts, conformance checks, the boring second and third test
-case. That work multiplies against every future change ([F2](03-feedback.md#f2)). More features do
+case. That work multiplies against every future change ([SE1/F2](03-feedback.md#f2)). More features do
 not.
 
 ### <a id="a6"></a>A6. Review capacity is the bottleneck
 
 An agent will happily produce three hundred lines. A diff you cannot review is a diff you cannot
 sign. Ask for the smallest change that does the job, one concern at a time, with nothing bundled in
-that was not asked for ([W11](08-work.md#w11)). Make rejection cheap.
+that was not asked for ([SE1/W11](08-work.md#w11)). Make rejection cheap.
 
 ### <a id="a7"></a>A7. Delegation is not abdication
 
@@ -91,23 +91,23 @@ defend it. **Working code nobody can explain is a liability, not an asset.**
   reformatted a file nobody asked about, or asserted nothing.
 - Credit the agent and keep the authority: a `Co-Authored-By:` line at the end of the commit message
   (a *trailer*) says who drafted it; the human's signature says *I have read this and I stand behind
-  it.* Both are true, and they are different claims ([D13](05-design.md#d13)).
+  it.* Both are true, and they are different claims ([SE1/D13](05-design.md#d13)).
 - The agent does not commit, push, or publish unless asked. A push is a publication.
 
 ### <a id="a8"></a>A8. Agents move the human up the waterfall
 
 Agents are fastest at the bottom of the waterfall — code, tests, fixtures, migrations. At the top,
 where the work is conversations with people, laws, and a client's sense of proportion, they can
-search and draft ([A9](#a9)) but cannot decide. They are very good at accidental complexity and much
+search and draft ([SE1/A9](#a9)) but cannot decide. They are very good at accidental complexity and much
 less help with essential complexity, because essential complexity is *what the problem is*
-([D8](05-design.md#d8)). So the speedup is real and concentrated in the part that was never the hard
+([SE1/D8](05-design.md#d8)). So the speedup is real and concentrated in the part that was never the hard
 part.
 
 That moves the human *up*: to requirements, vocabulary, one-way doors, and coherence. An agent
 produces a locally reasonable design every session and remembers no conventions between them, so
-**humans own the structure; agents author and advise** ([D9](05-design.md#d9)). The requirements
+**humans own the structure; agents author and advise** ([SE1/D9](05-design.md#d9)). The requirements
 document is the railing that keeps a machine-speed descent from becoming a machine-speed fall
-([W8](08-work.md#w8)).
+([SE1/W8](08-work.md#w8)).
 
 The five-minute flag is the canonical failure: asked for a feature that touches a scope decision, an
 agent adds a boolean column and a table and is done before anyone has opened the requirements ([case
@@ -149,11 +149,11 @@ outcome.
 | -------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------------ |
 | it asserts something false about the code                | it did not open the file              | require it to show the line                                        |
 | the diff touches files nobody named                      | scope creep, or reformatting          | reject; ask again with "only these files"                          |
-| it added a dependency                                    | fluency                               | treat as a proposal; usually decline ([D12](05-design.md#d12))         |
-| it "fixed" a failing test by weakening the assertion     | Goodhart on green ([F5](03-feedback.md#f5)) | restore the assertion; the test was right                       |
-| it changed a requirement to match the code               | a design change in costume ([R5](04-requirements.md#r5)) | revert; a wrong requirement is a conversation with the client |
+| it added a dependency                                    | fluency                               | treat as a proposal; usually decline ([SE1/D12](05-design.md#d12))         |
+| it "fixed" a failing test by weakening the assertion     | Goodhart on green ([SE1/F5](03-feedback.md#f5)) | restore the assertion; the test was right                       |
+| it changed a requirement to match the code               | a design change in costume ([SE1/R5](04-requirements.md#r5)) | revert; a wrong requirement is a conversation with the client |
 | the next session does not know what the last one decided | nothing was written down              | the working set; `FINDINGS`; a line in the repository guide        |
-| it designed a schema before there was a requirement      | the waterfall, at machine speed       | stop; the railing ([W8](08-work.md#w8))                               |
+| it designed a schema before there was a requirement      | the waterfall, at machine speed       | stop; the railing ([SE1/W8](08-work.md#w8))                               |
 | a secret appeared in a prompt                            | the prompt goes to a third party      | rotate the secret; refer to secrets by name, never by value        |
 
 ---

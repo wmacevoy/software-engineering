@@ -32,7 +32,7 @@ category to a cheaper one — before it charges full price:
 | ---- | ------ | ----------------------------------------------------------------------------------------------------------- |
 | K0   | stays  | Write it down so it stays known. Tests are executable knowledge, and unlike prose they complain when they go stale. |
 | K1   | K0     | Spikes, prototypes, reading the source, asking the client. The only category you can simply decide to spend time on. |
-| K2   | K1     | Exposure to reality, early and repeatedly: integrate, deploy, demo, inject faults, watch real use. You cannot search for these; you can only arrange to be surprised sooner and more cheaply — and asking someone who knows a domain you don't is the cheapest exposure there is ([R8](04-requirements.md#r8)). |
+| K2   | K1     | Exposure to reality, early and repeatedly: integrate, deploy, demo, inject faults, watch real use. You cannot search for these; you can only arrange to be surprised sooner and more cheaply — and asking someone who knows a domain you don't is the cheapest exposure there is ([SE1/R8](04-requirements.md#r8)). |
 | K3   | K0     | Evidence: a test that could have failed, an output you actually looked at, a signature you checked, a second person who does not share your assumption. |
 | K4   | chosen | Name the falsehood, write down where it is load-bearing, know the blast radius when it comes due.          |
 
@@ -51,7 +51,7 @@ say what needs testing: you cannot see past your own design, and a reviewer, the
 or an attacker can.
 
 The same reasoning says an attack should be *demonstrated before its defense is trusted*
-([T8](06-testing.md#t8)). "Users can't see each other's orders" is K3 until you have logged in as
+([SE1/T8](06-testing.md#t8)). "Users can't see each other's orders" is K3 until you have logged in as
 one user, requested another user's order by ID, and watched the request be refused. The same holds
 for any check that guards against misuse — a signature check, an input validator, a permission rule:
 you have not seen it work until you have seen it say no.
@@ -104,8 +104,8 @@ something you have no idea exists.
 
 It used to be a survivable liability: the person holding the constraint sat nearby, saw the change,
 and said "no, not like that." Teammates leave, get sick, and forget. Agents were never in the room
-([A3](10-agents.md#a3)). So the state of a project has to be **observable from where every party
-stands**, in the repository, versioned with the code ([W10](08-work.md#w10),
+([SE1/A3](10-agents.md#a3)). So the state of a project has to be **observable from where every party
+stands**, in the repository, versioned with the code ([SE1/W10](08-work.md#w10),
 [templates](../templates/)).
 
 > **Ask:** "If the person who knows this vanished on Friday, what could the rest of us not do on

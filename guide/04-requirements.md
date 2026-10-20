@@ -8,7 +8,7 @@ Two words used precisely in this chapter:
 - **Observable** — checkable from outside, without reading the source. "The page shows the age of
   any count older than fifteen seconds" is observable. "The code is clean" is not.
 - **Requirement vs. design** — a requirement is what must be observably true; a design is the
-  mechanism chosen to make it true ([R5](04-requirements.md#r5)).
+  mechanism chosen to make it true ([SE1/R5](04-requirements.md#r5)).
 
 ---
 
@@ -64,10 +64,10 @@ None of these are about features. All of them get answers nobody offers unprompt
 | "Who are all the kinds of people this touches? Is any treated differently?" | A census of users. Answers arrive as nouns you have never heard.            |
 | "How many? And in two years?"                                | "A city" is a mood. A number with a horizon is a design input.              |
 | "What are we explicitly *not* building?"                     | The cheapest scope decision there is; it ends the same argument permanently.|
-| "What if this input is absent? late? wrong? lying?"          | Four cases every consumer inherits by accident if nobody asks ([R6](04-requirements.md#r6)). |
+| "What if this input is absent? late? wrong? lying?"          | Four cases every consumer inherits by accident if nobody asks ([SE1/R6](04-requirements.md#r6)). |
 | "What does a bad day look like? Show me the clipboard."      | Surfaces recovery, workarounds, and the special cases.                      |
 | "How long may it be down, and when?"                         | Unstated, everyone quietly assumes 100% — the most expensive requirement you can accidentally accept. |
-| "What data about people does this keep, and who may see it?" | The question with a regulator attached ([R8](04-requirements.md#r8)). |
+| "What data about people does this keep, and who may see it?" | The question with a regulator attached ([SE1/R8](04-requirements.md#r8)). |
 | "Who is affected who isn't in this room?"                    | Bystanders, the surveilled, the person shown the wrong number.              |
 | "What would you do differently with this answer?"            | Kills features fast. If nothing changes, nobody needs it.                   |
 
@@ -178,7 +178,7 @@ easier to agree to and mean nothing — because it would not say *when* the down
 
 **Resources** belong in the envelope wherever they are finite — code size, memory, stack, storage,
 energy — each as a number with a test that measures it. An inherited figure nobody has measured is a
-K3 ([U3](02-unknowing.md#u3)). And where power or a connection can vanish at any instant,
+K3 ([SE1/U3](02-unknowing.md#u3)). And where power or a connection can vanish at any instant,
 **interruption** is a normal event, not an incident: say what must still hold after a cut at any
 point — "the data on disk is the old version or the new one, never a mix" — and test it by cutting.
 
@@ -198,7 +198,7 @@ them a mistake rather than a trade-off:
 - **Violations are irreversible.** Leaked data cannot be unleaked. A person harmed is not fixed by a
   patch.
 
-Left out, they are where a project keeps its most expensive unknowns ([U1](02-unknowing.md#u1)):
+Left out, they are where a project keeps its most expensive unknowns ([SE1/U1](02-unknowing.md#u1)):
 
 - **K2** — the rule nobody on the team had heard of: a privacy law, an accessibility requirement, a
   license term on a dependency.
@@ -206,7 +206,7 @@ Left out, they are where a project keeps its most expensive unknowns ([U1](02-un
   that," "this code is ours to use" — while the logs hold plates, someone tries it, and the snippet
   came from a GPL file.
 
-The usual cure for K2, exposure to reality ([U2](02-unknowing.md#u2)), arrives here as the breach or
+The usual cure for K2, exposure to reality ([SE1/U2](02-unknowing.md#u2)), arrives here as the breach or
 the lawsuit. So do not wait to be surprised: ask, early, someone who knows the rule — the client, a
 lawyer, a security reviewer, the people the data is about — and turn each into a K1 with an answer
 written down.
@@ -249,7 +249,7 @@ week nine.
 A superseded requirement is not deleted knowledge. Editing in place destroys the before-picture, and
 the diff between `v1` and `v2` is the most useful conversation you will ever have with the client.
 Once a second party depends on a statement, changing it is a version, not an edit — the same rule as
-a published interface ([D11](05-design.md#d11)).
+a published interface ([SE1/D11](05-design.md#d11)).
 
 ### <a id="r11"></a>R11. An API is the set of observables your acceptance tests need
 
@@ -267,7 +267,7 @@ user story → acceptance criteria → acceptance test → observables the test 
 - **Criteria:** the page shows a count per lot; a count older than the staleness threshold is shown
   with its age and never as current; a lot with no trustworthy data reads as *unknown*, not missing.
 - **Acceptance test**, written to fail today (the sensor's *control plane* is a test-only way to
-  tell it to misbehave — see [F2](03-feedback.md#f2)):
+  tell it to misbehave — see [SE1/F2](03-feedback.md#f2)):
 
   ```
   set lot 3's sensor to "stuck"        # answers 200 OK with a frozen timestamp
@@ -283,7 +283,7 @@ user story → acceptance criteria → acceptance test → observables the test 
 Design the tests and the API falls out. Design the API first and you ship fields nobody can test and
 miss the ones somebody needed. A harder story makes the point sharper: *hold a space for thirty
 minutes* forces an expiry time, an idempotency key (so a retried request does not take a second
-space — [D4](05-design.md#d4)), and a race decided inside the database — the
+space — [SE1/D4](05-design.md#d4)), and a race decided inside the database — the
 test for "exactly one of two simultaneous requests wins" chooses the design.
 
 Two consequences:
@@ -294,10 +294,10 @@ Two consequences:
 Name each test by the requirement it covers. Then a test run stops being a count of passes and
 becomes a scoreboard — *these stories are green, that one turned green today* — which a client can
 read without reading code. It is honest only while every green could have been red
-([F5](03-feedback.md#f5)).
+([SE1/F5](03-feedback.md#f5)).
 
 **The trace lives in the test names, not in the requirements.** A requirements document that lists
-its tests turns every new test into an edit to a versioned document ([R10](#r10)). The test carries
+its tests turns every new test into an edit to a versioned document ([SE1/R10](#r10)). The test carries
 the requirement ID instead, so a search for `UI-1` across the tests is the trace and the test run is
 the status. A *must* with no test yet is a `QUEUE` item, not an empty column.
 

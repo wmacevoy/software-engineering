@@ -74,7 +74,7 @@ Two consequences, and both are load-bearing:
 - **A practice that reduces no one's anxiety will be abandoned under pressure** — and should be.
   Ceremony that costs time and returns no relief gets dropped in week ten. If you cannot name the
   fear a practice retires, find it or stop doing it. Count the fears of people who are not in the
-  room — users, bystanders, the people whose data you hold ([R8](04-requirements.md#r8)) — not just
+  room — users, bystanders, the people whose data you hold ([SE1/R8](04-requirements.md#r8)) — not just
   the team's.
 - **A practice that reduces anxiety without reducing risk is worse than nothing.** A backup nobody
   has restored. A test suite that cannot fail. A green dashboard measuring the wrong thing. These
@@ -106,11 +106,11 @@ from them:
 
 - **Tests are cheap.** You cannot build a second bridge to find out whether the first one holds. You
   can run a suite a thousand times before lunch. Nearly every modern practice is downstream of that
-  ([F1](03-feedback.md#f1)).
+  ([SE1/F1](03-feedback.md#f1)).
 - **Software has no mass.** Nothing sags or cracks to tell you it is wrong, so every signal a
-  physical structure gives away for free has to be built on purpose ([F4](03-feedback.md#f4)). And
+  physical structure gives away for free has to be built on purpose ([SE1/F4](03-feedback.md#f4)). And
   nothing occupies the space another part will need, so most schedule dependencies are optional
-  ([W5](08-work.md#w5)).
+  ([SE1/W5](08-work.md#w5)).
 
 The two pull in opposite directions. Cheap tests make certainty affordable; the absence of mass
 makes it necessary to go buy some, because a bad design will hold itself up indefinitely, at full

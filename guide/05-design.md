@@ -168,7 +168,7 @@ function staleLotsNow(store) {                               // the only line th
 ```
 
 (`receivedMs` is the receiver's monotonic clock when the reading arrived, and `heldMs` is the age the
-sender reported for it: elapsed times only, as [D5](#d5) requires.)
+sender reported for it: elapsed times only, as [SE1/D5](#d5) requires.)
 
 The split costs essentially nothing at run time — it is the same work, arranged differently — and
 the pure half can now be tested against numbers you chose.
@@ -201,7 +201,7 @@ nobody.
 
 If you can name one, the complexity is essential, and the conversation is with the client about
 whether that requirement is worth its price. If the honest answer is "none," it is accidental, and
-it must justify its carrying cost ([D12](05-design.md#d12)). Most design arguments are **category
+it must justify its carrying cost ([SE1/D12](05-design.md#d12)). Most design arguments are **category
 disputes conducted as taste disputes** — "this is too complicated" versus "the problem is
 complicated" — and the question turns an argument with no end into a question with an answer.
 
@@ -248,9 +248,9 @@ is fine when it is written down with its reason.
 
 **Somebody has to hold it.** Coherence lives *between* the parts, so no amount of careful local work
 produces it and no test checks it. One person holds the whole shape, and most of that job is saying
-no — especially to good ideas ([H3](09-people.md#h3)). This is also why agents author and humans own
+no — especially to good ideas ([SE1/H3](09-people.md#h3)). This is also why agents author and humans own
 the structure: each agent session sees a part, and ten locally reasonable designs compose into
-something nobody can hold ([A8](10-agents.md#a8)).
+something nobody can hold ([SE1/A8](10-agents.md#a8)).
 
 > **Ask:** "Is that the same thing we called something else on Tuesday?"
 
@@ -278,7 +278,7 @@ Abstractions fail the same way every time — something true inside escapes outs
 | Trust    | Valid signature, plausible data, clock off by minutes: everything verifies, and the conclusion is wrong. |
 
 **A contract that does not state how it fails has not stated anything**
-([R6](04-requirements.md#r6)).
+([SE1/R6](04-requirements.md#r6)).
 
 What locality justifies:
 
@@ -287,7 +287,7 @@ What locality justifies:
   script that fails the build on a violation keeps it true; without one, folder boundaries become
   decoration within a month.
 - **A contract that exists before its consumers**, so two people can build both sides without
-  talking ([W5](08-work.md#w5)).
+  talking ([SE1/W5](08-work.md#w5)).
 - **Conformance checkable from outside**: anything claiming to be a sensor can be verified against
   the specification without reading its source.
 - **Choosing a library over a service on purpose** when a network hop would add a timeout and an
@@ -299,7 +299,7 @@ What locality justifies:
 
 Renaming a variable is free to undo. A data format with data in it, a published URL, a distributed
 key, an artifact someone installed — those are **one-way doors**, and they get careful, front-loaded
-work ([W4](08-work.md#w4) says how to choose). Most arguments in software are conducted at the wrong
+work ([SE1/W4](08-work.md#w4) says how to choose). Most arguments in software are conducted at the wrong
 intensity for their reversibility. On a class project the one-way door is usually the database:
 renaming a column is free until you have entered real data, and then it is a migration.
 
@@ -328,7 +328,7 @@ None of it appears on a schedule. Most of the money in this industry goes there.
 - **Sunk cost is sunk.** The only live question is what code costs *from here*.
 - **Declared carry is fine.** Technical debt is carry you took on knowingly, to be repaid. Unknowing
   carry is not debt; it is just cost. A `Deferred` list makes absence a decision instead of a gap
-  ([R9](04-requirements.md#r9)).
+  ([SE1/R9](04-requirements.md#r9)).
 
 **Data is the heaviest thing you own.** Code can be rewritten in an afternoon; data cannot. Twenty
 readings a second is 630 million rows a year — and a migration that scans that table may no longer
@@ -352,7 +352,7 @@ matching public key can check that the message came from the key's holder and wa
 Provenance turns "I'm sure this came from the sensor" — a feeling — into "this is signed by a key in
 the registry, and here is the check" — evidence. Note what it proves: *who* said it and that it was
 not altered, not that it is *true*. A correctly signed reading from a sensor with a skewed clock is
-still wrong ([D10](#d10)), so provenance is necessary for trust, not sufficient. Keep identities
+still wrong ([SE1/D10](#d10)), so provenance is necessary for trust, not sufficient. Keep identities
 distinct — the device, the human caller, the key that signs a release, the artifact itself — so that
 stealing one does not grant the others. An administrator's password is typed often and stored in
 many places; if it could also sign software releases, anyone who phished it could ship malware to
@@ -360,7 +360,7 @@ every device.
 
 On the human side, a signature is a person saying *I have read this and I stand behind it.* That
 cannot be delegated, and capable agents make it more important rather than less
-([A7](10-agents.md#a7)).
+([SE1/A7](10-agents.md#a7)).
 
 > **Ask:** "Who said this, and how would I check?"
 

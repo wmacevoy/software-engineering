@@ -2,15 +2,15 @@
 
 What must be observably true, and what is not being built. Changes only with the client; a change is
 a new version (`REQUIREMENTS_v2.md`), never an edit to this one. See
-[R1–R11](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md).
+[SE1/R1–R11](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md).
 
 Client (the one voice who can decide — or, with none in the room, the named proxy for the users;
-see [H5](https://github.com/wmacevoy/software-engineering/blob/main/guide/09-people.md#h5)): _name_ · Date sent: _yyyy-mm-dd_ · *Tell us what is wrong
+see [SE1/H5](https://github.com/wmacevoy/software-engineering/blob/main/guide/09-people.md#h5)): _name_ · Date sent: _yyyy-mm-dd_ · *Tell us what is wrong
 with it.*
 
 ## Glossary
 
-Ten to thirty terms, one line each. A new noun is a decision ([D9](https://github.com/wmacevoy/software-engineering/blob/main/guide/05-design.md#d9)).
+Ten to thirty terms, one line each. A new noun is a decision ([SE1/D9](https://github.com/wmacevoy/software-engineering/blob/main/guide/05-design.md#d9)).
 
 | Term   | Meaning |
 | ------ | ------- |
@@ -27,10 +27,10 @@ Every kind of person, including those not in the room, and anyone treated differ
 ## Requirements
 
 Numbered, observable, with numbers. Prefix by area with at least two letters and a hyphen
-(`UI-1`, `COL-1`, …) so they are never confused with the guide's principle IDs (`U1`, `R6`).
+(`UI-1`, `COL-1`, …) so they are never confused with the guide's principle IDs (`SE1/U1`, `SE1/R6`).
 Mark invented numbers *(invented)*, and requirements read off existing code rather than agreed with
-the client *(inferred)* ([W12](https://github.com/wmacevoy/software-engineering/blob/main/guide/08-work.md#w12)). Tests name these IDs; this document
-never lists its tests ([R11](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r11)).
+the client *(inferred)* ([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/main/guide/08-work.md#w12)). Tests name these IDs; this document
+never lists its tests ([SE1/R11](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r11)).
 
 - **UI-1** _A sentence a different team could satisfy a different way, checkable from outside._
 
@@ -79,6 +79,6 @@ Guesses nobody has agreed to.
 ## Deferred
 
 Wanted and agreed, but not in this version — named so it is not mistaken for an oversight
-([R9](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r9)).
+([SE1/R9](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r9)).
 
 - _Not yet: …_ — _reason, and what would trigger it_

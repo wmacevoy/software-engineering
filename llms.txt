@@ -1,11 +1,11 @@
 # Software Engineering
 
 > A guide to building reliable, tested, maintainable software, organized as numbered principles with
-> stable IDs (T3, D2, R6, ...) that people and agents cite. The Markdown files linked below are the
+> versioned IDs (SE1/T3, SE1/D2, SE1/R6, ...) that people and agents cite. The Markdown files linked below are the
 > canonical source; the GitHub Pages site is a rendering of them.
 
 Agents working in a repository that follows this guide: read AGENTS.md first, then the chapter that
-bears on the task. Principle anchors are lowercase IDs, e.g. guide/10-agents.md#a8.
+bears on the task. Principle anchors are the lowercase ID without the version, e.g. SE1/A8 is guide/10-agents.md#a8.
 
 ## Start here
 

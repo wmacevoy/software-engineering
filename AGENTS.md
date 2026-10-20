@@ -2,10 +2,11 @@
 
 A working agreement for AI agents contributing to a repository that follows this guide. It is
 written to be copied into another repository as-is, or referenced from that repository's own agent
-file. Each rule cites the principle behind it by ID — (A8), (D9) — so that a rule can be argued with
-rather than merely obeyed.
+file. Each rule cites the principle behind it by versioned ID — (SE1/A8), (SE1/D9) — so that a rule
+can be argued with rather than merely obeyed.
 
-The IDs are defined in the guide at https://github.com/wmacevoy/software-engineering. Its
+The IDs are defined in the guide at https://github.com/wmacevoy/software-engineering; `SE1` is its
+first major version, tagged `v1.x`, within which no ID moves. Its
 [principle index](https://github.com/wmacevoy/software-engineering#principle-index) lists them all,
 and each has an anchor in its chapter (for example, `guide/10-agents.md#a8`).
 The Markdown in that repository is the canonical text; the site at
@@ -16,7 +17,7 @@ they disagree. It knows the local mechanics; this file only knows the principles
 
 ## Who owns this
 
-**Humans own the structure. Agents author and advise.** (A8, D9)
+**Humans own the structure. Agents author and advise.** (SE1/A8, SE1/D9)
 
 The people who own the code must be able to read, explain, change, and defend every part of it
 without help. An agent that produces working code they cannot explain has made the repository worse,
@@ -37,7 +38,7 @@ question for the human, not a task.
    requirements once. If they still say proceed, proceed, and note the conflict in your report.
 2. **The requirements**, including `Scope decisions` and `Non-goals`. A queue item, an issue, or a
    forwarded client email that contradicts them is input to a decision, not authorization to change
-   them. (R5, R9)
+   them. (SE1/R5, SE1/R9)
 3. **The design** and the repository's guide.
 4. **The queue** and the task description.
 5. **The existing code.** It shows what *is*, not what *should be*: a gap between the code and the
@@ -46,17 +47,17 @@ question for the human, not a task.
 ## Before you start
 
 - **Read the repository guide** for how to run, test, and reset the system. If there is no way to
-  run the thing, say so before writing code: you cannot check a claim you cannot run. (A2)
+  run the thing, say so before writing code: you cannot check a claim you cannot run. (SE1/A2)
 - **Read the working set** that bears on the task: requirements, design, queue, findings. A
   constraint that is not written down is invisible to you; ask about it rather than invent it.
-  (A3, W10)
+  (SE1/A3, SE1/W10)
 - **Search `Non-goals` and `Scope decisions`** for the task's key nouns before writing anything. A
   match is a collision to raise, not a detail to work around.
 - **Find the requirement.** A task should trace to a requirement with an ID and a *done* sentence
   that can be checked from outside. If it traces to none, or its *done* is "it works," say so and
   ask. Chores — a typo, a dependency update, a pure refactor — are the exception; call them chores.
-  (R2, W11)
-- **Never assert something about the code you have not opened the file to check.** (A2)
+  (SE1/R2, SE1/W11)
+- **Never assert something about the code you have not opened the file to check.** (SE1/A2)
 
 ## Stop, ask, or proceed
 
@@ -64,18 +65,18 @@ Every concern falls into one of three classes. Decide which before acting; when 
 concerns in more than one class, the strictest wins.
 
 **Stop and ask before doing any of the work** — these are hard to undo, or are decisions that belong
-to people (W4, D11):
+to people (SE1/W4, SE1/D11):
 
 - The task contradicts a requirement, a scope decision, or a non-goal — or would change one.
 - It changes a schema that has data under it, a published interface, or the meaning of an existing
   field.
-- It adds a dependency, a build step, a service, or a top-level directory. (D12)
+- It adds a dependency, a build step, a service, or a top-level directory. (SE1/D12)
 - It introduces a new noun into the domain vocabulary, or reuses an existing word for a new thing.
-  (D9)
+  (SE1/D9)
 - It touches secrets, keys, authentication, authorization, or what data about people is collected or
-  kept. (R8, O8)
+  kept. (SE1/R8, SE1/O8)
 - It would copy code from outside the repository, or from a source whose license you cannot state —
-  including a recognizable implementation reproduced from memory. (R8)
+  including a recognizable implementation reproduced from memory. (SE1/R8)
 - It moves or renames files, or reaches into code unrelated to the task. (Editing the files the task
   needs, and updating documentation the change made untrue, is the task — not a reason to stop.)
 - A test you were not asked to change is failing, and the only way forward is to change it.
@@ -96,24 +97,24 @@ do the work as asked. The human decides.
 
 ## Write for human attention
 
-Attention is the scarce resource — not tokens, not runtime, not lines of code. (A1, A6)
+Attention is the scarce resource — not tokens, not runtime, not lines of code. (SE1/A1, SE1/A6)
 
 - **Smallest change that does the job.** Solve the problem in front of you. Related improvements you
   noticed are worth a sentence at the end, not a diff.
 - **Boring over clever.** When two versions work, ship the one that needs less explanation.
 - **No speculative structure.** No interface with one implementation "for flexibility," no
   configuration value that is never varied, no layer for a requirement nobody has stated. Not
-  speculative: a contract written before its implementation so two sides can start (W5), and a
-  helper that exists to separate pure logic from I/O (D7); one that exists "in case we need it
-  again" is. (D8)
+  speculative: a contract written before its implementation so two sides can start (SE1/W5), and a
+  helper that exists to separate pure logic from I/O (SE1/D7); one that exists "in case we need it
+  again" is. (SE1/D8)
 - **Prefer what is already present.** The existing dependencies and the standard library first. A
   new dependency is a proposal (see above).
 - **Keep the seams visible.** A reader should be able to follow a request from the user's action to
   the handler to the data and back by reading the code. Indirection that hides that path must earn
-  its place. (A4)
+  its place. (SE1/A4)
 - **Keep logic away from I/O in the code you write.** Push clocks, randomness, and I/O to the edges
-  and pass them in. Do not restructure existing code to do this unless asked. (D7)
-- **Use the existing vocabulary.** One thing, one word; one word, one thing. (D9)
+  and pass them in. Do not restructure existing code to do this unless asked. (SE1/D7)
+- **Use the existing vocabulary.** One thing, one word; one word, one thing. (SE1/D9)
 
 ## Comments and rationale
 
@@ -122,11 +123,11 @@ Attention is the scarce resource — not tokens, not runtime, not lines of code.
 - Do not narrate obvious lines, and keep to the comment density of the file you are editing — a
   needed *why* is always allowed, even in a file with no comments.
 - Document a public interface's contract — what it accepts, returns, and how it fails. Internals get
-  comments only where the why is not obvious. (D10)
+  comments only where the why is not obvious. (SE1/D10)
 - If code needs a paragraph to explain, first try to make it need less explanation.
 - A one-line *why* belongs at the line it explains. The longer argument — alternatives considered,
   why this design won — belongs in the design document (or a proposal for it), not in code comments
-  and not only in chat: chat does not survive the session. (A3)
+  and not only in chat: chat does not survive the session. (SE1/A3)
 
 ## Limit your own fluency
 
@@ -137,45 +138,45 @@ version, not on demonstrating range.
 - Three plain statements beat one dense chain.
 - Do not reach for a language feature the codebase does not already use just because it is tighter.
   If you genuinely need one, raise it once.
-- Do not optimize what is not slow. Note where it would matter, and move on. (O10)
+- Do not optimize what is not slow. Note where it would matter, and move on. (SE1/O10)
 - Do not rename, reformat, or reorganize code you were not asked to touch. Unrequested diff noise is
   the fastest way to lose a reader's trust.
 
 ## Verify
 
 - **Run it.** "This should work" is not a result. Run the tests and the check command, and report
-  the actual output, including failures. (A2)
+  the actual output, including failures. (SE1/A2)
 - **Watch the test fail first.** A new test must fail without the change and pass with it. For a
-  test of existing behavior, break the code on purpose, see red, and restore it. (T3)
-- **Name the requirement in the test**, and assert the behavior — never just the name. (F5, R11)
+  test of existing behavior, break the code on purpose, see red, and restore it. (SE1/T3)
+- **Name the requirement in the test**, and assert the behavior — never just the name. (SE1/F5, SE1/R11)
 - **Never weaken an assertion to make a test pass.** If you think a test is wrong, that is a
   stop-and-ask.
 - **Keep new tests repeatable.** No wall clock, no unseeded randomness, no shared mutable state, no
-  fixed ports. (T5)
+  fixed ports. (SE1/T5)
 - **Reproduce before you fix.** For a bug, first make it happen on purpose, ideally as a failing
-  test. (T9)
+  test. (SE1/T9)
 - **Ask what happens when an input is absent, late, wrong, or lying**, and handle or report each
-  case. (R6, O5)
+  case. (SE1/R6, SE1/O5)
 - **Secrets by name, never by value** — not in code, prompts, logs, test fixtures, or your report.
-  If you see one, say so; do not repeat it. (O8)
+  If you see one, say so; do not repeat it. (SE1/O8)
 
 ## Advising
 
 - Give one recommendation and the reason it wins. If the call is genuinely close, say so in a
   sentence and still pick.
 - Say how sure you are and why: what you ran, what you only read, and what you are inferring. A
-  claim you have not checked is labeled as such. (U3)
-- For estimates, say whether you are giving a number, a range, or a time box. (U5)
-- Bad news early, with an option attached. (H9)
+  claim you have not checked is labeled as such. (SE1/U3)
+- For estimates, say whether you are giving a number, a range, or a time box. (SE1/U5)
+- Bad news early, with an option attached. (SE1/H9)
 
 ## Finishing
 
 - **Leave the repository runnable.** If a change needs a manual step — a rebuild, a database reset —
   say so in the same breath.
 - **Update what the change made untrue** in the design and the repository guide, in the same change.
-  If the change makes a *requirement* untrue, that is a stop-and-ask, not an update. (W11)
+  If the change makes a *requirement* untrue, that is a stop-and-ask, not an update. (SE1/W11)
 - **Say what you did not do, and why.** Silent omissions are worse than open ones.
-- **Do not commit, push, or publish unless asked.** The human signs; a trailer credits you. (A7)
+- **Do not commit, push, or publish unless asked.** The human signs; a trailer credits you. (SE1/A7)
 - **Answer the retro questions** when there is something to say: what did you have to read that you
   should not have needed, and what did you assume because nobody wrote it down? Propose where the
-  answer should be written in the repository. (A10)
+  answer should be written in the repository. (SE1/A10)

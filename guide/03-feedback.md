@@ -20,7 +20,7 @@ The cost is **per decision, not per project.** Changing a route handler takes se
 Changing a schema with real data under it does not. A leaked private key cannot be unleaked. A
 published interface with users on it is a promise. So you run a careful, front-loaded process around
 the decisions that are expensive to test, and fast loops around the cheap ones — and that can change
-twice in an afternoon ([W4](08-work.md#w4)).
+twice in an afternoon ([SE1/W4](08-work.md#w4)).
 
 > **Ask:** "What does it cost to find out we are wrong about this — and to undo it?"
 
@@ -28,7 +28,7 @@ twice in an afternoon ([W4](08-work.md#w4)).
 
 Lowering it is ordinary engineering work with a known toolkit:
 
-- pure functions, with state pushed to the edges ([D7](05-design.md#d7));
+- pure functions, with state pushed to the edges ([SE1/D7](05-design.md#d7));
 - deterministic seeds, and an **injected clock** — the current time passed in as an argument
   instead of read from the system — so a failure is the same failure tomorrow;
 - faults driven on demand through a **control plane** — a side channel, such as a test-only
