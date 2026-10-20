@@ -90,6 +90,8 @@ release ([D11](guide/05-design.md#d11), [D13](guide/05-design.md#d13)).
 repository, or from a source whose license you cannot state — including code recalled rather than
 read." Teams with a clean-room rule can then point at it.
 
+**Closed:** added to [AGENTS.md](AGENTS.md)'s stop-and-ask list as proposed.
+
 ### 6. Where the working set lives, and the missing repository guide
 
 [W10](guide/08-work.md#w10) names four documents but not where they go; the templates' relative
