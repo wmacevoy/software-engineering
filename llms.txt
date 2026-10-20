@@ -30,6 +30,7 @@ bears on the task. Principle anchors are lowercase IDs, e.g. guide/10-agents.md#
 - [CHECKLISTS.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/CHECKLISTS.md): every checklist, in the order a project meets them
 - [GLOSSARY.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/GLOSSARY.md): the terms used precisely
 - [READING.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/READING.md): the longer arguments, one line each
+- [GAPS.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/GAPS.md): where the guide fell short in the field, and how each gap was closed
 
 ## Optional
 

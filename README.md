@@ -70,6 +70,7 @@ instruction file at it), and start your working set from the templates listed un
 | [GLOSSARY.md](GLOSSARY.md)         | the terms used precisely                                        |
 | [READING.md](READING.md)           | the longer arguments, one line each                             |
 | `templates/`                       | starting points: [REQUIREMENTS](templates/REQUIREMENTS_v1.md), [DESIGN](templates/DESIGN_v1.md), [QUEUE](templates/QUEUE.md), [FINDINGS](templates/FINDINGS.md) |
+| [GAPS.md](GAPS.md)                 | where the guide fell short in the field, and how each gap was closed |
 
 ## The running example
 

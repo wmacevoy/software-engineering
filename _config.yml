@@ -49,6 +49,8 @@ defaults:
     values: { title: Glossary, nav_order: 14 }
   - scope: { path: "READING.md" }
     values: { title: Reading, nav_order: 15 }
+  - scope: { path: "GAPS.md" }
+    values: { title: Gaps, nav_order: 16 }
   # Templates are reachable from links but are starting files, not part of the book.
   - scope: { path: "templates" }
     values: { nav_exclude: true }
