@@ -41,7 +41,7 @@ guide using one of these loosely, that is a bug.
 | **Incident** | A time when users are being hurt by a failure right now. |
 | **Inferred** | Said of a requirement or a reason reconstructed from code or history rather than stated by a person; marked *(inferred)* until someone confirms it ([W12](guide/08-work.md#w12)). |
 | **Injected clock** | The current time passed in as an argument, so a test can choose it, instead of read from the system. |
-| **Instrument** | A tool that checks the code alongside the tests — sanitizer, coverage, linter, warning flag, type checker. Trusted only once seen to fire ([T3](guide/06-testing.md#t3)). |
+| **Instrument** | Anything that measures: a clock, a feedback loop, a log, a sanitizer, a coverage report, a linter. Trusted only once seen to fire ([T3](guide/06-testing.md#t3)). |
 | **Interface** | The surface one part shows another — signatures, schemas, endpoints. Its written promises are the **contract**; an **API** is an interface offered over a network or to other programs. |
 | **Jitter** | Random variation added to retry delays so many callers do not retry at the same instant. |
 | **Liveness / readiness** | "The process is running" (restart me if not) / "I can serve requests now" (send me traffic if so). |
@@ -57,6 +57,7 @@ guide using one of these loosely, that is a bug.
 | **Production / staging** | The copy real users use / a copy set up the same way, for trying a release first. |
 | **Provenance**          | Who made a claim, and how to check it later without asking them again.                               |
 | **Reliable**            | Works when in good repair and used correctly, and has detectable error status when broken or misused. |
+| **Repository guide** | The file that says how to build, run, test, and reset this repository, and its local rules — `CONTRIBUTING.md`, `CLAUDE.md`, or equivalent ([W10](guide/08-work.md#w10)). Not `AGENTS.md`, which it overrides. |
 | **Requirement**         | A numbered, observable statement of what must be true. Changes only with the client.                 |
 | **Roles** | Architect (holds the design), Liaison (one voice to the client), Planner (holds the queue), Toolsmith (holds tests, CI, and the reset). See H3. |
 | **Rollback** | Putting the previous version back. Done by the system itself on a failed health check, it is an *automatic revert*. |

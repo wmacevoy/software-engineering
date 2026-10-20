@@ -75,7 +75,7 @@ to people (W4, D11):
 - It touches secrets, keys, authentication, authorization, or what data about people is collected or
   kept. (R8, O8)
 - It would copy code from outside the repository, or from a source whose license you cannot state —
-  including code recalled rather than read. (R8, D13)
+  including a recognizable implementation reproduced from memory. (R8)
 - It moves or renames files, or reaches into code unrelated to the task. (Editing the files the task
   needs, and updating documentation the change made untrue, is the task — not a reason to stop.)
 - A test you were not asked to change is failing, and the only way forward is to change it.

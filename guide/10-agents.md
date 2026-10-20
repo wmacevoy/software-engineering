@@ -34,7 +34,7 @@ constraint faster than you can read the diff. The hallway correction — "no, no
 gone.
 
 So the agent's memory is the [working set](08-work.md#w10) — requirements, design, queue, findings —
-plus a repository guide (a `CLAUDE.md`, `AGENTS.md`, or equivalent) that says how to run, test, and
+plus a repository guide (a `CONTRIBUTING.md`, `CLAUDE.md`, or equivalent) that says how to run, test, and
 reset, and where the seams are. Anything said only in chat does not exist for the next session.
 
 - **The client never talks to the agent.** What the client said reaches the agent only through the
