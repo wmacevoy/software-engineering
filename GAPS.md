@@ -76,6 +76,9 @@ project needed a `REQUIREMENTS_v2` partly for bookkeeping.
 assigned when the requirement is written) and the test's status lives in QUEUE, or a separate
 unversioned trace table maps requirement → test → status.
 
+**Closed:** the first option, simplified. [R11](guide/04-requirements.md#r11) says the trace lives
+in test names; requirements never list tests, and a *must* with no test is a `QUEUE` item.
+
 ### 5. Provenance of code, for agents
 
 [R8](guide/04-requirements.md#r8) names licensing and code provenance as requirements, but

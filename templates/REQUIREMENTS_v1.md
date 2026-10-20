@@ -28,7 +28,8 @@ Every kind of person, including those not in the room, and anyone treated differ
 Numbered, observable, with numbers. Prefix by area with at least two letters and a hyphen
 (`UI-1`, `COL-1`, …) so they are never confused with the guide's principle IDs (`U1`, `R6`).
 Mark invented numbers *(invented)*, and requirements read off existing code rather than agreed with
-the client *(inferred)* ([W12](https://github.com/wmacevoy/software-engineering/blob/main/guide/08-work.md#w12)).
+the client *(inferred)* ([W12](https://github.com/wmacevoy/software-engineering/blob/main/guide/08-work.md#w12)). Tests name these IDs; this document
+never lists its tests ([R11](https://github.com/wmacevoy/software-engineering/blob/main/guide/04-requirements.md#r11)).
 
 - **UI-1** _A sentence a different team could satisfy a different way, checkable from outside._
 

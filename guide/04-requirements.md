@@ -274,6 +274,11 @@ becomes a scoreboard — *these stories are green, that one turned green today* 
 read without reading code. It is honest only while every green could have been red
 ([F5](03-feedback.md#f5)).
 
+**The trace lives in the test names, not in the requirements.** A requirements document that lists
+its tests turns every new test into an edit to a versioned document ([R10](#r10)). The test carries
+the requirement ID instead, so a search for `UI-1` across the tests is the trace and the test run is
+the status. A *must* with no test yet is a `QUEUE` item, not an empty column.
+
 > **Ask:** "What does the test have to observe to assert this?"
 
 

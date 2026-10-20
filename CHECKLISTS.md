@@ -34,7 +34,8 @@ moves from one kind of step to the next.
 - [ ] Every input has an answer for absent, late, wrong, and lying.
       ([R6](guide/04-requirements.md#r6))
 - [ ] A glossary exists. ([D9](guide/05-design.md#d9))
-- [ ] Every "must" has, or is assigned, a test ID. ([R11](guide/04-requirements.md#r11))
+- [ ] Every "must" is named by a test, or by a `QUEUE` item to write one.
+      ([R11](guide/04-requirements.md#r11))
 
 **Before leaving Design for Develop**
 
