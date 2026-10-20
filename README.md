@@ -75,6 +75,7 @@ instruction file at it), and start your working set from the templates listed un
 | [CHECKLISTS.md](CHECKLISTS.md)     | every checklist, in the order a project meets them              |
 | [GLOSSARY.md](GLOSSARY.md)         | the terms used precisely                                        |
 | [READING.md](READING.md)           | the longer arguments, one line each                             |
+| [CHANGELOG.md](CHANGELOG.md)       | what changed in each release, by principle ID                   |
 | `templates/`                       | starting points: [REQUIREMENTS](templates/REQUIREMENTS_v1.md), [DESIGN](templates/DESIGN_v1.md), [QUEUE](templates/QUEUE.md), [FINDINGS](templates/FINDINGS.md), [CONTRIBUTING](templates/CONTRIBUTING.md) |
 | [GAPS.md](GAPS.md)                 | where the guide fell short in the field, and how each gap was closed |
 
@@ -110,7 +111,9 @@ never moves to a different idea; a retired principle keeps its ID with a note sa
 content went, and new principles take the next number in their chapter. A later major version
 (`SE2`) may renumber, and will publish a table mapping each SE1 ID to its new one; SE1 stays readable
 at its tag. The version is on every citation, not declared once per document, so a citation copied
-into a commit message, an issue, or another repository still says which guide it means. The letters
+into a commit message, an issue, or another repository still says which guide it means. Releases
+within SE1 (`v1.1`, …) are listed by ID in [CHANGELOG.md](CHANGELOG.md), and each principle changed
+since v1.0 says so under its heading. The letters
 are the chapters: **P**urpose, **U**nknowing, **F**eedback, **R**equirements, **D**esign, **T**esting,
 **O**perating, **W**ork, **H**umans (people), **A**gents. (Requirement IDs in your own project
 should use a different form, such as `REQ2/UI-1`, so they are never confused with these.)

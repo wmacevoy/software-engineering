@@ -36,6 +36,8 @@ may be about trusting a number, not about a map.
 
 ### <a id="r2"></a>R2. Specific and wrong beats vague and safe
 
+*Changed in v1.1.*
+
 Requirements do not exist, even in principle, until someone writes a candidate down. The client
 cannot tell you what should happen when a sensor goes silent, because they have never thought about
 it. They can tell you in two seconds when they read your sentence saying *the count freezes at its
@@ -250,6 +252,8 @@ week nine.
 
 ### <a id="r10"></a>R10. Version requirements; never edit them in place
 
+*Changed in v1.1.*
+
 A superseded requirement is not deleted knowledge. Editing in place destroys the before-picture, and
 the diff between `v1` and `v2` is the most useful conversation you will ever have with the client.
 Once a second party depends on a statement, changing it is a version, not an edit — the same rule as
@@ -263,6 +267,8 @@ a `QUEUE` item — is now visibly stale, and a search for it finds exactly the w
 design is cited the same way: `DESIGN_v2`, never a bare `DESIGN`.
 
 ### <a id="r11"></a>R11. An API is the set of observables your acceptance tests need
+
+*Changed in v1.1.*
 
 The chain from a story to an interface runs through five artifacts, and the step people skip is
 the one from the test to the observables it needs:

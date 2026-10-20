@@ -233,6 +233,8 @@ Starting skeletons for the four, and for the repository guide, are listed in the
 
 ### <a id="w11"></a>W11. Done means all of it, one concern per change, reviewed by someone else
 
+*Changed in v1.1.*
+
 **A definition of done is a checklist a change fully passes — not most of it.** A typical one:
 
 - It satisfies a stated requirement, and the change names the requirement's versioned ID

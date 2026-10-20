@@ -5,10 +5,12 @@ written to be copied into another repository as-is, or referenced from that repo
 file. Each rule cites the principle behind it by versioned ID — (SE1/A8), (SE1/D9) — so that a rule
 can be argued with rather than merely obeyed.
 
-The IDs are defined in the guide at https://github.com/wmacevoy/software-engineering/tree/v1.0;
+The IDs are defined in the guide at https://github.com/wmacevoy/software-engineering/tree/v1.1;
 `SE1` is its first major version, tagged `v1.x`, within which no ID moves. Its
-[principle index](https://github.com/wmacevoy/software-engineering/blob/v1.0/README.md#principle-index)
+[principle index](https://github.com/wmacevoy/software-engineering/blob/v1.1/README.md#principle-index)
 lists them all, and each has an anchor in its chapter (for example, `guide/10-agents.md#a8`).
+This copy is from **v1.1**; what changed since, by ID, is in the guide's
+[CHANGELOG](https://github.com/wmacevoy/software-engineering/blob/main/CHANGELOG.md).
 The Markdown in that repository is the canonical text; the site at
 https://wmacevoy.github.io/software-engineering/ renders the latest version for human readers.
 

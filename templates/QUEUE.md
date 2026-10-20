@@ -1,7 +1,7 @@
 # Queue
 
 What is being worked, in what order, by whom, and what would make it done. The shared cursor
-([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.0/guide/08-work.md#w10)).
+([SE1/W10](https://github.com/wmacevoy/software-engineering/blob/v1.1/guide/08-work.md#w10)).
 Nothing enters without a *done* sentence that can be checked from outside — "it works" is not one.
 An item that contradicts the requirements is a question for the client, not a task; mark it blocked,
 and say on what.

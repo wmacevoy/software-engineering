@@ -113,6 +113,8 @@ stands**, in the repository, versioned with the code ([SE1/W10](08-work.md#w10),
 
 ### <a id="u7"></a>U7. Find the K3 factories: anything that keeps saying "fine" with no way to say "wrong"
 
+*New in v1.1.*
+
 A K3 is one wrong belief ([SE1/U3](#u3)). A **K3 factory** is whatever keeps producing them: a signal
 that says "fine," costs nothing to keep believing, and has no path by which it could say "wrong." It
 makes confidence faster than evidence, and every belief it makes is found last. Some that are cheap
