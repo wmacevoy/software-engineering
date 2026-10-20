@@ -127,6 +127,8 @@ wrong (K3) ([H9](guide/09-people.md#h9), [H12](guide/09-people.md#h12), and the
 - [ ] The suite passes in any order and in parallel. Try it.
 - [ ] No wall clock, no unseeded randomness, no fixed port.
 - [ ] Every test has been seen red.
+- [ ] Every instrument — sanitizer, coverage, linter, warning flag — has been seen to fire on the
+      code it claims to cover, or a check proves it is engaged.
 - [ ] CI runs the command you run, on every platform you ship to. ([O3](guide/07-operating.md#o3))
 
 **Before trusting an environment** ([O1](guide/07-operating.md#o1), [O2](guide/07-operating.md#o2))

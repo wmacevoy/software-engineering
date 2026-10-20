@@ -76,7 +76,15 @@ fail "without the change," because there is no change. Break the code on purpose
 comparison, delete a line), watch the test go red, and restore it. Mutation testing automates
 exactly this ([T10](#t10)).
 
-> **Ask:** "Have I seen this test fail?"
+The same holds for the **instruments** around the tests — sanitizers, coverage, linters, warning
+flags, type checkers. Each is a test of the tests, and each can be switched off without a sound: a
+build file that overwrites a flag, a config that excludes a directory, a tool that exits zero because
+it found nothing to check. A suite seen red under an instrument that never engaged still proves
+nothing about what the instrument was for. Make each one fire once on purpose — an out-of-bounds
+write the sanitizer must catch, a branch the coverage report must show as missed — or have a check
+prove the flag reached the compiler.
+
+> **Ask:** "Have I seen this test fail — and this instrument fire?"
 
 ### <a id="t4"></a>T4. A loop you do not trust is worse than none
 

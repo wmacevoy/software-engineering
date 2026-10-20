@@ -39,6 +39,7 @@ guide using one of these loosely, that is a bug.
 | **Idiot light**         | One pass/fail signal visible from across the room.                                                   |
 | **Incident** | A time when users are being hurt by a failure right now. |
 | **Injected clock** | The current time passed in as an argument, so a test can choose it, instead of read from the system. |
+| **Instrument** | A tool that checks the code alongside the tests — sanitizer, coverage, linter, warning flag, type checker. Trusted only once seen to fire ([T3](guide/06-testing.md#t3)). |
 | **Interface** | The surface one part shows another — signatures, schemas, endpoints. Its written promises are the **contract**; an **API** is an interface offered over a network or to other programs. |
 | **Jitter** | Random variation added to retry delays so many callers do not retry at the same instant. |
 | **Liveness / readiness** | "The process is running" (restart me if not) / "I can serve requests now" (send me traffic if so). |

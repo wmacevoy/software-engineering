@@ -22,6 +22,9 @@ under ASan and UBSan". The tests had been seen red ([T3](guide/06-testing.md#t3)
 type checkers. Add to *Before trusting a test suite*: "Every instrument has been seen to fire on the
 code it claims to cover — or a check proves the flag reached the compiler."
 
+**Closed:** [T3](guide/06-testing.md#t3) now covers instruments, and *Before trusting a test
+suite* asks that each one has been seen to fire.
+
 ### 2. Libraries, firmware, and formats you don't own
 
 Chapter 7 assumes a running service: deploys, health checks, rollbacks, alerts. A library has none
