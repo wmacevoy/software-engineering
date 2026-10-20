@@ -176,6 +176,12 @@ The shape of the answer matters as much as its value. "Forty minutes a month, ne
 event; maintenance allowed 02:00–04:00" is honest. Folded into a single number of nines, it would be
 easier to agree to and mean nothing — because it would not say *when* the downtime may fall.
 
+**Resources** belong in the envelope wherever they are finite — code size, memory, stack, storage,
+energy — each as a number with a test that measures it. An inherited figure nobody has measured is a
+K3 ([U3](02-unknowing.md#u3)). And where power or a connection can vanish at any instant,
+**interruption** is a normal event, not an incident: say what must still hold after a cut at any
+point — "the data on disk is the old version or the new one, never a mix" — and test it by cutting.
+
 > **Ask:** "How many, in two years? How fast, at the peak? What happens when it breaks, and how long
 > to get back? How long may it be down, for whom?"
 

@@ -47,6 +47,10 @@ never lists its tests ([R11](https://github.com/wmacevoy/software-engineering/bl
 - **Recovery:** _per component: behavior while down; how to get back, by whom, how long (timed)._
   How much data may we lose?
 - **Availability:** _budget, period, beneficiary, maintenance window._
+- **Resources** (where finite): _code size, memory, stack, storage, energy — each a number, and the
+  test that measures it._
+- **Interruption:** _what must still hold if power or the connection is cut at any instant, and the
+  test that cuts it._
 
 ## Security, law, and ethics
 

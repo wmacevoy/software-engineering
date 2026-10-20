@@ -132,3 +132,6 @@ project's footprint figure turned out to be an unmeasured inherited claim (70 KB
 
 **Proposal:** add *Resources* (memory, storage, energy) and *Interruption* (what must hold if
 power is cut at any point) to the template's operating envelope, each with a number and a test.
+
+**Closed:** [R7](guide/04-requirements.md#r7) and the requirements template add *Resources* and
+*Interruption*.
