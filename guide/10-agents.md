@@ -162,9 +162,10 @@ So treat every handoff as a possible injury, and check from outside:
 
 - **Put the rule where it is loaded at every start,** not where it has to be looked up.
 - **Give the handoff a sideline test:** a check that compares the summary with the record (the
-  transcript, the requirements, the queue) and puts what it finds in front of the next context. It
-  does not need a model; word overlap was enough to find the gap. A reliable thing checks itself
-  ([SE1/T2](06-testing.md#t2)).
+  transcript, the requirements, the queue) and points the next context at the gap. It does not need
+  a model; word overlap was enough to find the gap. Point; don't hand over. When the check also
+  pasted the missing words in, agents obeyed those words and stopped going to the source for
+  everything else. A reliable thing checks itself ([SE1/T2](06-testing.md#t2)).
 - **Until the check passes, the summary is recalled, not observed.** Where it and the source
   disagree, the source wins.
 

@@ -228,6 +228,7 @@ receipt pending legal review. Four Sonnet runs per arm, graded on the code they 
 | A rule in a repository file the agent was told to follow | 0/4, and the file was never opened |
 | The same rule, already in context | 4/4 |
 | A script's report: word overlap between each human message and the summary | 4/4 |
+| The same report, plus the human's messages pasted in verbatim | 2/4 |
 
 An easier version first, in which the summary visibly left a hole ("we got answers" without the
 answers), went 12 of 12 in every arm. A gap you can see gets checked. A gap the summary has filled
@@ -235,6 +236,12 @@ fluently does not. The script needs no model. It found the owner's message only 
 summary, printed that, and every agent then read the transcript and followed the owner. Run on four
 real compactions from other projects, the script flagged nothing (12 human messages in all), so it
 has not yet been seen crying wolf.
+
+Pasting the human's words back in verbatim, which we expected to do better, did worse. All four
+agents obeyed the pasted constraint (the frozen receipt), but two trusted the summary's "bill.py:
+done" and never opened the code, and one of those reported the service charge fixed when it was
+not. The flag sent agents to the source, where they checked everything nearby. The pasted answer
+replaced the trip.
 
 **Closed:** [SE1/A11](guide/10-agents.md#a11), the *After a gap* section of AGENTS.md, and a line
 in the agent hand-off checklist.
