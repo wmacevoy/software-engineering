@@ -135,3 +135,83 @@ power is cut at any point) to the template's operating envelope, each with a num
 
 **Closed:** [SE1/R7](guide/04-requirements.md#r7) and the requirements template add *Resources* and
 *Interruption*.
+
+## Field report: agent trials, 2026-10-26
+
+About 120 agent runs, testing variations on pair programming for agents. The variations were a
+separate pass that asks questions before anyone writes code, a smaller model standing in for the
+forgetful future maintainer, and invariant guards. The subject was a synthetic Python restaurant-tab
+codebase, written in variants that behave identically, and hidden tests the agents never saw judged
+the results. Sonnet- and Haiku-class models ran in cold sessions, with 1–5 runs per cell. These are
+small numbers. Most of what they show is that the guide already covers the case; the rest is
+untested. The variants, prompts, and tests are not in this repository.
+
+### 1. "Agents answer their own questions" came from the prompt
+
+In three rounds, authors listed the questions a change request left open and then decided all of
+them, including *who may comp?* behind "Managers can comp a line." Every one of those prompts said
+"the product owner can't be reached during this task." With the owner reachable, 5 of 6 authors
+stopped and asked before writing code. A separate question pass, with Haiku, Haiku cast as a
+naive "jester", or Sonnet asking and a human-stand-in answering, drew every non-default policy point
+out of the owner in 9 of 9 runs, and the authors that built from those answers passed every hidden
+test. This was a K3: we were sure the behavior was the agent's, and it was the instruction's.
+
+**Closed:** no change. *Stop, ask, or proceed* in AGENTS.md already asks for this, and it worked
+whenever the agent was allowed to stop. Noted, not acted on: an instruction that nobody can be
+reached overrides the stop-and-ask list. One trial is not enough to make it a principle.
+
+### 2. AGENTS.md raised the authorization question
+
+With the owner reachable, authors that had the v1.1 AGENTS.md asked who may comp in 3 of 3 runs.
+Authors without it asked in 0 of 3. That counts only what each author asked: the agent playing the
+owner volunteered unasked policy in 2 of 9 answers.
+
+**Closed:** no change. This confirms the authorization item in *Stop, ask, or proceed*
+([SE1/R8](guide/04-requirements.md#r8)).
+
+### 3. Locality of reasoning: untested at a size where it would matter
+
+At about 1,400 and about 4,300 lines, it made no difference whether a rule lived in one place or
+was pasted into every module that used it. In 40 runs on the larger codebase, all 40 changes were
+correct. Work tokens, tool calls, and time were within noise between the two layouts. The pasted
+copies kept the original name, and agents searched for it and found every one. Haiku used about
+1.7× the work tokens of Sonnet whatever the layout, so the gap between a smaller and a larger model
+did not measure layout at this size.
+
+**Open:** untested. The effect likely needs a codebase well over a megabyte, or duplication an
+agent cannot find by searching: renamed copies, derived forms such as `1.10` or `"10%"`, or a bare
+number that means different things in different files. Two ways to test it:
+
+- **A natural experiment, with no new runs.** Using published agent transcripts on
+  [SWE-Bench Pro](https://arxiv.org/abs/2509.16941), correlate how spread out the reference patch
+  is with agent success and reading effort. Confounded with difficulty, but cheap.
+- **A controlled trial.** Script a delocalized fork of a large open-source repository, with renamed
+  and derived copies of one rule, and run the same change request on both forks.
+
+### 4. A guard settled what prose left open
+
+"Within one cent" was read two ways. Where the code raised an error on the strict reading, every
+author kept the strict reading.
+
+**Closed:** no change. The *Sanity, repeated* row of [SE1/T2](guide/06-testing.md#t2) already asks
+for invariants checked in the code.
+
+### 5. The fluent defects
+
+Two defects were confident ones. One agent reused an existing local rule ("extra cents go to the
+earliest people") where it no longer fit, so a seat that ordered nothing paid −1¢. Another reported
+"suite passes" while its own new test failed.
+
+**Closed:** no change. [SE1/A2](guide/10-agents.md#a2) already asks whether it was run.
+
+### Related work
+
+The claim that pair programming cuts errors by 90% has no source we could find. Williams et al.
+(2000) reported about 15% fewer defects for about 15% more effort. A meta-analysis
+([Hannay et al., 2009](https://doi.org/10.1016/j.infsof.2009.02.001)) found a small effect on
+quality and a cost in effort. These numbers come from search results; the papers themselves were not
+opened. For agents, most model responses to ambiguous coding problems wrote code instead of asking
+([HumanEvalComm](https://arxiv.org/abs/2406.00215)), and on underspecified issues, interaction
+raised resolve rates by up to 74% ([Ambig-SWE](https://arxiv.org/abs/2502.13069)). Anthropic's
+[Claude Code guidance](https://code.claude.com/docs/en/best-practices) already recommends planning
+before coding, a fresh session for review, and separate writer and reviewer agents.
