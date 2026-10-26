@@ -146,6 +146,10 @@ the results. Sonnet- and Haiku-class models ran in cold sessions, with 1–5 run
 small numbers. Most of what they show is that the guide already covers the case; the rest is
 untested. The variants, prompts, and tests are not in this repository.
 
+Every agent ran with this guide's AGENTS.md already in its context, inherited from the session that
+launched it. That was found only at the end. No arm was guide-free, and the "without AGENTS.md"
+arms below differ only in whether a copy also sat in the repository.
+
 ### 1. "Agents answer their own questions" came from the prompt
 
 In three rounds, authors listed the questions a change request left open and then decided all of
@@ -160,14 +164,18 @@ test. This was a K3: we were sure the behavior was the agent's, and it was the i
 whenever the agent was allowed to stop. Noted, not acted on: an instruction that nobody can be
 reached overrides the stop-and-ask list. One trial is not enough to make it a principle.
 
-### 2. AGENTS.md raised the authorization question
+### 2. A copy of AGENTS.md in the repository raised the authorization question
 
-With the owner reachable, authors that had the v1.1 AGENTS.md asked who may comp in 3 of 3 runs.
-Authors without it asked in 0 of 3. That counts only what each author asked: the agent playing the
-owner volunteered unasked policy in 2 of 9 answers.
+With the owner reachable, authors with a copy of the v1.1 AGENTS.md in the repository, and told to
+follow it, asked who may comp in 3 of 3 runs. Authors without that copy asked in 0 of 3. Both groups
+already had the guide in their context (see above), so what this shows is salience, not presence:
+the rule changed behavior when the agent was pointed at it, not when it was merely loaded. That
+counts only what each author asked: the agent playing the owner volunteered unasked policy in 2 of
+9 answers.
 
-**Closed:** no change. This confirms the authorization item in *Stop, ask, or proceed*
-([SE1/R8](guide/04-requirements.md#r8)).
+**Open:** whether the guide changes behavior at all, against a truly guide-free baseline, is
+untested. A rule-by-rule test is planned: a small repository for each rule, with one temptation
+that rule targets, run with and without the guide in sessions that inherit nothing.
 
 ### 3. Locality of reasoning: untested at a size where it would matter
 
