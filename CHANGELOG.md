@@ -22,7 +22,21 @@ yours.
 
 [Changes on main since v1.1](https://github.com/wmacevoy/software-engineering/compare/v1.1...main)
 
-Nothing yet.
+**For copies:** re-copy AGENTS.md (new section *After a gap*), and make sure your agents load it at
+every start, for example by importing it from CLAUDE.md. A copy that has to be opened is not read.
+
+### New
+
+- [SE1/A11](guide/10-agents.md#a11) A summary is a concussion: check it from outside. After
+  compaction or any handoff the summary is recalled, not observed. Load the rule at every start, and
+  run a handoff check that compares the summary with the record.
+
+### Also changed
+
+- AGENTS.md: new section *After a gap*. The agent hand-off checklist gains a line for it.
+- Wording only: [SE1/A10](guide/10-agents.md#a10) is no longer the chapter's last section; its text
+  is unchanged.
+- GAPS.md: a field report from agent trials, including the compaction trials behind A11.
 
 ## v1.1 — 2026-10-20
 

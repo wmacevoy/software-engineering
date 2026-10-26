@@ -80,9 +80,11 @@ keep the two in step)
 - [ ] It is signed by a person who has read all of it.
 
 **Handing a task to an agent** ([SE1/A3](guide/10-agents.md#a3)–[SE1/A7](guide/10-agents.md#a7),
-[SE1/A10](guide/10-agents.md#a10))
+[SE1/A10](guide/10-agents.md#a10)–[SE1/A11](guide/10-agents.md#a11))
 
 - [ ] The task is a done sentence with a versioned requirement ID.
+- [ ] The working agreement is loaded at every start, not left in a file to be opened, and a
+      handoff check runs after compaction.
 - [ ] The relevant constraints are in the repository, not only in your head or the chat.
 - [ ] The agent can run the system and the checks, and reset it.
 - [ ] You asked for the smallest diff, one concern, named files.

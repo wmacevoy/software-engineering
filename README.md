@@ -244,6 +244,7 @@ should use a different form, such as `REQ2/UI-1`, so they are never confused wit
 - [**SE1/A8**](guide/10-agents.md#a8) Agents move the human up the waterfall
 - [**SE1/A9**](guide/10-agents.md#a9) Hand it the search-shaped work; keep the decisions
 - [**SE1/A10**](guide/10-agents.md#a10) Ask your agents, and write the answers down
+- [**SE1/A11**](guide/10-agents.md#a11) A summary is a concussion: check it from outside
 
 ## Twelve questions
 

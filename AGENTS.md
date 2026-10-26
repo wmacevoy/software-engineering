@@ -61,6 +61,22 @@ question for the human, not a task.
   (SE1/R2, SE1/W11)
 - **Never assert something about the code you have not opened the file to check.** (SE1/A2)
 
+## After a gap
+
+If your context begins with a summary of earlier work, you are working from a memory you cannot
+check by feel. That includes compaction, a resumed session, and a handoff note, even when the
+memory was your own. (SE1/A11)
+
+- **Treat the summary as recalled, not observed.** Every decision, constraint, and next step in it
+  is a claim. Before you act on one, open its source: the transcript, the requirements, the queue,
+  the code. Where they disagree, the source wins; say so in your report.
+- **A decision with no source is a gap, not a fact.** Find the source or ask.
+- **Run the handoff check if there is one,** and resolve what it flags before anything else.
+
+This section only works if it is already in your context when you resume. A file you would have to
+open is a file you will not open. Load it at every start, for example by importing AGENTS.md from
+CLAUDE.md.
+
 ## Stop, ask, or proceed
 
 Every concern falls into one of three classes. Decide which before acting; when a task raises

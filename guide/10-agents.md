@@ -141,6 +141,35 @@ them. That is how an agent joins a team: not by remembering, but by the team wri
 would have needed to remember. Treat the answers as proposals from something with no stake in the
 outcome.
 
+### <a id="a11"></a>A11. A summary is a concussion: check it from outside
+
+*New in v1.2.*
+
+Compaction, a resumed session, a handoff note: each gives the next context a summary written in the
+same fluent voice as everything else. Nothing in it marks which parts were observed and which were
+recalled, and the next context cannot tell by feel ([SE1/A3](#a3)). It carries on, confidently, from
+whatever the summary says. The human version is a concussion nobody noticed: the player says
+"I'm fine" and believes it. Asking the patient does not work. A sideline test does.
+
+In [trials](../GAPS.md#6-a-summary-is-a-concussion), a confidently wrong summary sent 4 of 4 agents
+straight into a change the owner had frozen. None of them opened the transcript the summary pointed
+to. Marking the summary's claims as unverified changed the result in 1 of 4 runs. A rule in a file
+the agent had to open changed nothing, because the file was never opened. Two things worked, in 4 of
+4 runs each: the same rule already loaded into the agent's context, and a script, with no model in
+it, that compared the summary with what the human had actually said and flagged the gap.
+
+So treat every handoff as a possible injury, and check from outside:
+
+- **Put the rule where it is loaded at every start,** not where it has to be looked up.
+- **Give the handoff a sideline test:** a check that compares the summary with the record (the
+  transcript, the requirements, the queue) and puts what it finds in front of the next context. It
+  does not need a model; word overlap was enough to find the gap. A reliable thing checks itself
+  ([SE1/T2](06-testing.md#t2)).
+- **Until the check passes, the summary is recalled, not observed.** Where it and the source
+  disagree, the source wins.
+
+> **Ask:** "What did this summary drop, and what would tell us?"
+
 
 ---
 
@@ -155,6 +184,7 @@ outcome.
 | it changed a requirement to match the code               | a design change in costume ([SE1/R5](04-requirements.md#r5)) | revert; a wrong requirement is a conversation with the client |
 | the next session does not know what the last one decided | nothing was written down              | the working set; `FINDINGS`; a line in the repository guide        |
 | it designed a schema before there was a requirement      | the waterfall, at machine speed       | stop; the railing ([SE1/W8](08-work.md#w8))                               |
+| after compaction it confidently redoes or undoes a decision | it trusted its own summary          | the source wins; a handoff check after every compaction ([SE1/A11](#a11)) |
 | a secret appeared in a prompt                            | the prompt goes to a third party      | rotate the secret; refer to secrets by name, never by value        |
 
 ---

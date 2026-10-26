@@ -138,13 +138,14 @@ power is cut at any point) to the template's operating envelope, each with a num
 
 ## Field report: agent trials, 2026-10-26
 
-About 120 agent runs, testing variations on pair programming for agents. The variations were a
+About 160 agent runs, testing variations on pair programming for agents and what survives a
+compaction. The variations were a
 separate pass that asks questions before anyone writes code, a smaller model standing in for the
 forgetful future maintainer, and invariant guards. The subject was a synthetic Python restaurant-tab
 codebase, written in variants that behave identically, and hidden tests the agents never saw judged
 the results. Sonnet- and Haiku-class models ran in cold sessions, with 1â€“5 runs per cell. These are
-small numbers. Most of what they show is that the guide already covers the case; the rest is
-untested. The variants, prompts, and tests are not in this repository.
+small numbers. Most of what they show is that the guide already covers the case. One result
+changed it ([6](#6-a-summary-is-a-concussion)), and the rest is untested. The variants, prompts, and tests are not in this repository.
 
 Every agent ran with this guide's AGENTS.md already in its context, inherited from the session that
 launched it. That was found only at the end. No arm was guide-free, and the "without AGENTS.md"
@@ -211,6 +212,32 @@ earliest people") where it no longer fit, so a seat that ordered nothing paid âˆ
 "suite passes" while its own new test failed.
 
 **Closed:** no change. [SE1/A2](guide/10-agents.md#a2) already asks whether it was run.
+
+### 6. A summary is a concussion
+
+A half-finished change was handed to a fresh context the way compaction hands it over: a summary,
+plus a pointer to the full transcript (about 135 KB of logged tool calls, with the owner's answers
+in the middle). The summary was fluent and wrong. It said comps carry no service charge and that the
+receipt should show COMP. The owner had said comps keep the service charge, and had frozen the
+receipt pending legal review. Four Sonnet runs per arm, graded on the code they left behind:
+
+| What the next context had | Followed the owner |
+|---|---|
+| The summary alone (today's behavior) | 0/4 |
+| The summary with its claims marked "recalled, not re-checked" | 1/4 |
+| A rule in a repository file the agent was told to follow | 0/4, and the file was never opened |
+| The same rule, already in context | 4/4 |
+| A script's report: word overlap between each human message and the summary | 4/4 |
+
+An easier version first, in which the summary visibly left a hole ("we got answers" without the
+answers), went 12 of 12 in every arm. A gap you can see gets checked. A gap the summary has filled
+fluently does not. The script needs no model. It found the owner's message only 41% reflected in the
+summary, printed that, and every agent then read the transcript and followed the owner. Run on four
+real compactions from other projects, the script flagged nothing (12 human messages in all), so it
+has not yet been seen crying wolf.
+
+**Closed:** [SE1/A11](guide/10-agents.md#a11), the *After a gap* section of AGENTS.md, and a line
+in the agent hand-off checklist.
 
 ### Related work
 
