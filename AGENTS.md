@@ -75,7 +75,8 @@ memory was your own. (SE1/A11)
 
 This section only works if it is already in your context when you resume. A file you would have to
 open is a file you will not open. Load it at every start, for example by importing AGENTS.md from
-CLAUDE.md.
+CLAUDE.md, with AGENTS.md kept in the repository: an import from outside the repository may load
+nothing, and say nothing.
 
 ## Stop, ask, or proceed
 

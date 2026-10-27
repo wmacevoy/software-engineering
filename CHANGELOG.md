@@ -29,14 +29,18 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
 
 - [SE1/A11](guide/10-agents.md#a11) A summary is a concussion: check it from outside. After
   compaction or any handoff the summary is recalled, not observed. Load the rule at every start, and
-  run a handoff check that compares the summary with the record.
+  check that it loads; run a handoff check that compares the summary with the record, and that can
+  say *wrong*: the word-overlap check found a planted gap and passed nearly every real compaction.
 
 ### Also changed
 
 - AGENTS.md: new section *After a gap*. The agent hand-off checklist gains a line for it.
 - Wording only: [SE1/A10](guide/10-agents.md#a10) is no longer the chapter's last section; its text
   is unchanged.
-- GAPS.md: a field report from agent trials, including the compaction trials behind A11.
+- GAPS.md: a field report from agent trials, including the compaction trials behind A11; and a
+  second, on compaction in the author's own sessions (the check on real compactions, imports from
+  outside the repository, when compaction happens, and what is still untested).
+- AGENTS.md *After a gap*: import AGENTS.md from a copy kept in the repository.
 
 ## v1.1 — 2026-10-20
 

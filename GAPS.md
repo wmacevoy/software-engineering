@@ -257,3 +257,87 @@ opened. For agents, most model responses to ambiguous coding problems wrote code
 raised resolve rates by up to 74% ([Ambig-SWE](https://arxiv.org/abs/2502.13069)). Anthropic's
 [Claude Code guidance](https://code.claude.com/docs/en/best-practices) already recommends planning
 before coding, a fresh session for review, and separate writer and reviewer agents.
+
+## Field report: compaction in the author's own sessions, 2026-10-26
+
+A follow-up to [6](#6-a-summary-is-a-concussion), in a separate project (`compaction`, not in this
+repository): the handoff check run on real compactions, trials in which the agent writes its own
+summary, and the author's earlier, unpublished attempts at the same problem. Small numbers again;
+what is measured is marked, and what is only proposed is left open.
+
+### 1. The handoff check passed nearly every real compaction
+
+The word-overlap check of A11 ran over all 29 compactions in the author's local transcripts
+(September–October 2026, 13 projects, 227 human messages). It flagged 4 messages, all in one
+compaction; the other 28 it passed. By the author's account, harm happened in many of them, mostly
+in the code or in code that should have been written and was not, where a transcript check does
+not look. A cruder check of the code (files the summary called done that the session never touched,
+files said to be frozen that changed afterwards, fix and revert commits in the next 48 hours) found
+leads in 9 compactions; every lead followed was a false alarm. So the check that went 4/4 in
+handoff-r, against a gap that was planted, has never been seen to fire on a real one: as it stands,
+a K3 factory ([SE1/U7](guide/02-unknowing.md#u7)).
+
+**Proposed:** [SE1/A11](guide/10-agents.md#a11) says what was measured and no more (in this draft).
+**Open:** a check that cannot say "fine": report what is always true — how much of the context the
+summary replaced (the transcript records it: one real compaction went from 731,754 tokens to
+22,852), what changed in the code since, and whether the tests pass — instead of a score. Untested.
+
+### 2. An import from outside the repository does not load
+
+"Load it at every start, for example by importing AGENTS.md from CLAUDE.md" fails silently when the
+import names a file outside the repository: Claude Code loaded neither `@../guide/AGENTS.md` nor an
+absolute path, and gave no sign. An import of a copy inside the repository loaded. Measured with
+Claude Code 2.1.311, in `-p` sessions, by asking for a phrase only the imported file holds.
+
+**Proposed:** AGENTS.md *After a gap* and A11 say to import a copy inside the repository (in this
+draft). A copy can go stale; the compaction project fails its pretest when its copy no longer
+matches.
+
+### 3. Compaction happens while the human is away
+
+Every automatic compaction since 2026-10-08 in the author's sessions (22 of them) came after 54–55
+minutes without a message, at 205k–461k tokens, not at a full window. So the next thing the agent
+reads is the human coming back, who has had an hour to forget too. In `claude -p` the new summary
+reaches disk only after SessionStart hooks return, so a check there cannot read it; on the first
+prompt after the compaction it can, and that check was built and seen to report.
+
+**Open:** whether A11 should say *when* to check (the first prompt after a gap, not the start of the
+session). The idle timing is one author's sessions and one client version; the cause (the prompt
+cache) is inferred, not read from documentation.
+
+### 4. Short sessions wrote faithful summaries; the drift is said to live in long, messy ones
+
+Six scripted sessions of 30k–47k tokens, in which the agent did the first half of the work itself
+and was compacted with `/compact`, all wrote summaries that kept the owner's constraints, and every
+agent then followed them, with or without a check, a numbered requirement, or a searchable memory.
+The author's account puts the drift in long sessions on pre-SE1 codebases, as a trend of missing
+foundational facts rather than reversed decisions (one earlier project lost encryption at rest, and
+an offline cache, in new components written after the facts were already recorded). `--autocompact
+100k` gives several real automatic compactions in one cheap session, which makes long trials
+affordable; none has run yet.
+
+**Open:** untested at the length where the author saw it. A trial worth running: apply SE1 to a
+codebase for the first time (long, real work), with automatic compactions during it, and grade
+whether foundational facts reach later new work.
+
+### 5. A memory tool makes the look cheap; it does not make the agent look
+
+A searchable memory of the session (full-text, no model) was offered on the first prompt after the
+compaction. The agent did not search it; nothing had been lost (n=1). The author's earlier
+experiments found the same shape from the other side: a better-shaped handoff document did not
+reduce invented specifics (about one per 130–150 words in both arms, retrieval forbidden, n=1),
+and a second agent watching live, not compacted, caught a confident claim the worker had already
+written.
+
+**Open:** no change. Recall tools serve after the agent knows it has forgotten; A11's check is what
+tells it.
+
+### 6. The earlier attempts were found last
+
+The author had worked this problem before, in another project, with a pre-registered rubric and a
+negative result. That work surfaced only when the author named the project as a test bed, after
+five versions of the new project's requirements had been written without it.
+
+**Open:** whether [SE1/R3](guide/04-requirements.md#r3)'s table should carry "What have you already
+tried, and what did it show?" It is a question nobody volunteers, and its answer can invalidate the
+plan, which is the order R3 asks for.
