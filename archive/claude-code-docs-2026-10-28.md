@@ -46,6 +46,12 @@ and compact_summary. The compact_summary field contains the conversation summary
 compact operation." And, of hook output: "A hook's additionalContext, systemMessage, and
 initialUserMessage strings, and its plain stdout, are capped at 10,000 characters".
 
+**hooks**, *InstructionsLoaded* (the check ADOPT.md step 2 names): "This event doesn't fire when
+Claude reads AGENTS.md directly through the Project instructions setting. It does fire when a
+CLAUDE.md imports your AGENTS.md, with load_reason set to include as for any other imported file".
+Its input carries `file_path`, `memory_type`, and `load_reason`: "session_start",
+"nested_traversal", "path_glob_match", "include", or "compact".
+
 **headless**, *bare mode*: "--bare is the recommended mode for scripted and SDK calls, and will
 become the default for -p in a future release." And: "Set ANTHROPIC_API_KEY before running it,
 because bare mode doesn't use your subscription login". And: "In bare mode, Claude Code never reads
