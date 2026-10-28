@@ -78,6 +78,7 @@ instruction file at it), and start your working set from the templates listed un
 | [CHANGELOG.md](CHANGELOG.md)       | what changed in each release, by principle ID                   |
 | `templates/`                       | starting points: [REQUIREMENTS](templates/REQUIREMENTS_v1.md), [DESIGN](templates/DESIGN_v1.md), [QUEUE](templates/QUEUE.md), [FINDINGS](templates/FINDINGS.md), [CONTRIBUTING](templates/CONTRIBUTING.md) |
 | [GAPS.md](GAPS.md)                 | where the guide fell short in the field, and how each gap was closed |
+| [archive/](archive/README.md)      | the sources behind the claims: URL, date, checksum, and the passage relied on |
 
 ## The running example
 

@@ -56,3 +56,6 @@ defaults:
   # Templates are reachable from links but are starting files, not part of the book.
   - scope: { path: "templates" }
     values: { nav_exclude: true }
+  # Archive entries are records of sources, reachable from the citations that use them.
+  - scope: { path: "archive" }
+    values: { nav_exclude: true }
