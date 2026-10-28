@@ -34,8 +34,9 @@ it loaded; ADOPT.md says how. A copy that has to be opened is not read.
   compaction or any handoff the summary is recalled, not observed. Load the rule at every start, and
   check that it loads; run a handoff check that compares the summary with the record, and that can
   say *wrong*: the word-overlap check found a planted gap and passed nearly every real compaction.
-  The summary is not the only injury: a requirement freshly read is still left out of new work
-  unless a check runs on the work without the agent choosing to run it.
+  The summary is not the only injury: a requirement freshly read is still left out of new work; in
+  trials, only a check that ran on the work without the agent choosing to run it moved a store, and
+  that once.
 - [SE1/U8](guide/02-unknowing.md#u8) Leave whitespace: an agenda finds only what it looks for. K2 is
   what nobody is asking about; time with no agenda, for people and for agents, is the attention that
   notices it first.

@@ -172,8 +172,9 @@ project whose standing decision was *encryption at rest everywhere*, agents with
 freshly in front of them, compacted or not, built a new store in plaintext in every run: none of 71
 was keyed, and the agents who wrote the decision into their own notes left it out of their code. A
 guard the agent had to choose to run was read and never run; the one store that changed was refused
-by a hook at a pause. Recall gets a rule into the next context. Only a check that runs on the new
-work, without the agent choosing to run it, gets it into the work ([SE1/O3](07-operating.md#o3)).
+by a hook at a pause, one store of ten in that arm. Recall gets a rule into the next context. In
+these trials nothing got it into the work except a check that ran on the work without the agent
+choosing to run it, and that once ([SE1/O3](07-operating.md#o3)).
 
 So treat every handoff as a possible injury, and check from outside:
 

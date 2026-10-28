@@ -406,8 +406,8 @@ fresh sessions built the store in plaintext, one of them having named the encryp
 earlier; one asked whether plaintext was acceptable, then did it anyway. In the arm given a guard
 script and an AGENTS.md line telling it to run it, every run kept the guard byte for byte, read the
 line, and none ran the guard. The one store that changed course was refused by a Stop hook at a
-pause. A requirement freshly read is still left out of new work; only a check that runs on the work,
-without the agent choosing to run it, carries it in.
+pause. A requirement freshly read is still left out of new work; in these trials nothing carried it
+in except a check that ran on the work without the agent choosing to run it, and that once in ten.
 
 **Closed:** [SE1/A11](guide/10-agents.md#a11) says the summary is not the only injury, and points at
 [SE1/O3](guide/07-operating.md#o3).
