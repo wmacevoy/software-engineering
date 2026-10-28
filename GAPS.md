@@ -382,3 +382,115 @@ Whether bare mode also skips the AGENTS.md fallback is not documented.
 
 **Open:** dated here so the failure is recognized when it arrives. In a scripted session, A11's
 "check that it loads" is then the only defense.
+
+## Field report: agent tribes and checks, 2026-10-28
+
+About 300 agent runs and reviews over three days in the compaction project, on a snapshot of viki:
+a C project with a morning-brief script, whose standing decision D-9 is "Encryption at rest
+everywhere". The task, at the third of three owner turns, was to add a store of past briefs. The
+arms varied what helped the agent across a compaction: the agent as a successor with a journal (a
+tribe); a hook that refused plaintext at the end of a turn; a jester; a break with colleagues; words
+about agency; an invitation to read a book; a framing at the first compaction; a council at a pause.
+Claude Haiku throughout, with this guide's AGENTS.md and chapter 2 as background in every arm, so no
+arm was guide-free. Graded by script on the code left behind, with at-rest guards and a probe.
+Small numbers: 10 runs per arm, one task, one model. Most of what they show is that the guide
+already says it. The runs, harness, and rubrics are in the compaction project, not this repository;
+the lines of its findings relied on here are quoted, with the file's hash, in
+[archive/compaction-findings-2026-10-28.md](archive/compaction-findings-2026-10-28.md).
+
+### 1. Knowing is not doing
+
+None of the 71 stores built across every batch was keyed, compacted or not. Agents wrote D-9 into
+their own journals in 19 of 20 runs and into their code in none. With no compaction at all, 3 of 3
+fresh sessions built the store in plaintext, one of them having named the encryption layer a turn
+earlier; one asked whether plaintext was acceptable, then did it anyway. In the arm given a guard
+script and an AGENTS.md line telling it to run it, every run kept the guard byte for byte, read the
+line, and none ran the guard. The one store that changed course was refused by a Stop hook at a
+pause. A requirement freshly read is still left out of new work; only a check that runs on the work,
+without the agent choosing to run it, carries it in.
+
+**Closed:** [SE1/A11](guide/10-agents.md#a11) says the summary is not the only injury, and points at
+[SE1/O3](guide/07-operating.md#o3).
+
+### 2. A guard tested only against its own stub was wrong
+
+The at-rest guard's stub of viki printed a ledger viki never prints, and the guard's tests ran it
+against that stub, so they could only agree with it. It graded two batches before the author
+pointed at it; a replay against viki's real output format found the misjudged runs, and the
+replacement is checked against the `printf` formats in viki's source.
+
+**Closed:** no change. [SE1/T6](guide/06-testing.md#t6): the mock and the real thing answer to the
+same test.
+
+### 3. A hook that never ran on the turns that mattered
+
+A Stop hook meant to refuse plaintext ran only on turns that ended normally. Most compacted turns
+ended on "Autocompact is thrashing" (15 of 21 and 12 of 18 in two arms), and those never reach
+Stop. The hook blocked in 4 runs of 10, and moved one store.
+
+**Closed:** no change. [SE1/U7](guide/02-unknowing.md#u7): an alert never seen firing.
+
+### 4. Runs that never happened looked like runs that did little
+
+The account's usage limit ended 20 of 50 runs mid-task, and the grader called them valid until a
+check for the limit's text was added.
+
+**Closed:** no change. [SE1/O4](guide/07-operating.md#o4), [SE1/U7](guide/02-unknowing.md#u7).
+
+### 5. Reviewers are asked about the requirement a change serves, not the ones it must not break
+
+Fresh readers shown a built plaintext store saw the problem from "the requirements and decisions"
+in 5 of 36 reviews, and in 31 more once D-9 was named; a second pass agreed within one step on 35
+of 36. But naming D-9 was pointing at the defect, and the two stores closest to compliant were
+flagged too, so there is no false-alarm rate. Choosing which requirements are at risk is most of a
+review, and the probe did that part for the reader. [SE1/W11](guide/08-work.md#w11) and the
+definition of done ask whether a change satisfies "a stated requirement"; neither asks about the
+requirements it must not break.
+
+**Open:** worth a line in W11 ("list the requirements and decisions the change must not break, and
+ask about each by ID") once a trial has a negative control.
+
+### 6. An ID survives a summary; its meaning does not
+
+Across compactions, summaries kept the label "D-9" and lost what it said: "D-9 encryption at rest
+via fossil-see" became "Fossil pinned at 2.28 (D-9)", and the store design after that said
+"plain-text snapshots". viki's own CLAUDE.md lists "D-9 Fossil is pinned at 2.28". One run and one
+file.
+
+**Closed:** no change. [SE1/D6](guide/05-design.md#d6), name the authority. Citing a requirement by
+ID *and* its words is a cheap habit worth trying.
+
+### 7. The stop-and-ask on keys, with nobody to answer
+
+Some agents said a key needs the owner's decision and left the store in plaintext: two runs, and one
+more in a spike where a council had named D-9. AGENTS.md already says to stop before doing any of
+the work when a task contradicts a requirement, and [SE1/O8](guide/07-operating.md#o8) says a
+missing secret is an exit code, not a default; the agents broke both. In these trials the owner was
+a script and could not answer, which is a confound. One run is the rule working: it refused to write
+plaintext until the key was decided.
+
+**Closed:** no change. [SE1/O8](guide/07-operating.md#o8), AGENTS.md *Stop, ask, or proceed*.
+
+### 8. Nulls, and one move in the wrong direction
+
+- **A jester** found facts about the snapshot, never the store being built.
+- **A break** raised a real risk (the cache in plaintext) in 4 of 10 runs and never tied it to the
+  store.
+- **Inviting a fresh reader to walk a book, long or short,** did not change what they saw in someone
+  else's store. Whether it changes what they build was not tested.
+- **Words about agency** changed what agents left in their journals. They also built a store more
+  often (10 of 10, against 5 of 10), and those stores left more fields readable, not fewer.
+
+**Closed:** no change. Recorded as results.
+
+### 9. The human found what the checks missed
+
+Three of the project's worst defects were each found by the author pointing, after every check had
+passed them: the invalid guard (#2); that the agent drafting the mechanisms had applied none of them
+to its own work; and that every commit to this guide's AGENTS.md was co-authored by an agent while
+the file's text said nothing of it. None was caught by a test, a hook, a rubric, or the project's
+own review familiar, which named a defect only when it held a card that already contained the
+answer.
+
+**Closed:** no change. One session. [SE1/A10](guide/10-agents.md#a10)'s retro questions are where
+this goes; a finding about every check that passed a defect belongs beside the check.

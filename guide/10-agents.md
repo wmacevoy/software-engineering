@@ -167,6 +167,14 @@ the author's account, the same script flagged 4 messages, all in one compaction
 ([GAPS](../GAPS.md#1-the-handoff-check-passed-nearly-every-real-compaction)): it has not yet been
 seen to catch a real one.
 
+The summary is not the only injury. In [later trials](../GAPS.md#1-knowing-is-not-doing) on a
+project whose standing decision was *encryption at rest everywhere*, agents with that decision
+freshly in front of them, compacted or not, built a new store in plaintext in every run: none of 71
+was keyed, and the agents who wrote the decision into their own notes left it out of their code. A
+guard the agent had to choose to run was read and never run; the one store that changed was refused
+by a hook at a pause. Recall gets a rule into the next context. Only a check that runs on the new
+work, without the agent choosing to run it, gets it into the work ([SE1/O3](07-operating.md#o3)).
+
 So treat every handoff as a possible injury, and check from outside:
 
 - **Put the rule where it is loaded at every start,** not where it has to be looked up, and check

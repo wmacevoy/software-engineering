@@ -31,6 +31,8 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
   compaction or any handoff the summary is recalled, not observed. Load the rule at every start, and
   check that it loads; run a handoff check that compares the summary with the record, and that can
   say *wrong*: the word-overlap check found a planted gap and passed nearly every real compaction.
+  The summary is not the only injury: a requirement freshly read is still left out of new work
+  unless a check runs on the work without the agent choosing to run it.
 - [SE1/U8](guide/02-unknowing.md#u8) Leave whitespace: an agenda finds only what it looks for. K2 is
   what nobody is asking about; time with no agenda, for people and for agents, is the attention that
   notices it first.
@@ -56,9 +58,11 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
   the drawing, not two pages later. READING adds Brown (1948).
 - Wording only: [SE1/A10](guide/10-agents.md#a10) is no longer the chapter's last section; its text
   is unchanged.
-- GAPS.md: a field report from agent trials, including the compaction trials behind A11; and a
-  second, on compaction in the author's own sessions (the check on real compactions, imports from
-  outside the repository, when compaction happens, and what is still untested).
+- GAPS.md: a field report from agent trials, including the compaction trials behind A11; a second,
+  on compaction in the author's own sessions (the check on real compactions, imports from outside
+  the working directory, when compaction happens, and what is still untested); and a third, on
+  agent tribes and checks (knowing is not doing; a guard tested against its own stub; the human
+  found what the checks missed).
 - AGENTS.md *After a gap*: import AGENTS.md from a copy kept in the repository.
 
 ## v1.1 — 2026-10-20
