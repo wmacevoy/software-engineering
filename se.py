@@ -5,11 +5,13 @@
                 start, a hook for the handoff, the repository guide, the working set, versioned
                 citations, the trace from requirements to tests, the queue, recent commits, CI.
                 ADOPT.md's checklist, made executable. Read-only.
-  se --post     Is this session sound? A power-on self test (SE1/T2): whether the session can be torn
-                (SE1/U7), what it inherits (a compaction, torn state, low disk), the rules that follow,
-                and what would lessen it. Meant to run as a SessionStart hook; `se --hook` prints
-                the entry and `se --hook --write` merges it into .claude/settings.json.
-  se --self     In the guide's own checkout: the embedded hash matches AGENTS.md.
+  se --post     Is this session sound? A self test in SE1/T2's sense: it refuses, with exit code 1,
+                when a precondition for safe work is missing (disk below the floor), and reports the
+                risks it cannot refuse: whether the session can be torn (SE1/U7), what it inherits (a
+                compaction, torn state), the rules that follow, and what would lessen it. Meant to
+                run as a Claude Code SessionStart hook (`se --hook` prints the entry, `--write`
+                installs it); by hand in any runner. Rows that describe Claude Code say so.
+  se --self     In the guide's own checkout: the embedded hash matches AGENTS.md as released.
 
 Standard library only, Python 3.9 or later. This copy is from the guide release named in RELEASE;
 the doctor's first line says whether a newer one exists, or that it could not check and how old its
@@ -225,8 +227,9 @@ def check_loads(repo):
         outside = [p for p in imports if not str(p.resolve()).startswith(str(repo))]
         if copy and any(p.resolve() == copy.resolve() for p in inside):
             return Finding("loads at every start", "SE1/A11", PASS,
-                           f"{here[0].name} imports the copy from inside the working directory; an "
-                           "InstructionsLoaded hook can confirm it (load_reason include)", "")
+                           f"[Claude Code configuration] {here[0].name} imports the copy from inside the working "
+                           "directory; an InstructionsLoaded hook can confirm it (load_reason include). Observed "
+                           "loading, for any runner: the phrase test (ADOPT.md step 2)", "")
         if outside:
             return Finding("loads at every start", "SE1/A11", FAIL,
                            f"{here[0].name} imports from outside the working directory: {outside[0]}",
@@ -240,8 +243,9 @@ def check_loads(repo):
                        "add a CLAUDE.md in this repository that imports the copy")
     if copy and copy.name == "AGENTS.md" and copy.parent == repo:
         return Finding("loads at every start", "SE1/A11", PASS,
-                       "no CLAUDE.md: Claude Code reads AGENTS.md by itself (v2.1.277+); no hook confirms that "
-                       "path, so use the phrase test (ADOPT.md step 2)", "")
+                       "[Claude Code configuration] no CLAUDE.md: Claude Code reads AGENTS.md by itself (v2.1.277+); "
+                       "no hook confirms that path. Other runners were not inspected. Observed loading, for any "
+                       "runner: the phrase test (ADOPT.md step 2)", "")
     return Finding("loads at every start", "SE1/A11", FAIL, "no CLAUDE.md and no AGENTS.md at the root",
                    "copy AGENTS.md to the root, or import the copy from a CLAUDE.md")
 
@@ -260,7 +264,7 @@ def check_hooks(repo):
     found = [(e, m, c) for e, m, c in hook_commands(s)
              if e == "PostCompact" or (e == "SessionStart" and (not m or "compact" in m))]
     if not found:
-        return Finding("handoff hook", "SE1/A11", NONE, "no hook receives the compaction (PostCompact) or runs after it (SessionStart compact)",
+        return Finding("handoff hook", "SE1/A11", NONE, "[Claude Code configuration] no hook receives the compaction (PostCompact) or runs after it (SessionStart compact)",
                        "`se --hook` prints an entry that runs `se --post` at startup, resume, and compaction")
     missing = []
     for _, _, cmd in found:
@@ -270,7 +274,7 @@ def check_hooks(repo):
     if missing:
         return Finding("handoff hook", "SE1/A11", FAIL, f"hook names a script that does not exist: {missing[0]}", "fix the path")
     names = ", ".join(f"{e}{'(' + m + ')' if m else ''}" for e, m, _ in found)
-    return Finding("handoff hook", "SE1/A11", PASS, f"{names}: configured, not seen to fire", "make it fire once on purpose (SE1/T3)")
+    return Finding("handoff hook", "SE1/A11", PASS, f"[Claude Code configuration] {names}: configured, not seen to fire", "make it fire once on purpose (SE1/T3)")
 
 
 def check_guide(repo):
@@ -536,7 +540,9 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
     env = os.environ if env is None else env
     hook_input = hook_input or {}
     repo = Path(repo).resolve()
-    lines, reasons, fragile = [], [], False
+    lines, reasons, fragile, refuse = [], [], False, []
+    claude = bool(env.get("CLAUDECODE"))
+    runner = "Claude Code" if claude else "a runner that is not Claude Code (not inspected)"
     mux = bool(env.get("TMUX") or env.get("STY"))
     ssh = bool(env.get("SSH_CONNECTION") or env.get("SSH_TTY"))
     container = Path("/.dockerenv").exists() or bool(env.get("CI")) or bool(env.get("GITHUB_ACTIONS")) \
@@ -547,10 +553,10 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
         reasons.append("container or CI: robust, and no human to ask")
     elif ssh and not mux:
         fragile = True
-        reasons.append("over SSH with no tmux or screen: a dropped connection ends this session")
+        reasons.append("over SSH with no tmux or screen: a dropped connection likely ends this session (inferred from the terminal, not from the runner)")
     elif not mux:
         fragile = True
-        reasons.append("a local terminal with no tmux or screen: a closed lid or a crash ends this session")
+        reasons.append("a local terminal with no tmux or screen: a closed lid or a crash likely ends this session (inferred from the terminal, not from the runner)")
     else:
         reasons.append("under a multiplexer: the session survives a dropped connection or a closed window")
     src, pct, prevented = power()
@@ -561,9 +567,11 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
         reasons.append(f"a laptop on AC power ({pct}%){'; sleep prevented' if prevented else '; sleep not prevented'}")
         if not prevented:
             fragile = True
-    if entry:
-        reasons.append(f"Claude Code {entry}{', attended' if attended == '1' else ', unattended' if attended == '0' else ''}")
-    t = transcript or transcript_for(repo, hook_input)
+    if claude:
+        reasons.append(f"Claude Code {entry or ''}{', attended' if attended == '1' else ', unattended' if attended == '0' else ''}".rstrip())
+    else:
+        reasons.append(f"runner: {runner}; the transcript, compaction, and idle-compaction rows below are Claude Code's and are skipped")
+    t = transcript or (transcript_for(repo, hook_input) if (claude or hook_input.get("transcript_path")) else None)
     comps, ctx = read_transcript(t) if t else ([], None)
     source = hook_input.get("source")
     own = bool(hook_input.get("transcript_path"))  # a hook names the session's transcript; by hand we guess the newest
@@ -584,14 +592,14 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
     free, total = disk(repo)
     if free < NO_DISK_GB:
         fragile = True
-        reasons.append(f"DISK: {free:.1f} GB free of {total:.0f}: a write can fail now")
+        refuse.append(f"disk: {free:.1f} GB free of {total:.0f}; a write can fail now")
     elif free < LOW_DISK_GB:
         fragile = True
         reasons.append(f"disk low: {free:.1f} GB free of {total:.0f}")
     else:
         reasons.append(f"disk {free:.0f} GB free of {total:.0f}")
     claude_dir = Path.home() / ".claude" / "projects"
-    if claude_dir.is_dir():
+    if claude and claude_dir.is_dir():
         rc, out = run(["du", "-sk", str(claude_dir)], timeout=10)
         if rc == 0 and out.split():
             reasons.append(f"transcripts in ~/.claude/projects: {int(out.split()[0]) / 1e6:.1f} GB, and growing")
@@ -599,15 +607,19 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
     if torn:
         fragile = True
         reasons.append("torn state already here: " + "; ".join(torn))
-    verdict = "fragile" if fragile else "robust"
+    verdict = "refused" if refuse else ("fragile" if fragile else "robust")
     lines.append(f"se --post · {dt.datetime.now():%Y-%m-%d %H:%M} · {repo.name} · session: {verdict.upper()}")
+    for r in refuse:
+        lines.append(f"  - REFUSED, a missing precondition (SE1/T2): {r}. Free space before doing anything that writes.")
     lines += [f"  - {r}" for r in reasons]
     if fragile:
         lines.append("rules for this session (SE1/U7, SE1/W11, SE1/A11): assume it will be cut, and leave the repository fine "
-                     "to be cut at every step: work on a branch; commit or stash the tear, with a message that says so, "
-                     "before any step that could take more than a few minutes; keep the trace current before the work, "
-                     "not after; one concern per change, small enough to finish; no one-way door this session; after "
-                     "any gap, treat what you find as torn until shown otherwise, and the source wins over the summary.")
+                     "to be cut at every step: work on a branch; before any step that could take more than a few minutes, "
+                     "leave the tear findable: a commit or stash whose message says it is torn if you may commit, and if "
+                     "not (AGENTS.md: no commits unless asked), the trace file, and your report saying what is torn; keep "
+                     "the trace current before the work, not after; one concern per change, small enough to finish; no "
+                     "one-way door this session; after any gap, treat what you find as torn until shown otherwise, and "
+                     "the source wins over the summary.")
         lessen = []
         if not mux and not container:
             lessen.append("run under tmux or screen")
@@ -618,8 +630,9 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
         if not container:
             lessen.append("a remote host where the session survives this machine")
         if free < LOW_DISK_GB:
-            lessen.append("free disk space; transcripts under ~/.claude/projects are the usual growth")
-        lessen.append("for a long session, `idleCompaction: false` (cost: the next message after an hour reprocesses the whole context)")
+            lessen.append("free disk space" + ("; transcripts under ~/.claude/projects are the usual growth" if claude else ""))
+        if claude:
+            lessen.append("for a long session, `idleCompaction: false` (Claude Code; cost: the next message after an hour reprocesses the whole context)")
         lines.append("to lessen it, once, for the human: " + "; ".join(lessen) + ".")
     else:
         lines.append("ordinary rules apply; the hand-off checklist still does.")
@@ -655,9 +668,17 @@ def self_check(guide):
     problems = []
     if not (guide / "guide").is_dir() or not agents.is_file():
         return [f"{guide} is not the guide's checkout"]
-    digest = sha256(agents)
-    if digest != AGENTS_SHA256:
-        problems.append(f"AGENTS_SHA256 in se.py is stale: AGENTS.md is {digest}")
+    rc, released = run(["git", "show", f"{RELEASE}:AGENTS.md"], cwd=guide)
+    if rc == 0 and released:  # the tag exists: the pin is of the released text, not of unreleased edits
+        digest = hashlib.sha256(released.replace("\r\n", "\n").encode("utf8")).hexdigest()
+        if digest != AGENTS_SHA256:
+            problems.append(f"AGENTS_SHA256 in se.py is stale: AGENTS.md at {RELEASE} is {digest}")
+        elif sha256(agents) != digest:
+            print(f"note: AGENTS.md has changed since {RELEASE}; the next minor release re-pins it")
+    else:  # no tag yet: the release commit pins the working tree
+        digest = sha256(agents)
+        if digest != AGENTS_SHA256:
+            problems.append(f"AGENTS_SHA256 in se.py is stale: AGENTS.md is {digest}")
     m = LABEL_RE.search(read(agents))
     if not m or m.group(1) != RELEASE:
         problems.append(f"RELEASE in se.py is {RELEASE}; AGENTS.md says {m.group(1) if m else 'nothing'}")
@@ -721,7 +742,7 @@ def main(argv=None):
             print(json.dumps({"verdict": verdict, "lines": lines}))
         else:
             print("\n".join(lines))
-        return 0
+        return 1 if verdict == "refused" else 0
     findings = doctor(repo, online=not a.offline)
     if a.json:
         print(json.dumps([f._asdict() for f in findings], indent=2))

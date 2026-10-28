@@ -9,8 +9,10 @@ set is rebuilt from the code and marked *(inferred)* until a person confirms it.
 here are defined in [GLOSSARY.md](GLOSSARY.md). The guide's `se` runs this checklist: copy `se`,
 `se.ps1`, and `se.py` beside AGENTS.md, and `./se --doctor` says which steps are done, which are
 "none yet", and which are wrong; `./se --hook --write` makes the session's self test run at every
-start ([SE1/T2](guide/06-testing.md#t2)). Tested with Claude Code only; with another tool, read
-what it reports with that in mind, and tell us.
+start ([SE1/T2](guide/06-testing.md#t2)). Tested with Claude Code only, and its rows about loading
+and hooks describe Claude Code's configuration, the only runner inspected; observed loading, for
+any runner, is the phrase test in step 2. With another tool, read what it reports with that in
+mind, and tell us.
 
 ## For the owner
 

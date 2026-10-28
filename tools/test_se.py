@@ -48,7 +48,8 @@ def make_repo(tmp, files=GOOD, message="UI-1: show the count (REQ1/UI-1)"):
     for rel, text in files.items():
         p = repo / rel
         p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(text, encoding="utf8", newline="\n")
+        with open(p, "w", encoding="utf8", newline="\n") as fh:  # Path.write_text(newline=) is 3.10+; this runs on 3.9
+            fh.write(text)
     git(repo, "init", "-q")
     git(repo, "add", "-A")
     git(repo, "commit", "-q", "-m", message)
@@ -284,6 +285,22 @@ class TestPost(unittest.TestCase):
         lines, verdict = self.post({"TMUX": "1"}, free=3.0)
         self.assertEqual(verdict, "fragile")
         self.assertTrue(any("disk low" in l for l in lines))
+
+    def test_disk_below_the_floor_is_refused(self):
+        lines, verdict = self.post({"TMUX": "1"}, free=0.5)
+        self.assertEqual(verdict, "refused")
+        self.assertTrue(any("REFUSED" in l for l in lines))
+
+    def test_rules_do_not_tell_an_agent_to_commit(self):
+        lines, verdict = self.post({})
+        rules = next(l for l in lines if l.startswith("rules for this session"))
+        self.assertIn("if you may commit", rules)
+        self.assertIn("no commits unless asked", rules)
+
+    def test_another_runner_skips_claude_code_rows(self):
+        lines, verdict = self.post({"TMUX": "1", "CI": "1"})
+        self.assertTrue(any("not Claude Code" in l for l in lines))
+        self.assertFalse(any("idleCompaction" in l for l in lines))
 
     def test_compaction_is_announced_first(self):
         t = Path(self.tmp.name, "t.jsonl")
