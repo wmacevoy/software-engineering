@@ -113,7 +113,7 @@ stands**, in the repository, versioned with the code ([SE1/W10](08-work.md#w10),
 
 ### <a id="u7"></a>U7. Find the K3 factories: anything that keeps saying "fine" with no way to say "wrong"
 
-*New in v1.1.*
+*Changed in v1.2.*
 
 A K3 is one wrong belief ([SE1/U3](#u3)). A **K3 factory** is whatever keeps producing them: a signal
 that says "fine," costs nothing to keep believing, and has no path by which it could say "wrong." It
@@ -137,6 +137,13 @@ to fix once named:
 - **An alert never seen firing.** Silence looks exactly like health ([SE1/O4](07-operating.md#o4)).
 - **A default nobody chose** — a timeout, a retention period, an unpinned version. It works, so
   nobody asks who decided ([SE1/R6](04-requirements.md#r6), [SE1/O2](07-operating.md#o2)).
+- **Torn work.** A change interrupted between started and done: a dropped connection, a closed
+  laptop, a busy server, a compacted context ([SE1/A11](10-agents.md#a11)), a second agent on the
+  same project. What is left — a working tree, a branch, a queue row, a summary — reads as the
+  current state, is neither the old one nor the new, and nothing says so: the interruption rule of
+  [SE1/R7](04-requirements.md#r7), applied to the work instead of the data. Keep a change small
+  enough to finish ([SE1/W11](08-work.md#w11)); when interrupted, commit or stash the tear with a
+  message that says so; on resuming, treat what you find as torn until shown otherwise.
 
 Three cures, each the opposite of what makes a factory:
 

@@ -37,6 +37,8 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
 - [SE1/A3](guide/10-agents.md#a3) An agent may ask; the client's answers reach the code only through
   the requirements, written down before anything is built on them. A private memory an agent keeps
   between sessions is a head, not the working set.
+- [SE1/U7](guide/02-unknowing.md#u7) The K3 factories gain *torn work*: a change interrupted between
+  started and done, which reads as the current state and says nothing.
 
 ### Also changed
 

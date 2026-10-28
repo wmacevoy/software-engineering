@@ -72,5 +72,6 @@ find the guide using one of these loosely, that is a bug.
 | **Symptom alert** | An alert on what users experience — errors, latency, stale data — rather than on an internal cause. |
 | **Technical debt**      | Carry taken on knowingly, to be repaid.                                                              |
 | **Thin vertical slice** | A narrow path through every layer, end to end, built first and then widened.                         |
+| **Torn work** | A change interrupted between started and done, left looking like the current state: a half-applied refactor that compiles, a queue row still *in progress*, a summary that says *done* ([SE1/U7](guide/02-unknowing.md#u7)). |
 | **Transitive dependency** | A library your libraries depend on — code you ship but never chose directly. |
 | **Working set**         | `REQUIREMENTS_vX`, `DESIGN_vX`, `QUEUE`, `FINDINGS` — in the repository, versioned with the code.    |
