@@ -61,6 +61,8 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
   U7 (marked changed above): a K3 factory is lessened, not fixed. GLOSSARY pins the word.
 - Wording only: [SE1/W2](guide/08-work.md#w2): Royce's warning is in the sentence directly beneath
   the drawing, not two pages later. READING adds Brown (1948).
+- Wording only: [SE1/T5](guide/06-testing.md#t5)'s table says global state is unrepeatable *if
+  written*, as its prose already said.
 - Wording only: [SE1/A10](guide/10-agents.md#a10) is no longer the chapter's last section; its text
   is unchanged.
 - GAPS.md: a field report from agent trials, including the compaction trials behind A11; a second,

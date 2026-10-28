@@ -106,7 +106,7 @@ test; it is a property of **the state the test touches**, and that state has exa
 | ----------- | ----------------------------------------------------- | -------------------------------------------------------------- | -------- |
 | **Local**   | the test creates it and destroys it                   | yes, and safe in parallel                                      | a pure function's arguments; a temp directory; a fresh object |
 | **Sharded** | shared infrastructure, partitioned so each test owns a slice | yes — if the key is unique and the test stays in its slice | a schema per worker; a record the test creates and drops; a container per job |
-| **Global**  | one instance, read and written by everyone            | no. **A test that modifies global state is a race condition, not a test.** | a shared dev database; a seeded row two tests update; environment variables; the system clock; a singleton; a fixed port |
+| **Global**  | one instance, read and written by everyone            | no, if written. **A test that modifies global state is a race condition, not a test.** | a shared dev database; a seeded row two tests update; environment variables; the system clock; a singleton; a fixed port |
 
 A test that writes global state passes alone, then fails when another test runs first, or at the
 same time, or against the rows yesterday's run left behind — and it tends to fail on someone else's
