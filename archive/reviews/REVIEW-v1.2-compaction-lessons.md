@@ -66,7 +66,7 @@ as a possible injury":
 > notes left it out of their code. A guard the agent had to choose to run was read and never run;
 > the one store that changed was refused by a hook. Recall gets a rule into the next context. Only a
 > check that runs on the new work, without the agent choosing to run it, gets it into the work
-> ([SE1/O3](../../guide/07-operating.md#o3), [GAPS](../../GAPS.md#…)).
+> ([SE1/O3](../../guide/07-operating.md#o3), [GAPS](../../GAPS.md#1-knowing-is-not-doing)).
 
 **Strength.** Strong for one model, on one task, against one requirement. It holds across every batch
 and every arm from DESIGN_v4 to v10. *Wrong if:* in another project or model, agents who have a

@@ -1,3 +1,4 @@
 # The repository is Markdown and one Node script with no dependencies.
 .DS_Store
 node_modules/
+__pycache__/
