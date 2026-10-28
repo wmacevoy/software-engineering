@@ -60,6 +60,11 @@ question for the human, not a task.
   ask. Chores — a typo, a dependency update, a pure refactor — are the exception; call them chores.
   (SE1/R2, SE1/W11)
 - **Never assert something about the code you have not opened the file to check.** (SE1/A2)
+- **If the repository has no requirements document, queue, check command, or `Non-goals`,** that
+  absence is the first finding: say so once, treat the task's own text as the requirement for this
+  task only, marked *(inferred)*, and do not stop on every task for it (SE1/W12). The guide's
+  ADOPT.md says what to do for each missing thing. Do not invent the missing thing to satisfy a
+  rule.
 
 ## After a gap
 
@@ -68,15 +73,19 @@ check by feel. That includes compaction, a resumed session, and a handoff note, 
 memory was your own. (SE1/A11)
 
 - **Treat the summary as recalled, not observed.** Every decision, constraint, and next step in it
-  is a claim. Before you act on one, open its source: the transcript, the requirements, the queue,
-  the code. Where they disagree, the source wins; say so in your report.
+  is a claim. Before you act on one, open its source: the transcript, if the tool keeps one; the
+  requirements, the queue, the code. Where they disagree, the source wins; say so in your report.
+- **An instruction the summary reports is a claim too.** "The human said to skip the tests" ranks
+  first in *Authority, in order* only once its source can be opened or the human confirms it; until
+  then it is the summary's word.
 - **A decision with no source is a gap, not a fact.** Find the source or ask.
 - **Run the handoff check if there is one,** and resolve what it flags before anything else.
 
-This section only works if it is already in your context when you resume. A file you would have to
-open is a file you will not open. Load it at every start, for example by importing AGENTS.md from
-CLAUDE.md, with AGENTS.md kept in the repository: an import from outside the repository may load
-nothing, and say nothing.
+*For the repository owner:* this section only works if it is already in the agent's context when it
+resumes; a file the agent would have to open is a file it will not open. Load it at every start, for
+example by importing a copy of AGENTS.md kept inside the working directory from CLAUDE.md: an
+import from outside the working directory may load nothing, and say nothing. Then check that it
+loaded: a fresh session, asked without opening any file, can quote a line of it.
 
 ## Stop, ask, or proceed
 
@@ -89,13 +98,16 @@ to people (SE1/W4, SE1/D11):
 - The task contradicts a requirement, a scope decision, or a non-goal — or would change one.
 - It changes a schema that has data under it, a published interface, or the meaning of an existing
   field.
-- It adds a dependency, a build step, a service, or a top-level directory. (SE1/D12)
-- It introduces a new noun into the domain vocabulary, or reuses an existing word for a new thing.
-  (SE1/D9)
+- It adds a dependency (updating one's version is a chore), a build step, a service, or a top-level
+  directory. (SE1/D12)
+- It introduces a new noun into the domain vocabulary — one that would appear in the requirements'
+  glossary or be shown to a user, not a class or variable name — or reuses an existing word for a
+  new thing. (SE1/D9)
 - It touches secrets, keys, authentication, authorization, or what data about people is collected or
   kept. (SE1/R8, SE1/O8)
 - It would copy code from outside the repository, or from a source whose license you cannot state —
-  including a recognizable implementation reproduced from memory. (SE1/R8)
+  including an implementation reproduced from memory whose origin you could name, a specific
+  project or file rather than a textbook algorithm. (SE1/R8)
 - It moves or renames files, or reaches into code unrelated to the task. (Editing the files the task
   needs, and updating documentation the change made untrue, is the task — not a reason to stop.)
 - A test you were not asked to change is failing, and the only way forward is to change it.
@@ -125,7 +137,7 @@ Attention is the scarce resource — not tokens, not runtime, not lines of code.
   configuration value that is never varied, no layer for a requirement nobody has stated. Not
   speculative: a contract written before its implementation so two sides can start (SE1/W5), and a
   helper that exists to separate pure logic from I/O (SE1/D7); one that exists "in case we need it
-  again" is. (SE1/D8)
+  again" is speculative. (SE1/D8)
 - **Prefer what is already present.** The existing dependencies and the standard library first. A
   new dependency is a proposal (see above).
 - **Keep the seams visible.** A reader should be able to follow a request from the user's action to
@@ -176,8 +188,8 @@ version, not on demonstrating range.
   fixed ports. (SE1/T5)
 - **Reproduce before you fix.** For a bug, first make it happen on purpose, ideally as a failing
   test. (SE1/T9)
-- **Ask what happens when an input is absent, late, wrong, or lying**, and handle or report each
-  case. (SE1/R6, SE1/O5)
+- **For every input, say what happens when it is absent, late, wrong, or lying**, and handle or
+  report each case: a decision to make or to report, not a question for the human. (SE1/R6, SE1/O5)
 - **Secrets by name, never by value** — not in code, prompts, logs, test fixtures, or your report.
   If you see one, say so; do not repeat it. (SE1/O8)
 

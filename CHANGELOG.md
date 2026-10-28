@@ -66,7 +66,10 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
   the working directory, when compaction happens, and what is still untested); and a third, on
   agent tribes and checks (knowing is not doing; a guard tested against its own stub; the human
   found what the checks missed).
-- AGENTS.md *After a gap*: import AGENTS.md from a copy kept in the repository.
+- AGENTS.md *After a gap*: import AGENTS.md from a copy kept inside the working directory, and
+  check that it loaded; an instruction the summary reports is a claim. From an adversarial read of
+  the file: what to do in a repository with no working set; a version update is a chore; what
+  counts as a new noun or a recognizable implementation; the input cases are decided, not asked.
 
 ## v1.1 — 2026-10-20
 
