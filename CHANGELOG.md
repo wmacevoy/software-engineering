@@ -11,19 +11,22 @@ factory ([SE1/U7](guide/02-unknowing.md#u7)), so every change is visible in thre
 
 `tools/check.js` keeps the three in step, and compares every principle with the last release tag:
 one whose text changed must have a marker for a later release, or — for wording only — be named
-under that release's *Also changed*. Work toward a release goes under `## v1.2 — unreleased`; give it
+under that release's *Also changed*. Work toward a release goes under `## v1.3 — unreleased`; give it
 a date when you tag it. Within SE1, a minor release may add principles, reword them, or extend what
 they ask; it never moves an ID ([principle index](README.md#principle-index)).
 
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.2 — unreleased
+## v1.2 — 2026-10-28
 
-[Changes on main since v1.1](https://github.com/wmacevoy/software-engineering/compare/v1.1...main)
+[Full diff from v1.1](https://github.com/wmacevoy/software-engineering/compare/v1.1...v1.2) · 100
+principles
 
-**For copies:** re-copy AGENTS.md (new section *After a gap*), and make sure your agents load it at
-every start, for example by importing it from CLAUDE.md. A copy that has to be opened is not read.
+**For copies:** re-copy AGENTS.md (new section *After a gap*, a header that says who drafted it, a
+pointer to ADOPT.md, and wording from a review) and the templates, which now link to v1.2. Make sure
+your agents load AGENTS.md at every start from a copy inside the working directory, and check that
+it loaded; ADOPT.md says how. A copy that has to be opened is not read.
 
 ### New
 
