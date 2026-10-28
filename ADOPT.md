@@ -6,7 +6,11 @@ agent session at its start; a repository guide that says how to build, run, test
 system; the working set in `docs/`; one check command that CI runs; and a definition of done. Most
 adoptions start with code already written ([SE1/W12](guide/08-work.md#w12)), so most of the working
 set is rebuilt from the code and marked *(inferred)* until a person confirms it. The words used
-here are defined in [GLOSSARY.md](GLOSSARY.md).
+here are defined in [GLOSSARY.md](GLOSSARY.md). The guide's `se` runs this checklist: copy `se`,
+`se.ps1`, and `se.py` beside AGENTS.md, and `./se --doctor` says which steps are done, which are
+"none yet", and which are wrong; `./se --hook --write` makes the session's self test run at every
+start ([SE1/T2](guide/06-testing.md#t2)). Tested with Claude Code only; with another tool, read
+what it reports with that in mind, and tell us.
 
 ## For the owner
 
@@ -135,3 +139,5 @@ the missing thing to satisfy a rule.
       [SE1/O3](guide/07-operating.md#o3))
 - [ ] After compaction a check reads the summary from outside, or at least the loaded rule treats
       it as recalled. ([SE1/A11](guide/10-agents.md#a11))
+- [ ] `./se --doctor` reports no failure, and `./se --post` runs at every start, resume, and
+      compaction. ([SE1/T2](guide/06-testing.md#t2), [SE1/U7](guide/02-unknowing.md#u7))

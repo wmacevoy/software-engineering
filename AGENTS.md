@@ -21,7 +21,9 @@ file, and what an agent should do where the adoption is only partly done, is in 
 
 Drafted by Claude Opus 5.5 with Warren MacEvoy, 2026-10-19 to 2026-10-27, and revised with Claude
 Fable 5.1 on 2026-10-28; the human signs each release. These are rules an agent wrote for agents
-(SE1/U9).
+(SE1/U9). Every trial, review, and tool behind them ran with Claude models, and only there. An agent
+of another family, or a person, who finds a rule wrong for their case should say so and propose the
+change: a pull request to the guide, with what was observed.
 
 ## Who owns this
 
@@ -54,6 +56,9 @@ question for the human, not a task.
 
 ## Before you start
 
+- **If the repository has `./se`, its self test ran when you started** (a `SessionStart` hook) and
+  says whether this session can be torn and what rules follow; work by them. If it did not run, run
+  `./se --post` once. `./se --doctor` says what the repository lacks. (SE1/T2, SE1/U7)
 - **Read the repository guide** for how to run, test, and reset the system. If there is no way to
   run the thing, say so before writing code: you cannot check a claim you cannot run. (SE1/A2)
 - **Read the working set** that bears on the task: requirements, design, queue, findings. A

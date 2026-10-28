@@ -24,9 +24,10 @@ yours.
 principles
 
 **For copies:** re-copy AGENTS.md (new section *After a gap*, a header that says who drafted it, a
-pointer to ADOPT.md, and wording from a review) and the templates, which now link to v1.2. Make sure
-your agents load AGENTS.md at every start from a copy inside the working directory, and check that
-it loaded; ADOPT.md says how. A copy that has to be opened is not read.
+pointer to ADOPT.md, and wording from a review) and the templates, which now link to v1.2; copy
+`se`, `se.ps1`, and `se.py` beside AGENTS.md and run `./se --doctor`. Make sure your agents load
+AGENTS.md at every start from a copy inside the working directory, and check that it loaded;
+ADOPT.md and the doctor say how. A copy that has to be opened is not read.
 
 ### New
 
@@ -72,6 +73,15 @@ it loaded; ADOPT.md says how. A copy that has to be opened is not read.
   the working directory, when compaction happens, and what is still untested); and a third, on
   agent tribes and checks (knowing is not doing; a guard tested against its own stub; the human
   found what the checks missed).
+- `se`, `se.ps1`, `se.py`: a command-line companion for repositories that follow the guide.
+  `./se --doctor` is ADOPT.md's checklist made executable: the copy's release (checked against the
+  network when it can, with the age of its last check when it cannot), whether it loads, the
+  handoff hook, the repository guide, the working set, versioned and moved citations, the trace,
+  the queue's *since*, commits, and CI. `./se --post` is the session's power-on self test: can this
+  session be torn, was it compacted, is disk low, and the rules that follow; it runs as a
+  SessionStart hook. Tested with Claude Code only; CI runs its tests.
+- AGENTS.md and README say that every trial, review, and tool ran with Claude models only, and ask
+  agents of other families, and people, to push back and propose changes as pull requests.
 - ADOPT.md: how to make a repository one that follows the guide, in eight steps, and what an agent
   does where the adoption is only partly done: no requirements document, no queue, no check
   command, no `Non-goals`, no glossary, no handoff check, or AGENTS.md not loaded. AGENTS.md points

@@ -89,6 +89,8 @@ keep the two in step)
 - [ ] The working agreement is loaded at every start, not left in a file to be opened, and a
       handoff check runs after compaction on its own, as a hook, not as a line the agent must choose
       to follow.
+- [ ] The session's self test (`./se --post`) ran at start and after any compaction, and the agent
+      works by its verdict. ([SE1/T2](guide/06-testing.md#t2), [SE1/U7](guide/02-unknowing.md#u7))
 - [ ] The relevant constraints are in the repository, not only in your head or the chat.
 - [ ] The agent can run the system and the checks, and reset it.
 - [ ] You asked for the smallest diff, one concern, named files.

@@ -74,6 +74,7 @@ repository, make it load at every start, and start the working set from the temp
 | ---------------------------------- | --------------------------------------------------------------- |
 | [AGENTS.md](AGENTS.md)             | the working agreement for agents, portable to any repository    |
 | [ADOPT.md](ADOPT.md)               | making a repository one that follows the guide, step by step    |
+| [se](se.py)                        | `./se --doctor`: is the repository sound; `./se --post`: can this session be torn. Copied beside AGENTS.md |
 | [CHECKLISTS.md](CHECKLISTS.md)     | every checklist, in the order a project meets them              |
 | [GLOSSARY.md](GLOSSARY.md)         | the terms used precisely                                        |
 | [READING.md](READING.md)           | the longer arguments, one line each                             |
@@ -274,7 +275,9 @@ If you remember nothing else, each of these can be asked out loud, and each has 
 
 The guide follows its own advice. Run `node tools/check.js` before committing: it fails if a link or
 anchor is broken, a principle is cited from the wrong chapter, or this index no longer matches the
-chapter headings. Reword freely; never reuse an ID for a different idea.
+chapter headings. `python3 -I tools/test_se.py` tests `se.py`, and `python3 se.py --self` checks
+that its embedded hash matches AGENTS.md, which the release commit pins. Reword freely; never reuse
+an ID for a different idea.
 
 ## Where this came from
 
@@ -283,7 +286,10 @@ course-specific material removed and the ideas reorganized into one set of princ
 chapter generalizes the ArduinoUnit guidebook, *The Zen of Testing*. Drafts were tested for clarity
 by having AI agents read them as a newcomer, review them as a senior engineer, answer scenario
 questions from them, and follow AGENTS.md on a task with traps in it; the findings shaped this
-version. See [READING.md](READING.md) for the sources the arguments lean on.
+version. All of that, every trial in [GAPS.md](GAPS.md), and the `se` tooling used Claude models and
+Claude Code, and nothing else; nothing here has been tried with another agent. If you work with one
+and a rule does not fit, push back, and propose the change as a pull request with what you saw. See
+[READING.md](READING.md) for the sources the arguments lean on.
 
 **This repository is the authority for these principles** ([SE1/D6](guide/05-design.md#d6)). The
 course repository's essays are where they started, not a second copy: where the two disagree, this
