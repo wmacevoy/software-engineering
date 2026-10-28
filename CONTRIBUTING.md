@@ -68,9 +68,9 @@ guide that [SE1/W10](guide/08-work.md#w10) asks for; the guide itself is in `gui
 - **The guide:** `guide/` (ten chapters), `README.md` (the argument and the principle index),
   `GLOSSARY.md`, `CHECKLISTS.md`, `READING.md`, `GAPS.md` (where the principles fell short in the
   field), `CHANGELOG.md` (what each release changed, by ID).
-- **This repository's working set:** `docs/FINDINGS.md` and `docs/QUEUE.md`. There is no
-  `REQUIREMENTS_v1` or `DESIGN_v1` yet; writing them, by the order in
-  [SE1/W12](guide/08-work.md#w12), is a queue item.
+- **This repository's working set:** `docs/REQUIREMENTS_v1.md`, `docs/DESIGN_v1.md`,
+  `docs/QUEUE.md`, `docs/FINDINGS.md`. The requirements were read off the repository on 2026-10-28
+  and are marked *(inferred)* until the author confirms them ([SE1/W12](guide/08-work.md#w12)).
 - **For adopters:** `AGENTS.md`, `ADOPT.md`, `templates/`, and `se`, `se.py`, `se.ps1`, all copied
   at a release.
 - **Sources and reviews:** `archive/`.

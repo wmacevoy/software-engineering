@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Tests for se.py: every doctor check is seen to fail on a fixture built to fail it (SE1/T3), the self
-test's verdicts follow from the signals its providers are given, and the release check says how stale
-it is. Run: python3 -I tools/test_se.py. Standard library only; no network, no wall clock, no shared
+"""Tests for se.py: every doctor check is seen to fail on a fixture built to fail it (SE1/T3; REQ1/SE-4),
+the doctor's rows and exit code (REQ1/SE-1), the self test's refusal and verdicts (REQ1/SE-2), the
+release check's staleness and the copy's label (REQ1/REL-2), and the pin (REQ1/REL-5). Run: python3 -I tools/test_se.py. Standard library only; no network, no wall clock, no shared
 state: every fixture is a fresh git repository in a temporary directory."""
 import datetime as dt
 import hashlib

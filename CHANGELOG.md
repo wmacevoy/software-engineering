@@ -30,8 +30,9 @@ yours.
 
 ### Also changed
 
-- `docs/`: this repository's own FINDINGS and QUEUE, which the doctor had rightly reported as
-  "none yet"; GAPS stays for the principles in the field.
+- `docs/`: this repository's own working set, which the doctor had rightly reported as "none
+  yet": REQUIREMENTS_v1 and DESIGN_v1, read off the repository and marked *(inferred)*, the QUEUE,
+  and FINDINGS; GAPS stays for the principles in the field.
 - `CONTRIBUTING.md`: this repository's own guide, from its own template: run, check, reset, the
   release procedure, the rules, and where things are. `tools/since.js --as vX.Y` lets a release
   commit carry dated markers before its tag exists.
