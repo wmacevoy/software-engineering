@@ -63,8 +63,6 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
   the drawing, not two pages later. READING adds Brown (1948).
 - Wording only: [SE1/T5](guide/06-testing.md#t5)'s table says global state is unrepeatable *if
   written*, as its prose already said.
-- Wording only: [SE1/A10](guide/10-agents.md#a10) is no longer the chapter's last section; its text
-  is unchanged.
 - GAPS.md: a field report from agent trials, including the compaction trials behind A11; a second,
   on compaction in the author's own sessions (the check on real compactions, imports from outside
   the working directory, when compaction happens, and what is still untested); and a third, on

@@ -58,15 +58,16 @@ const definedIn = new Map(); // principle ID -> chapter file
 const headings = [];         // index lines README must contain
 const marker = new Map();    // principle ID -> { kind: 'New' | 'Changed', release }
 const MARKER = /^\*(New|Changed) in (v\d+\.\d+)\.\*$/;
-// A principle's text: its heading to the next heading, without its marker, whitespace collapsed so
-// rewrapping is not a change.
+// A principle's text: its heading to the next heading or horizontal rule, without its marker,
+// whitespace collapsed so rewrapping is not a change. The rule matters: the `---` after a chapter's
+// last principle is not its text, or adding a principle after it would "change" it (v1.2's A10).
 function bodies(text) {
   const out = new Map();
   let id = null, buf = [];
   const flush = () => { if (id) out.set(id, buf.filter((l) => !MARKER.test(l)).join(' ').replace(/\s+/g, ' ').trim()); };
   for (const line of text.split('\n')) {
     const m = line.match(HEADING);
-    if (m || /^#{1,3} /.test(line)) { flush(); id = m ? m[2] : null; buf = []; }
+    if (m || /^#{1,3} /.test(line) || line === '---') { flush(); id = m ? m[2] : null; buf = []; }
     if (id) buf.push(line);
   }
   flush();
