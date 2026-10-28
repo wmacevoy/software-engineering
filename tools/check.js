@@ -15,12 +15,14 @@ const { execFileSync } = require('child_process');
 const root = path.resolve(__dirname, '..');
 // Releases come from CHANGELOG.md's "## v1.1 — date" headings, newest first. The top one may say
 // "unreleased" while work toward it is on main; copies link to the newest dated one.
-const RELEASE = /^## (v\d+\.\d+) — (\d{4}-\d{2}-\d{2}|unreleased)$/;
+const RELEASE = /^## (v\d+\.\d+(?:\.\d+)?) — (\d{4}-\d{2}-\d{2}|unreleased)$/;
 const changelog = fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8');
 const releaseLines = changelog.split('\n').map((l) => l.match(RELEASE)).filter(Boolean);
 const releases = releaseLines.map((m) => m[1]);
 const latest = (releaseLines.find((m) => m[2] !== 'unreleased') || [])[1];
-const newer = (a, b) => { const [x, y] = [a, b].map((v) => v.slice(1).split('.').map(Number)); return x[0] - y[0] || x[1] - y[1]; };
+const newer = (a, b) => { const [x, y] = [a, b].map((v) => v.slice(1).split('.').map(Number)); return x[0] - y[0] || x[1] - y[1] || (x[2] || 0) - (y[2] || 0); };
+// A patch release (v1.2.1) changes no principle, AGENTS.md, or template, so copies keep the minor's label.
+const minor = (v) => v.split('.').slice(0, 2).join('.');
 // Copies of AGENTS.md and the templates link to a release tag; the guide's own pages may link to main.
 const GH = new RegExp(`^https://github\\.com/wmacevoy/software-engineering/blob/(main|${releases.map((r) => r.replace('.', '\\.')).join('|')})/`);
 const GH_README = 'https://github.com/wmacevoy/software-engineering#';
@@ -190,7 +192,7 @@ for (const [key, ids] of listed) {
 if (base !== null && base + total !== definedIn.size) problem(`principle count ${definedIn.size} = ${base} in ${releases[releases.length - 1]} + ${total} New? A new principle is missing from CHANGELOG.md`);
 for (const f of ['AGENTS.md', ...files.filter((f) => f.includes(`${path.sep}templates${path.sep}`)).map((f) => path.relative(root, f))]) {
   for (const m of fs.readFileSync(path.join(root, f), 'utf8').matchAll(/software-engineering\/(?:blob|tree)\/(v\d+\.\d+)/g)) {
-    if (m[1] !== latest) problem(`stale release  ${f}: links to ${m[1]}, latest is ${latest}`);
+    if (m[1] !== minor(latest)) problem(`stale release  ${f}: links to ${m[1]}, latest is ${latest} (copies link its minor, ${minor(latest)})`);
   }
 }
 // Every principle whose text differs from the newest tagged release is acknowledged: a marker for a
@@ -214,7 +216,24 @@ else {
 }
 
 const agents = fs.readFileSync(path.join(root, 'AGENTS.md'), 'utf8').match(/This copy is from \*\*(v\d+\.\d+)\*\*/);
-if (!agents || agents[1] !== latest) problem(`stale release  AGENTS.md: says it is from ${agents ? agents[1] : 'nothing'}, latest is ${latest}`);
+if (!agents || agents[1] !== minor(latest)) problem(`stale release  AGENTS.md: says it is from ${agents ? agents[1] : 'nothing'}, latest is ${latest} (copies say its minor, ${minor(latest)})`);
+
+// A patch release may only change what is not a principle or a copy: compare with the minor's tag.
+if (latest && latest.split('.').length === 3) {
+  const base = minor(latest);
+  for (const k of ['New', 'Changed']) if (listed.has(`${latest} ${k}`)) problem(`patch release  ${latest} lists principles under ${k}; only a minor release may`);
+  try {
+    git('rev-parse', '-q', '--verify', `refs/tags/${base}`);
+    for (const f of ['AGENTS.md', ...files.filter((f) => f.includes(`${path.sep}templates${path.sep}`)).map((f) => path.relative(root, f))]) {
+      if (git('show', `${base}:${f.split(path.sep).join('/')}`) !== fs.readFileSync(path.join(root, f), 'utf8')) problem(`patch release  ${latest} changed ${f}; copies are only re-copied at a minor release`);
+    }
+    for (const f of [...new Set(definedIn.values())]) {
+      const rel = path.relative(root, f).split(path.sep).join('/');
+      const before = bodies(git('show', `${base}:${rel}`));
+      for (const [id, now] of bodies(fs.readFileSync(f, 'utf8'))) if (before.get(id) !== now) problem(`patch release  ${latest} changed ${id}; a principle changes only at a minor release`);
+    }
+  } catch { problem(`patch release  ${latest} needs its minor's tag ${base} (git fetch --tags)`); }
+}
 
 const readme = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
 for (const line of headings) if (!readme.includes(line)) problem(`README index out of date: ${line}`);

@@ -86,7 +86,7 @@ def release_check(online=True, cache_dir=None, fetch=default_fetch, now=None):
     if online:
         try:
             tags = json.loads(fetch(f"https://api.github.com/repos/{GUIDE_REPO}/tags"))
-            names = sorted((t["name"] for t in tags if re.fullmatch(r"v\d+\.\d+", t.get("name", ""))),
+            names = sorted((t["name"] for t in tags if re.fullmatch(r"v\d+\.\d+(?:\.\d+)?", t.get("name", ""))),
                            key=lambda v: tuple(int(x) for x in v[1:].split(".")))
             if not names:
                 raise ValueError("no release tags")
@@ -195,7 +195,10 @@ def check_copy(repo, rel):
     digest = sha256(path)
     known = rel.get("sha", {}).get(label) or (AGENTS_SHA256 if label == RELEASE else None)
     where = str(path.relative_to(repo)) if str(path).startswith(str(repo)) else str(path)
-    if label != newest and tuple(map(int, label[1:].split("."))) < tuple(map(int, newest[1:].split("."))):
+    minor = lambda v: tuple(int(x) for x in v[1:].split(".")[:2])
+    if rel.get("sha", {}).get(newest) == digest:  # the same text as the newest release: current, whatever the label
+        return Finding("working agreement", "SE1/U7", PASS, f"{where} is {label}, the same text as {newest}, the newest release", "")
+    if label != newest and minor(label) < minor(newest):
         return Finding("working agreement", "SE1/U7", FAIL, f"{where} is {label}; {newest} is out",
                        f"read *For copies* under {newest} in the guide's CHANGELOG, then re-copy")
     if known and digest != known:

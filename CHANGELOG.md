@@ -13,14 +13,17 @@ factory ([SE1/U7](guide/02-unknowing.md#u7)), so every change is visible in thre
 one whose text changed must have a marker for a later release, or — for wording only — be named
 under that release's *Also changed*. Work toward a release goes under `## v1.3 — unreleased`; give it
 a date when you tag it. Within SE1, a minor release may add principles, reword them, or extend what
-they ask; it never moves an ID ([principle index](README.md#principle-index)).
+they ask; it never moves an ID ([principle index](README.md#principle-index)). A patch release
+(`v1.2.1`) changes no principle, no AGENTS.md, and no template: copies keep the minor's label, and
+the checker holds a patch to that.
 
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.3 — unreleased
+## v1.2.1 — 2026-10-28
 
-[Changes on main since v1.2](https://github.com/wmacevoy/software-engineering/compare/v1.2...main)
+[Full diff from v1.2](https://github.com/wmacevoy/software-engineering/compare/v1.2...v1.2.1). No
+principle, AGENTS.md, or template changed; copies at v1.2 are current.
 
 ### Also changed
 
@@ -28,6 +31,8 @@ yours.
   reviews go.
 - CI runs the checker, `se`, and its tests on Linux, macOS, and Windows; `.gitattributes` keeps
   line endings LF, and `se` hashes AGENTS.md with line endings ignored.
+- The checker and `se` understand patch releases: the doctor calls a copy current when its text
+  equals the newest release's AGENTS.md, whatever its label.
 
 ## v1.2 — 2026-10-28
 

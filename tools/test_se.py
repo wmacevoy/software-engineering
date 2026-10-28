@@ -108,6 +108,13 @@ class TestDoctorRed(Fixture):
         self.assertEqual(se.check_copy(repo, rel).state, se.FAIL)
         self.assertIn("is out", se.check_copy(repo, rel).text)
 
+    def test_patch_release_with_the_same_text_is_current(self):
+        repo = make_repo(self.tmp.name)
+        rel = {"latest": "v9.9.1", "sha": {"v9.9.1": se.sha256(Path(repo, "AGENTS.md"))}}
+        f = se.check_copy(repo, rel)
+        self.assertEqual(f.state, se.PASS)
+        self.assertIn("same text", f.text)
+
     def test_edited_copy(self):
         f = self.doctor(self.changed(**{"AGENTS.md": AGENTS_TEXT + "\n- a local rule\n"}))
         self.assertEqual(finding(f, "working agreement").state, se.FAIL)
