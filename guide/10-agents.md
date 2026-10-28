@@ -152,22 +152,22 @@ whatever the summary says. The human version is a concussion nobody noticed: the
 "I'm fine" and believes it. Asking the patient does not work. A sideline test does.
 
 In [trials](../GAPS.md#6-a-summary-is-a-concussion), a confidently wrong summary sent 4 of 4 agents
-straight into a change the owner had frozen. None of them opened the transcript the summary pointed
-to. Marking the summary's claims as unverified changed the result in 1 of 4 runs. A rule in a file
+straight into a change the owner had frozen. Marking the summary's claims as unverified changed the result in 1 of 4 runs. A rule in a file
 the agent had to open changed nothing, because the file was never opened. Two things worked, in 4 of
 4 runs each: the same rule already loaded into the agent's context, and a script, with no model in
 it, that compared the summary with what the human had actually said and flagged the gap. That gap
-was planted. Run over 29 real compactions from the author's own sessions, where harm happened by the
-author's account, the same script flagged 4 messages, all in one compaction
+was planted. Run over 29 real compactions from the author's own sessions, in many of which harm happened by
+the author's account, the same script flagged 4 messages, all in one compaction
 ([GAPS](../GAPS.md#1-the-handoff-check-passed-nearly-every-real-compaction)): it has not yet been
 seen to catch a real one.
 
 So treat every handoff as a possible injury, and check from outside:
 
 - **Put the rule where it is loaded at every start,** not where it has to be looked up, and check
-  that it loads: an agent file that imports one from outside the repository may load nothing and
-  say nothing ([GAPS](../GAPS.md#2-an-import-from-outside-the-repository-does-not-load)). Import a
-  copy kept in the repository.
+  that it loads: an agent file that imports one from outside the working directory may load nothing
+  and say nothing ([GAPS](../GAPS.md#2-an-import-from-outside-the-repository-does-not-load)). Import
+  a copy kept inside it, and check that it loaded: a fresh session, asked without opening any file,
+  can quote a line of it.
 - **Give the handoff a sideline test:** a check that compares the summary with the record (the
   transcript, the requirements, the queue) and points the next context at the gap. It does not need
   a model, but it has to be able to say *wrong*: word overlap found the planted gap and passed
@@ -175,8 +175,8 @@ So treat every handoff as a possible injury, and check from outside:
   ([SE1/U7](02-unknowing.md#u7)). Point; don't hand over. When the check also
   pasted the missing words in, agents obeyed those words and stopped going to the source for
   everything else. A reliable thing checks itself ([SE1/T2](06-testing.md#t2)).
-- **Until the check passes, the summary is recalled, not observed.** Where it and the source
-  disagree, the source wins.
+- **The summary is recalled, not observed, whether or not a check passed it.** Where it and the
+  source disagree, the source wins.
 
 > **Ask:** "What did this summary drop, and what would tell us?"
 
