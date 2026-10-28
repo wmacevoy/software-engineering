@@ -61,6 +61,8 @@ defaults:
   # Archive entries are records of sources, reachable from the citations that use them.
   - scope: { path: "archive" }
     values: { nav_exclude: true }
-  # The repository's own working set (findings, queue) is not part of the book.
+  # The repository's own working set (findings, queue) and guide are not part of the book.
   - scope: { path: "docs" }
+    values: { nav_exclude: true }
+  - scope: { path: "CONTRIBUTING.md" }
     values: { nav_exclude: true }

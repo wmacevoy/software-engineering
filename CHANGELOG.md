@@ -32,6 +32,9 @@ yours.
 
 - `docs/`: this repository's own FINDINGS and QUEUE, which the doctor had rightly reported as
   "none yet"; GAPS stays for the principles in the field.
+- `CONTRIBUTING.md`: this repository's own guide, from its own template: run, check, reset, the
+  release procedure, the rules, and where things are. `tools/since.js --as vX.Y` lets a release
+  commit carry dated markers before its tag exists.
 - Every principle carries a marker with a date, written by `tools/since.js` from the release tags:
   *Since v1.0 (2026-10-20).* for the ninety that no release changed, the date beside each
   *New/Changed in*, and *text since* where wording moved after the meaning did. CI runs

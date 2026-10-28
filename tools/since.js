@@ -6,6 +6,8 @@
 // Usage: node tools/since.js            print the expected marker for every principle
 //        node tools/since.js --write    write them into the chapters
 //        node tools/since.js --check    exit 1 where a chapter's marker differs from git's answer
+//        node tools/since.js --write --as v1.4   treat the working tree as release v1.4, dated today,
+//                                       so the release commit carries dated markers before its tag
 // A New/Changed kind is a person's claim about meaning and is kept as written; this tool adds the
 // release's date and, when the wording moved later without the meaning, "text since". A principle
 // changed after the newest tag gets the unreleased section's name from CHANGELOG.md; the checker
@@ -22,10 +24,13 @@ const cmp = (a, b) => { const [x, y] = [num(a), num(b)]; return x[0] - y[0] || x
 const tags = (git('tag', '--list', 'v*') || '').split('\n').filter((t) => /^v\d+\.\d+(\.\d+)?$/.test(t)).sort(cmp);
 if (!tags.length) { console.error('since: no release tags here (git fetch --tags)'); process.exit(2); }
 const dateOf = Object.fromEntries(tags.map((t) => [t, (git('log', '-1', '--format=%cs', t) || '').trim()]));
+const asIndex = process.argv.indexOf('--as');
+const as = asIndex > 0 ? process.argv[asIndex + 1] : null;  // a release being made: the working tree is it
+if (as) { if (!/^v\d+\.\d+(\.\d+)?$/.test(as)) { console.error('since: --as needs a release like v1.4'); process.exit(2); } if (!tags.includes(as)) tags.push(as); dateOf[as] = new Date().toISOString().slice(0, 10); }
 const top = fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8').match(/^## (v\d+\.\d+(?:\.\d+)?) — unreleased$/m);
 const unreleased = top ? top[1] : 'unreleased';
 const mode = process.argv.includes('--write') ? 'write' : process.argv.includes('--check') ? 'check' : 'print';
-const named = process.argv.slice(2).filter((a) => !a.startsWith('--'));
+const named = process.argv.slice(2).filter((a, i, all) => !a.startsWith('--') && all[i - 1] !== '--as');
 const chapters = named.length ? named.map((f) => path.resolve(root, f))
   : fs.readdirSync(path.join(root, 'guide')).filter((n) => /^\d\d-.*\.md$/.test(n)).sort().map((n) => path.join(root, 'guide', n));
 
@@ -35,7 +40,7 @@ for (const file of chapters) {
   const text = fs.readFileSync(file, 'utf8');
   const lines = text.split('\n');
   const now = bodies(text);
-  const at = Object.fromEntries(tags.map((t) => [t, bodies(git('show', `${t}:${rel}`) || '')]));
+  const at = Object.fromEntries(tags.map((t) => [t, t === as ? now : bodies(git('show', `${t}:${rel}`) || '')]));
   const expected = [];
   for (const [id, body] of now) {
     // The text's since: the oldest tag from which the body has equalled today's in an unbroken run.
