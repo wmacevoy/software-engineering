@@ -311,7 +311,7 @@ dropped in week ten, and should be.
 | **Definition of done**      | The checklist a change must fully pass.                                                        | "done means different things to different people"     |
 | **Backlog**                 | Everything not yet done, in priority order, each item with a done sentence.                    | "nobody knows what's next"                            |
 | **Spike**                   | A time-boxed investigation of one question; the code is thrown away.                           | "we can't estimate what we don't understand"          |
-| **Stand-up**                | Five minutes daily: done, next, blocked — and since when.                                      | "I didn't know you were stuck"                        |
+| **Stand-up**                | Five minutes daily: done, next, blocked — and since when; do you notice discomfort, and can you name it? | "I didn't know you were stuck"; "I didn't know you were afraid" |
 | **Sprint review (demo)**    | The client drives the real thing at the end of the iteration.                                  | "they will hate it in month six"                      |
 | **Retrospective**           | The team, after the demo: what did we learn the expensive way?                                 | "we already learned this once"                        |
 | **Scrum**                   | A named framework: product owner, scrum master, developers; sprint, planning, daily scrum, review, retrospective; product backlog, sprint backlog, increment. | the fears above, packaged |

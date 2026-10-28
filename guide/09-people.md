@@ -81,6 +81,8 @@ living in one head. That is not the cost of rotation; it is the point.
 
 ### <a id="h4"></a>H4. The interface between two people is a contract
 
+*Changed in v1.2.*
+
 The interface between two developers is the same object as the interface between two modules
 ([SE1/D10](05-design.md#d10)). "I'll build the collector, you build the driver page" names two
 components and no seam, and schedules an argument for week nine. Before splitting work:
@@ -98,13 +100,19 @@ topic, an interface is missing; write it and the meeting stops. The minimal set 
 
 | Meeting   | When                                   | Format                                              | Retires                         |
 | --------- | -------------------------------------- | --------------------------------------------------- | ------------------------------- |
-| Stand-up  | every working day, five minutes        | per person: done / next / blocked — and *since when* | "I didn't know you were stuck"  |
+| Stand-up  | every working day, five minutes        | per person: done / next / blocked — and *since when*; and a discomfort, if you notice one | "I didn't know you were stuck"; "I didn't know you were afraid" |
 | Demo      | end of iteration                       | the client drives the real system                   | "we built the wrong thing"      |
 | Planning  | right after the demo                   | the next queue, priced, with the client             | "we don't agree on what's next" |
 | Retro     | after planning, team only              | what did we learn the expensive way → `FINDINGS`    | "we already learned this once"  |
 
 *Since when* is the load-bearing field. A three-day-old blocker is stale data, and should be
 presented as stale rather than as current.
+
+The fourth question — *do you notice discomfort? can you name it?* — is
+[SE1/P3](01-purpose.md#p3) asked out loud. Discomfort arrives weeks before the schedule shows
+anything, and the person holding it feels it first; asking turns a signal that would otherwise
+arrive as someone going quiet into a sentence the team can act on. One sentence, not a session, and
+noticing without a name is still data.
 
 > **Ask:** "What meeting keeps happening on the same topic?"
 

@@ -39,6 +39,8 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
   between sessions is a head, not the working set.
 - [SE1/U7](guide/02-unknowing.md#u7) The K3 factories gain *torn work*: a change interrupted between
   started and done, which reads as the current state and says nothing.
+- [SE1/H4](guide/09-people.md#h4) The stand-up gains a fourth question, *do you notice discomfort?
+  can you name it?*: P3 asked out loud. The vocabulary table in chapter 8 says the same.
 
 ### Also changed
 
