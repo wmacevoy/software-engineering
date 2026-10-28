@@ -156,8 +156,13 @@ class TestDoctorRed(Fixture):
     def test_guide_command_in_a_fenced_block_after_the_label(self):
         guide = "## Check it\n\n- **The full check:**\n\n  ```sh\n  python3 -m unittest && node x.js\n  ```\n\n- `since --check` on a marker edited by hand\n"
         self.assertEqual(se.guide_command(guide), "python3 -m unittest && node x.js")
-        f = self.doctor(self.changed(**{"CONTRIBUTING.md": guide, ".github/workflows/check.yml": "jobs:\n  x:\n    steps:\n      - run: python -m unittest\n      - run: node x.js\n"}))
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": guide, ".github/workflows/check.yml": "jobs:\n  x:\n    steps:\n      - run: python3 -m unittest\n      - run: node x.js\n"}))
         self.assertEqual(finding(f, "CI").state, se.PASS)
+
+    def test_ci_with_a_different_interpreter_name_is_a_second_recipe(self):
+        guide = "- **The full check:** `python3 -m unittest`\n"
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": guide, ".github/workflows/check.yml": "jobs:\n  x:\n    steps:\n      - run: python -m unittest\n"}))
+        self.assertEqual(finding(f, "CI").state, se.FAIL)
 
     def test_ci_missing_one_part_of_the_check(self):
         guide = "- **The full check:** `python3 -m unittest && node x.js`\n"

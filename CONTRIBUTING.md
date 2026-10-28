@@ -18,12 +18,15 @@ guide that [SE1/W10](guide/08-work.md#w10) asks for; the guide itself is in `gui
 
 ## Check it
 
-- **The full check**, the same one CI runs on Linux, macOS, and Windows with Python 3.9 and the
-  newest ([SE1/O3](guide/07-operating.md#o3)):
+- **The full check**, the same script CI runs on Linux, macOS, and Windows with Python 3.9 and the
+  newest, so there is no second recipe to drift ([SE1/O3](guide/07-operating.md#o3)):
 
   ```sh
-  node tools/check.js && node tools/since.js --check && python3 se.py --self && python3 -I tools/test_se.py
+  sh tools/check.sh
   ```
+
+  It runs `node tools/check.js`, `node tools/since.js --check`, `se.py --self`, and
+  `tools/test_se.py`, with the interpreter `se` would choose.
 
 - **Success prints:** `N files, 100 principles, 0 problems` · `10 chapters, 0 marker(s) differ
   from git` · `se --self: AGENTS.md matches vX.Y` · `OK`.

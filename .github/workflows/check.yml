@@ -22,11 +22,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
-      # The same commands a contributor runs locally (O3); no dependencies to install.
-      - run: node tools/check.js
-      - run: node tools/since.js --check
-      - run: python se.py --self
-      - run: python -I tools/test_se.py
+      # The same script a contributor runs locally (O3); no dependencies to install.
+      - shell: bash
+        run: sh tools/check.sh
       - if: runner.os != 'Windows'
         run: ./se --version
       - shell: pwsh

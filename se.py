@@ -457,10 +457,9 @@ def check_ci(repo, check_cmd):
         return Finding("CI", "SE1/O3", NONE, "no workflow", "CI runs the command you run")
     if not check_cmd:
         return Finding("CI", "SE1/O3", WARN, f"{len(wf)} workflow(s); the repository guide names no check command to compare", "")
-    norm = lambda s: re.sub(r"\bpython3\b", "python", s)  # the interpreter's name is the one difference CI may have
-    text = norm("\n".join(read(f) for f in wf))
+    text = "\n".join(read(f) for f in wf)
     segments = [s.strip() for s in check_cmd.split("&&") if s.strip()]
-    missing = [s for s in segments if norm(s) not in text]
+    missing = [s for s in segments if s not in text]  # literal: a different interpreter name is a second recipe
     if not missing:
         return Finding("CI", "SE1/O3", PASS, f"a workflow runs every part of the guide's check ({len(segments)} command{'s' if len(segments) > 1 else ''})", "")
     return Finding("CI", "SE1/O3", FAIL, f"no workflow runs `{missing[0]}`, part of the guide's check", "CI runs the same command the guide names, so one recipe cannot drift")
