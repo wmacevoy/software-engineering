@@ -17,6 +17,11 @@ https://wmacevoy.github.io/software-engineering/ renders the latest version for 
 The repository's own guide (`CLAUDE.md`, `CONTRIBUTING.md`, or equivalent) wins over this file where
 they disagree. It knows the local mechanics; this file only knows the principles.
 
+Drafted by Claude Opus 5.5 with Warren MacEvoy, 2026-10-19 to 2026-10-27, and revised with Claude
+Fable 5.1 on 2026-10-28; the human signs each release. These are rules an agent wrote for agents
+(SE1/U9): where one seems wrong for the case in front of you, say which and why, rather than work
+around it.
+
 ## Who owns this
 
 **Humans own the structure. Agents author and advise.** (SE1/A8, SE1/D9)

@@ -54,7 +54,9 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
 
 ### Also changed
 
-- AGENTS.md: new section *After a gap*. The agent hand-off checklist gains a line for it.
+- AGENTS.md: new section *After a gap*. The agent hand-off checklist gains a line for it. The header
+  says who drafted the file and when (SE1/U9): every commit to it was co-authored by an agent, and
+  the text did not say so.
 - Wording only: [SE1/R8](guide/04-requirements.md#r8) says *medicine* where it said *cure*, as does
   U7 (marked changed above): a K3 factory is lessened, not fixed. GLOSSARY pins the word.
 - Wording only: [SE1/W2](guide/08-work.md#w2): Royce's warning is in the sentence directly beneath
