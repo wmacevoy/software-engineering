@@ -140,6 +140,9 @@ anticipates. A short field note is left beside the earlier one
 Nothing in the candidate. The author's decisions: tag or not; U8 as principle or folded; the
 six-principle chapter instead of U9; where review files go; CT4.
 
+Decided 2026-10-28, after v1.2.1: U8 stays where it is. Folding it into W7 would retire an ID,
+and within SE1 an ID never moves; that is an SE2 change. Reviews go in `archive/reviews/`.
+
 ## Released
 
 2026-10-28: the author read the candidate and said "go ahead with a candidate release and check it
