@@ -87,7 +87,8 @@ keep the two in step)
 
 - [ ] The task is a done sentence with a versioned requirement ID.
 - [ ] The working agreement is loaded at every start, not left in a file to be opened, and a
-      handoff check runs after compaction.
+      handoff check runs after compaction on its own, as a hook, not as a line the agent must choose
+      to follow.
 - [ ] The relevant constraints are in the repository, not only in your head or the chat.
 - [ ] The agent can run the system and the checks, and reset it.
 - [ ] You asked for the smallest diff, one concern, named files.

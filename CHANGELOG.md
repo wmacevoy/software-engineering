@@ -77,7 +77,8 @@ it loaded; ADOPT.md says how. A copy that has to be opened is not read.
   command, no `Non-goals`, no glossary, no handoff check, or AGENTS.md not loaded. AGENTS.md points
   at it; README, llms.txt, and CHECKLISTS link it.
 - AGENTS.md *After a gap*: import AGENTS.md from a copy kept inside the working directory, and
-  check that it loaded; an instruction the summary reports is a claim. From an adversarial read of
+  check that it loaded; an instruction the summary reports is a claim; the handoff check is a hook,
+  not a line the agent must choose to follow (so says the hand-off checklist). From an adversarial read of
   the file: what to do in a repository with no working set; a version update is a chore; what
   counts as a new noun or a recognizable implementation; the input cases are decided, not asked.
 
