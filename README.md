@@ -276,8 +276,9 @@ If you remember nothing else, each of these can be asked out loud, and each has 
 The guide follows its own advice. Run `node tools/check.js` before committing: it fails if a link or
 anchor is broken, a principle is cited from the wrong chapter, or this index no longer matches the
 chapter headings. `python3 -I tools/test_se.py` tests `se.py`, and `python3 se.py --self` checks
-that its embedded hash matches AGENTS.md, which the release commit pins. Reword freely; never reuse
-an ID for a different idea.
+that its embedded hash matches AGENTS.md, which the release commit pins. Reviews of the guide are
+proposals; they live in [archive/reviews/](archive/README.md#reviews), and what survives one goes
+into the principles, GAPS, and the CHANGELOG. Reword freely; never reuse an ID for a different idea.
 
 ## Where this came from
 

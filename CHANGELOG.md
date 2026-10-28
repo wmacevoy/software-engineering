@@ -18,6 +18,17 @@ they ask; it never moves an ID ([principle index](README.md#principle-index)).
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.3 — unreleased
+
+[Changes on main since v1.2](https://github.com/wmacevoy/software-engineering/compare/v1.2...main)
+
+### Also changed
+
+- The reviews behind v1.1 and v1.2 are kept in `archive/reviews/`; README says that is where
+  reviews go.
+- CI runs the checker, `se`, and its tests on Linux, macOS, and Windows; `.gitattributes` keeps
+  line endings LF, and `se` hashes AGENTS.md with line endings ignored.
+
 ## v1.2 — 2026-10-28
 
 [Full diff from v1.1](https://github.com/wmacevoy/software-engineering/compare/v1.1...v1.2) · 100

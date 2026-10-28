@@ -37,3 +37,18 @@ the source yourself.
 | [pair-programming-studies.md](pair-programming-studies.md) | GAPS related work: the 90% and 15/15 claims (not opened) |
 | [claude-code-docs-2026-10-28.md](claude-code-docs-2026-10-28.md) | SE1/A11, ADOPT.md, GAPS: what Claude Code documents |
 | [compaction-findings-2026-10-28.md](compaction-findings-2026-10-28.md) | GAPS field reports of 2026-10-28, SE1/A11, SE1/U9: the lines relied on |
+
+## Reviews
+
+A review of the guide is a proposal, not a change: what survives it goes into the principles,
+GAPS, and the CHANGELOG, and the review itself is kept here so the arguments outlive the verdict
+([SE1/A3](../guide/10-agents.md#a3): chat does not survive the session). Each says who reviewed,
+what was opened, and what was only read.
+
+| Review | What it is |
+| --- | --- |
+| [REVIEW-v1.1-fable.md](reviews/REVIEW-v1.1-fable.md) | v1.1 and the first v1.2 branch, reviewed 2026-10-27: four items before tagging, content findings, sources checked, the Claude Code facts behind A11 |
+| [REVIEW-v1.2-learning.md](reviews/REVIEW-v1.2-learning.md) | a proposed chapter of six principles on learning, 2026-10-28; v1.2 took one of them as U9 |
+| [REVIEW-v1.2-compaction-lessons.md](reviews/REVIEW-v1.2-compaction-lessons.md) | what the compaction trials should change, 2026-10-28, reviewed by a tribe of readers |
+| [REVIEW-METHOD-tribe.md](reviews/REVIEW-METHOD-tribe.md) | the tribe-of-readers method, offered to be pushed against |
+| [REVIEW-v1.2-candidate.md](reviews/REVIEW-v1.2-candidate.md) | the v1.2 drafter's trace: decisions, commits, the three readers' results, the release |
