@@ -82,6 +82,7 @@ repository, make it load at every start, and start the working set from the temp
 | `templates/`                       | starting points: [REQUIREMENTS](templates/REQUIREMENTS_v1.md), [DESIGN](templates/DESIGN_v1.md), [QUEUE](templates/QUEUE.md), [FINDINGS](templates/FINDINGS.md), [CONTRIBUTING](templates/CONTRIBUTING.md) |
 | [GAPS.md](GAPS.md)                 | where the guide fell short in the field, and how each gap was closed |
 | [archive/](archive/README.md)      | the sources behind the claims: URL, date, checksum, and the passage relied on |
+| `docs/`                            | this repository's own working set: [FINDINGS](docs/FINDINGS.md) about the checker, `se`, releases, and reviews; the [QUEUE](docs/QUEUE.md) |
 
 ## The running example
 
