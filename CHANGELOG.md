@@ -31,6 +31,9 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
   compaction or any handoff the summary is recalled, not observed. Load the rule at every start, and
   check that it loads; run a handoff check that compares the summary with the record, and that can
   say *wrong*: the word-overlap check found a planted gap and passed nearly every real compaction.
+- [SE1/U8](guide/02-unknowing.md#u8) Leave whitespace: an agenda finds only what it looks for. K2 is
+  what nobody is asking about; time with no agenda, for people and for agents, is the attention that
+  notices it first.
 
 ### Changed
 

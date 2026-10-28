@@ -135,6 +135,7 @@ should use a different form, such as `REQ2/UI-1`, so they are never confused wit
 - [**SE1/U5**](guide/02-unknowing.md#u5) Estimate the category, not the task
 - [**SE1/U6**](guide/02-unknowing.md#u6) Nothing important may live only in a head
 - [**SE1/U7**](guide/02-unknowing.md#u7) Find the K3 factories: anything that keeps saying "fine" with no way to say "wrong"
+- [**SE1/U8**](guide/02-unknowing.md#u8) Leave whitespace: an agenda finds only what it looks for
 
 **[3. Feedback](guide/03-feedback.md)**
 

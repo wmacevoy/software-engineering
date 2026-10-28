@@ -156,6 +156,29 @@ Three medicines, each the opposite of what makes a factory:
 
 > **Ask:** "What here would keep saying 'fine' if it were wrong?"
 
+### <a id="u8"></a>U8. Leave whitespace: an agenda finds only what it looks for
+
+*New in v1.2.*
+
+An agenda is a search. It moves K1 to K0: you ask the question, you get the answer. K2 is what
+nobody is asking about, so a calendar with no empty space and a queue that always has a next item
+guarantee that the surprise arrives in the only place left, reality, at full price
+([SE1/U2](#u2)). People say they are thinking of quitting at the bar, not at stand-up: stand-up has
+a format, and even its question about discomfort ([SE1/H4](09-people.md#h4)) finds only what
+someone is ready to name. An agent given only tasks never looks around: it does not notice the
+torn change from last week ([SE1/U7](#u7)), the dependency whose advisory landed on Tuesday, or the
+assumption that came due when the world moved ([SE1/U4](#u4)). Everything it is not pointed at
+reads as fine.
+
+Whitespace is time with no agenda, spent on purpose. For people it is the walk, the lunch, the end
+of the retro after the list is done, and the only question is "what is wrong that nobody has asked
+about?" For an agent it is a session with no task: read the repository and what changed in the
+world since the last session, and report what moved, what is torn, and what has gone stale. What it
+finds goes in `FINDINGS` or the queue, not into code. Slack ([SE1/W7](08-work.md#w7)) is the
+capacity to absorb a surprise; whitespace is the attention that notices it first.
+
+> **Ask:** "When did someone last look at this with no task in hand, and what did they find?"
+
 
 ---
 
