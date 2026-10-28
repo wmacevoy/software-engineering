@@ -57,8 +57,13 @@ one rather than all. Grouped by the chapter they support most.
 
 **Work** ([8](guide/08-work.md))
 
-- **Winston Royce, "Managing the Development of Large Software Systems"** — the waterfall diagram, and on
-  the next pages the argument against it. Read past the figure.
+- **Winston Royce, "Managing the Development of Large Software Systems"** — the waterfall diagram, the
+  sentence directly beneath it that calls the implementation as drawn risky, and on the next pages
+  the argument. Read past the figure.
+- **Judson Brown, "Gradients of approach and avoidance responses and their relation to level of
+  motivation" (1948)** — the alley, the harness, and the pull away from danger rising with nearness
+  faster than the pull toward food. Paywalled; Neal Miller's 1944 chapter "Experimental studies of
+  conflict" reports the same data.
 - **Barry Boehm, "A Spiral Model of Software Development and Enhancement"** — do the riskiest thing first,
   in the smallest increment that retires the risk.
 - **Craig Larman and Victor Basili, "Iterative and Incremental Development: A Brief History"** — the loop

@@ -25,9 +25,9 @@ once** and **whether the test comes at the end or inside every step.**
 ### <a id="w2"></a>W2. Waterfall is correct when the only real test is expensive
 
 Waterfall runs the six steps once, in order, each signed off before the next begins. Winston Royce
-drew it in 1970 and, two pages later, wrote that the implementation as drawn "is risky and invites
-failure," because testing arrives at the end, where every surprise costs most. The industry kept the
-drawing and dropped the warning.
+drew it in 1970 and, in the sentence directly beneath the drawing, wrote that the implementation as
+drawn "is risky and invites failure," because testing arrives at the end, where every surprise
+costs most. The industry kept the drawing and dropped the warning.
 
 Be fair to it: where the only real test costs a million dollars and a year, it is right. Those
 disciplines still iterate — on prototypes, models, and test articles — but the final build is done
@@ -124,10 +124,13 @@ under the weight it will have to bear.
 
 ### <a id="w7"></a>W7. Deadlines produce an avoidance gradient; change the terrain, not the willpower
 
-In a classic experiment, a rat that has learned one end of its cage gives a shock is tied to a
-string and drawn toward that end; how hard it pulls away is measured along the way. The pull is
-nearly flat far from the danger and rises steeply close to it — an *avoidance gradient*. Deadlines
-do this to people: the month before feels like nothing, the last week is unbearable. The surge of
+*Changed in v1.2.*
+
+In a classic experiment, rats that had learned one end of an alley gives a shock were briefly held
+back by a light harness while running away from it, some near the shock point and some far from
+it, and the force of their pull was measured. The pull was far stronger near the danger than far
+from it, and rose with nearness faster than the pull toward food did — an *avoidance gradient*
+(Brown, 1948). Deadlines do this to people: the month before feels like nothing, the last week is unbearable. The surge of
 fear arrives exactly when the project can least afford what it produces: skipped tests, bundled
 diffs, unreviewed merges, "we'll clean it up after launch." That feedback loop, not incompetence, is
 how most projects fail.

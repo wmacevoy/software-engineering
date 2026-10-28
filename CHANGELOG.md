@@ -41,12 +41,16 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
   started and done, which reads as the current state and says nothing.
 - [SE1/H4](guide/09-people.md#h4) The stand-up gains a fourth question, *do you notice discomfort?
   can you name it?*: P3 asked out loud. The vocabulary table in chapter 8 says the same.
+- [SE1/W7](guide/08-work.md#w7) The avoidance-gradient experiment is described as Brown (1948) ran
+  it: an alley, a harness, pull measured near and far. The conclusion is unchanged.
 
 ### Also changed
 
 - AGENTS.md: new section *After a gap*. The agent hand-off checklist gains a line for it.
 - Wording only: [SE1/R8](guide/04-requirements.md#r8) says *medicine* where it said *cure*, as does
   U7 (marked changed above): a K3 factory is lessened, not fixed. GLOSSARY pins the word.
+- Wording only: [SE1/W2](guide/08-work.md#w2): Royce's warning is in the sentence directly beneath
+  the drawing, not two pages later. READING adds Brown (1948).
 - Wording only: [SE1/A10](guide/10-agents.md#a10) is no longer the chapter's last section; its text
   is unchanged.
 - GAPS.md: a field report from agent trials, including the compaction trials behind A11; and a
