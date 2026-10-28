@@ -284,7 +284,7 @@ leads in 9 compactions; every lead followed was a false alarm. So the check that
 handoff-r, against a gap that was planted, has never been seen to fire on a real one: as it stands,
 a K3 factory ([SE1/U7](guide/02-unknowing.md#u7)).
 
-**Proposed:** [SE1/A11](guide/10-agents.md#a11) says what was measured and no more (in this draft).
+**Closed:** [SE1/A11](guide/10-agents.md#a11) says what was measured and no more.
 **Open:** a check that cannot say "fine": report what is always true — how much of the context the
 summary replaced (the transcript records it: one real compaction went from 731,754 tokens to
 22,852), what changed in the code since, and whether the tests pass — instead of a score. Untested.
@@ -296,21 +296,41 @@ import names a file outside the repository: Claude Code loaded neither `@../guid
 absolute path, and gave no sign. An import of a copy inside the repository loaded. Measured with
 Claude Code 2.1.311, in `-p` sessions, by asking for a phrase only the imported file holds.
 
-**Proposed:** AGENTS.md *After a gap* and A11 say to import a copy inside the repository (in this
-draft). A copy can go stale; the compaction project fails its pretest when its copy no longer
-matches.
+**Closed:** AGENTS.md *After a gap* and A11 say to import a copy kept inside the working directory,
+and to check that it loaded. The boundary is the working directory, not the repository: Claude
+Code's documentation calls an import whose path resolves outside the working directory *external*
+and gates it behind an approval that only an interactive session shows, so a `-p` session, which
+shows no dialog, loads it not at all and says nothing
+([memory](https://code.claude.com/docs/en/memory#import-additional-files), read 2026-10-27). The
+documented controls that also stop a file loading (`blockReadsOutsideWorkingDirectories`, a Read
+deny rule, `claudeMdExcludes`, `--bare`) were checked in the author's settings and none was set, so
+the gate is the explanation left standing. A copy can go stale; the compaction project fails its
+pretest when its copy no longer matches.
 
 ### 3. Compaction happens while the human is away
 
-Every automatic compaction since 2026-10-08 in the author's sessions (22 of them) came after 54–55
-minutes without a message, at 205k–461k tokens, not at a full window. So the next thing the agent
-reads is the human coming back, who has had an hour to forget too. In `claude -p` the new summary
-reaches disk only after SessionStart hooks return, so a check there cannot read it; on the first
-prompt after the compaction it can, and that check was built and seen to report.
+Every automatic compaction in the author's interactive terminal sessions since 2026-10-08 (24 of
+them, counted on 2026-10-27) came after 54–55 minutes without a request, at 205k–684k tokens, not
+at a full window. So the next thing the agent reads is the human coming back, who has had an hour
+to forget too. This is documented *idle compaction*: a conversation of 200K tokens or more, left
+idle about 54 minutes, is compacted before its one-hour prompt cache expires, in interactive
+sessions only, with the notice "Compacted while idle, before the prompt cache expired"
+([settings reference](https://code.claude.com/docs/en/settings-reference#idlecompaction); changelog
+2.1.299, 2026-10-14; the first one in these transcripts is dated 2026-10-08 under 2.1.292). The 515
+automatic compactions in the author's scripted sessions were all threshold compactions from the
+trial harness, at about 70k tokens under `--autocompact 100k`.
 
-**Open:** whether A11 should say *when* to check (the first prompt after a gap, not the start of the
-session). The idle timing is one author's sessions and one client version; the cause (the prompt
-cache) is inferred, not read from documentation.
+In `claude -p` the new summary reaches disk only after SessionStart hooks return, so a check there
+cannot read it from the transcript. The hook that receives the summary is `PostCompact`, whose
+input carries it; `SessionStart` with matcher `compact` gets none, and what it adds back is capped
+at 10,000 characters ([hooks](https://code.claude.com/docs/en/hooks#postcompact); measured in `-p`
+on 2026-10-27 for a manual `/compact` and for automatic compactions built up by tool calls). So:
+read in `PostCompact`, point from `SessionStart`, keep the pointer short. On the first prompt after
+the compaction a check can also read the transcript, and that check was built and seen to report.
+
+**Closed:** the cause, which is documented. **Open:** whether A11 should say *when* to check: in a
+`PostCompact` hook or on the first prompt after a gap, not at the start of the session. The idle
+timing is one author's sessions and one client version.
 
 ### 4. Short sessions wrote faithful summaries; the drift is said to live in long, messy ones
 
@@ -321,7 +341,8 @@ The author's account puts the drift in long sessions on pre-SE1 codebases, as a 
 foundational facts rather than reversed decisions (one earlier project lost encryption at rest, and
 an offline cache, in new components written after the facts were already recorded). `--autocompact
 100k` gives several real automatic compactions in one cheap session, which makes long trials
-affordable; none has run yet.
+affordable. They have since run, with about a dozen compactions per run; see the field report that
+follows.
 
 **Open:** untested at the length where the author saw it. A trial worth running: apply SE1 to a
 codebase for the first time (long, real work), with automatic compactions during it, and grade
@@ -348,3 +369,16 @@ five versions of the new project's requirements had been written without it.
 **Open:** whether [SE1/R3](guide/04-requirements.md#r3)'s table should carry "What have you already
 tried, and what did it show?" It is a question nobody volunteers, and its answer can invalidate the
 plan, which is the order R3 asks for.
+
+### 7. A scripted session may soon load nothing by default
+
+Claude Code's documentation says `--bare`, which skips CLAUDE.md and hooks, "will become the default
+for `-p` in a future release", and that bare mode needs an API key rather than a subscription login
+([headless](https://code.claude.com/docs/en/headless#start-faster-with-bare-mode); measured
+2026-10-27: `claude --bare -p` with no key exits 1, "Not logged in"). When that lands, every scripted
+`claude -p` on a subscription login fails until a key is set, including the trial harness and any
+handoff check that runs through it, and a scripted session loads no instruction file unless asked.
+Whether bare mode also skips the AGENTS.md fallback is not documented.
+
+**Open:** dated here so the failure is recognized when it arrives. In a scripted session, A11's
+"check that it loads" is then the only defense.
