@@ -44,7 +44,8 @@ REQ_ID_RE = re.compile(r"\*\*([A-Z]{2,}-\d+)\*\*\s*\*\(since v(\d+)\)\*")
 
 
 def sha256(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    """Of the file with line endings normalized to LF, so a CRLF checkout of the same text matches."""
+    return hashlib.sha256(Path(path).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def run(cmd, cwd=None, timeout=20):

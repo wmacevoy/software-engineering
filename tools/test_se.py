@@ -48,7 +48,7 @@ def make_repo(tmp, files=GOOD, message="UI-1: show the count (REQ1/UI-1)"):
     for rel, text in files.items():
         p = repo / rel
         p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(text, encoding="utf8")
+        p.write_text(text, encoding="utf8", newline="\n")
     git(repo, "init", "-q")
     git(repo, "add", "-A")
     git(repo, "commit", "-q", "-m", message)
@@ -66,7 +66,7 @@ class Fixture(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.cache = tempfile.TemporaryDirectory()
         self.saved = se.AGENTS_SHA256
-        se.AGENTS_SHA256 = hashlib.sha256(AGENTS_TEXT.encode("utf8")).hexdigest()
+        se.AGENTS_SHA256 = hashlib.sha256(AGENTS_TEXT.replace("\r\n", "\n").encode("utf8")).hexdigest()
 
     def tearDown(self):
         se.AGENTS_SHA256 = self.saved

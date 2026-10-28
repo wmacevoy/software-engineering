@@ -1,0 +1,6 @@
+# Markdown and scripts are LF everywhere: a CRLF checkout would change AGENTS.md's hash and break the
+# sh wrapper. Text detection is git's; the images are binary.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.xcf binary

@@ -6,7 +6,11 @@ on:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false   # when it breaks, the interesting question is which platforms broke (SE1/O3)
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -14,8 +18,14 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 24
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
       # The same commands a contributor runs locally (O3); no dependencies to install.
       - run: node tools/check.js
-      - run: ./se --version
-      - run: python3 se.py --self
-      - run: python3 -I tools/test_se.py
+      - run: python se.py --self
+      - run: python -I tools/test_se.py
+      - if: runner.os != 'Windows'
+        run: ./se --version
+      - shell: pwsh
+        run: ./se.ps1 --version
