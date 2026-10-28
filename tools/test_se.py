@@ -153,6 +153,18 @@ class TestDoctorRed(Fixture):
         f = self.doctor(self.changed(**{".claude/settings.json": json.dumps(se.hook_entry("python3 gone.py --post"))}))
         self.assertEqual(finding(f, "handoff hook").state, se.FAIL)
 
+    def test_guide_command_in_a_fenced_block_after_the_label(self):
+        guide = "## Check it\n\n- **The full check:**\n\n  ```sh\n  python3 -m unittest && node x.js\n  ```\n\n- `since --check` on a marker edited by hand\n"
+        self.assertEqual(se.guide_command(guide), "python3 -m unittest && node x.js")
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": guide, ".github/workflows/check.yml": "jobs:\n  x:\n    steps:\n      - run: python -m unittest\n      - run: node x.js\n"}))
+        self.assertEqual(finding(f, "CI").state, se.PASS)
+
+    def test_ci_missing_one_part_of_the_check(self):
+        guide = "- **The full check:** `python3 -m unittest && node x.js`\n"
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": guide}))  # the workflow runs only the first part
+        self.assertEqual(finding(f, "CI").state, se.FAIL)
+        self.assertIn("node x.js", finding(f, "CI").text)
+
     def test_no_repository_guide(self):
         f = self.doctor(self.changed(**{"CONTRIBUTING.md": None, "CLAUDE.md": "@AGENTS.md\n"}))
         self.assertEqual(finding(f, "repository guide").state, se.NONE)

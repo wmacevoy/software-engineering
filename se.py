@@ -285,18 +285,38 @@ def check_hooks(repo):
     return Finding("handoff hook", "SE1/A11", PASS, f"[Claude Code configuration] {names}: configured, not seen to fire", "make it fire once on purpose (SE1/T3)")
 
 
+def guide_command(text):
+    """The check command a repository guide names: the template's "**The full check:**" line, its inline
+    code or the first line of the fenced block after it; failing that, the first line that names a check
+    or test with code on it."""
+    lines = text.splitlines()
+    for i, line in enumerate(lines):
+        if re.search(r"\*\*The full check:?\*\*", line):
+            m = re.search(r"`([^`]+)`", line)
+            if m and not m.group(1).startswith("_"):
+                return m.group(1)
+            for j in range(i + 1, min(i + 6, len(lines))):
+                if lines[j].strip().startswith("```"):
+                    for k in range(j + 1, len(lines)):
+                        if lines[k].strip().startswith("```"):
+                            break
+                        if lines[k].strip():
+                            return lines[k].strip()
+                    break
+    for line in lines:
+        if re.search(r"\b(check|test)s?\b", line, re.I) and "`" in line and not line.lstrip().startswith("#"):
+            m = re.search(r"`([^`]+)`", line)
+            if m and not m.group(1).startswith("_"):
+                return m.group(1)
+    return None
+
+
 def check_guide(repo):
     for name in ("CONTRIBUTING.md", "CLAUDE.md", "README.md"):
         text = read(Path(repo) / name)
         if not text:
             continue
-        cmd = None
-        for line in text.splitlines():
-            if re.search(r"\b(check|test)s?\b", line, re.I) and "`" in line and not line.lstrip().startswith("#"):
-                m = re.search(r"`([^`]+)`", line)
-                if m and not m.group(1).startswith("_"):
-                    cmd = m.group(1)
-                    break
+        cmd = guide_command(text)
         if cmd:
             return Finding("repository guide", "SE1/A2, SE1/W10", PASS, f"{name} names the check: `{cmd}`", ""), cmd
         if re.search(r"none yet", text, re.I):
@@ -437,10 +457,13 @@ def check_ci(repo, check_cmd):
         return Finding("CI", "SE1/O3", NONE, "no workflow", "CI runs the command you run")
     if not check_cmd:
         return Finding("CI", "SE1/O3", WARN, f"{len(wf)} workflow(s); the repository guide names no check command to compare", "")
-    head = check_cmd.split("&&")[-1].strip()
-    if any(head in read(f) for f in wf):
-        return Finding("CI", "SE1/O3", PASS, f"a workflow runs `{head}`, the guide's check", "")
-    return Finding("CI", "SE1/O3", FAIL, f"no workflow runs `{head}`", "CI runs the same command the guide names, so one recipe cannot drift")
+    norm = lambda s: re.sub(r"\bpython3\b", "python", s)  # the interpreter's name is the one difference CI may have
+    text = norm("\n".join(read(f) for f in wf))
+    segments = [s.strip() for s in check_cmd.split("&&") if s.strip()]
+    missing = [s for s in segments if norm(s) not in text]
+    if not missing:
+        return Finding("CI", "SE1/O3", PASS, f"a workflow runs every part of the guide's check ({len(segments)} command{'s' if len(segments) > 1 else ''})", "")
+    return Finding("CI", "SE1/O3", FAIL, f"no workflow runs `{missing[0]}`, part of the guide's check", "CI runs the same command the guide names, so one recipe cannot drift")
 
 
 def doctor(repo, online=True, cache_dir=None, fetch=default_fetch, today=None):
