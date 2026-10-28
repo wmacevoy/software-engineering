@@ -4,6 +4,9 @@ Every checklist in the guide, in the order a project meets them. Each item cites
 explains it; if an item retires no fear on your project, drop it and say why
 ([SE1/P4](guide/01-purpose.md#p4)).
 
+Adopting the guide on a repository has a checklist of its own, in
+[ADOPT.md](ADOPT.md#adoption-checklist).
+
 The "before leaving…" lists are not phase gates for a waterfall. In iterative work each iteration
 passes through all of them in small ([SE1/W3](guide/08-work.md#w3)); use them whenever a piece of
 work moves from one kind of step to the next.

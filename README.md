@@ -51,8 +51,9 @@ use the index below and [CHECKLISTS.md](CHECKLISTS.md). Terms used precisely are
 follows this guide. Then read the chapter that bears on the task (design → 5, tests → 6, deploys and
 production → 7). Cite principles by ID when you raise a concern or explain a choice.
 
-**Teams adopting it:** copy [AGENTS.md](AGENTS.md) into your repository (or point your agent's
-instruction file at it), and start your working set from the templates listed under [Contents](#contents).
+**Teams adopting it:** follow [ADOPT.md](ADOPT.md): copy [AGENTS.md](AGENTS.md) into the
+repository, make it load at every start, and start the working set from the templates listed under
+[Contents](#contents). It also says what an agent should do where the adoption is only partly done.
 
 ## Contents
 
@@ -72,6 +73,7 @@ instruction file at it), and start your working set from the templates listed un
 | Reference                          | For                                                             |
 | ---------------------------------- | --------------------------------------------------------------- |
 | [AGENTS.md](AGENTS.md)             | the working agreement for agents, portable to any repository    |
+| [ADOPT.md](ADOPT.md)               | making a repository one that follows the guide, step by step    |
 | [CHECKLISTS.md](CHECKLISTS.md)     | every checklist, in the order a project meets them              |
 | [GLOSSARY.md](GLOSSARY.md)         | the terms used precisely                                        |
 | [READING.md](READING.md)           | the longer arguments, one line each                             |

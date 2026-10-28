@@ -68,6 +68,10 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
   the working directory, when compaction happens, and what is still untested); and a third, on
   agent tribes and checks (knowing is not doing; a guard tested against its own stub; the human
   found what the checks missed).
+- ADOPT.md: how to make a repository one that follows the guide, in eight steps, and what an agent
+  does where the adoption is only partly done: no requirements document, no queue, no check
+  command, no `Non-goals`, no glossary, no handoff check, or AGENTS.md not loaded. AGENTS.md points
+  at it; README, llms.txt, and CHECKLISTS link it.
 - AGENTS.md *After a gap*: import AGENTS.md from a copy kept inside the working directory, and
   check that it loaded; an instruction the summary reports is a claim. From an adversarial read of
   the file: what to do in a repository with no working set; a version update is a chore; what

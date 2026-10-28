@@ -43,16 +43,18 @@ defaults:
     values: { title: 10. Agents, nav_order: 11 }
   - scope: { path: "AGENTS.md" }
     values: { title: AGENTS.md, nav_order: 12 }
+  - scope: { path: "ADOPT.md" }
+    values: { title: Adopt, nav_order: 13 }
   - scope: { path: "CHECKLISTS.md" }
-    values: { title: Checklists, nav_order: 13 }
+    values: { title: Checklists, nav_order: 14 }
   - scope: { path: "GLOSSARY.md" }
-    values: { title: Glossary, nav_order: 14 }
+    values: { title: Glossary, nav_order: 15 }
   - scope: { path: "READING.md" }
-    values: { title: Reading, nav_order: 15 }
+    values: { title: Reading, nav_order: 16 }
   - scope: { path: "GAPS.md" }
-    values: { title: Gaps, nav_order: 16 }
+    values: { title: Gaps, nav_order: 17 }
   - scope: { path: "CHANGELOG.md" }
-    values: { title: Changelog, nav_order: 17 }
+    values: { title: Changelog, nav_order: 18 }
   # Templates are reachable from links but are starting files, not part of the book.
   - scope: { path: "templates" }
     values: { nav_exclude: true }

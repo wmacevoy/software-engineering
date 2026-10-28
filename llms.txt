@@ -10,6 +10,7 @@ bears on the task. Principle anchors are the lowercase ID without the version, e
 ## Start here
 
 - [AGENTS.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/AGENTS.md): the working agreement for agents, portable to any repository
+- [ADOPT.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/ADOPT.md): making a repository one that follows the guide, and what an agent does where the adoption is only partly done
 - [README.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/README.md): the argument in ten lines, the running example, and the principle index
 - [CHANGELOG.md](https://raw.githubusercontent.com/wmacevoy/software-engineering/main/CHANGELOG.md): what changed in each release, by principle ID; read it when your copy of AGENTS.md names an older release
 
