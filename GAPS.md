@@ -506,15 +506,20 @@ be doubted under evidence. Git nicely keeps history."
 
 [SE1/A11](guide/10-agents.md#a11) was written at 12:17 on 2026-10-26 (e1635f0), rewritten at 12:35
 (594fadb), and changed again the next morning (d256d10). The compaction project pinned the guide at
-594fadb for its trials, so every agent there loaded a rule that had changed eighteen minutes before
-it was copied and would change again, and nothing in the copy said how new it was.
+594fadb for its trials, so every agent there loaded the version written eighteen minutes after the
+first, which would change again the next morning, and nothing in the copy said how new it was. When
+the copy was taken is not recorded.
 
 ### 2. An inference read as a measurement for weeks
 
-In another of the author's projects, an agent wrote "never forks" into the agent file. It was never
-measured, carried no *(inferred)* mark, and was read for weeks with the authority of the measured
-sentence beside it, until the owner retired it in one sentence. The author's account; the project's
-history was not checked here.
+In another of the author's projects, an agent wrote "never forks — it can't on iOS" into the agent
+file. It was never measured, carried no *(inferred)* mark, and by the project's own record was read
+for weeks with the authority of the measured sentence beside it, until the owner retired it on
+2026-08-29 in one sentence. The record is itself agent-written: the header of that project's
+`core/include/viki_trace.h` ("Weeks of work followed from it. It was retired on 2026-08-29 by the
+author of the repository, in one sentence, in conversation"), and its `CLAUDE.md`, which says the
+rule was rescinded the same day it was questioned. The author's account agrees. The commit history
+was not walked.
 
 ### 3. Rules written by an agent, for agents, that did not say so
 

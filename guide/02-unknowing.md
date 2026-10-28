@@ -192,9 +192,10 @@ an agent what to do: a requirement, a scope decision, a convention, a line in an
 checklist item, a principle in this guide. Every one was written by someone, at some time, for a
 reason that may have moved, and every one speaks in the same present tense whether it was
 measured, decided, or guessed. An agent wrote "never forks" into one project's agent file as an
-inference, and it was read for weeks with the authority of the measured sentence beside it. A copy
-of this guide froze [SE1/A11](10-agents.md#a11) eighteen minutes after it was written, and nothing
-in the copy said how new it was
+inference; by that project's own record, which agents also wrote, it was read for weeks with the
+authority of the measured sentence beside it, until the owner retired it in one sentence. A copy of
+this guide pinned [SE1/A11](10-agents.md#a11) at a commit made eighteen minutes after the principle
+was first written; it changed again the next morning, and nothing in the copy said how new it was
 ([GAPS](../GAPS.md#1-a-rule-eighteen-minutes-old-frozen-into-a-copy)). A rule with no author, no
 date, and no way to be wrong is one more thing that keeps saying "fine" ([SE1/U7](#u7)), so give it
 the same three medicines:
