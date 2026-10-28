@@ -6,8 +6,8 @@ saying why not ([SE1/P4](guide/01-purpose.md#p4)).
 
 ## Field report: lwext4-bsd, 2026-10-19
 
-[lwext4-bsd](https://github.com/wmacevoy/lwext4-bsd) is a BSD-licensed fork of an embedded ext4
-library: C, no service, no deploys, one maintainer, an on-disk format owned by Linux, and code that
+[lwext4-bsd](https://github.com/wmacevoy/lwext4-bsd) (a private repository) is a BSD-licensed fork
+of an embedded ext4 library: C, no service, no deploys, one maintainer, an on-disk format owned by Linux, and code that
 must stay clean of GPL provenance. The working set was written after the fact, from the code and the
 commit history. The gaps below are ordered by how much they cost.
 
@@ -178,7 +178,7 @@ counts only what each author asked: the agent playing the owner volunteered unas
 untested. A rule-by-rule test is planned: a small repository for each rule, with one temptation
 that rule targets, run with and without the guide in sessions that inherit nothing.
 
-### 3. Locality of reasoning: untested at a size where it would matter
+### 3. A rule in one place, or pasted into every module: untested at a size where it would matter
 
 At about 1,400 and about 4,300 lines, it made no difference whether a rule lived in one place or
 was pasted into every module that used it. In 40 runs on the larger codebase, all 40 changes were
@@ -248,15 +248,22 @@ in the agent hand-off checklist.
 
 ### Related work
 
-The claim that pair programming cuts errors by 90% has no source we could find. Williams et al.
-(2000) reported about 15% fewer defects for about 15% more effort. A meta-analysis
-([Hannay et al., 2009](https://doi.org/10.1016/j.infsof.2009.02.001)) found a small effect on
-quality and a cost in effort. These numbers come from search results; the papers themselves were not
-opened. For agents, most model responses to ambiguous coding problems wrote code instead of asking
-([HumanEvalComm](https://arxiv.org/abs/2406.00215)), and on underspecified issues, interaction
-raised resolve rates by up to 74% ([Ambig-SWE](https://arxiv.org/abs/2502.13069)). Anthropic's
-[Claude Code guidance](https://code.claude.com/docs/en/best-practices) already recommends planning
-before coding, a fresh session for review, and separate writer and reviewer agents.
+The claim that pair programming cuts errors by 90% has no controlled study behind it that we could
+find. "About 15% fewer defects for about 15% more effort" is Cockburn and Williams's (2000)
+restatement of the Utah experiment; the experiment's own paper (Williams, Kessler, Cunningham, and
+Jeffries, 2000, *IEEE Software*) reports test-case pass rates and an effort overhead that fell toward
+about 15% after an adjustment period, and Erdogmus and Williams (2003) note the effort difference
+was not statistically significant. A meta-analysis
+([Hannay et al., 2009](https://doi.org/10.1016/j.infsof.2009.02.001)) found a small positive effect
+on quality and a medium negative one on effort. For agents, most model responses to ambiguous coding
+problems wrote code instead of asking ([HumanEvalComm](https://arxiv.org/abs/2406.00215)), and on
+underspecified issues, interaction raised resolve rates by up to 74% relative to the non-interactive
+setting ([Ambig-SWE](https://arxiv.org/abs/2502.13069); the abstract gives the figure, and the
+paper's own resolve rates make it a relative gain). Anthropic's
+[Claude Code guidance](https://code.claude.com/docs/en/best-practices) recommends writing a spec
+before building, a second session as reviewer, and a reviewer subagent that did not watch the code
+being written. The first wording here came from search results; the papers were opened for this
+wording on 2026-10-27, by a check delegated during the review of v1.1.
 
 ## Field report: compaction in the author's own sessions, 2026-10-26
 
