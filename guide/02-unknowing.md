@@ -177,6 +177,11 @@ world since the last session, and report what moved, what is torn, and what has 
 finds goes in `FINDINGS` or the queue, not into code. Slack ([SE1/W7](08-work.md#w7)) is the
 capacity to absorb a surprise; whitespace is the attention that notices it first.
 
+What has been seen, so far: in [trials](../GAPS.md#8-nulls-and-one-move-in-the-wrong-direction),
+an agent given a break with no task raised a real risk nobody had asked about in 4 of 10 runs, and
+never tied it to the work in hand; a jester given the whole project found facts about it and
+nothing about the new work. Wrong if a session with no task finds nothing a tasked one would not.
+
 > **Ask:** "When did someone last look at this with no task in hand, and what did they find?"
 
 ### <a id="u9"></a>U9. Rules change: a rule says who made it, when, and what would show it wrong
