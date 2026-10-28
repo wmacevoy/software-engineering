@@ -20,6 +20,26 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.3 — unreleased
+
+[Changes on main since v1.2.1](https://github.com/wmacevoy/software-engineering/compare/v1.2.1...main)
+
+**For copies:** re-copy AGENTS.md (*Before you start* no longer asserts that the self test ran) and
+`se.py`.
+
+### Also changed
+
+- From the first review by an agent of another family (Codex,
+  `archive/reviews/REVIEW-v1.2.1-codex.md`): AGENTS.md says to look for the self test's report and
+  run it if absent, instead of asserting it ran; `se --post` is a self test in
+  [SE1/T2](guide/06-testing.md#t2)'s sense, refusing with an exit code when the disk is below its
+  floor and reporting the risks it cannot refuse; its rules no longer tell an agent to commit,
+  which AGENTS.md forbids unless asked; the doctor and the self test name Claude Code where a row
+  describes its configuration, and keep observed loading (the phrase test) apart from it; the
+  tests run on Python 3.9, which CI now exercises beside the newest; `se --self` checks the pin
+  against the released AGENTS.md, so unreleased edits to it do not go red.
+- The checker's patch-release rule holds only while the patch is the newest CHANGELOG section.
+
 ## v1.2.1 — 2026-10-28
 
 [Full diff from v1.2](https://github.com/wmacevoy/software-engineering/compare/v1.2...v1.2.1). No

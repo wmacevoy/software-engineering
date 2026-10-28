@@ -56,9 +56,10 @@ question for the human, not a task.
 
 ## Before you start
 
-- **If the repository has `./se`, its self test ran when you started** (a `SessionStart` hook) and
-  says whether this session can be torn and what rules follow; work by them. If it did not run, run
-  `./se --post` once. `./se --doctor` says what the repository lacks. (SE1/T2, SE1/U7)
+- **If the repository has `./se`, look for its self test's report in your context** (a `SessionStart`
+  hook puts it there, where one is installed); if there is none, run `./se --post` once. It says
+  whether this session can be torn and what rules follow; work by them. `./se --doctor` says what
+  the repository lacks. (SE1/T2, SE1/U7)
 - **Read the repository guide** for how to run, test, and reset the system. If there is no way to
   run the thing, say so before writing code: you cannot check a claim you cannot run. (SE1/A2)
 - **Read the working set** that bears on the task: requirements, design, queue, findings. A

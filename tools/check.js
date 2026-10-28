@@ -219,7 +219,10 @@ const agents = fs.readFileSync(path.join(root, 'AGENTS.md'), 'utf8').match(/This
 if (!agents || agents[1] !== minor(latest)) problem(`stale release  AGENTS.md: says it is from ${agents ? agents[1] : 'nothing'}, latest is ${latest} (copies say its minor, ${minor(latest)})`);
 
 // A patch release may only change what is not a principle or a copy: compare with the minor's tag.
-if (latest && latest.split('.').length === 3) {
+// The rule holds while the patch is the newest section; work toward the next release goes under an
+// unreleased section above it, and from then on the minor-release rules apply.
+const top = releaseLines[0] && releaseLines[0][1];
+if (latest && top === latest && latest.split('.').length === 3) {
   const base = minor(latest);
   for (const k of ['New', 'Changed']) if (listed.has(`${latest} ${k}`)) problem(`patch release  ${latest} lists principles under ${k}; only a minor release may`);
   try {
