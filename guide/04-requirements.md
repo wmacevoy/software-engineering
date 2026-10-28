@@ -14,6 +14,8 @@ Two words used precisely in this chapter:
 
 ### <a id="r1"></a>R1. Keep the pain; test the solution
 
+*Since v1.0 (2026-10-20).*
+
 You are handed a sentence: *"We need an app that shows which lots have spaces."* That sentence is
 not a requirement. It is a wish with a user interface already attached.
 
@@ -36,7 +38,7 @@ may be about trusting a number, not about a map.
 
 ### <a id="r2"></a>R2. Specific and wrong beats vague and safe
 
-*Changed in v1.1.*
+*Changed in v1.1 (2026-10-20).*
 
 Requirements do not exist, even in principle, until someone writes a candidate down. The client
 cannot tell you what should happen when a sensor goes silent, because they have never thought about
@@ -63,6 +65,8 @@ text it pointed at has moved ([SE1/R10](#r10)).
 
 ### <a id="r3"></a>R3. Ask the questions nobody volunteers — the ones that could invalidate the plan, first
 
+*Since v1.0 (2026-10-20).*
+
 None of these are about features. All of them get answers nobody offers unprompted.
 
 | Ask                                                          | Because                                                                     |
@@ -83,12 +87,16 @@ four.
 
 ### <a id="r4"></a>R4. A requirement with no price attached is a wish
 
+*Since v1.0 (2026-10-20).*
+
 Every sentence in a requirements document is a purchase someone has to authorize. "Yes, and here is
 what it moves" is the answer to "we want everything."
 
 > **Ask:** "What does this sentence cost, and who agreed to pay it?"
 
 ### <a id="r5"></a>R5. A requirement says what must be observably true; a design says how
+
+*Since v1.0 (2026-10-20).*
 
 A requirement cannot change without the client; a design can. Put a design decision in the
 requirements and you have promised the client a table name. Put a requirement in the design and
@@ -119,6 +127,8 @@ requirements.
 
 ### <a id="r6"></a>R6. Every input has four failure cases: absent, late, wrong, and lying
 
+*Since v1.0 (2026-10-20).*
+
 Most specifications describe the happy path and inherit the rest by accident — whatever the HTTP
 library happens to do on timeout becomes the product's behavior, chosen by nobody.
 
@@ -143,6 +153,8 @@ to find your K3.**
 > **Ask:** "What happens when this input is absent, late, wrong, or lying?"
 
 ### <a id="r7"></a>R7. Scale, recovery, and availability are answered whether or not anyone writes them down
+
+*Since v1.0 (2026-10-20).*
 
 Unstated, the answer is whatever the implementation happened to do — chosen by nobody, discovered in
 production. All of them are **client answers**, not engineering choices, and on day one each costs a
@@ -193,6 +205,8 @@ point — "the data on disk is the old version or the new one, never a mix" — 
 
 ### <a id="r8"></a>R8. Security, law, and ethics are always requirements
 
+*Since v1.2 (2026-10-28).*
+
 They are the easiest to postpone, because they are not software. No test fails without them, no user
 files a ticket for them, they compete with visible features, and their absence looks exactly like
 their presence until it doesn't. They are requirements on every project whether or not anyone states
@@ -235,6 +249,8 @@ are not adding a requirement; you are performing a migration.
 
 ### <a id="r9"></a>R9. Write down what you decided not to do
 
+*Since v1.0 (2026-10-20).*
+
 Four short lists, each nearly free, each ending an argument permanently:
 
 | List                 | Holds                                                         |
@@ -252,7 +268,7 @@ week nine.
 
 ### <a id="r10"></a>R10. Version requirements; never edit them in place
 
-*Changed in v1.1.*
+*Changed in v1.1 (2026-10-20).*
 
 A superseded requirement is not deleted knowledge. Editing in place destroys the before-picture, and
 the diff between `v1` and `v2` is the most useful conversation you will ever have with the client.
@@ -268,7 +284,7 @@ design is cited the same way: `DESIGN_v2`, never a bare `DESIGN`.
 
 ### <a id="r11"></a>R11. An API is the set of observables your acceptance tests need
 
-*Changed in v1.1.*
+*Changed in v1.1 (2026-10-20).*
 
 The chain from a story to an interface runs through five artifacts, and the step people skip is
 the one from the test to the observables it needs:

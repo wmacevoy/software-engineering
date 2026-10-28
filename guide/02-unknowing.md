@@ -16,6 +16,8 @@ labels `K0`–`K4` are used throughout the guide.
 
 ### <a id="u1"></a>U1. K0 through K3 are in order of expense; K4 is a choice
 
+*Since v1.0 (2026-10-20).*
+
 K0 costs nothing; you already know it. Finding out a K1 is cheap — you know the question, so you can
 look it up or ask. A K2 costs a rewrite, because it arrives as a surprise after you have built on
 the wrong picture. A K3 costs the most: whatever was built on top of the belief, discovered at the
@@ -24,6 +26,8 @@ worst possible moment.
 K4 is not on that ladder at all. It is a decision, and usually a good one.
 
 ### <a id="u2"></a>U2. Building is discovering, in the right order and at the right price, which category each part of the problem belongs to
+
+*Since v1.0 (2026-10-20).*
 
 Every practice in this guide is a way of moving something **toward K0** — from a more expensive
 category to a cheaper one — before it charges full price:
@@ -39,6 +43,8 @@ category to a cheaper one — before it charges full price:
 > **Ask:** "Which category is this part of the problem in — and what is the cheapest way to move it?"
 
 ### <a id="u3"></a>U3. K3 is the one to be afraid of
+
+*Since v1.0 (2026-10-20).*
 
 K1 and K2 are honest. K3 is expensive precisely because it costs nothing at the time: no search is
 triggered, no question is asked, no ticket is filed. You are not looking, because as far as you know
@@ -59,6 +65,8 @@ rule: you have not seen it work until you have seen it say no.
 > **Ask:** "What would I see if I were wrong about this — and have I looked?"
 
 ### <a id="u4"></a>U4. Every abstraction rests on chosen falsehoods; write down where they are load-bearing
+
+*Since v1.0 (2026-10-20).*
 
 An abstraction is a simplified picture you agree to work with — "a network call returns a value,"
 "`now()` tells the time" — and every simplified picture is false somewhere. You cannot build
@@ -81,6 +89,8 @@ was load-bearing.** A K4 you have chosen is an asset; the same falsehood held un
 
 ### <a id="u5"></a>U5. Estimate the category, not the task
 
+*Since v1.0 (2026-10-20).*
+
 "Two days" usually means "two days if nothing I haven't thought of happens" — a K0 statement about a
 schedule governed by K2.
 
@@ -98,6 +108,8 @@ find out what you don't know, then give a range for the rest.
 
 ### <a id="u6"></a>U6. Nothing important may live only in a head
 
+*Since v1.1 (2026-10-20).*
+
 A constraint that exists only in one person's head fails in both directions at once. For its holder
 it is K3 — they believe everyone knows it. For everyone else it is K2 — you cannot ask about
 something you have no idea exists.
@@ -113,7 +125,7 @@ stands**, in the repository, versioned with the code ([SE1/W10](08-work.md#w10),
 
 ### <a id="u7"></a>U7. Find the K3 factories: anything that keeps saying "fine" with no way to say "wrong"
 
-*Changed in v1.2.*
+*Changed in v1.2 (2026-10-28).*
 
 A K3 is one wrong belief ([SE1/U3](#u3)). A **K3 factory** is whatever keeps producing them: a signal
 that says "fine," costs nothing to keep believing, and has no path by which it could say "wrong." It
@@ -157,7 +169,7 @@ Three medicines, each the opposite of what makes a factory:
 
 ### <a id="u8"></a>U8. Leave whitespace: an agenda finds only what it looks for
 
-*New in v1.2.*
+*New in v1.2 (2026-10-28).*
 
 An agenda is a search. It moves K1 to K0: you ask the question, you get the answer. K2 is what
 nobody is asking about, so a calendar with no empty space and a queue that always has a next item
@@ -185,7 +197,7 @@ nothing about the new work. Wrong if a session with no task finds nothing a task
 
 ### <a id="u9"></a>U9. Rules change: a rule says who made it, when, and what would show it wrong
 
-*New in v1.2.*
+*New in v1.2 (2026-10-28).*
 
 People learn, rules change, and what is is not what was. A rule is anything that tells a person or
 an agent what to do: a requirement, a scope decision, a convention, a line in an agent file, a

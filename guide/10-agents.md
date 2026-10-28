@@ -8,6 +8,8 @@ operational rules are collected in [AGENTS.md](../AGENTS.md).
 
 ### <a id="a1"></a>A1. Producing code got cheaper faster than knowing it is right
 
+*Since v1.0 (2026-10-20).*
+
 Agents move the economics in one direction: **the cost of producing code has fallen much faster than
 the cost of knowing the code is right.** Everything scarce migrates to the second half —
 specification, verification, review, ownership. The bottleneck is no longer typing. It is attention.
@@ -15,6 +17,8 @@ specification, verification, review, ownership. The bottleneck is no longer typi
 > **Ask:** "Now that writing this is cheap, what is the expensive part?"
 
 ### <a id="a2"></a>A2. An agent is a K3 factory; never let confidence substitute for a run
+
+*Since v1.1 (2026-10-20).*
 
 Fluent, confident, plausible, and occasionally wrong is the precise shape of erroneous certainty,
 arriving faster than anyone can check it ([SE1/U3](02-unknowing.md#u3),
@@ -29,7 +33,7 @@ run and one to reset.
 
 ### <a id="a3"></a>A3. An agent arrives knowing nothing and leaves remembering nothing
 
-*Changed in v1.2.*
+*Changed in v1.2 (2026-10-28).*
 
 Every session starts from the repository. A constraint that lives only in a head is K2 to the agent
 ([SE1/U6](02-unknowing.md#u6)), and it will hand you a clean, tested, plausible violation of that
@@ -55,6 +59,8 @@ there has failed [SE1/U6](02-unknowing.md#u6) at a new address.
 
 ### <a id="a4"></a>A4. Context is a budget, and it resets every session
 
+*Since v1.0 (2026-10-20).*
+
 On a real system an agent cannot read the whole project: it does not fit, and even where it fits,
 reading everything to change one thing is the wrong price. So *how does a competent stranger find
 the five files that matter, in ten minutes, without reading the other five hundred?* becomes a
@@ -79,17 +85,23 @@ code cannot say *why*, and everything durable in the working set, where both kin
 
 ### <a id="a5"></a>A5. Spend the speed on lowering the cost of testing
 
+*Since v1.0 (2026-10-20).*
+
 Fixtures, harnesses, seed data, fault scripts, conformance checks, the boring second and third test
 case. That work multiplies against every future change ([SE1/F2](03-feedback.md#f2)). More features
 do not.
 
 ### <a id="a6"></a>A6. Review capacity is the bottleneck
 
+*Since v1.0 (2026-10-20).*
+
 An agent will happily produce three hundred lines. A diff you cannot review is a diff you cannot
 sign. Ask for the smallest change that does the job, one concern at a time, with nothing bundled in
 that was not asked for ([SE1/W11](08-work.md#w11)). Make rejection cheap.
 
 ### <a id="a7"></a>A7. Delegation is not abdication
+
+*Since v1.0 (2026-10-20).*
 
 The person who signs the change owns it — and if they cannot explain it, they cannot maintain it or
 defend it. **Working code nobody can explain is a liability, not an asset.**
@@ -102,6 +114,8 @@ defend it. **Working code nobody can explain is a liability, not an asset.**
 - The agent does not commit, push, or publish unless asked. A push is a publication.
 
 ### <a id="a8"></a>A8. Agents move the human up the waterfall
+
+*Since v1.0 (2026-10-20).*
 
 Agents are fastest at the bottom of the waterfall — code, tests, fixtures, migrations. At the top,
 where the work is conversations with people, laws, and a client's sense of proportion, they can
@@ -123,6 +137,8 @@ prompt.
 
 ### <a id="a9"></a>A9. Hand it the search-shaped work; keep the decisions
 
+*Since v1.0 (2026-10-20).*
+
 | Hand it                                                                 | Keep                                                         |
 | ----------------------------------------------------------------------- | ------------------------------------------------------------ |
 | the second and third test case, once the first is written               | the first one, which decides what the thing is               |
@@ -133,6 +149,8 @@ prompt.
 | the retro questions                                                     | the retro                                                    |
 
 ### <a id="a10"></a>A10. Ask your agents, and write the answers down
+
+*Since v1.0 (2026-10-20).*
 
 Specific advice about prompting, how much to hand over, or what an agent can be trusted to do
 unsupervised has a short shelf life — this chapter's included. The durable move is to ask the model
@@ -149,7 +167,7 @@ outcome.
 
 ### <a id="a11"></a>A11. A summary is a concussion: check it from outside
 
-*New in v1.2.*
+*New in v1.2 (2026-10-28).*
 
 Compaction, a resumed session, a handoff note: each gives the next context a summary written in the
 same fluent voice as everything else. Nothing in it marks which parts were observed and which were

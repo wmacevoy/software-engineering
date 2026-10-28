@@ -7,6 +7,8 @@ what deadlines do to people, and the failure that looks exactly like progress.
 
 ### <a id="w1"></a>W1. Every method runs the same six steps; they differ in batch size and in where the tests are
 
+*Since v1.0 (2026-10-20).*
+
 | Step         | What it produces                                                                 | The question it answers        |
 | ------------ | -------------------------------------------------------------------------------- | ------------------------------ |
 | Requirements | numbered, observable statements of what must be true — and what is *not* being built | what, for whom, and how much |
@@ -23,6 +25,8 @@ deploy what you have not built. The disagreement is about **how much goes throug
 once** and **whether the test comes at the end or inside every step.**
 
 ### <a id="w2"></a>W2. Waterfall is correct when the only real test is expensive
+
+*Since v1.2 (2026-10-28).*
 
 Waterfall runs the six steps once, in order, each signed off before the next begins. Winston Royce
 drew it in 1970 and, in the sentence directly beneath the drawing, wrote that the implementation as
@@ -43,6 +47,8 @@ a discipline looks like when it cannot afford to be wrong twice.
 K2 is guaranteed on every project, and waterfall schedules its arrival for the last step.
 
 ### <a id="w3"></a>W3. Iterative work puts a test inside every step
+
+*Since v1.0 (2026-10-20).*
 
 The same steps in loops, with three latencies and three instruments:
 
@@ -68,6 +74,8 @@ There is no Maintain step. After the first deploy, every iteration is maintenanc
 
 ### <a id="w4"></a>W4. Choose how carefully to work per decision, by the cost of being wrong once
 
+*Since v1.0 (2026-10-20).*
+
 | Decision                                      | Cost of being wrong once                         | How to work                                     |
 | --------------------------------------------- | ------------------------------------------------ | ----------------------------------------------- |
 | a route handler, a string, a query            | seconds to find out, seconds to undo             | loop: change it, run it, keep or revert         |
@@ -85,6 +93,8 @@ twice in an afternoon.**
 > **Ask:** "What does it cost to be wrong about this once?"
 
 ### <a id="w5"></a>W5. Flatten the schedule: a dependency is an unwritten interface
+
+*Since v1.0 (2026-10-20).*
 
 Drywall goes up after plumbing because the pipe occupies the space the wall will cover. Every arrow
 in a physical schedule is, at bottom, a fact about mass. Software is massless: you can write code
@@ -112,6 +122,8 @@ stands in for a missing component.
 
 ### <a id="w6"></a>W6. Build a thin vertical slice first, then thicken it
 
+*Since v1.0 (2026-10-20).*
+
 A slice from click to route to query to response, built early and then widened, crosses the gap.
 Horizontal layers — all of the database, then all of the API, then all of the UI — finish at the
 same time: never. Iteration one of the parking system is one lot, one sensor with its control plane
@@ -124,7 +136,7 @@ under the weight it will have to bear.
 
 ### <a id="w7"></a>W7. Deadlines produce an avoidance gradient; change the terrain, not the willpower
 
-*Changed in v1.2.*
+*Changed in v1.2 (2026-10-28).*
 
 In a classic experiment, rats that had learned one end of an alley gives a shock were briefly held
 back by a light harness while running away from it, some near the shock point and some far from
@@ -152,6 +164,8 @@ how most projects fail.
 > **Ask:** "What would make the last week before this deadline boring?"
 
 ### <a id="w8"></a>W8. Don't fall down the waterfall
+
+*Since v1.0 (2026-10-20).*
 
 The failure looks like a productive week. A team asked for a campus parking app has, by Tuesday, a
 normalized schema — `students`, `vehicles`, `sightings(plate, lot, seen_at)` — an index, a view that
@@ -195,6 +209,8 @@ requirement:
 
 ### <a id="w9"></a>W9. An iteration is time-boxed, ends on a fence, and produces four things
 
+*Since v1.0 (2026-10-20).*
+
 One to two weeks. When the period ends, scope moves, not the date. Without the time box the loop is
 a spiral. An iteration that produces three of these is not done:
 
@@ -206,6 +222,8 @@ a spiral. An iteration that produces three of these is not done:
 And one question at the end: *what can we delete?* ([SE1/D12](05-design.md#d12))
 
 ### <a id="w10"></a>W10. Keep the working set in the repository
+
+*Since v1.0 (2026-10-20).*
 
 The state of the project has to be observable from where every party stands
 ([SE1/U6](02-unknowing.md#u6)). Four documents, versioned alongside the code — not in a wiki, not in
@@ -236,7 +254,7 @@ Starting skeletons for the four, and for the repository guide, are listed in the
 
 ### <a id="w11"></a>W11. Done means all of it, one concern per change, reviewed by someone else
 
-*Changed in v1.1.*
+*Changed in v1.1 (2026-10-20).*
 
 **A definition of done is a checklist a change fully passes — not most of it.** A typical one:
 
@@ -276,6 +294,8 @@ refactor's tests must have been seen to fail — [SE1/T3](06-testing.md#t3)).
 > **Ask:** "Could I review this in one sitting?"
 
 ### <a id="w12"></a>W12. Joining late: rebuild the working set, and mark what you inferred
+
+*Since v1.0 (2026-10-20).*
 
 Most projects meet this guide with code already written. The working set can be rebuilt from the
 code and its history, but the rebuild has a trap: it invents reasons. A commit says what changed;

@@ -7,6 +7,8 @@ to name the fear it retires.
 
 ### <a id="p1"></a>P1. Engineers make reliable things, on time, within resource constraints, managing discomfort for the team, the client, and the users
 
+*Since v1.0 (2026-10-20).*
+
 Four constraints that trade against each other — reliability, time, resources, discomfort — and a
 fifth, **scope**, which is usually the honest one to move. A plan that does not say which of them is
 fixed is not a plan; it is a wish with dates attached.
@@ -14,6 +16,8 @@ fixed is not a plan; it is a wish with dates attached.
 > **Ask:** "Which of these is fixed, and which one moves when we are wrong?"
 
 ### <a id="p2"></a>P2. Reliable is not correct
+
+*Since v1.0 (2026-10-20).*
 
 Correctness is a property of a program measured against a specification. Reliability is a property
 of a system running in a world that contains bad inputs, hostile inputs, failing hardware, wrong
@@ -38,6 +42,8 @@ same reason.)
 
 ### <a id="p3"></a>P3. Discomfort is a leading indicator
 
+*Since v1.0 (2026-10-20).*
+
 | Whose      | What it looks like                              | What reduces it                          |
 | ---------- | ----------------------------------------------- | ---------------------------------------- |
 | The users  | confusion, wasted time, distrust of the answer  | the product actually being good          |
@@ -52,6 +58,8 @@ data.
 > **Ask:** "Who is uncomfortable right now, and what are they afraid of?"
 
 ### <a id="p4"></a>P4. Every practice retires a named fear
+
+*Since v1.0 (2026-10-20).*
 
 Backups, version control, tests, review, short iterations, demos, staging. Each is usually taught as
 a rule. Each is better understood as a way of retiring one specific fear — and you should be able to
@@ -84,6 +92,8 @@ Two consequences, and both are load-bearing:
 > **Ask:** "Which fear does this practice retire — and does it retire the risk, or only the fear?"
 
 ### <a id="p5"></a>P5. The deliverable is not the code
+
+*Since v1.0 (2026-10-20).*
 
 It is the code plus the ability of someone else to run it, reset it, deploy it, diagnose it at 3am,
 and continue it in month seven. "It works on my machine" is a claim about a machine.

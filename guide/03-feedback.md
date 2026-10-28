@@ -8,6 +8,8 @@ write tests worth trusting is [6. Testing](06-testing.md).)
 
 ### <a id="f1"></a>F1. The cost of a test decides the method
 
+*Since v1.0 (2026-10-20).*
+
 You cannot build a second bridge to see whether the first one stands. A wind-tunnel hour is
 expensive, a chip mask set is expensive, a recall is catastrophic. So those disciplines front-load
 everything — analysis, simulation, review, sign-off — before anything is cut. That is not a bad
@@ -25,6 +27,8 @@ twice in an afternoon ([SE1/W4](08-work.md#w4)).
 > **Ask:** "What does it cost to find out we are wrong about this — and to undo it?"
 
 ### <a id="f2"></a>F2. The cost of a test is designed, not given
+
+*Since v1.0 (2026-10-20).*
 
 Lowering it is ordinary engineering work with a known toolkit:
 
@@ -47,6 +51,8 @@ information about the design, not about testing.*
 
 ### <a id="f3"></a>F3. Push each class of error down to the cheapest loop that can catch it
 
+*Since v1.0 (2026-10-20).*
+
 Testing is one feedback loop among several. Each has a cost, a latency, and a fidelity, and each
 catches a different class of error:
 
@@ -67,6 +73,8 @@ the wrong thing." Only a person looking at the running thing does.
 
 ### <a id="f4"></a>F4. Nothing has mass, so build the signals
 
+*Since v1.0 (2026-10-20).*
+
 Mass supplies error signals for free: a bad structure sags, cracks, or falls down, and nobody has to
 be clever to notice. **Software has no gravity, so nothing collapses to tell you.** A bad design
 holds itself up indefinitely, at full speed, with the tests passing.
@@ -77,6 +85,8 @@ of them arrive by default.
 > **Ask:** "If this design were wrong, what would tell us — and when?"
 
 ### <a id="f5"></a>F5. When a measure becomes a target, it stops measuring
+
+*Since v1.0 (2026-10-20).*
 
 Not because people are dishonest. Structurally: the measure was a proxy for something you cared
 about, and optimizing the proxy detaches it from the thing.

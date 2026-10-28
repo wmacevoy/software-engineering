@@ -7,6 +7,8 @@ smaller rules stop being arbitrary.
 
 ### <a id="d1"></a>D1. State is the material
 
+*Since v1.0 (2026-10-20).*
+
 Every discipline has a material whose properties explain its rules. Software's material is not
 code; code is the description. What actually runs is **state, plus the rules that change it.**
 
@@ -33,6 +35,8 @@ that will stay easy.
 
 ### <a id="d2"></a>D2. Anything that might be out of date is a cache
 
+*Since v1.0 (2026-10-20).*
+
 A cache is not something you install. It is **any copy of state that might not match the original**
 — a variable holding something fetched five minutes ago, an array a timer refreshes, a count column
 that duplicates what could be counted from other rows, a login token. Call it a cache and you
@@ -56,6 +60,8 @@ server consults — each is a different price for the same answer.
 > **Ask:** "What is this a copy of, and how stale can it get?"
 
 ### <a id="d3"></a>D3. There is no single "now"
+
+*Since v1.0 (2026-10-20).*
 
 Once state lives in two places joined by a network, there is no shared present. The sensor knows a
 count; the collector knows what the sensor said four seconds ago; the browser knows what the server
@@ -85,6 +91,8 @@ Beliefs that feel like K0 and are K3:
 
 ### <a id="d4"></a>D4. Make operations idempotent
 
+*Since v1.0 (2026-10-20).*
+
 The defense against "it may arrive twice" is a design technique, not a warning: make doing it twice
 equal doing it once, and "did that go through?" stops being a question you have to answer.
 
@@ -98,6 +106,8 @@ carry a sequence number or version with each message and ignore anything older t
 > **Ask:** "What happens if this request is sent twice?"
 
 ### <a id="d5"></a>D5. Wall-clock time and elapsed time are different instruments
+
+*Since v1.0 (2026-10-20).*
 
 Split *"how old is this?"* into two fields:
 
@@ -130,6 +140,8 @@ Almost every time bug is one instrument used where the other was required.
 
 ### <a id="d6"></a>D6. Derive instead of store; name the authority; record why
 
+*Since v1.0 (2026-10-20).*
+
 - **Derive instead of store.** Anything computed cannot go stale. Compute `available` as
   `capacity − occupancy` in one piece of SQL that every query reuses, and never in the browser. One
   place can be wrong instead of five.
@@ -144,6 +156,8 @@ Almost every time bug is one instrument used where the other was required.
 > **Ask:** "Which copy is authoritative — and could this be computed instead of stored?"
 
 ### <a id="d7"></a>D7. Serve, don't rule: keep the logic away from the I/O
+
+*Since v1.0 (2026-10-20).*
 
 The phrase comes from embedded testing. Code that **rules** commands the world: it reads the sensor,
 the socket, the database, the clock, a global. Code that **serves** answers questions: a pure
@@ -189,6 +203,8 @@ something is hard to test, look for the rule tangled into the serve.
 
 ### <a id="d8"></a>D8. Separate essential complexity from accidental complexity
 
+*Since v1.0 (2026-10-20).*
+
 **Essential complexity is in the problem.** It survives every rewrite, framework, language, and
 model: sensors lie, clocks disagree, networks drop requests, users speak eight languages, devices
 cannot all be upgraded at once. You cannot engineer it away; you can only decide where to handle it.
@@ -221,6 +237,8 @@ requirement. Anything you maintain that is not on that page should be able to sa
 > **Ask:** "What requirement would have to disappear for this to go away?"
 
 ### <a id="d9"></a>D9. Conceptual integrity: one coherent design beats every good idea
+
+*Since v1.0 (2026-10-20).*
 
 People understand systems **by analogy**: learn how one part works, then guess how the next part
 works. Coherence is what makes the guess right. Every place the guess fails is something to memorize
@@ -255,6 +273,8 @@ something nobody can hold ([SE1/A8](10-agents.md#a8)).
 > **Ask:** "Is that the same thing we called something else on Tuesday?"
 
 ### <a id="d10"></a>D10. Locality of reasoning: use a part correctly without reading inside it
+
+*Since v1.0 (2026-10-20).*
 
 The usual justification for interfaces is reuse. That reason is weaker than it sounds: reuse is a
 bonus when it happens, and code bent to serve two callers that only look alike can end up worse at
@@ -297,6 +317,8 @@ What locality justifies:
 
 ### <a id="d11"></a>D11. Once someone depends on an interface, it is a promise
 
+*Since v1.0 (2026-10-20).*
+
 Renaming a variable is free to undo. A data format with data in it, a published URL, a distributed
 key, an artifact someone installed — those are **one-way doors**, and they get careful, front-loaded
 work ([SE1/W4](08-work.md#w4) says how to choose). Most arguments in software are conducted at the
@@ -311,6 +333,8 @@ new version or a new name.
 > **Ask:** "Is this a one-way door? Who already depends on it?"
 
 ### <a id="d12"></a>D12. Software is capital you carry
+
+*Since v1.0 (2026-10-20).*
 
 > **cost = build + (carry × lifetime)**
 
@@ -339,6 +363,8 @@ uneventful steady state, and execute retention as a policy.
 > **Ask:** "What does this cost us every week for the next two years — and what can we delete?"
 
 ### <a id="d13"></a>D13. Provenance: who said this, and can I check it later without asking them again?
+
+*Since v1.0 (2026-10-20).*
 
 Every claim in a system has an author — a reading, a log record, a release artifact, a commit. The
 same question applies at every layer. Where the answer must hold up without trusting the network or

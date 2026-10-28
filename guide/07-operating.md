@@ -46,6 +46,8 @@ and rollbacks below belong to someone else; [SE1/O11](#o11) says what replaces t
 
 ### <a id="o1"></a>O1. Repeatability is also a property of the environment
 
+*Since v1.0 (2026-10-20).*
+
 Same code, same tests, different machine. The question is whether the software *around* the code is
 the same.
 
@@ -79,6 +81,8 @@ If nothing varies across your users' machines, the container gives the stronger 
 > **Ask:** "Which architecture did CI actually run on — and what did the build resolve?"
 
 ### <a id="o2"></a>O2. In the manifest, say what you are compatible with; in the lock, record what you ran; commit both
+
+*Since v1.0 (2026-10-20).*
 
 ```
 manifest — a promise about compatibility      lock — a record of one resolution
@@ -119,6 +123,8 @@ Install with the command that refuses drift: `npm ci`, `cargo build --locked`, `
 
 ### <a id="o3"></a>O3. CI runs the command you run, everywhere you ship — and enforces what matters
 
+*Since v1.0 (2026-10-20).*
+
 Continuous integration is the idiot light with a URL ([SE1/T2](06-testing.md#t2)). It retires "it
 works on my machine" and "we only ever built it on one kind of machine." Two rules make it worth
 trusting:
@@ -140,6 +146,8 @@ its attention on what no tool can see ([SE1/F3](03-feedback.md#f3), [SE1/W11](08
 > **Ask:** "Is CI running the command I run, on the machines I ship to?"
 
 ### <a id="o4"></a>O4. Every failure needs a signal a person will see — and believe
+
+*Since v1.0 (2026-10-20).*
 
 The second half of reliability is detectable error status. In production that means:
 
@@ -174,6 +182,8 @@ watching them fire.
 
 ### <a id="o5"></a>O5. Handle failure on purpose: timeouts, bounded retries, and a stated fallback
 
+*Since v1.0 (2026-10-20).*
+
 Every call across a network needs a stated answer for absent, late, wrong, and lying
 ([SE1/R6](04-requirements.md#r6)). In code, that means:
 
@@ -199,6 +209,8 @@ Every call across a network needs a stated answer for absent, late, wrong, and l
 
 ### <a id="o6"></a>O6. A deploy is a test whose failure is an outage
 
+*Since v1.0 (2026-10-20).*
+
 **A deploy is not finished when the bits land; it is finished when the thing reports healthy — and
 the system should be the one to notice.** Health-gated, with automatic revert, with the rollback
 timed *before* the maintenance window opens.
@@ -214,6 +226,8 @@ steps ([SE1/O7](#o7)).
 > **Ask:** "Has the rollback been run, and how long did it take?"
 
 ### <a id="o7"></a>O7. Change data and interfaces in steps that can each be undone
+
+*Since v1.0 (2026-10-20).*
 
 The outages that hurt most come from changing a shape that something else depends on — a schema, an
 API, a message format — in one move. During any deploy, old and new versions run at the same time;
@@ -234,6 +248,8 @@ condition, not a moment. So:
 > **Ask:** "Can the previous version still run against the data after this change?"
 
 ### <a id="o8"></a>O8. Secure by default
+
+*Since v1.0 (2026-10-20).*
 
 The threat model says who the adversary is ([SE1/R8](04-requirements.md#r8)); these defaults make
 the common attacks expensive before anyone has to be clever:
@@ -257,6 +273,8 @@ the common attacks expensive before anyone has to be clever:
 
 ### <a id="o9"></a>O9. In an incident, restore service first; learn afterward
 
+*Since v1.0 (2026-10-20).*
+
 - **Mitigate before diagnosing.** Roll back, fail over, turn the feature flag off, serve stale with
   its age. Understanding can wait until users are not paying for it.
 - **One person leads**, one person communicates, and everyone else works on what the lead asks.
@@ -271,6 +289,8 @@ the common attacks expensive before anyone has to be clever:
 
 ### <a id="o10"></a>O10. Measure before you optimize; test at the scale you promised
 
+*Since v1.0 (2026-10-20).*
+
 Do not optimize what is not slow: measure first — with a profiler, which shows where the time
 actually goes — and note where it would matter. Judge speed by percentiles (the 95th or 99th), not
 averages: the average hides the slowest requests, and those are the ones users remember. But *do*
@@ -282,6 +302,8 @@ when the code changes.
 > **Ask:** "Have we run it at the peak we promised, against data the size we will have?"
 
 ### <a id="o11"></a>O11. A release you cannot roll back is a one-way door; ship it like one
+
+*Since v1.0 (2026-10-20).*
 
 Most of this chapter assumes a service you run: you deploy it, watch it, and put the previous
 version back. A library, firmware, an installed app, or a file format has none of that. The deploy

@@ -19,6 +19,8 @@ partner and a grader, the ideas still apply at smaller size:
 
 ### <a id="h1"></a>H1. The team is a first-order variable
 
+*Since v1.0 (2026-10-20).*
+
 - **The system will resemble the team.** A system's structure copies the communication structure of
   the organization that built it (Conway, 1968), because an interface between two components can
   only be as well specified as the conversation between the two people who own them. So a component
@@ -40,6 +42,8 @@ change, assumed by everything after. Make it on purpose and write it down.
 
 ### <a id="h2"></a>H2. A teammate fails the way an input fails
 
+*Since v1.0 (2026-10-20).*
+
 Every input needs an answer for absent, late, wrong, and lying ([SE1/R6](04-requirements.md#r6)). A
 teammate is an input, and a plan that works only when everyone is present, on time, right, and
 candid is not finished.
@@ -56,6 +60,8 @@ successful response with nothing behind it changed. The defense is the same: do 
 field; check the age of the last thing that actually ran.
 
 ### <a id="h3"></a>H3. Roles exist to retire fears; rotate them
+
+*Since v1.0 (2026-10-20).*
 
 A team of three to five needs no titles and four roles. Everyone writes code; the roles rotate every
 iteration so knowledge spreads.
@@ -81,7 +87,7 @@ living in one head. That is not the cost of rotation; it is the point.
 
 ### <a id="h4"></a>H4. The interface between two people is a contract
 
-*Changed in v1.2.*
+*Changed in v1.2 (2026-10-28).*
 
 The interface between two developers is the same object as the interface between two modules
 ([SE1/D10](05-design.md#d10)). "I'll build the collector, you build the driver page" names two
@@ -116,6 +122,8 @@ is still data.
 > **Ask:** "What meeting keeps happening on the same topic?"
 
 ### <a id="h5"></a>H5. The client knows the domain, and cannot see its edges
+
+*Since v1.0 (2026-10-20).*
 
 | They know                                           | They cannot tell you                                         |
 | --------------------------------------------------- | ------------------------------------------------------------ |
@@ -159,6 +167,8 @@ held about them.
 
 ### <a id="h6"></a>H6. Read your assumptions to the client
 
+*Since v1.0 (2026-10-20).*
+
 The cheapest question in this guide. Every scope decision and every K4 in the requirements is a
 sentence the team believes and the client has never been asked about. Read them back as questions:
 
@@ -173,6 +183,8 @@ client answers most in two seconds, and one makes them stop and say "well, excep
 > **Ask:** "We're assuming X. True?"
 
 ### <a id="h7"></a>H7. The first conversation: pain before solution, people before features, numbers before nouns
+
+*Since v1.0 (2026-10-20).*
 
 Ninety minutes, in week one, at the site if there is one. The questions are the ones in
 [SE1/R3](04-requirements.md#r3); this is the order to ask them in:
@@ -195,6 +207,8 @@ with one sentence: *tell us what is wrong with it.*
 
 ### <a id="h8"></a>H8. A demo is a test, so run it like one
 
+*Since v1.0 (2026-10-20).*
+
 1. **The real system**, from the one-command reset. Not slides, not a video, not a branch.
 2. **The client drives.** Watch their hands and face, not the screen.
 3. **Write down every "huh," "oh," "can it…," and "what about…" verbatim.** Do not answer in the
@@ -208,6 +222,8 @@ Between demos, status is weekly, three lines, the same shape every time — done
 risk-and-since-when — so the one that deviates is a signal.
 
 ### <a id="h9"></a>H9. With bad news, the delay is the cost
+
+*Since v1.0 (2026-10-20).*
 
 A two-week slip found in week two is a planning problem; the same slip found in week eleven is a
 crisis. The difference is entirely the reporting delay. So the rule is mechanical: **within a day of
@@ -225,6 +241,8 @@ coming.
 
 ### <a id="h10"></a>H10. Settle disagreements by category, then by reversibility
 
+*Since v1.0 (2026-10-20).*
+
 Four moves, in order. Most arguments end at the first.
 
 1. **Is it a category dispute?** *What requirement would have to disappear for this complexity to go
@@ -238,6 +256,8 @@ Four moves, in order. Most arguments end at the first.
    with its reason; reopening it requires new information, not a new mood.
 
 ### <a id="h11"></a>H11. Being behind is a systems failure with a schedule
+
+*Since v1.0 (2026-10-20).*
 
 A person who is behind is like a queue near full utilization: every new item waits longer than the
 last, and the delay grows faster than the load.
@@ -255,6 +275,8 @@ The most dangerous team member is the one carrying the project. Rotate the roles
 them with the person who knows least.
 
 ### <a id="h12"></a>H12. Fix the process, not the person
+
+*Since v1.0 (2026-10-20).*
 
 Nobody is blamed for K2. A finding says *findable by X; X is now on the list* — not who should have
 asked. A client who feels blamed for a surprise stops volunteering the next one, and the next one is
