@@ -29,6 +29,8 @@ run and one to reset.
 
 ### <a id="a3"></a>A3. An agent arrives knowing nothing and leaves remembering nothing
 
+*Changed in v1.2.*
+
 Every session starts from the repository. A constraint that lives only in a head is K2 to the agent
 ([SE1/U6](02-unknowing.md#u6)), and it will hand you a clean, tested, plausible violation of that
 constraint faster than you can read the diff. The hallway correction — "no, not like that" — is
@@ -36,10 +38,14 @@ gone.
 
 So the agent's memory is the [working set](08-work.md#w10) — requirements, design, queue, findings —
 plus a repository guide (a `CONTRIBUTING.md`, `CLAUDE.md`, or equivalent) that says how to run, test, and
-reset, and where the seams are. Anything said only in chat does not exist for the next session.
+reset, and where the seams are. Anything said only in chat does not exist for the next session. A
+private memory an agent keeps between sessions is a head, not the working set: the team cannot see
+it, nothing versions it, and the next tool or person never reads it, so a decision that lives only
+there has failed [SE1/U6](02-unknowing.md#u6) at a new address.
 
-- **The client never talks to the agent.** What the client said reaches the agent only through the
-  requirements.
+- **The client's answers reach the code only through the requirements.** An agent may ask, and
+  should when a task collides with a decision; what it is told is written down before anything is
+  built on it, or it did not happen.
 - **The contract comes before the code.** Otherwise the agent invents one, fluently — and every
   session invents a different one.
 - **The K4s are written down.** An unwritten assumption is a K2 to the agent.

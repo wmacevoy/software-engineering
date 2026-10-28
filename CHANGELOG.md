@@ -32,6 +32,12 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
   check that it loads; run a handoff check that compares the summary with the record, and that can
   say *wrong*: the word-overlap check found a planted gap and passed nearly every real compaction.
 
+### Changed
+
+- [SE1/A3](guide/10-agents.md#a3) An agent may ask; the client's answers reach the code only through
+  the requirements, written down before anything is built on them. A private memory an agent keeps
+  between sessions is a head, not the working set.
+
 ### Also changed
 
 - AGENTS.md: new section *After a gap*. The agent hand-off checklist gains a line for it.
