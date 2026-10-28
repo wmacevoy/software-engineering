@@ -145,7 +145,7 @@ to fix once named:
   enough to finish ([SE1/W11](08-work.md#w11)); when interrupted, commit or stash the tear with a
   message that says so; on resuming, treat what you find as torn until shown otherwise.
 
-Three cures, each the opposite of what makes a factory:
+Three medicines, each the opposite of what makes a factory:
 
 1. **Give the signal a way to fail, and watch it fail once** — a test seen red, an alert seen firing,
    an attack seen refused ([SE1/T3](06-testing.md#t3)).

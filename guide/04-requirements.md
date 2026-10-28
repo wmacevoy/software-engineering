@@ -212,7 +212,7 @@ Left out, they are where a project keeps its most expensive unknowns ([SE1/U1](0
   that," "this code is ours to use" — while the logs hold plates, someone tries it, and the snippet
   came from a GPL file.
 
-The usual cure for K2, exposure to reality ([SE1/U2](02-unknowing.md#u2)), arrives here as the
+The usual medicine for K2, exposure to reality ([SE1/U2](02-unknowing.md#u2)), arrives here as the
 breach or the lawsuit. So do not wait to be surprised: ask, early, someone who knows the rule — the
 client, a lawyer, a security reviewer, the people the data is about — and turn each into a K1 with
 an answer written down.

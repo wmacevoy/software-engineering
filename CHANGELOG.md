@@ -43,6 +43,8 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
 ### Also changed
 
 - AGENTS.md: new section *After a gap*. The agent hand-off checklist gains a line for it.
+- Wording only: [SE1/R8](guide/04-requirements.md#r8) says *medicine* where it said *cure*, as does
+  U7 (marked changed above): a K3 factory is lessened, not fixed. GLOSSARY pins the word.
 - Wording only: [SE1/A10](guide/10-agents.md#a10) is no longer the chapter's last section; its text
   is unchanged.
 - GAPS.md: a field report from agent trials, including the compaction trials behind A11; and a

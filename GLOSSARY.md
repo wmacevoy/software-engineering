@@ -49,6 +49,7 @@ find the guide using one of these loosely, that is a bug.
 | **Load-bearing** | Said of an assumption: something important depends on it being true. |
 | **Local / sharded / global state** | Created and destroyed by one test / partitioned so each test owns a slice / shared by everyone. |
 | **Manifest / lock**     | What you are compatible with / what you actually resolved and ran.                                   |
+| **Medicine** | A practice that lessens the cost of a kind of not-knowing. Nothing here cures one: a K3 factory and the unknown unknown are lived with, not fixed ([SE1/U7](guide/02-unknowing.md#u7)). |
 | **Mock** | A stand-in for a real component, used so its consumer can be built and tested first. A good one misbehaves on request. (Also called a fake or stand-in; this guide says mock.) |
 | **Monotonic clock**     | A clock that only moves forward and does not jump when the wall clock is corrected.                  |
 | **Observable**          | Checkable from outside, without reading the source.                                                  |
