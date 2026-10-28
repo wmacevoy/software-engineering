@@ -4,8 +4,12 @@ What changed between releases, by principle ID, newest first. A change you canno
 factory ([SE1/U7](guide/02-unknowing.md#u7)), so every change is visible in three places:
 
 - **Here**, by ID, with a full diff link per release.
-- **Under the principle's heading**, as *New in v1.1.* or *Changed in v1.1.* — the release that last
-  changed its meaning. A principle with no marker is as it was in v1.0.
+- **Under the principle's heading**, as *New in v1.1 (date).* or *Changed in v1.1 (date).* — the
+  release that last changed its meaning, a person's claim — or, where none did, *Since v1.0 (date).*,
+  git's answer: the release at which the principle's current text first appeared. When wording moved
+  later without the meaning, the line adds *text since*. `tools/since.js` writes these from the tags
+  and `--check` verifies them, so a principle that reads as unchanged says since when, and no marker
+  can drift.
 - **In every copy**: AGENTS.md and the templates link to the release they came from, so a copy that
   is behind says so.
 
@@ -19,6 +23,19 @@ the checker holds a patch to that.
 
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
+
+## v1.4 — unreleased
+
+[Changes on main since v1.3](https://github.com/wmacevoy/software-engineering/compare/v1.3...main)
+
+### Also changed
+
+- `docs/`: this repository's own FINDINGS and QUEUE, which the doctor had rightly reported as
+  "none yet"; GAPS stays for the principles in the field.
+- Every principle carries a marker with a date, written by `tools/since.js` from the release tags:
+  *Since v1.0 (2026-10-20).* for the ninety that no release changed, the date beside each
+  *New/Changed in*, and *text since* where wording moved after the meaning did. CI runs
+  `node tools/since.js --check`. The checker and the tool share `tools/bodies.js`.
 
 ## v1.3 — 2026-10-28
 

@@ -26,7 +26,7 @@ const minor = (v) => v.split('.').slice(0, 2).join('.');
 // Copies of AGENTS.md and the templates link to a release tag; the guide's own pages may link to main.
 const GH = new RegExp(`^https://github\\.com/wmacevoy/software-engineering/blob/(main|${releases.map((r) => r.replace('.', '\\.')).join('|')})/`);
 const GH_README = 'https://github.com/wmacevoy/software-engineering#';
-const HEADING = /^### <a id="([a-z0-9]+)"><\/a>([A-Z]\d+)\. (.*)$/;
+const { HEADING, MARKER, bodies } = require('./bodies');
 // Every citation carries the major version (README, "Principle index"); headings define IDs bare.
 const VERSION = 'SE1';
 
@@ -58,23 +58,7 @@ function problem(msg) { console.log(msg); problems++; }
 
 const definedIn = new Map(); // principle ID -> chapter file
 const headings = [];         // index lines README must contain
-const marker = new Map();    // principle ID -> { kind: 'New' | 'Changed', release }
-const MARKER = /^\*(New|Changed) in (v\d+\.\d+)\.\*$/;
-// A principle's text: its heading to the next heading or horizontal rule, without its marker,
-// whitespace collapsed so rewrapping is not a change. The rule matters: the `---` after a chapter's
-// last principle is not its text, or adding a principle after it would "change" it (v1.2's A10).
-function bodies(text) {
-  const out = new Map();
-  let id = null, buf = [];
-  const flush = () => { if (id) out.set(id, buf.filter((l) => !MARKER.test(l)).join(' ').replace(/\s+/g, ' ').trim()); };
-  for (const line of text.split('\n')) {
-    const m = line.match(HEADING);
-    if (m || /^#{1,3} /.test(line) || line === '---') { flush(); id = m ? m[2] : null; buf = []; }
-    if (id) buf.push(line);
-  }
-  flush();
-  return out;
-}
+const marker = new Map();    // principle ID -> { kind: 'New' | 'Changed' | 'Since', release }
 for (const f of files.filter((f) => f.includes(`${path.sep}guide${path.sep}`)).sort()) {
   const lines = fs.readFileSync(f, 'utf8').split('\n');
   lines.forEach((line, i) => {
@@ -178,6 +162,7 @@ for (const line of changelog.split('\n')) {
 }
 for (const [id, mk] of marker) {
   if (!releases.includes(mk.release)) problem(`unknown release ${id}: *${mk.kind} in ${mk.release}.*`);
+  else if (mk.kind === 'Since') continue;  // git's answer, not a claim about meaning; tools/since.js checks it
   else if (!listed.get(`${mk.release} ${mk.kind}`)?.has(id)) problem(`not in CHANGELOG ${id}: *${mk.kind} in ${mk.release}.* has no entry under ${mk.release} / ${mk.kind}`);
 }
 for (const [key, ids] of listed) {
@@ -209,7 +194,7 @@ else {
     for (const [id, now] of bodies(fs.readFileSync(f, 'utf8'))) {
       if (!before.has(id) || before.get(id) === now) continue;
       const mk = marker.get(id);
-      const acknowledged = (mk && newer(mk.release, tagged) > 0) || later.some((r) => listed.get(`${r} Also changed`)?.has(id));
+      const acknowledged = (mk && mk.kind !== 'Since' && newer(mk.release, tagged) > 0) || later.some((r) => listed.get(`${r} Also changed`)?.has(id));
       if (!acknowledged) problem(`unacknowledged ${id} changed since ${tagged}: add *Changed in vX.Y.* under its heading, or name it under "Also changed" in CHANGELOG.md`);
     }
   }
