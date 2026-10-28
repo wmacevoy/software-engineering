@@ -219,5 +219,20 @@ if (!agents || agents[1] !== latest) problem(`stale release  AGENTS.md: says it 
 const readme = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
 for (const line of headings) if (!readme.includes(line)) problem(`README index out of date: ${line}`);
 
+// A copy that is ahead of its label says nothing (SE1/U7): every principle AGENTS.md and the
+// templates cite must be in README's index at the release they name, read from that tag when it
+// exists and from the working tree when the release is dated but not yet tagged.
+const indexIds = (text) => new Set([...text.matchAll(/\[\*\*SE\d+\/([A-Z]\d+)\*\*\]/g)].map((m) => m[1]));
+for (const f of ['AGENTS.md', ...files.filter((f) => f.includes(`${path.sep}templates${path.sep}`)).map((f) => path.relative(root, f))]) {
+  const text = fs.readFileSync(path.join(root, f), 'utf8');
+  const label = f === 'AGENTS.md' ? agents && agents[1] : (text.match(/software-engineering\/blob\/(v\d+\.\d+)\//) || [])[1];
+  if (!label) continue;
+  let ids;
+  try { ids = indexIds(git('show', `${label}:README.md`)); } catch { ids = indexIds(readme); }
+  for (const id of new Set([...text.matchAll(/SE\d+\/([A-Z]\d+)/g)].map((m) => m[1]))) {
+    if (!ids.has(id)) problem(`ahead of label  ${f}: cites SE1/${id}, which ${label} does not define`);
+  }
+}
+
 console.log(`${files.length} files, ${definedIn.size} principles, ${problems} problems`);
 process.exit(problems ? 1 : 0);
