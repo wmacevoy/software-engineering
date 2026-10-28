@@ -36,6 +36,9 @@ every start, for example by importing it from CLAUDE.md. A copy that has to be o
 - [SE1/U8](guide/02-unknowing.md#u8) Leave whitespace: an agenda finds only what it looks for. K2 is
   what nobody is asking about; time with no agenda, for people and for agents, is the attention that
   notices it first.
+- [SE1/U9](guide/02-unknowing.md#u9) Rules change: a rule says who made it, when, and what would
+  show it wrong. Doubt the newest rules first, the ones written for a world that has changed next,
+  and the most-followed under evidence; a rule an agent wrote says so; git keeps the history.
 
 ### Changed
 

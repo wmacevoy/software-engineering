@@ -494,3 +494,38 @@ answer.
 
 **Closed:** no change. One session. [SE1/A10](guide/10-agents.md#a10)'s retro questions are where
 this goes; a finding about every check that passed a defect belongs beside the check.
+
+## Field report: rules read with more authority than they had, 2026-10-28
+
+From the same project and days. Each is a rule read as measured when it was not, or read as settled
+when it had just changed. The author's framing: "People learn, rules change, and what is is not
+what was. Rules, especially recently changed ones, should be questioned. Rules endorsed often should
+be doubted under evidence. Git nicely keeps history."
+
+### 1. A rule eighteen minutes old, frozen into a copy
+
+[SE1/A11](guide/10-agents.md#a11) was written at 12:17 on 2026-10-26 (e1635f0), rewritten at 12:35
+(594fadb), and changed again the next morning (d256d10). The compaction project pinned the guide at
+594fadb for its trials, so every agent there loaded a rule that had changed eighteen minutes before
+it was copied and would change again, and nothing in the copy said how new it was.
+
+### 2. An inference read as a measurement for weeks
+
+In another of the author's projects, an agent wrote "never forks" into the agent file. It was never
+measured, carried no *(inferred)* mark, and was read for weeks with the authority of the measured
+sentence beside it, until the owner retired it in one sentence. The author's account; the project's
+history was not checked here.
+
+### 3. Rules written by an agent, for agents, that did not say so
+
+All 12 commits to this guide's AGENTS.md, from 2026-10-19 to 2026-10-27, carry a Claude Opus 5.5
+trailer, and the file is obeyed by agents, that model among them. Its text said nothing of its
+authorship until v1.2. And the guard in #2 of the report above passed every test against its own
+model of the world: its uses were its endorsement, and the evidence that would have doubted it was
+one comparison away.
+
+**Closed:** [SE1/U9](guide/02-unknowing.md#u9): a rule says who made it, when, and what would show
+it wrong; doubt the newest first, and the most-followed under evidence. AGENTS.md says who drafted
+it. A proposed chapter of six principles on learning was reduced to this one; its least proven
+claim, that the one who follows a rule is worst placed to see it failing, is #5 of the report above
+and stays open.

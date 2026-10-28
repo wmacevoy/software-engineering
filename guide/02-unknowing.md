@@ -179,6 +179,41 @@ capacity to absorb a surprise; whitespace is the attention that notices it first
 
 > **Ask:** "When did someone last look at this with no task in hand, and what did they find?"
 
+### <a id="u9"></a>U9. Rules change: a rule says who made it, when, and what would show it wrong
+
+*New in v1.2.*
+
+People learn, rules change, and what is is not what was. A rule is anything that tells a person or
+an agent what to do: a requirement, a scope decision, a convention, a line in an agent file, a
+checklist item, a principle in this guide. Every one was written by someone, at some time, for a
+reason that may have moved, and every one speaks in the same present tense whether it was
+measured, decided, or guessed. An agent wrote "never forks" into one project's agent file as an
+inference, and it was read for weeks with the authority of the measured sentence beside it. A copy
+of this guide froze [SE1/A11](10-agents.md#a11) eighteen minutes after it was written, and nothing
+in the copy said how new it was
+([GAPS](../GAPS.md#1-a-rule-eighteen-minutes-old-frozen-into-a-copy)). A rule with no author, no
+date, and no way to be wrong is one more thing that keeps saying "fine" ([SE1/U7](#u7)), so give it
+the same three medicines:
+
+- **Make its source checkable.** Beside a rule that will be relied on, say who claims it —
+  measured, decided by a named person, or *(inferred)* ([SE1/W12](08-work.md#w12)) — and since
+  when. A rule an agent wrote says so and names the agent: its author's blind spots are the reader's
+  own when the reader is the same model ([SE1/D13](05-design.md#d13)).
+- **Give it a way to fail.** What would show this rule wrong? If nobody can say, that is the
+  finding; write that instead ([SE1/R2](04-requirements.md#r2), [SE1/T3](06-testing.md#t3)).
+- **Make it age visibly, and doubt in order.** Git keeps what a rule's text cannot: when it
+  arrived, who wrote it, what it replaced, and the commit message's *why*; `git log -S` finds the
+  commit. Doubt the newest rules first: they have had the least contact with the world, and a
+  summary or a copy is likeliest to have mangled them. Then the rules written for a world that has
+  since changed — a new tool, a new cost, a new kind of reader. And doubt the most-followed under
+  evidence: a rule cited often was selected by its successes, and the cases where it misled, nobody
+  recorded. When evidence contradicts a well-loved rule, the evidence gets the hearing and the
+  citations do not vote. A rule found wrong is superseded with its reason, never silently edited,
+  so the next reader meets the correction ([SE1/R10](04-requirements.md#r10), extended from
+  requirements to every rule).
+
+> **Ask:** "Which rule here changed last, who measured it, and what would show it wrong?"
+
 
 ---
 
