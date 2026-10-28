@@ -51,11 +51,19 @@ def sha256(path):
 
 
 def run(cmd, cwd=None, timeout=20):
-    try:
-        p = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True, timeout=timeout)
-        return p.returncode, p.stdout
+    try:  # decoded as UTF-8 explicitly: on Windows, text=True would use the locale's code page
+        p = subprocess.run(cmd, cwd=cwd, capture_output=True, timeout=timeout)
+        return p.returncode, p.stdout.decode("utf8", errors="replace")
     except (OSError, subprocess.TimeoutExpired):
         return 1, ""
+
+
+def run_bytes(cmd, cwd=None, timeout=20):
+    try:
+        p = subprocess.run(cmd, cwd=cwd, capture_output=True, timeout=timeout)
+        return p.returncode, p.stdout
+    except (OSError, subprocess.TimeoutExpired):
+        return 1, b""
 
 
 def read(path):
@@ -668,9 +676,9 @@ def self_check(guide):
     problems = []
     if not (guide / "guide").is_dir() or not agents.is_file():
         return [f"{guide} is not the guide's checkout"]
-    rc, released = run(["git", "show", f"{RELEASE}:AGENTS.md"], cwd=guide)
-    if rc == 0 and released:  # the tag exists: the pin is of the released text, not of unreleased edits
-        digest = hashlib.sha256(released.replace("\r\n", "\n").encode("utf8")).hexdigest()
+    rc, released = run_bytes(["git", "show", f"{RELEASE}:AGENTS.md"], cwd=guide)
+    if rc == 0 and released:  # the tag exists: the pin is of the released bytes, never decoded
+        digest = hashlib.sha256(released.replace(b"\r\n", b"\n")).hexdigest()
         if digest != AGENTS_SHA256:
             problems.append(f"AGENTS_SHA256 in se.py is stale: AGENTS.md at {RELEASE} is {digest}")
         elif sha256(agents) != digest:
