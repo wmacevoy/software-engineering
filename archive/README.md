@@ -52,3 +52,4 @@ what was opened, and what was only read.
 | [REVIEW-v1.2-compaction-lessons.md](reviews/REVIEW-v1.2-compaction-lessons.md) | what the compaction trials should change, 2026-10-28, reviewed by a tribe of readers |
 | [REVIEW-METHOD-tribe.md](reviews/REVIEW-METHOD-tribe.md) | the tribe-of-readers method, offered to be pushed against |
 | [REVIEW-v1.2-candidate.md](reviews/REVIEW-v1.2-candidate.md) | the v1.2 drafter's trace: decisions, commits, the three readers' results, the release |
+| [REVIEW-v1.2.1-codex.md](reviews/REVIEW-v1.2.1-codex.md) | the first review by an agent of another family (OpenAI Codex, 2026-10-28, three minutes): AGENTS.md against its own rules, and how it works in that runner |
