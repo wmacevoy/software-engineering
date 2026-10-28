@@ -141,9 +141,8 @@ to fix once named:
   laptop, a busy server, a compacted context ([SE1/A11](10-agents.md#a11)), a second agent on the
   same project. What is left — a working tree, a branch, a queue row, a summary — reads as the
   current state, is neither the old one nor the new, and nothing says so: the interruption rule of
-  [SE1/R7](04-requirements.md#r7), applied to the work instead of the data. Keep a change small
-  enough to finish ([SE1/W11](08-work.md#w11)); when interrupted, commit or stash the tear with a
-  message that says so; on resuming, treat what you find as torn until shown otherwise.
+  [SE1/R7](04-requirements.md#r7), applied to the work instead of the data. Commit or stash the tear
+  with a message that says so, and on resuming treat what you find as torn until shown otherwise.
 
 Three medicines, each the opposite of what makes a factory:
 

@@ -109,10 +109,9 @@ topic, an interface is missing; write it and the meeting stops. The minimal set 
 presented as stale rather than as current.
 
 The fourth question — *do you notice discomfort? can you name it?* — is
-[SE1/P3](01-purpose.md#p3) asked out loud. Discomfort arrives weeks before the schedule shows
-anything, and the person holding it feels it first; asking turns a signal that would otherwise
-arrive as someone going quiet into a sentence the team can act on. One sentence, not a session, and
-noticing without a name is still data.
+[SE1/P3](01-purpose.md#p3) asked out loud: the signal that would otherwise arrive as someone going
+quiet becomes a sentence the team can act on. One sentence, not a session; noticing without a name
+is still data.
 
 > **Ask:** "What meeting keeps happening on the same topic?"
 

@@ -221,7 +221,7 @@ for (const line of headings) if (!readme.includes(line)) problem(`README index o
 
 // A copy that is ahead of its label says nothing (SE1/U7): every principle AGENTS.md and the
 // templates cite must be in README's index at the release they name, read from that tag when it
-// exists and from the working tree when the release is dated but not yet tagged.
+// exists and from the working tree otherwise (a release dated but not yet tagged).
 const indexIds = (text) => new Set([...text.matchAll(/\[\*\*SE\d+\/([A-Z]\d+)\*\*\]/g)].map((m) => m[1]));
 for (const f of ['AGENTS.md', ...files.filter((f) => f.includes(`${path.sep}templates${path.sep}`)).map((f) => path.relative(root, f))]) {
   const text = fs.readFileSync(path.join(root, f), 'utf8');

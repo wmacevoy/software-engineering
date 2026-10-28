@@ -21,8 +21,7 @@ file, and what an agent should do where the adoption is only partly done, is in 
 
 Drafted by Claude Opus 5.5 with Warren MacEvoy, 2026-10-19 to 2026-10-27, and revised with Claude
 Fable 5.1 on 2026-10-28; the human signs each release. These are rules an agent wrote for agents
-(SE1/U9): where one seems wrong for the case in front of you, say which and why, rather than work
-around it.
+(SE1/U9).
 
 ## Who owns this
 
