@@ -30,7 +30,7 @@ from pathlib import Path
 
 RELEASE = "v1.2"
 # sha256 of AGENTS.md at RELEASE. `se --self` checks it in the guide's tree; the release commit sets it.
-AGENTS_SHA256 = "0000000000000000000000000000000000000000000000000000000000000000"
+AGENTS_SHA256 = "23ee26cbb54aee6f36ba59737fe925b7116e20513dd35d6b28de3f01e86b5148"
 GUIDE_REPO = "wmacevoy/software-engineering"
 LOW_DISK_GB = 10        # warn below (invented)
 NO_DISK_GB = 2          # fail below (invented)

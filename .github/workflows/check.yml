@@ -14,5 +14,8 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: 24
-      # The same command a contributor runs locally (O3); no dependencies to install.
+      # The same commands a contributor runs locally (O3); no dependencies to install.
       - run: node tools/check.js
+      - run: ./se --version
+      - run: python3 se.py --self
+      - run: python3 -I tools/test_se.py
