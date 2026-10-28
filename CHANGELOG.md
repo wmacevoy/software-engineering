@@ -24,9 +24,11 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.4 — unreleased
+## v1.3.1 — 2026-10-28
 
-[Changes on main since v1.3](https://github.com/wmacevoy/software-engineering/compare/v1.3...main)
+[Full diff from v1.3](https://github.com/wmacevoy/software-engineering/compare/v1.3...v1.3.1). No
+principle, AGENTS.md, or template changed; copies at v1.3 are current. No review by another family
+for this patch: it changes no guide text.
 
 ### Also changed
 
@@ -40,6 +42,16 @@ yours.
   *Since v1.0 (2026-10-20).* for the ninety that no release changed, the date beside each
   *New/Changed in*, and *text since* where wording moved after the meaning did. CI runs
   `node tools/since.js --check`. The checker and the tool share `tools/bodies.js`.
+- `se`: three defects the data-mining guide exposed, each seen red on a fixture (queue #1,
+  `docs/FINDINGS.md`). The release label is found when it wraps across a line. SE1's copy is known
+  by the line that names this guide's release, so a sibling guide's agreement, labeled with its own
+  release, is reported as not SE1's instead of being compared with SE1's releases. A `docs/` in
+  another guide's shape is named instead of being reported as if empty; `se` checks SE1's shape
+  only.
+- `se` reads the repository guide's check command from its *The full check* line, or the fenced
+  block under it; the CI row requires every part of that command and compares the interpreter's
+  name literally, since treating `python3` and `python` as one had hidden a second recipe.
+  `tools/check.sh` is the one recipe contributors and CI run (SE1/O3).
 
 ## v1.3 — 2026-10-28
 

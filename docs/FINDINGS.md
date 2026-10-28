@@ -14,7 +14,7 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
 - **Kind:** K3 (the tool was sure).
 - **Cost:** one wrong line in a baseline, corrected in the same note.
 - **Findable by:** a fixture whose label wraps; every real copy is wrapped at 100 columns.
-- **Changed:** queue #1.
+- **Changed:** `se`'s label pattern allows a line break, with that fixture (fb7586b, v1.3.1).
 
 ## 2026-10-28 — `se` takes any labeled AGENTS.md for a copy of SE1's, and knows only SE1's documents
 
@@ -24,7 +24,9 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
   `PLAN_vN`, `LEDGER`, `DATASHEET`, `MODEL_CARD`, and would be told "none yet".
 - **Kind:** K2 (a sibling guide was not imagined).
 - **Findable by:** running the doctor on anything that is not an SE1 project.
-- **Changed:** queue #1.
+- **Changed:** `se` knows SE1's copy by the line that names this guide's release, and names a
+  `docs/` in another shape instead of reporting it as empty; it checks SE1's shape only, as the
+  Non-goals say (fb7586b, v1.3.1).
 
 ## 2026-10-28 — On Windows with Python 3.9, decoding changed a hash
 

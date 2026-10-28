@@ -91,9 +91,14 @@ Each line traces to a requirement.
 - **The release check tries the network and reports staleness** — REQ1/REL-2 — the author:
   "try to check releases, and warn if you didn't and how stale the check is" — source: commit
   186daaf.
+- **SE1's copy is known by the line that names this guide's release, not by its label alone** —
+  REQ1/REL-2 — the data-mining guide's agreement carries a label of its own release, and the doctor
+  took it for SE1's — alternative rejected: teaching `se` other guides' labels, which Non-goals
+  exclude — source: commit fb7586b, FINDINGS 2026-10-28.
 
 ## Deferred
 
 - *Not yet:* a check that enforces the layering above; it has not been broken.
-- *Not yet:* `se` knowing another guide's documents (queue #1, #5).
+- *Not yet:* `se` knowing another guide's documents; it names a `docs/` in another shape and checks
+  SE1's only (queue #5).
 - *Not yet:* a `docs/` index page; the working set is hidden from the site's nav on purpose.
