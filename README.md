@@ -280,6 +280,36 @@ that its embedded hash matches AGENTS.md, which the release commit pins. Reviews
 proposals; they live in [archive/reviews/](archive/README.md#reviews), and what survives one goes
 into the principles, GAPS, and the CHANGELOG. Reword freely; never reuse an ID for a different idea.
 
+## Why to trust this, and why to doubt it
+
+Who made it, when, and what would show it wrong, as [SE1/U9](guide/02-unknowing.md#u9) asks of
+any rule.
+
+- **Who, and when.** One author, teaching from it, with Claude models drafting and reviewing (Opus
+  5.5 and Fable 5.1, October 2026); every commit carries their trailer, and AGENTS.md says so in
+  its header. One review by an agent of another family so far (OpenAI Codex, on v1.2.1), which
+  found five things in three minutes, all fixed in v1.3.
+- **What it rests on.** Field reports from the author's own projects, and trials with small
+  numbers: four to ten runs per arm, one model, one task each. [GAPS.md](GAPS.md) records the nulls
+  and the contaminated controls beside the results. Every source behind a claim is in
+  [archive/](archive/README.md), with its checksum and whether the reviewer opened it; two entries
+  say "not opened".
+- **What has been seen to fail.** The checker, on six planted breakages; `se`, on a fixture per
+  check; CI on three platforms and two Pythons. A test never seen red proves nothing
+  ([SE1/T3](guide/06-testing.md#t3)), so these were.
+- **What has not.** No hook has yet been seen to fire on a real compaction, in any project here;
+  every hook is "configured, not seen to fire", and the doctor says so. Nothing has been tried
+  with an agent other than Claude except that one review. The two newest principles, U8 and U9,
+  rest on one author's observation and one project's trials, and say what would show them wrong.
+- **What would show it wrong.** Each GAPS entry states its falsifier. The ones that matter most: a
+  transition instrument with a ceiling that shows no loss across a compaction; a check that runs
+  without the agent choosing to and still leaves the work unchanged; an agent of another family
+  for which these rules make the work worse.
+- **How to check it yourself.** `node tools/check.js` here; `./se --doctor` in your repository;
+  the archive's checksums against a fresh fetch; and the reviews in
+  [archive/reviews/](archive/README.md#reviews), which say what each reader opened and what it
+  only read.
+
 ## Where this came from
 
 Refactored from the essays and guidebooks of a software engineering course (fall 2026), with the
