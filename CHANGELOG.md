@@ -11,7 +11,7 @@ factory ([SE1/U7](guide/02-unknowing.md#u7)), so every change is visible in thre
 
 `tools/check.js` keeps the three in step, and compares every principle with the last release tag:
 one whose text changed must have a marker for a later release, or — for wording only — be named
-under that release's *Also changed*. Work toward a release goes under `## v1.3 — unreleased`; give it
+under that release's *Also changed*. Work toward a release goes under `## v1.4 — unreleased`; give it
 a date when you tag it. Within SE1, a minor release may add principles, reword them, or extend what
 they ask; it never moves an ID ([principle index](README.md#principle-index)). A patch release
 (`v1.2.1`) changes no principle, no AGENTS.md, and no template: copies keep the minor's label, and
@@ -20,12 +20,13 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.3 — unreleased
+## v1.3 — 2026-10-28
 
-[Changes on main since v1.2.1](https://github.com/wmacevoy/software-engineering/compare/v1.2.1...main)
+[Full diff from v1.2.1](https://github.com/wmacevoy/software-engineering/compare/v1.2.1...v1.3) ·
+100 principles
 
-**For copies:** re-copy AGENTS.md (*Before you start* no longer asserts that the self test ran) and
-`se.py`.
+**For copies:** re-copy AGENTS.md (*Before you start* no longer asserts that the self test ran),
+`se.py`, and the templates, which now link to v1.3.
 
 ### Also changed
 
@@ -39,6 +40,10 @@ yours.
   tests run on Python 3.9, which CI now exercises beside the newest; `se --self` checks the pin
   against the released AGENTS.md, so unreleased edits to it do not go red.
 - The checker's patch-release rule holds only while the patch is the newest CHANGELOG section.
+- README gains *Why to trust this, and why to doubt it*: U9 applied to the guide on its front page.
+  `archive/reviews/REVIEW-METHOD-other-family.md` records how the Codex review was run, with the
+  brief verbatim, so the next can be run the same way. U8 stays where it is: an ID moves only in
+  SE2.
 
 ## v1.2.1 — 2026-10-28
 
