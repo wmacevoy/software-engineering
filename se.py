@@ -41,8 +41,12 @@ CACHE_STALE_DAYS = 30   # a release check older than this is reported as stale (
 
 Finding = namedtuple("Finding", "name ids state text fix")  # state: pass | warn | none yet | fail
 PASS, WARN, NONE, FAIL = "pass", "warn", "none yet", "fail"
-LABEL_RE = re.compile(r"This copy is from \*\*(v\d+\.\d+)\*\*")
+LABEL_RE = re.compile(r"This copy is\s+from\s+\*\*(v\d+\.\d+)\*\*")  # \s+: copies are wrapped at 100 columns, and the label can break across a line
 REQ_ID_RE = re.compile(r"\*\*([A-Z]{2,}-\d+)\*\*\s*\*\(since v(\d+)\)\*")
+# The line that names this guide's release, in every release's AGENTS.md. A sibling guide's agreement
+# (the data-mining guide's) links SE1's AGENTS.md as a blob and carries a label of its own release, so
+# the label alone does not say whose copy a file is.
+SE1_RE = re.compile(rf"github\.com/{GUIDE_REPO}/tree/v\d+\.\d+")
 
 
 def sha256(path):
@@ -141,14 +145,16 @@ def claude_imports(claude_md):
 
 
 def find_copy(repo):
-    """The repository's copy of AGENTS.md: at the root, or whatever CLAUDE.md imports that carries the
-    label. Returns (path, label) or (None, None)."""
+    """The repository's copy of SE1's AGENTS.md: at the root, or whatever CLAUDE.md imports, known by the
+    line that names this guide's release. Returns (path, label); (path, None) when the root AGENTS.md is
+    SE1's without a label, or is not SE1's at all; (None, None) when there is none."""
     repo = Path(repo)
     candidates = [repo / "AGENTS.md"] + claude_imports(repo / "CLAUDE.md")
     for c in candidates:
-        m = LABEL_RE.search(read(c)) if c.is_file() else None
-        if m:
-            return c, m.group(1)
+        text = read(c) if c.is_file() else ""
+        if SE1_RE.search(text):
+            m = LABEL_RE.search(text)
+            return c, (m.group(1) if m else None)
     if (repo / "AGENTS.md").is_file():
         return repo / "AGENTS.md", None
     return None, None
@@ -198,10 +204,15 @@ def check_copy(repo, rel):
     if not path:
         return Finding("working agreement", "SE1/U7", FAIL, "no AGENTS.md, and CLAUDE.md imports none",
                        f"copy AGENTS.md from the guide at {rel.get('latest') or RELEASE} (ADOPT.md step 1)")
+    newest = rel.get("latest") or RELEASE
+    if not label and not SE1_RE.search(read(path)):
+        return Finding("working agreement", "SE1/U7", FAIL,
+                       f"{path.name} is not a copy of SE1's agreement (no line names the guide's release); "
+                       "if it is another guide's, SE1's copy goes beside it",
+                       f"copy AGENTS.md from the guide at {newest} to docs/SE1-AGENTS.md, say, and import it from CLAUDE.md")
     if not label:
         return Finding("working agreement", "SE1/U7", FAIL, f"{path.name} carries no release label",
                        "re-copy it from a release: a copy that cannot say which release it is cannot say it is behind")
-    newest = rel.get("latest") or RELEASE
     digest = sha256(path)
     known = rel.get("sha", {}).get(label) or (AGENTS_SHA256 if label == RELEASE else None)
     where = str(path.relative_to(repo)) if str(path).startswith(str(repo)) else str(path)
@@ -331,6 +342,16 @@ def check_guide(repo):
 def check_working_set(repo):
     req, version, ids = latest_requirements(repo)
     if not req:
+        docs = Path(repo) / "docs"
+        # Name what is there when it is not SE1's shape: a project that follows another guide (QUESTION_vN,
+        # LEDGER, ...) was told "no REQUIREMENTS" as if docs/ were empty. se checks SE1's shape only.
+        others = sorted(p.stem for p in docs.glob("*.md")) if docs.is_dir() else []
+        others = [n for n in others if n not in ("QUEUE", "FINDINGS") and not re.match(r"(REQUIREMENTS|DESIGN)_v\d+$", n)]
+        if others:
+            shown = ", ".join(others[:5]) + (f" and {len(others) - 5} more" if len(others) > 5 else "")
+            return Finding("working set", "SE1/W10", NONE, f"no docs/REQUIREMENTS_vN.md; docs/ holds {shown}, which is not SE1's shape",
+                           "if the project follows another guide, that guide's checker says whether its set is complete; "
+                           "se checks SE1's (REQUIREMENTS_vN, DESIGN_vN, QUEUE, FINDINGS) only")
         return Finding("working set", "SE1/W10", NONE, "no docs/REQUIREMENTS_vN.md",
                        "treat each task's text as its requirement, marked (inferred); propose the W12 reconstruction")
     docs = req.parent

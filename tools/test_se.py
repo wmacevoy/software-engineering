@@ -37,6 +37,13 @@ GOOD = {
     ".github/workflows/check.yml": "on: push\njobs:\n  check:\n    steps:\n      - run: python3 -m unittest\n",
 }
 
+# Another guide's agreement at the root, in the shape of the data-mining guide's: it links SE1's AGENTS.md
+# as a blob and carries a label of its own release, so it is not a copy of SE1's.
+SIBLING = ("# AGENTS.md — data work\n\nIt **extends** the [SE1 working agreement]"
+           "(https://github.com/wmacevoy/software-engineering/blob/v1.3/AGENTS.md) at SE1 v1.3.\n\n"
+           "The DM1 IDs are defined in the guide at https://github.com/wmacevoy/data-mining/tree/main. This copy is\n"
+           "from **v1.0**; what changed since, by ID, is in the guide's CHANGELOG.\n")
+
 
 def git(repo, *args):
     return subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@t", *args], cwd=repo,
@@ -122,8 +129,34 @@ class TestDoctorRed(Fixture):
         self.assertIn("differs", finding(f, "working agreement").text)
 
     def test_unlabeled_copy(self):
-        f = self.doctor(self.changed(**{"AGENTS.md": "# AGENTS.md\n\nno label here\n"}))
+        # REQ1/REL-2: SE1's agreement with its label removed is still SE1's, and is told it has no label
+        f = self.doctor(self.changed(**{"AGENTS.md": AGENTS_TEXT.replace(f"This copy is from **{AGENTS_LABEL}**",
+                                                                           "This copy is from a release")}))
         self.assertEqual(finding(f, "working agreement").state, se.FAIL)
+        self.assertIn("no release label", finding(f, "working agreement").text)
+
+    def test_wrapped_label_is_still_a_label(self):
+        # REQ1/REL-2: real copies are wrapped at 100 columns, and the label can break across a line (FINDINGS 2026-10-28)
+        wrapped = AGENTS_TEXT.replace(f"This copy is from **{AGENTS_LABEL}**", f"This copy is\nfrom **{AGENTS_LABEL}**")
+        repo = make_repo(self.tmp.name, self.changed(**{"AGENTS.md": wrapped}))
+        self.assertEqual(se.find_copy(repo)[1], AGENTS_LABEL)
+        row = finding(se.doctor(repo, online=False, cache_dir=self.cache.name, today=TODAY), "working agreement")
+        self.assertNotIn("no release label", row.text)
+        self.assertIn(AGENTS_LABEL, row.text)  # rewrapped is edited, and the row says so by label
+
+    def test_another_guides_agents_md_is_not_a_copy_of_se1s(self):
+        # REQ1/REL-2: a sibling guide's agreement carries a label of its own release; it is not SE1's copy
+        row = finding(self.doctor(self.changed(**{"AGENTS.md": SIBLING})), "working agreement")
+        self.assertEqual(row.state, se.FAIL)
+        self.assertIn("not a copy of SE1", row.text)
+        self.assertNotIn("v1.0", row.text)  # its label is not compared with SE1's releases
+
+    def test_se1_copy_imported_beside_another_guides_agents_md(self):
+        # REQ1/REL-2: the copy CLAUDE.md imports is found past the sibling's file at the root
+        f = self.doctor(self.changed(**{"AGENTS.md": SIBLING, "docs/SE1-AGENTS.md": AGENTS_TEXT,
+                                        "CLAUDE.md": "# Project\n\n@AGENTS.md\n@docs/SE1-AGENTS.md\n"}))
+        self.assertEqual(finding(f, "working agreement").state, se.PASS)
+        self.assertEqual(finding(f, "loads at every start").state, se.PASS)
 
     def test_claude_md_without_import(self):
         f = self.doctor(self.changed(**{"CLAUDE.md": "# Project\n\nno import\n"}))
@@ -186,6 +219,18 @@ class TestDoctorRed(Fixture):
                                         "tests/test_ui.py": "# nothing\n"}))
         self.assertEqual(finding(f, "working set").state, se.NONE)
         self.assertEqual(finding(f, "queue").state, se.NONE)
+
+    def test_working_set_in_another_guides_shape(self):
+        # REQ1/SE-1: a docs/ in another guide's shape is named, not reported as if nothing were there (FINDINGS 2026-10-28)
+        f = self.doctor(self.changed(**{"docs/REQUIREMENTS_v2.md": None, "docs/DESIGN_v1.md": None,
+                                        "docs/QUEUE.md": None, "docs/FINDINGS.md": None, "tests/test_ui.py": "# nothing\n",
+                                        "docs/QUESTION_v1.md": "# Question\n", "docs/PLAN_v1.md": "# Plan\n",
+                                        "docs/LEDGER.md": "# Ledger\n", "docs/DATASHEET.md": "# Datasheet\n",
+                                        "docs/MODEL_CARD.md": "# Model card\n"}))
+        row = finding(f, "working set")
+        self.assertEqual(row.state, se.NONE)
+        self.assertIn("QUESTION_v1", row.text)
+        self.assertIn("not SE1's shape", row.text)
 
     def test_bare_citation(self):
         f = self.doctor(self.changed(**{"tests/test_ui.py": "# UI-1 covered, REQ2/UI-2 covered\n"}))
