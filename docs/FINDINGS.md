@@ -67,3 +67,18 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
   ([SE1/U3](../guide/02-unknowing.md#u3)). The method is recorded in
   `archive/reviews/REVIEW-METHOD-other-family.md`.
 - **Changed:** v1.3; a Codex pass before each release.
+
+## 2026-10-29 — `se` reads requirements only as bullets, and counts 0 in a table
+
+- **What happened:** lwext4-bsd's REQUIREMENTS_v10 keeps its requirements as table rows
+  (`| **FMT-1** | *(since v1)* ... |`). The doctor's pattern wanted `**ID** *(since vN)*` with
+  only space between, so it read 0 requirements, and the citations and trace rows said "none yet",
+  which read as true and was not. SE1/R10 asks for the ID and its *since*, not for a bullet.
+- **Kind:** K3 (the tool was sure).
+- **Cost:** a re-vendor's doctor run reported 0 failures on a repository whose citations it never
+  read; caught because the count, 0, was plainly wrong for a 30-requirement document.
+- **Findable by:** a fixture with a table-form requirements document.
+- **Changed:** the pattern allows a table cell boundary between the ID and its *since*, with that
+  fixture. Engaged on lwext4-bsd, the citations row then fails: 11 stale, 77 unversioned, most of
+  them historical (FINDINGS, done queue rows) or list shorthand (`REQ10/TOOL-1, RST-3`). Whether
+  those should count is a question about SE1/R10, left open.
