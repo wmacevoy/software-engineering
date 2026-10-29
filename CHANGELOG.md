@@ -24,6 +24,32 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.4 — unreleased
+
+[Changes on main since v1.3.2](https://github.com/wmacevoy/software-engineering/compare/v1.3.2...main)
+
+**A proposal, on the branch `proposal/learning-chapter`:** a chapter on learning, with U9 pointing to
+it. The author has not decided between the chapter and U9 as it was; nothing here is released.
+
+### New
+
+- [SE1/L1](guide/11-learning.md#l1) Doubt in order: the newest rule, then the rule written for a
+  world that has changed, then the most-followed under evidence. The order that was U9's third
+  medicine, with its reasons.
+- [SE1/L2](guide/11-learning.md#l2) Read a rule's history before you keep or change it; supersede
+  with a reason, never edit silently. R10 extended to every rule; a record keeps the citation it was
+  written with.
+- [SE1/L3](guide/11-learning.md#l3) A finding that changes no rule, test, or check is a lesson not
+  learned. The template's *Changed* line as a principle; untested, and says so.
+- [SE1/L4](guide/11-learning.md#l4) The one who follows a rule is the worst placed to see it
+  failing. One project, one model; the least proven, and says so.
+
+### Changed
+
+- [SE1/U9](guide/02-unknowing.md#u9) Keeps what a rule carries — who, when, what would show it
+  wrong; an agent's rule says so — and points to Learning for the order in which to doubt and how to
+  change a rule.
+
 ## v1.3.2 — 2026-10-29
 
 [Full diff from v1.3.1](https://github.com/wmacevoy/software-engineering/compare/v1.3.1...v1.3.2). No

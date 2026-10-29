@@ -197,7 +197,7 @@ nothing about the new work. Wrong if a session with no task finds nothing a task
 
 ### <a id="u9"></a>U9. Rules change: a rule says who made it, when, and what would show it wrong
 
-*New in v1.2 (2026-10-28).*
+*Changed in v1.4.*
 
 People learn, rules change, and what is is not what was. A rule is anything that tells a person or
 an agent what to do: a requirement, a scope decision, a convention, a line in an agent file, a
@@ -218,16 +218,10 @@ the same three medicines:
   own when the reader is the same model ([SE1/D13](05-design.md#d13)).
 - **Give it a way to fail.** What would show this rule wrong? If nobody can say, that is the
   finding; write that instead ([SE1/R2](04-requirements.md#r2), [SE1/T3](06-testing.md#t3)).
-- **Make it age visibly, and doubt in order.** Git keeps what a rule's text cannot: when it
-  arrived, who wrote it, what it replaced, and the commit message's *why*; `git log -S` finds the
-  commit. Doubt the newest rules first: they have had the least contact with the world, and a
-  summary or a copy is likeliest to have mangled them. Then the rules written for a world that has
-  since changed — a new tool, a new cost, a new kind of reader. And doubt the most-followed under
-  evidence: a rule cited often was selected by its successes, and the cases where it misled, nobody
-  recorded. When evidence contradicts a well-loved rule, the evidence gets the hearing and the
-  citations do not vote. A rule found wrong is superseded with its reason, never silently edited,
-  so the next reader meets the correction ([SE1/R10](04-requirements.md#r10), extended from
-  requirements to every rule).
+- **Make it age visibly.** Git keeps what a rule's text cannot: when it arrived, who wrote it, what
+  it replaced, and the commit message's *why*; `git log -S` finds the commit. In what order to doubt
+  rules, and how to change one found wrong, is [11. Learning](11-learning.md):
+  [SE1/L1](11-learning.md#l1) and [SE1/L2](11-learning.md#l2).
 
 > **Ask:** "Which rule here changed last, who measured it, and what would show it wrong?"
 
