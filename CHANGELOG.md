@@ -24,6 +24,31 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.3.2 — unreleased
+
+[Changes on main since v1.3.1](https://github.com/wmacevoy/software-engineering/compare/v1.3.1...main)
+
+**For copies:** nothing to re-copy. At your next re-copy, ADOPT.md step 1 now also says to point the
+repository guide's and the design's links at the new release; a requirements version keeps the links
+it was written with, and the next version links the new release (PR #2).
+
+### Also changed
+
+- `se` reads requirements kept in table rows (`| **FMT-1** | *(since v1)* ... |`), not only bullets;
+  lwext4-bsd's thirty had counted as none (PR #1, queue #8).
+- `se` reads C++, module JavaScript, and other common test files (`.cpp`, `.hpp`, `.mjs`, `.tsx`,
+  `.cs`, `.kt`, `.swift`, and kin) when tracing requirements to tests and scanning citations; a C++
+  test in oopc had read as untested (PR #3).
+- The doctor's citations row treats a FINDINGS entry and a done queue row as history: they keep the
+  citation they were written with and are not stale. A bare ID takes the version named before it on
+  the same line (`REQ10/TOOL-1, RST-3`). An open row and a test still answer to the newest version.
+  Decided from PR #1's question.
+- With no CONTRIBUTING.md or CLAUDE.md, a README alone names no check command; the doctor no longer
+  takes the first backticked thing on a line that mentions tests, which on one course repository was
+  a workflow path. The row says *none yet* (queue #9).
+- ADOPT.md step 1: re-copying also updates the guide links in the repository guide and the design;
+  GAPS gains the lwext4-bsd field report behind it (PR #2).
+
 ## v1.3.1 — 2026-10-28
 
 [Full diff from v1.3](https://github.com/wmacevoy/software-engineering/compare/v1.3...v1.3.1). No

@@ -86,6 +86,18 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
   version named before it on the same line; an open row and a test still answer to the newest
   version. Fixtures for each, the open row seen red by exempting every row on purpose.
 
+## 2026-10-29 — `se` skipped C++ and module-JavaScript test files when tracing
+
+- **What happened:** `is_text` knew `.c`, `.h`, `.js`, `.ts` and not `.cpp`, `.hpp`, `.mjs`, `.tsx`
+  and their kin, so the trace row reported oopc's `REQ2/CXX-3` as untested while `src/test_oopc.cpp`
+  named it, and the citation scan skipped the same files.
+- **Kind:** K3 (the row was sure).
+- **Cost:** two requirements shown as untested that were not; found by the owner reading the row
+  against the file.
+- **Findable by:** a fixture naming a requirement only in a file of each type; seen red for all eight
+  before the fix.
+- **Changed:** the extensions are in `is_text` (PR #3).
+
 ## 2026-10-29 — With no repository guide, `se` took a README's workflow path for the check command
 
 - **What happened:** on the fall-2026 data-mining course repository, which had no CONTRIBUTING.md or
