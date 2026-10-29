@@ -24,9 +24,11 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.3.2 — unreleased
+## v1.3.2 — 2026-10-29
 
-[Changes on main since v1.3.1](https://github.com/wmacevoy/software-engineering/compare/v1.3.1...main)
+[Full diff from v1.3.1](https://github.com/wmacevoy/software-engineering/compare/v1.3.1...v1.3.2). No
+principle, AGENTS.md, or template changed; copies at v1.3 are current. No review by another family
+for this patch: it changes no guide text.
 
 **For copies:** nothing to re-copy. At your next re-copy, ADOPT.md step 1 now also says to point the
 repository guide's and the design's links at the new release; a requirements version keeps the links
