@@ -197,7 +197,7 @@ nothing about the new work. Wrong if a session with no task finds nothing a task
 
 ### <a id="u9"></a>U9. Rules change: a rule says who made it, when, and what would show it wrong
 
-*Changed in v1.4.*
+*Changed in v1.4 (unreleased).*
 
 People learn, rules change, and what is is not what was. A rule is anything that tells a person or
 an agent what to do: a requirement, a scope decision, a convention, a line in an agent file, a

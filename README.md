@@ -69,6 +69,7 @@ repository, make it load at every start, and start the working set from the temp
 | [8. Work](guide/08-work.md)                 | the shape of the work: loops, waterfalls, deadlines, done       |
 | [9. People](guide/09-people.md)             | the team, the client, and what passes between them              |
 | [10. Agents](guide/10-agents.md)            | what changes when a teammate has no memory and no stake         |
+| [11. Learning](guide/11-learning.md)        | how a project learns: the order to doubt rules, how to change one, what a finding must change (a proposal) |
 
 | Reference                          | For                                                             |
 | ---------------------------------- | --------------------------------------------------------------- |
@@ -121,7 +122,7 @@ into a commit message, an issue, or another repository still says which guide it
 within SE1 (`v1.1`, …) are listed by ID in [CHANGELOG.md](CHANGELOG.md), and each principle changed
 since v1.0 says so under its heading. The letters
 are the chapters: **P**urpose, **U**nknowing, **F**eedback, **R**equirements, **D**esign, **T**esting,
-**O**perating, **W**ork, **H**umans (people), **A**gents. (Requirement IDs in your own project
+**O**perating, **W**ork, **H**umans (people), **A**gents, **L**earning. (Requirement IDs in your own project
 should use a different form, such as `REQ2/UI-1`, so they are never confused with these.)
 
 **[1. Purpose](guide/01-purpose.md)**
@@ -253,6 +254,13 @@ should use a different form, such as `REQ2/UI-1`, so they are never confused wit
 - [**SE1/A9**](guide/10-agents.md#a9) Hand it the search-shaped work; keep the decisions
 - [**SE1/A10**](guide/10-agents.md#a10) Ask your agents, and write the answers down
 - [**SE1/A11**](guide/10-agents.md#a11) A summary is a concussion: check it from outside
+
+**[11. Learning](guide/11-learning.md)**
+
+- [**SE1/L1**](guide/11-learning.md#l1) Doubt in order: the newest rule, then the rule written for a world that has changed, then the most-followed under evidence
+- [**SE1/L2**](guide/11-learning.md#l2) Read a rule's history before you keep or change it; supersede with a reason, never edit silently
+- [**SE1/L3**](guide/11-learning.md#l3) A finding that changes no rule, test, or check is a lesson not learned
+- [**SE1/L4**](guide/11-learning.md#l4) The one who follows a rule is the worst placed to see it failing
 
 ## Twelve questions
 

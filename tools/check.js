@@ -88,7 +88,7 @@ for (const f of files) {
     if (!fs.existsSync(targetFile)) { problem(`missing file   ${where}`); continue; }
     if (anchor && !anchorsOf(targetFile).has(anchor)) problem(`missing anchor ${where}`);
     const cite = label.replace(/\*/g, '');
-    if (/^[PUFRDTOWHA]\d+$/.test(cite)) { problem(`unversioned    ${where}`); continue; }
+    if (/^[PUFRDTOWHAL]\d+$/.test(cite)) { problem(`unversioned    ${where}`); continue; }
     const v = cite.match(/^(SE\d+)\/([A-Z]\d+)$/);
     if (v) {
       const id = v[2];
@@ -101,7 +101,7 @@ for (const f of files) {
 
 // Bare citations — the form AGENTS.md uses, so it stays short when copied into other repositories.
 // Only the chapter letters count, so "(K3)" and other parentheticals are left alone.
-const CITE = '(?:SE\\d+\\/)?[PUFRDTOWHA]\\d+';
+const CITE = '(?:SE\\d+\\/)?[PUFRDTOWHAL]\\d+';
 for (const f of files) {
   for (const m of fs.readFileSync(f, 'utf8').matchAll(new RegExp(`\\((${CITE}(?:,\\s*${CITE})*)\\)`, 'g'))) {
     for (const cite of m[1].split(/,\s*/)) {

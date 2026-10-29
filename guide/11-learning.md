@@ -12,7 +12,7 @@ in this guide.
 
 ### <a id="l1"></a>L1. Doubt in order: the newest rule, then the rule written for a world that has changed, then the most-followed under evidence
 
-*New in v1.4.*
+*New in v1.4 (unreleased).*
 
 A rule that changed recently has had the least contact with the world, so it is where a K3 is
 likeliest ([SE1/U3](02-unknowing.md#u3)); it is also what a summary, a copy, or a newcomer is most
@@ -37,7 +37,7 @@ guard that only ever ran against its own stub is an endorsement, not a check
 
 ### <a id="l2"></a>L2. Read a rule's history before you keep or change it; supersede with a reason, never edit silently
 
-*New in v1.4.*
+*New in v1.4 (unreleased).*
 
 Git keeps what a rule's text cannot: when it arrived, who wrote it, what it replaced, and the commit
 message's *why*. `git log -S'<the rule>'` finds the commit that introduced it, and `git blame` gives
@@ -57,7 +57,7 @@ written, and rewriting it would make it false.
 
 ### <a id="l3"></a>L3. A finding that changes no rule, test, or check is a lesson not learned
 
-*New in v1.4.*
+*New in v1.4 (unreleased).*
 
 `FINDINGS` is the only document reality writes ([SE1/W10](08-work.md#w10)), and the retro's fear
 is "we already learned this once" ([SE1/H4](09-people.md#h4)). The fear is retired only when the
@@ -76,7 +76,7 @@ change nothing relearns them no more often than one whose findings do.
 
 ### <a id="l4"></a>L4. The one who follows a rule is the worst placed to see it failing
 
-*New in v1.4.*
+*New in v1.4 (unreleased).*
 
 Knowledge moves badly from third person to first. A team can know a rule and still not apply it to
 its own work; someone outside the work sees the gap at once. Ask someone who did not write the

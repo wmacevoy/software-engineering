@@ -6,6 +6,7 @@
 
 Agents working in a repository that follows this guide: read AGENTS.md first, then the chapter that
 bears on the task. Principle anchors are the lowercase ID without the version, e.g. SE1/A8 is guide/10-agents.md#a8.
+bears on the task. Principle anchors are the lowercase ID without the version, e.g. SE1/A8 is guide/11-learning.md#a8.): how a project learns: the order to doubt rules, how to change one, what a finding must change (a proposal)
 
 ## Start here
 
