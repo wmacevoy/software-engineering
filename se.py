@@ -184,8 +184,10 @@ def tracked_files(repo):
 
 
 def is_text(path):
-    return path.suffix.lower() in {".md", ".txt", ".py", ".js", ".ts", ".c", ".h", ".sh", ".yml", ".yaml",
-                                   ".toml", ".json", ".rs", ".go", ".java", ".rb", ".ps1", ".cfg", ".ini", ""}
+    return path.suffix.lower() in {".md", ".txt", ".py", ".js", ".mjs", ".cjs", ".jsx", ".ts", ".tsx",
+                                   ".c", ".h", ".cpp", ".cc", ".cxx", ".hpp", ".hh", ".cs", ".kt", ".swift",
+                                   ".sh", ".yml", ".yaml", ".toml", ".json", ".rs", ".go", ".java", ".rb",
+                                   ".ps1", ".cfg", ".ini", ""}
 
 
 def settings(repo):

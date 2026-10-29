@@ -258,6 +258,14 @@ class TestDoctorRed(Fixture):
         self.assertEqual(finding(f, "trace").state, se.WARN)
         self.assertIn("UI-2", finding(f, "trace").text)
 
+    def test_requirement_named_in_a_cpp_or_module_js_test(self):
+        for name in ("tests/test_ui.cpp", "tests/test_ui.cc", "tests/test_ui.hpp", "tests/test_ui.mjs",
+                     "tests/test_ui.cjs", "tests/test_ui.tsx", "tests/TestUi.cs", "tests/TestUi.kt"):
+            with self.subTest(name=name):
+                f = self.doctor(self.changed(**{"tests/test_ui.py": "# REQ1/UI-1 only\n",
+                                                name: "// REQ2/UI-2 covered\n"}))
+                self.assertEqual(finding(f, "trace").state, se.PASS)
+
     def test_queue_row_in_progress_too_long(self):
         q = GOOD["docs/QUEUE.md"].replace("2026-10-27", "2026-09-01")
         f = self.doctor(self.changed(**{"docs/QUEUE.md": q}))
