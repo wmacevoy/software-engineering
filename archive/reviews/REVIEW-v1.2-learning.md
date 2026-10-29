@@ -2,7 +2,7 @@
 
 Reviewer: Claude Opus 5.5, at the author's request. Date: 2026-10-28. By L6 below, a later model,
 or a later version of this one, should doubt what this review proposes before the rest of the guide.
-Against: branch `v1.2/after-a-gap` at d256d10. Status: **a proposal**. No chapter, index, changelog
+Against: branch `v1.2/after-a-gap` at d256d10. Status: **a proposal**. *Note, 2026-10-29: the L-numbers below are this draft's own six; the chapter as later proposed on the branch `proposal/learning-chapter` has four, numbered differently, so a bare "draft L5" here is not a citation of the guide.* No chapter, index, changelog
 or checker file is edited. Everything below was observed unless it says *inferred*.
 
 ## The gap
@@ -189,11 +189,11 @@ agent-written rules, those rules turn out no more often wrong than the human-wri
 - **AGENTS.md:**
   - **Under its title, who wrote it**, for example: "Drafted by Claude Opus 5.5 with Warren MacEvoy,
     2026-10. A later model, or a later version of this one, should doubt these rules before
-    following them, and say which it doubted (SE1/L6)." Today the file says nothing of its authorship,
+    following them, and say which it doubted (draft L6)." Today the file says nothing of its authorship,
     which git records for all 12 of its commits.
   - **Under *Before you start*:** "A rule that changed recently, that you are about to rely on
     heavily, or that was written for a world that has since changed, gets its history read before it
-    is obeyed (SE1/L2, SE1/L4, SE1/L6)."
+    is obeyed (draft L2, L4, L6)."
   - Both change every copy, so they are a stop-and-ask for the author, not a reviewer's edit.
   - One rule to look at first under L6: *keys* as a stop-and-ask. In the compaction trials, members
     gave it as the reason they did not encrypt a store that D-9 required. The rule may be right, and
@@ -201,7 +201,7 @@ agent-written rules, those rules turn out no more often wrong than the human-wri
     agents, and L6 says to look at it first. This is suggestive (quotes, and one spike run), not
     measured.
 - **CHECKLISTS.md:** a line in the review checklist, "the change was checked against the rules it
-  touches, by name, by someone who did not write it (SE1/L5)".
+  touches, by name, by someone who did not write it (draft L5)".
 - **GLOSSARY.md:** *rule*, as defined in the chapter's opening, if the word needs pinning.
 - **GAPS.md:** the evidence above belongs there as a field report, with its sources, in the form the
   existing reports use.

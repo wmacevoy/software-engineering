@@ -29,7 +29,7 @@ had its life but also its blind spots.
   requirement was pointing at the defect, and there was no negative control.
 - **The artist** found the centre the draft had left out: knowing is not doing (P1 below).
 - **The buddhist** sent most items to GAPS only, and found the review-by-name item already proposed
-  in REVIEW-v1.2-learning.md (L5).
+  in REVIEW-v1.2-learning.md (draft L5).
 - **The elder** found that the human, not any check, caught today's three worst defects (proposal P2), and
   cut the item about a budget cap, a quirk of the trial harness.
 
@@ -163,7 +163,7 @@ break.
 
 **Open:** worth a line in W11 ("list the requirements and decisions the change must not break, and
 ask about each by ID") once a trial has a negative control. It is also proposed in
-REVIEW-v1.2-learning.md (L5).
+REVIEW-v1.2-learning.md (draft L5).
 
 ### 6. An ID survives a summary; its meaning does not
 
