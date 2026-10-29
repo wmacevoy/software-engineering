@@ -299,10 +299,10 @@ def check_hooks(repo):
     return Finding("handoff hook", "SE1/A11", PASS, f"[Claude Code configuration] {names}: configured, not seen to fire", "make it fire once on purpose (SE1/T3)")
 
 
-def guide_command(text):
+def guide_command(text, fallback=True):
     """The check command a repository guide names: the template's "**The full check:**" line, its inline
-    code or the first line of the fenced block after it; failing that, the first line that names a check
-    or test with code on it."""
+    code or the first line of the fenced block after it; failing that, with fallback, the first line that
+    names a check or test with code on it."""
     lines = text.splitlines()
     for i, line in enumerate(lines):
         if re.search(r"\*\*The full check:?\*\*", line):
@@ -317,6 +317,8 @@ def guide_command(text):
                         if lines[k].strip():
                             return lines[k].strip()
                     break
+    if not fallback:
+        return None
     for line in lines:
         if re.search(r"\b(check|test)s?\b", line, re.I) and "`" in line and not line.lstrip().startswith("#"):
             m = re.search(r"`([^`]+)`", line)
@@ -330,7 +332,9 @@ def check_guide(repo):
         text = read(Path(repo) / name)
         if not text:
             continue
-        cmd = guide_command(text)
+        # A README is prose: on one course repository the fallback took a workflow path from a line that
+        # mentioned tests for the check command. Only a labeled line counts there.
+        cmd = guide_command(text, fallback=(name != "README.md"))
         if cmd:
             return Finding("repository guide", "SE1/A2, SE1/W10", PASS, f"{name} names the check: `{cmd}`", ""), cmd
         if re.search(r"none yet", text, re.I):

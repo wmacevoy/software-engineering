@@ -218,6 +218,14 @@ class TestDoctorRed(Fixture):
         f = self.doctor(self.changed(**{"CONTRIBUTING.md": None, "CLAUDE.md": "@AGENTS.md\n"}))
         self.assertEqual(finding(f, "repository guide").state, se.NONE)
 
+    def test_readme_alone_names_no_check_command(self):
+        # REQ1/SE-1: with no repository guide, a README line that mentions tests beside a path is not the
+        # check command; the row says none yet (the fall-2026 course repository, FINDINGS 2026-10-29)
+        readme = "# Project\n\n`.github/workflows/ci.yaml` runs lint and tests on Ubuntu, macOS, and Windows.\n"
+        f = self.doctor(self.changed(**{"CONTRIBUTING.md": None, "CLAUDE.md": None, "README.md": readme}))
+        self.assertEqual(finding(f, "repository guide").state, se.NONE)
+        self.assertNotIn("ci.yaml", finding(f, "repository guide").text)
+
     def test_requirements_without_non_goals(self):
         req = GOOD["docs/REQUIREMENTS_v2.md"].replace("## Non-goals", "## Later")
         f = self.doctor(self.changed(**{"docs/REQUIREMENTS_v2.md": req}))

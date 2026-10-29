@@ -100,6 +100,9 @@ Each line traces to a requirement.
   before it on the same line — alternatives rejected: keeping the check strict and having copies
   rewrite their records, which would make them false; exempting every queue row, which the open-row
   fixture refuses — source: PR #1's question, decided by the author 2026-10-29.
+- **A README alone names no check command** — REQ1/SE-1 — the fallback that reads any line
+  mentioning tests runs for CONTRIBUTING.md and CLAUDE.md only — alternative rejected: filtering
+  path-like candidates, which guesses — source: FINDINGS 2026-10-29, the fall-2026 handoff.
 
 ## Deferred
 

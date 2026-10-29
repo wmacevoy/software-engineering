@@ -85,3 +85,15 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
   done queue row) keeps the citation it was written with and is not stale; a bare ID takes the
   version named before it on the same line; an open row and a test still answer to the newest
   version. Fixtures for each, the open row seen red by exempting every row on purpose.
+
+## 2026-10-29 — With no repository guide, `se` took a README's workflow path for the check command
+
+- **What happened:** on the fall-2026 data-mining course repository, which had no CONTRIBUTING.md or
+  CLAUDE.md, the doctor's fallback took the first backticked thing on a README line that mentioned
+  tests, `.github/workflows/ci.yaml`, as the check command, then failed the CI row against it. The
+  handoff written there reported it.
+- **Kind:** K3 (a fallback that reads prose as a command).
+- **Cost:** one false row in that repository's baseline; caught by the agent reading the README line.
+- **Findable by:** a fixture with a README alone, whose only backticked text beside "tests" is a path.
+- **Changed:** the fallback runs for CONTRIBUTING.md and CLAUDE.md only; a README alone yields *none
+  yet* (queue #9).
