@@ -22,6 +22,9 @@ In order. Each step is small, and the repository is better after any of them tha
    came from, so a copy that is behind says so ([SE1/U7](guide/02-unknowing.md#u7)). When a newer
    release appears, read *For copies* under it in [CHANGELOG.md](CHANGELOG.md) and re-copy. Do not
    edit the copy: local rules go in the repository guide, which wins over it where they disagree.
+   Point the repository guide's and the design's links to the guide at the new release. A
+   requirements version keeps the links it was written with: it is never edited in place
+   ([SE1/R10](guide/04-requirements.md#r10)), and the next version links the new release.
 
 2. **Make it load at every start** ([SE1/A11](guide/10-agents.md#a11)). In trials, a rule in a file
    the agent was told to follow changed nothing, because the file was never opened; the same rule
