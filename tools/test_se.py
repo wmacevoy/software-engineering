@@ -253,6 +253,27 @@ class TestDoctorRed(Fixture):
         self.assertEqual(finding(f, "citations").state, se.FAIL)
         self.assertIn("stale", finding(f, "citations").text)
 
+    def test_history_cites_the_version_in_force_when_it_was_written(self):
+        # REQ1/SE-1, SE1/R10: a FINDINGS entry and a done queue row keep the citation they were written
+        # with; rewriting them to the newest version would make them false (PR #1's question, 2026-10-29)
+        findings = GOOD["docs/FINDINGS.md"] + "\n## 2026-10-01 — the age\n\n- **What happened:** REQ1/UI-2 was wrong.\n"
+        queue = GOOD["docs/QUEUE.md"] + "| 3 | the count (REQ1/UI-2) | done | 2026-10-01 |\n"
+        f = self.doctor(self.changed(**{"docs/FINDINGS.md": findings, "docs/QUEUE.md": queue}))
+        self.assertEqual(finding(f, "citations").state, se.PASS)
+
+    def test_an_open_queue_row_is_not_history(self):
+        # REQ1/SE-1, SE1/R10: a row still to be done cites the current wording, or is stale
+        queue = GOOD["docs/QUEUE.md"] + "| 3 | the count (REQ1/UI-2) | ready | 2026-10-01 |\n"
+        f = self.doctor(self.changed(**{"docs/QUEUE.md": queue}))
+        self.assertEqual(finding(f, "citations").state, se.FAIL)
+        self.assertIn("stale", finding(f, "citations").text)
+
+    def test_a_bare_id_inherits_the_version_named_before_it_on_the_line(self):
+        # REQ1/SE-1, SE1/R10: list shorthand, `REQ2/UI-1, UI-2`, names one version for both; a bare ID
+        # with no versioned citation before it on the line is still unversioned (test_bare_citation)
+        f = self.doctor(self.changed(**{"tests/test_ui.py": "# REQ2/UI-1, UI-2 covered\n"}))
+        self.assertEqual(finding(f, "citations").state, se.PASS)
+
     def test_requirement_with_no_test(self):
         f = self.doctor(self.changed(**{"tests/test_ui.py": "# REQ1/UI-1 only\n"}))
         self.assertEqual(finding(f, "trace").state, se.WARN)

@@ -95,6 +95,11 @@ Each line traces to a requirement.
   REQ1/REL-2 — the data-mining guide's agreement carries a label of its own release, and the doctor
   took it for SE1's — alternative rejected: teaching `se` other guides' labels, which Non-goals
   exclude — source: commit fb7586b, FINDINGS 2026-10-28.
+- **History is not stale; shorthand is versioned by its line** — REQ1/SE-1 — a FINDINGS entry or a
+  done queue row keeps the citation it was written with, and a bare ID takes the version named
+  before it on the same line — alternatives rejected: keeping the check strict and having copies
+  rewrite their records, which would make them false; exempting every queue row, which the open-row
+  fixture refuses — source: PR #1's question, decided by the author 2026-10-29.
 
 ## Deferred
 

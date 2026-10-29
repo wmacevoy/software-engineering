@@ -81,4 +81,7 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
 - **Changed:** the pattern allows a table cell boundary between the ID and its *since*, with that
   fixture. Engaged on lwext4-bsd, the citations row then fails: 11 stale, 77 unversioned, most of
   them historical (FINDINGS, done queue rows) or list shorthand (`REQ10/TOOL-1, RST-3`). Whether
-  those should count is a question about SE1/R10, left open.
+  those should count is a question about SE1/R10. Decided 2026-10-29: history (a FINDINGS entry, a
+  done queue row) keeps the citation it was written with and is not stale; a bare ID takes the
+  version named before it on the same line; an open row and a test still answer to the newest
+  version. Fixtures for each, the open row seen red by exempting every row on purpose.

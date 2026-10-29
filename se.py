@@ -372,6 +372,13 @@ def check_working_set(repo):
                    f"REQUIREMENTS_v{version} ({len(ids)} requirements), DESIGN, QUEUE, FINDINGS; Non-goals and Scope decisions present", "")
 
 
+def is_history(name, line):
+    """A FINDINGS entry or a done queue row cites a requirement as it read when the record was written;
+    rewriting the citation to the newest version would make the record false. R10 versions the
+    requirement, not the history of it."""
+    return name == "FINDINGS.md" or (name == "QUEUE.md" and re.search(r"\|\s*done\b", line, re.I) is not None)
+
+
 def check_citations(repo, req, version, ids):
     if not ids:
         return Finding("citations", "SE1/R10", NONE, "no requirement IDs to cite", "")
@@ -384,13 +391,18 @@ def check_citations(repo, req, version, ids):
         if f.name == "AGENTS.md" or f.name == "se.py" or (copy and f.resolve() == copy.resolve()):
             continue
         for i, line in enumerate(read(f).splitlines(), 1):
+            last = None  # list shorthand: in `REQ2/UI-1, UI-2`, the bare ID takes the version named before it
             for m in pat.finditer(line):
                 where = f"{f.relative_to(repo)}:{i}"
-                if not m.group(1):
+                ver = m.group(2) or last
+                if m.group(2):
+                    last = m.group(2)
+                if not ver:
                     bare.append(where)
-                elif int(m.group(2)) < ids[m.group(3)]:
-                    stale.append(f"{where} REQ{m.group(2)}/{m.group(3)} (since v{ids[m.group(3)]})")
-                elif int(m.group(2)) > version:
+                elif int(ver) < ids[m.group(3)]:
+                    if not is_history(f.name, line):
+                        stale.append(f"{where} REQ{ver}/{m.group(3)} (since v{ids[m.group(3)]})")
+                elif int(ver) > version:
                     ahead.append(where)
     if stale or bare or ahead:
         parts = []
