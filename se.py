@@ -42,7 +42,8 @@ CACHE_STALE_DAYS = 30   # a release check older than this is reported as stale (
 Finding = namedtuple("Finding", "name ids state text fix")  # state: pass | warn | none yet | fail
 PASS, WARN, NONE, FAIL = "pass", "warn", "none yet", "fail"
 LABEL_RE = re.compile(r"This copy is\s+from\s+\*\*(v\d+\.\d+)\*\*")  # \s+: copies are wrapped at 100 columns, and the label can break across a line
-REQ_ID_RE = re.compile(r"\*\*([A-Z]{2,}-\d+)\*\*\s*\*\(since v(\d+)\)\*")
+# A bullet (`- **UI-1** *(since v1)*`) or a table row (`| **UI-1** | *(since v1)* ... |`)
+REQ_ID_RE = re.compile(r"\*\*([A-Z]{2,}-\d+)\*\*\s*(?:\|\s*)?\*\(since v(\d+)\)\*")
 # The line that names this guide's release, in every release's AGENTS.md. A sibling guide's agreement
 # (the data-mining guide's) links SE1's AGENTS.md as a blob and carries a label of its own release, so
 # the label alone does not say whose copy a file is.

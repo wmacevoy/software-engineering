@@ -104,6 +104,17 @@ class TestDoctorGood(Fixture):
                      "working set", "citations", "trace", "queue", "commits", "CI"):
             self.assertEqual(states[name], se.PASS, name)
 
+    def test_requirements_in_a_table_are_read(self):
+        # REQ1/SE-1: a requirement in a table row (`| **UI-1** | *(since v1)* ... |`) is a requirement;
+        # lwext4-bsd's REQUIREMENTS_v10 has 30 of them, and the doctor counted 0 (FINDINGS 2026-10-29)
+        req = ("# Requirements — v2\n\n## Requirements\n\n| ID | Requirement |\n| -- | ----------- |\n"
+               "| **UI-1** | *(since v1)* The page shows a count. |\n| **UI-2** | *(since v2)* A stale count shows its age. |\n\n"
+               "## Scope decisions\n\n- counts, not locations\n\n## Non-goals\n\n- reservations\n")
+        f = self.doctor(self.changed(**{"docs/REQUIREMENTS_v2.md": req}))
+        self.assertIn("(2 requirements)", finding(f, "working set").text)
+        self.assertEqual(finding(f, "citations").state, se.PASS)
+        self.assertEqual(finding(f, "trace").state, se.PASS)
+
 
 class TestDoctorRed(Fixture):
     def test_missing_agents_md(self):
