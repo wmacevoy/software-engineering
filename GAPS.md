@@ -534,3 +534,24 @@ it wrong; doubt the newest first, and the most-followed under evidence. AGENTS.m
 it. A proposed chapter of six principles on learning was reduced to this one; its least proven
 claim, that the one who follows a rule is worst placed to see it failing, is #5 of the report above
 and stays open.
+
+## Field report: lwext4-bsd, re-copying v1.1 to v1.3.1, 2026-10-29
+
+An agent re-copied AGENTS.md, `se`, `se.py`, and `se.ps1` into
+[lwext4-bsd](https://github.com/wmacevoy/lwext4-bsd) and was cut off partway; the next session
+finished from the queue item it had left.
+
+### 1. Re-copying said nothing about the links, and the requirements may not take them
+
+ADOPT.md step 1 says to re-copy AGENTS.md; it says nothing about the links to the guide elsewhere in
+the repository. The agent filled the silence: its queue item's *done when* said the guide links in
+CONTRIBUTING, DESIGN_v1, and REQUIREMENTS_v10 would point at v1.3. REQUIREMENTS_v10 says of itself
+"a change is a new version, never an edit to this one", as [SE1/R10](guide/04-requirements.md#r10)
+asks, and the repository's two earlier re-copies had each made a new requirements version rather
+than edit one. The collision was found only when the edit was about to be made, by the session that
+resumed the work. The owner chose to leave v10's links at v1.1: they still resolve, and they name the
+guide the requirements were written under.
+
+**Closed:** ADOPT.md step 1 says to point the repository guide's and the design's links at the new
+release, and that a requirements version keeps its own links, the next version carrying the new
+release's.
