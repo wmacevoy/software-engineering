@@ -44,6 +44,10 @@ PASS, WARN, NONE, FAIL = "pass", "warn", "none yet", "fail"
 LABEL_RE = re.compile(r"This copy is\s+from\s+\*\*(v\d+\.\d+)\*\*")  # \s+: copies are wrapped at 100 columns, and the label can break across a line
 # A bullet (`- **UI-1** *(since v1)*`) or a table row (`| **UI-1** | *(since v1)* ... |`)
 REQ_ID_RE = re.compile(r"\*\*([A-Z]{2,}-\d+)\*\*\s*(?:\|\s*)?\*\(since v(\d+)\)\*")
+# The marks that follow, as in `*(since v2)* *(inferred)* *(judged)*`; prose further on is not a mark (SE1/U10).
+REQ_MARKS_RE = re.compile(REQ_ID_RE.pattern + r"((?:\s*(?:\|\s*)?\*\([^)\n]*\)\*)*)")
+VERDICT_RE = re.compile(r"\bverdict\b", re.I)
+DATE_RE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
 # The line that names this guide's release, in every release's AGENTS.md. A sibling guide's agreement
 # (the data-mining guide's) links SE1's AGENTS.md as a blob and carries a label of its own release, so
 # the label alone does not say whose copy a file is.
@@ -427,16 +431,57 @@ def check_citations(repo, req, version, ids):
     return Finding("citations", "SE1/R10", PASS, f"every citation of the {len(ids)} requirement IDs is versioned and current", "")
 
 
-def check_trace(repo, ids):
+def judged_ids(req):
+    """The requirements marked (judged): only a named person can pass them (SE1/U10)."""
+    if not req:
+        return []
+    return [m.group(1) for m in REQ_MARKS_RE.finditer(read(req)) if "*(judged)*" in m.group(3)]
+
+
+def latest_verdicts(repo, judged):
+    """The newest date on a line naming a requirement's versioned ID, the word verdict, and a date. A test
+    may veto a judged requirement and cannot pass it, so a line in a test file is not a verdict, and
+    neither is an example in the agreement, a copy, or a requirements document."""
+    copy, _ = find_copy(repo)
+    found = {}
+    for f in tracked_files(repo):
+        rel = str(f.relative_to(repo))
+        if (not is_text(f) or re.search(r"test", rel, re.I) or f.name.startswith("REQUIREMENTS_v")
+                or f.name in ("AGENTS.md", "se.py") or (copy and f.resolve() == copy.resolve())):
+            continue
+        for line in read(f).splitlines():
+            if not VERDICT_RE.search(line):
+                continue
+            dates = DATE_RE.findall(line)
+            for i in judged:
+                if dates and re.search(rf"REQ\d+/{re.escape(i)}\b", line):
+                    found[i] = max([found.get(i, ""), *dates])
+    return found
+
+
+def check_trace(repo, ids, judged=()):
     if not ids:
         return Finding("trace", "SE1/R11", NONE, "no requirements to trace", "")
+    tested = [i for i in ids if i not in judged]
+    verdicts = latest_verdicts(repo, judged)
+    waiting = [i for i in judged if i not in verdicts]
+    note = ""
+    if judged:
+        note = (f"; {len(judged)} judged, passed by a person and not by a test: "
+                + ", ".join(f"{i} (verdict {verdicts[i]})" if i in verdicts else f"{i} (no verdict yet)" for i in judged[:5])
+                + (" ..." if len(judged) > 5 else ""))
     tests = [f for f in tracked_files(repo) if is_text(f) and re.search(r"test", str(f.relative_to(repo)), re.I)]
     text = "\n".join(read(f) for f in tests)
-    without = [i for i in ids if not re.search(rf"REQ\d+/{re.escape(i)}\b", text)]
+    without = [i for i in tested if not re.search(rf"REQ\d+/{re.escape(i)}\b", text)]
     if without:
-        return Finding("trace", "SE1/R11", WARN, f"{len(without)} of {len(ids)} requirements have no test naming them: "
-                       + ", ".join(without[:5]) + (" ..." if len(without) > 5 else ""), "each is a queue item, not a failure")
-    return Finding("trace", "SE1/R11", PASS, f"every one of the {len(ids)} requirements has a test naming it", "")
+        return Finding("trace", "SE1/R11", WARN, f"{len(without)} of {len(tested)} requirements have no test naming them: "
+                       + ", ".join(without[:5]) + (" ..." if len(without) > 5 else "") + note, "each is a queue item, not a failure")
+    if waiting:
+        return Finding("trace", "SE1/R11", WARN, f"every one of the {len(tested)} tested requirements has a test naming it" + note,
+                       "ask the judge; record a line with the versioned ID, the word verdict, and the date")
+    if not tested:
+        return Finding("trace", "SE1/R11", PASS, f"no tested requirements{note}", "")
+    return Finding("trace", "SE1/R11", PASS, f"every one of the {len(tested)} requirements has a test naming it" + note, "")
 
 
 def parse_table(text):
@@ -524,7 +569,7 @@ def doctor(repo, online=True, cache_dir=None, fetch=default_fetch, today=None):
     out.append(check_working_set(repo))
     req, version, ids = latest_requirements(repo)
     out.append(check_citations(repo, req, version, ids) if req else Finding("citations", "SE1/R10", NONE, "no requirements", ""))
-    out.append(check_trace(repo, ids))
+    out.append(check_trace(repo, ids, judged_ids(req)))
     out.append(check_queue(repo, today))
     out.append(check_commits(repo))
     out.append(check_ci(repo, cmd))

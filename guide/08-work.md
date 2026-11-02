@@ -261,8 +261,9 @@ Starting skeletons for the four, and for the repository guide, are listed in the
 - It satisfies a stated requirement, and the change names the requirement's versioned ID
   (`REQ2/UI-1`, [SE1/R10](04-requirements.md#r10)) — or it is labeled a chore (below).
 - A test names that same ID and has been seen to fail without the change. For a requirement marked
-  *(judged)*, the named judge's verdict on this version is recorded with its date; tests on it may
-  veto but cannot pass it, and an agent records a verdict but never gives one
+  *(judged)*, the named judge's verdict on this version is recorded with its date, on one line with
+  the versioned ID and the word *verdict*; tests on it may veto but cannot pass it, and an agent
+  records a verdict but never gives one
   ([SE1/U10](02-unknowing.md#u10)).
 - The system builds and runs from a clean checkout.
 - The full check suite passes locally.

@@ -116,6 +116,71 @@ class TestDoctorGood(Fixture):
         self.assertEqual(finding(f, "trace").state, se.PASS)
 
 
+class TestJudged(Fixture):
+    """REQ1/SE-1, SE1/U10: a requirement marked (judged) is passed by its judge. A test may veto it, so a
+    test naming it must not read as coverage, and no test naming it must not read as a gap."""
+    REQ = ("# Requirements \u2014 v2\n\n## Requirements\n\n"
+           "- **UI-1** *(since v1)* The page shows a count.\n"
+           "- **UI-2** *(since v2)* *(judged)* Judge: the supervisor, at each demo.\n\n"
+           "## Scope decisions\n\n- counts, not locations\n\n## Non-goals\n\n- reservations\n")
+
+    def trace(self, tests, **more):
+        files = {"docs/REQUIREMENTS_v2.md": self.REQ, "tests/test_ui.py": tests}
+        files.update(more)
+        return finding(self.doctor(self.changed(**files)), "trace")
+
+    def findings(self, *lines):
+        return GOOD["docs/FINDINGS.md"] + "\n" + "\n".join(lines) + "\n"
+
+    def test_a_veto_test_is_not_coverage(self):
+        row = self.trace("# REQ1/UI-1 and REQ2/UI-2\n")
+        self.assertEqual(row.state, se.WARN)
+        self.assertIn("UI-2 (no verdict yet)", row.text)
+
+    def test_no_test_on_a_judged_requirement_is_not_a_gap(self):
+        row = self.trace("# REQ1/UI-1\n")
+        self.assertNotIn("have no test", row.text)
+        self.assertIn("UI-2 (no verdict yet)", row.text)
+
+    def test_an_ordinary_gap_is_still_reported(self):
+        row = self.trace("# REQ2/UI-2\n", **{"docs/FINDINGS.md": self.findings("REQ2/UI-2 verdict: yes, 2026-10-01")})
+        self.assertEqual(row.state, se.WARN)
+        self.assertIn("1 of 1 requirements have no test", row.text)
+        self.assertIn("UI-1", row.text)
+
+    def test_a_recorded_verdict_passes_and_the_latest_is_shown(self):
+        row = self.trace("# REQ1/UI-1\n", **{"docs/FINDINGS.md": self.findings(
+            "REQ2/UI-2 verdict: no, 2026-09-01", "REQ2/UI-2 verdict: yes, the supervisor, 2026-10-01")})
+        self.assertEqual(row.state, se.PASS)
+        self.assertIn("UI-2 (verdict 2026-10-01)", row.text)
+
+    def test_a_test_cannot_record_a_verdict(self):
+        row = self.trace("# REQ1/UI-1\n# REQ2/UI-2 verdict: yes, 2026-10-01\n")
+        self.assertEqual(row.state, se.WARN)
+        self.assertIn("UI-2 (no verdict yet)", row.text)
+
+    def test_a_line_with_no_date_or_no_verdict_is_not_one(self):
+        row = self.trace("# REQ1/UI-1\n", **{"docs/FINDINGS.md": self.findings(
+            "REQ2/UI-2 verdict: pending", "REQ2/UI-2 was demoed 2026-10-01")})
+        self.assertIn("UI-2 (no verdict yet)", row.text)
+
+    def test_the_other_marks_and_table_rows_are_read(self):
+        for req in ("- **UI-2** *(since v2)* *(inferred)* *(judged)* Judge: the supervisor.\n",
+                    "- **UI-2** *(since v2)* *(judged)* *(inferred)* Judge: the supervisor.\n",
+                    "- **UI-2** *(since v2)*\n  *(judged)* Judge: the supervisor.\n",
+                    "| **UI-2** | *(since v2)* | *(judged)* | Judge: the supervisor. |\n"):
+            with self.subTest(req):
+                self.REQ = "# R\n\n## Requirements\n\n- **UI-1** *(since v1)* A count.\n" + req
+                row = self.trace("# REQ1/UI-1\n")
+                self.assertIn("UI-2 (no verdict yet)", row.text)
+
+    def test_the_word_in_prose_does_not_mark_a_requirement(self):
+        self.REQ = "# R\n\n- **UI-1** *(since v1)* A count.\n- **UI-2** *(since v2)* Unlike *(judged)* ones, a test passes this.\n"
+        row = self.trace("# REQ1/UI-1\n# REQ2/UI-2\n")
+        self.assertEqual(row.state, se.PASS)
+        self.assertNotIn("judged", row.text)
+
+
 class TestDoctorRed(Fixture):
     def test_missing_agents_md(self):
         f = self.doctor(self.changed(**{"AGENTS.md": None, "CLAUDE.md": "# none\n"}))

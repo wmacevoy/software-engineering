@@ -250,9 +250,9 @@ whether anyone comes back" names what it cannot see ([SE1/U4](#u4)).
 - **Convert what converts.** Contrast and load time are ordinary requirements. Only what is left
   is essential, and this is no license for vague sentences ([SE1/R2](04-requirements.md#r2)).
 - **Name the judge and the occasion.** Who says yes, on what, and when. If nobody can say no, it is
-  a wish, not an essential K1. The requirement is marked *(judged)*: "**UI-4** *(judged)* Judge: the
-  gate supervisor, on the running page, at each release demo. Veto: a first-time driver finds a lot
-  with space within 30 seconds *(invented)*."
+  a wish, not an essential K1. The requirement is marked *(judged)*: "**UI-4** *(since v2)* *(judged)*
+  Judge: the gate supervisor, on the running page, at each release demo. Veto: a first-time driver
+  finds a lot with space within 30 seconds *(invented)*."
 - **A proxy may veto; only the judge may pass.** A failed proxy stops the work. A perfect one earns
   a look. The verdict belongs to a version, so a later change makes it stale
   ([SE1/W11](08-work.md#w11)).

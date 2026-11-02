@@ -280,6 +280,9 @@ class PlantedInHistory(Repo):
 
     def test_v1_10_sorts_after_v1_9(self):
         self.tag("v1.9", self.git("rev-list", "--max-parents=0", "HEAD").split()[0])
+        # Commit in the copy: a contributor runs this with uncommitted edits, and the tag must hold U10's text.
+        self.git("add", "-A")
+        self.git("-c", "user.name=test", "-c", "user.email=test@example.com", "commit", "-q", "--allow-empty", "-m", "planted")
         self.tag("v1.10")
         rc, out = self.tool("tools/since.py", UNKNOWING)
         self.assertEqual(rc, 0, out)

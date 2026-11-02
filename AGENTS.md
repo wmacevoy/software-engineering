@@ -197,8 +197,8 @@ version, not on demonstrating range.
   never just the name. A citation whose version is older than the requirement's is stale: raise it.
   (SE1/F5, SE1/R10, SE1/R11)
 - **A requirement marked *(judged)* is passed by its named judge, not by a test.** Your tests on it
-  may veto. Record the judge's verdict, with the version and date; never give one, and never read a
-  green proxy as a yes. (SE1/W11)
+  may veto. Record the judge's verdict on one line with the versioned ID, the word *verdict*, and the
+  date; never give one, and never read a green proxy as a yes. (SE1/W11)
 - **Name what the change must not break.** Your report lists the requirements and decisions at risk,
   each by ID and its words, so a reviewer can ask about each. An ID alone survives a summary that
   lost its meaning. (SE1/W11)

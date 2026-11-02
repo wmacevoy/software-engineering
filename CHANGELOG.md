@@ -48,6 +48,10 @@ yours.
 
 ### Also changed
 
+- `se --doctor`'s trace row reports *(judged)* requirements apart, each with its latest recorded verdict:
+  a test naming one is not coverage, and no test naming one is not a gap (queue #11). A verdict is a
+  line with the versioned ID, the word *verdict*, and a date, outside a test file.
+- `se`'s citations row leaves a superseded `DESIGN_vN` alone, as it does an old `REQUIREMENTS_vN`.
 - Contributing needs Python and git, not Node, the author's decision of 2026-11-02 (REQ2/CHK-4).
   `tools/check.py`, `since.py`, and `bodies.py` replace their `.js` versions, which ran beside them on
   every release tag and on targeted and random breakages with identical output before they were
