@@ -54,12 +54,12 @@ GH_README = "https://github.com/wmacevoy/software-engineering#"
 VERSION = "SE1"
 
 
-def rel(path):
-    return os.path.relpath(path, root)
-
-
 def posix(path):
     return path.replace(os.sep, "/")
+
+
+def rel(path):  # forward slashes on every platform, so a report and a git path read the same
+    return posix(os.path.relpath(path, root))
 
 
 files = []
