@@ -28,7 +28,7 @@ guide that [SE1/W10](guide/08-work.md#w10) asks for; the guide itself is in `gui
   It runs `node tools/check.js`, `node tools/since.js --check`, `se.py --self`, and
   `tools/test_se.py`, with the interpreter `se` would choose.
 
-- **Success prints:** `N files, 100 principles, 0 problems` · `10 chapters, 0 marker(s) differ
+- **Success prints:** `N files, 101 principles, 0 problems` · `10 chapters, 0 marker(s) differ
   from git` · `se --self: AGENTS.md matches vX.Y` · `OK`.
 - **Instruments, and how each was seen to fire** ([SE1/T3](guide/06-testing.md#t3)): the checker
   on six planted breakages (a copy mislabeled, a principle reworded with no marker, an index line

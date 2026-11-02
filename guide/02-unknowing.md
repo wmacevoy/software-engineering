@@ -27,7 +27,7 @@ K4 is not on that ladder at all. It is a decision, and usually a good one.
 
 ### <a id="u2"></a>U2. Building is discovering, in the right order and at the right price, which category each part of the problem belongs to
 
-*Since v1.0 (2026-10-20).*
+*Changed in v1.4 (unreleased).*
 
 Every practice in this guide is a way of moving something **toward K0** — from a more expensive
 category to a cheaper one — before it charges full price:
@@ -35,7 +35,7 @@ category to a cheaper one — before it charges full price:
 | From | To     | How                                                                                                         |
 | ---- | ------ | ----------------------------------------------------------------------------------------------------------- |
 | K0   | stays  | Write it down so it stays known. Tests are executable knowledge, and unlike prose they complain when they go stale. |
-| K1   | K0     | Spikes, prototypes, reading the source, asking the client. The only category you can simply decide to spend time on. |
+| K1   | K0     | Spikes, prototypes, reading the source, asking the client. The only category you can simply decide to spend time on, and some of it will not convert ([SE1/U10](#u10)). |
 | K2   | K1     | Exposure to reality, early and repeatedly: integrate, deploy, demo, inject faults, watch real use. You cannot search for these; you can only arrange to be surprised sooner and more cheaply — and asking someone who knows a domain you don't is the cheapest exposure there is ([SE1/R8](04-requirements.md#r8)). |
 | K3   | K0     | Evidence: a test that could have failed, an output you actually looked at, a signature you checked, a second person who does not share your assumption. |
 | K4   | chosen | Name the falsehood, write down where it is load-bearing, know the blast radius when it comes due.          |
@@ -230,6 +230,41 @@ the same three medicines:
   requirements to every rule).
 
 > **Ask:** "Which rule here changed last, who measured it, and what would show it wrong?"
+
+
+### <a id="u10"></a>U10. Some K1 is essential: a proxy taken for K0 is K3
+
+*New in v1.4 (unreleased).*
+
+Most K1 ends when someone spends the time ([SE1/U2](#u2)). Some does not. "Is this layout usable
+and appealing?" is not a fact waiting to be looked up; it is a judgment someone makes on meeting the
+thing, and it can change with the next person or the next version. No spike finishes it. Call that
+an **essential K1**.
+
+You can measure something near it: task time, contrast, a layout score. The reading is K0. That it
+is the thing is not. Say "usability is 92" and the question stops being asked, which is K3 with
+nobody dishonest and no target set yet; a target only makes it worse ([SE1/F5](03-feedback.md#f5)).
+Held knowingly, the same proxy is K4: "we take task time to stand in for usable, and it misses
+whether anyone comes back" names what it cannot see ([SE1/U4](#u4)).
+
+- **Convert what converts.** Contrast and load time are ordinary requirements. Only what is left
+  is essential, and this is no license for vague sentences ([SE1/R2](04-requirements.md#r2)).
+- **Name the judge and the occasion.** Who says yes, on what, and when. If nobody can say no, it is
+  a wish, not an essential K1. The requirement is marked *(judged)*: "**UI-4** *(judged)* Judge: the
+  gate supervisor, on the running page, at each release demo. Veto: a first-time driver finds a lot
+  with space within 30 seconds *(invented)*."
+- **A proxy may veto; only the judge may pass.** A failed proxy stops the work. A perfect one earns
+  a look. The verdict belongs to a version, so a later change makes it stale
+  ([SE1/W11](08-work.md#w11)).
+
+What has been seen, so far, is nearby and not this. A check of what survived a compaction went 4/4
+on planted gaps, then passed 28 of 29 real compactions, in many of which, by the author's account,
+harm happened ([GAPS](../GAPS.md#1-the-handoff-check-passed-nearly-every-real-compaction)). That is
+a proxy failing, not an essential K1 shown. This principle is the author's decision, with
+[no trial of its own yet](../GAPS.md#decided-without-a-trial-essential-k1-2026-11-02). Wrong if a
+proxy, optimized hard, keeps agreeing with its judges: then it was never essential, so convert it.
+
+> **Ask:** "When this number is perfect, what could still be wrong, and who would tell us?"
 
 
 ---

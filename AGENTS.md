@@ -196,6 +196,9 @@ version, not on demonstrating range.
 - **Name the requirement in the test, with its version** (`REQ2/UI-1`), and assert the behavior —
   never just the name. A citation whose version is older than the requirement's is stale: raise it.
   (SE1/F5, SE1/R10, SE1/R11)
+- **A requirement marked *(judged)* is passed by its named judge, not by a test.** Your tests on it
+  may veto. Record the judge's verdict, with the version and date; never give one, and never read a
+  green proxy as a yes. (SE1/W11)
 - **Never weaken an assertion to make a test pass.** If you think a test is wrong, that is a
   stop-and-ask.
 - **Keep new tests repeatable.** No wall clock, no unseeded randomness, no shared mutable state, no

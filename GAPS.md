@@ -555,3 +555,21 @@ guide the requirements were written under.
 **Closed:** ADOPT.md step 1 says to point the repository guide's and the design's links at the new
 release, and that a requirements version keeps its own links, the next version carrying the new
 release's.
+
+## Decided without a trial: essential K1, 2026-11-02
+
+The author's framing: "Some K1 is essential, and converting them to K0 is actually a K3. This is the
+essence of 'be careful what you measure' in projects, this can be optimizing a layout for 'usable
+and appealing'." Decided as [SE1/U10](guide/02-unknowing.md#u10), with the change to
+[SE1/W11](guide/08-work.md#w11). Drafted with Claude Opus 5.5, which proposed that a proxy held
+knowingly is K4, and the rule that a proxy may veto and only a judge may pass. That rule is untested.
+
+The nearest thing measured is [the handoff check](#1-the-handoff-check-passed-nearly-every-real-compaction):
+a proxy that passed 28 of 29 real compactions. It shows a proxy failing, and harm there could in
+principle have been checked another way, so it does not show that any K1 is essential. The rule also
+has a price nobody has measured: a person's time at each release, for each judged requirement.
+
+**Open:** a trial. Agents optimize a layout against a score; people who have not seen the score
+judge the results. If the two keep agreeing as the score rises, the proxy converts and U10's example
+is wrong. Also open: whether teams mark many requirements *(judged)* to escape writing numbers, which
+would make U10 the vague requirement [SE1/R2](guide/04-requirements.md#r2) forbids, under a new name.

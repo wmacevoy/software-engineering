@@ -33,7 +33,9 @@ Numbered, observable, with numbers. Prefix by area with at least two letters and
 ([SE1/R10](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r10)). Mark
 invented numbers *(invented)*, and requirements read off existing code rather than agreed with the
 client *(inferred)*
-([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/08-work.md#w12)). Tests
+([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/08-work.md#w12)). Mark a
+requirement that only a person's judgment can pass *(judged)*, and name the judge and the occasion
+([SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/08-work.md#w11)). Tests
 name these IDs; this document never lists its tests
 ([SE1/R11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md#r11)).
 

@@ -24,6 +24,22 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.4 — unreleased
+
+### New
+
+- [SE1/U10](guide/02-unknowing.md#u10) Some K1 is essential: a proxy taken for K0 is K3. The author's
+  decision, 2026-11-02, with no trial of its own yet
+  ([GAPS](GAPS.md#decided-without-a-trial-essential-k1-2026-11-02)).
+
+### Changed
+
+- [SE1/W11](guide/08-work.md#w11) A requirement marked *(judged)* is passed by its named judge's
+  recorded verdict on this version; tests on it may veto but cannot pass it, and an agent records a
+  verdict but never gives one. CHECKLISTS, AGENTS.md, and the requirements template follow.
+- [SE1/U2](guide/02-unknowing.md#u2) K1 to K0 now says some K1 will not convert.
+- [SE1/R2](guide/04-requirements.md#r2) Where what matters is a judgment, write down who judges it.
+
 ## v1.3.2 — 2026-10-29
 
 [Full diff from v1.3.1](https://github.com/wmacevoy/software-engineering/compare/v1.3.1...v1.3.2). No

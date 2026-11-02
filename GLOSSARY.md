@@ -6,7 +6,7 @@ find the guide using one of these loosely, that is a bug.
 | Term                    | Meaning                                                                                              |
 | ----------------------- | ---------------------------------------------------------------------------------------------------- |
 | **K0**                  | Known, and true.                                                                                     |
-| **K1**                  | A known unknown. Cheap: you can go find out.                                                         |
+| **K1**                  | A known unknown. Usually cheap: you can go find out. Not always ([SE1/U10](guide/02-unknowing.md#u10)). |
 | **K2**                  | An unknown unknown. Only reality tells you; you can arrange to be told sooner.                       |
 | **K3**                  | Erroneous certainty: feels like K0, is false. Triggers no search, so it is found last.               |
 | **K3 factory**          | Anything that keeps saying "fine" with no way to say "wrong" — and so keeps producing K3s ([SE1/U7](guide/02-unknowing.md#u7)). |
@@ -32,6 +32,7 @@ find the guide using one of these loosely, that is a bug.
 | **Differential testing** | Checking your implementation against another one that owns the definition of correct, by running both on the same inputs ([SE1/T11](guide/06-testing.md#t11)). |
 | **Digest** | A content hash that names an exact image (per platform) rather than a tag that can move. |
 | **Essential complexity**  | Complexity in the problem; it survives every rewrite.                                              |
+| **Essential K1** | A known unknown that no amount of looking settles, because the answer is a judgment someone makes on meeting the thing ([SE1/U10](guide/02-unknowing.md#u10)). |
 | **Expand / contract** | Changing a shape in steps: add the new beside the old, move every reader, then remove the old. |
 | **Feature flag** | A setting that turns a feature on or off without a new deploy. |
 | **Fence**               | A checkpoint that proves something: a demo, a check that exits nonzero, a deploy. A meeting is not one. |
@@ -44,6 +45,7 @@ find the guide using one of these loosely, that is a bug.
 | **Injected clock** | The current time passed in as an argument, so a test can choose it, instead of read from the system. |
 | **Instrument** | Anything that measures: a clock, a feedback loop, a log, a sanitizer, a coverage report, a linter. Trusted only once seen to fire ([SE1/T3](guide/06-testing.md#t3)). |
 | **Interface** | The surface one part shows another — signatures, schemas, endpoints. Its written promises are the **contract**; an **API** is an interface offered over a network or to other programs. |
+| **Judged** | Said of a requirement: only a named person can pass it, on a stated occasion; tests may veto it ([SE1/U10](guide/02-unknowing.md#u10)). |
 | **Jitter** | Random variation added to retry delays so many callers do not retry at the same instant. |
 | **Liveness / readiness** | "The process is running" (restart me if not) / "I can serve requests now" (send me traffic if so). |
 | **Load-bearing** | Said of an assumption: something important depends on it being true. |

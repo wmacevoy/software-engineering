@@ -38,7 +38,7 @@ may be about trusting a number, not about a map.
 
 ### <a id="r2"></a>R2. Specific and wrong beats vague and safe
 
-*Changed in v1.1 (2026-10-20).*
+*Changed in v1.4 (unreleased).*
 
 Requirements do not exist, even in principle, until someone writes a candidate down. The client
 cannot tell you what should happen when a sensor goes silent, because they have never thought about
@@ -56,6 +56,10 @@ is *able* to reject it.
 Requirements are therefore **numbered** *and versioned* (so tests, commits, and reviews can cite
 them), **observable** (so they can be checked), and contain **numbers** — invented ones marked as
 invented. An invented number that is written down can be challenged. An assumed one cannot.
+
+Where what matters is a judgment, a number can only stand near it. Split off what converts, then
+write down who judges the rest, on what, and when ([SE1/U10](02-unknowing.md#u10)). A named judge
+can still say no.
 
 Because requirements and design change, unversioned references to requirements and design documents
 are K3 factories ([SE1/U7](02-unknowing.md#u7)): the citation keeps looking current after the

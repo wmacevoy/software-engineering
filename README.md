@@ -143,6 +143,7 @@ should use a different form, such as `REQ2/UI-1`, so they are never confused wit
 - [**SE1/U7**](guide/02-unknowing.md#u7) Find the K3 factories: anything that keeps saying "fine" with no way to say "wrong"
 - [**SE1/U8**](guide/02-unknowing.md#u8) Leave whitespace: an agenda finds only what it looks for
 - [**SE1/U9**](guide/02-unknowing.md#u9) Rules change: a rule says who made it, when, and what would show it wrong
+- [**SE1/U10**](guide/02-unknowing.md#u10) Some K1 is essential: a proxy taken for K0 is K3
 
 **[3. Feedback](guide/03-feedback.md)**
 
@@ -305,6 +306,7 @@ any rule.
   every hook is "configured, not seen to fire", and the doctor says so. Nothing has been tried
   with an agent other than Claude except that one review. The two newest principles, U8 and U9,
   rest on one author's observation and one project's trials, and say what would show them wrong.
+  U10, unreleased, rests on the author's decision, with no trial of its own yet.
 - **What would show it wrong.** Each GAPS entry states its falsifier. The ones that matter most: a
   transition instrument with a ceiling that shows no loss across a compaction; a check that runs
   without the agent choosing to and still leaves the work unchanged; an agent of another family
