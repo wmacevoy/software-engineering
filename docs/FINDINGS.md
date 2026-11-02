@@ -109,3 +109,21 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
 - **Findable by:** a fixture with a README alone, whose only backticked text beside "tests" is a path.
 - **Changed:** the fallback runs for CONTRIBUTING.md and CLAUDE.md only; a README alone yields *none
   yet* (queue #9).
+
+## 2026-11-02 — Comparing the Python tools with the Node tools: a clean run that proved little
+
+- **What happened:** the port of `check.js`, `since.js`, and `bodies.js` matched them on every release
+  tag and on 150 random breakages, 481 comparisons with no difference. Three bugs planted in the
+  port went unnoticed by that same run. Removing each reporting line in turn then found three no case
+  reached, and a sharp look found slug cases that failed the same way in both tools, so they could not
+  tell them apart.
+- **Kind:** K3 (identical output read as proof of equivalence).
+- **Cost:** about an hour; found before the Node tools were gone, while they could still referee.
+- **Findable by:** plant a bug in the thing under test before trusting the comparison.
+- **Changed:** 69 targeted cases, one or more per rule, identical in both tools. Every removed report
+  and logic change then seen caught, except `.strip(WS)` against `.strip()` in `bodies.py`, which
+  differs only for a principle ending in a character like U+0085. Every Unicode codepoint compared for
+  slugs and whitespace: whitespace identical; slugs differ on 14,049 codepoints, all unassigned in
+  Python 3.11's Unicode 14 and assigned later in Node 24's, so a heading using one could slug
+  differently. What Node can no longer referee is fixed in `tools/test_check.py`, and these fixtures
+  were seen to catch the mutants they were written for. Not seen: Python 3.9, macOS, Windows (queue #12).
