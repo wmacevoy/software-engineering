@@ -129,6 +129,8 @@ class TestJudged(Fixture):
         files.update(more)
         return finding(self.doctor(self.changed(**files)), "trace")
 
+    PASSED = "REQ2/UI-2 verdict: pass, by the supervisor, 2026-10-01"
+
     def findings(self, *lines):
         return GOOD["docs/FINDINGS.md"] + "\n" + "\n".join(lines) + "\n"
 
@@ -143,19 +145,50 @@ class TestJudged(Fixture):
         self.assertIn("UI-2 (no verdict yet)", row.text)
 
     def test_an_ordinary_gap_is_still_reported(self):
-        row = self.trace("# REQ2/UI-2\n", **{"docs/FINDINGS.md": self.findings("REQ2/UI-2 verdict: yes, 2026-10-01")})
+        row = self.trace("# REQ2/UI-2\n", **{"docs/FINDINGS.md": self.findings(self.PASSED)})
         self.assertEqual(row.state, se.WARN)
         self.assertIn("1 of 1 requirements have no test", row.text)
         self.assertIn("UI-1", row.text)
 
     def test_a_recorded_verdict_passes_and_the_latest_is_shown(self):
         row = self.trace("# REQ1/UI-1\n", **{"docs/FINDINGS.md": self.findings(
-            "REQ2/UI-2 verdict: no, 2026-09-01", "REQ2/UI-2 verdict: yes, the supervisor, 2026-10-01")})
+            "REQ2/UI-2 verdict: fail, by the supervisor, 2026-09-01", self.PASSED)})
         self.assertEqual(row.state, se.PASS)
-        self.assertIn("UI-2 (verdict 2026-10-01)", row.text)
+        self.assertIn("UI-2 (verdict pass 2026-10-01 by the supervisor)", row.text)
+
+    def test_a_later_failure_stands_and_does_not_pass(self):
+        # Codex, 2026-11-02: "verdict rejected" passed the row.
+        for word in ("fail", "failed", "no", "rejected", "FAIL"):
+            with self.subTest(word):
+                row = self.trace("# REQ1/UI-1\n", **{"docs/FINDINGS.md": self.findings(
+                    self.PASSED, f"REQ2/UI-2 verdict: {word}, by the supervisor, 2026-10-02")})
+                self.assertEqual(row.state, se.WARN)
+                self.assertIn("UI-2 (verdict FAIL 2026-10-02 by the supervisor)", row.text)
+
+    def test_on_the_same_day_a_failure_outranks_a_pass(self):
+        failed = "REQ2/UI-2 verdict: fail, by the supervisor, 2026-10-01"
+        for lines in ((failed, self.PASSED), (self.PASSED, failed)):
+            row = self.trace("# REQ1/UI-1\n", **{"docs/FINDINGS.md": self.findings(*lines)})
+            self.assertEqual(row.state, se.WARN, lines)
+
+    def test_a_verdict_on_an_older_version_of_the_requirement_is_none(self):
+        row = self.trace("# REQ1/UI-1\n", **{"docs/FINDINGS.md": self.findings(
+            "REQ1/UI-2 verdict: pass, by the supervisor, 2026-10-01")})
+        self.assertEqual(row.state, se.WARN)
+        self.assertIn("UI-2 (no verdict yet)", row.text)
+
+    def test_a_verdict_names_an_outcome_and_a_judge(self):
+        for line in ("REQ2/UI-2 verdict: by the supervisor, 2026-10-01",
+                     "REQ2/UI-2 verdict: pending, by the supervisor, 2026-10-01",
+                     "REQ2/UI-2 verdict: pass, 2026-10-01",
+                     "REQ2/UI-2 verdict: passable by the supervisor, 2026-10-01"):
+            with self.subTest(line):
+                row = self.trace("# REQ1/UI-1\n", **{"docs/FINDINGS.md": self.findings(line)})
+                self.assertEqual(row.state, se.WARN)
+                self.assertIn("UI-2 (no verdict yet)", row.text)
 
     def test_a_test_cannot_record_a_verdict(self):
-        row = self.trace("# REQ1/UI-1\n# REQ2/UI-2 verdict: yes, 2026-10-01\n")
+        row = self.trace("# REQ1/UI-1\n# " + self.PASSED + "\n")
         self.assertEqual(row.state, se.WARN)
         self.assertIn("UI-2 (no verdict yet)", row.text)
 

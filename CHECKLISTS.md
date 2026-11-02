@@ -75,7 +75,7 @@ keep the two in step)
       is labeled a chore.
 - [ ] A test names that same ID and has been seen to fail without the change. For a requirement
       marked *(judged)*, the named judge's verdict on this version is recorded with its date, on one
-      line with the versioned ID and the word *verdict*; tests on it may veto but cannot pass it, and
+      line with the versioned ID, `verdict: pass` or `verdict: fail`, and `by` the judge; tests on it may veto but cannot pass it, and
       an agent records a verdict but never gives one
       ([SE1/U10](guide/02-unknowing.md#u10)).
 - [ ] It builds and runs from a clean checkout.

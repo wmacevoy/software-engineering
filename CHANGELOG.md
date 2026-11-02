@@ -60,8 +60,10 @@ yours.
   interface: [SE1/H4](guide/09-people.md#h4), [SE1/O7](guide/07-operating.md#o7),
   [SE1/W5](guide/08-work.md#w5), GLOSSARY, CHECKLISTS, and `se`, which says a repository's *layout*.
 - `se --doctor`'s trace row reports *(judged)* requirements apart, each with its latest recorded verdict:
-  a test naming one is not coverage, and no test naming one is not a gap (queue #11). A verdict is a
-  line with the versioned ID, the word *verdict*, and a date, outside a test file.
+  a test naming one is not coverage, and no test naming one is not a gap (queue #11). A verdict is one
+  line with the versioned ID, `verdict: pass` or `verdict: fail`, `by` the judge, and a date, outside a
+  test file. A failure, or a verdict on an older version of the requirement, does not pass the row; `se`
+  cannot check who wrote the line or which version of the work it was given on.
 - `se`'s citations row leaves a superseded `DESIGN_vN` alone, as it does an old `REQUIREMENTS_vN`.
 - Contributing needs Python and git, not Node, the author's decision of 2026-11-02 (REQ2/CHK-4).
   `tools/check.py`, `since.py`, and `bodies.py` replace their `.js` versions, which ran beside them on
