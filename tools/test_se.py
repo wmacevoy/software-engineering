@@ -261,6 +261,17 @@ class TestDoctorRed(Fixture):
         self.assertEqual(finding(f, "citations").state, se.FAIL)
         self.assertIn("stale", finding(f, "citations").text)
 
+    def test_a_superseded_design_keeps_its_citations(self):
+        # REQ1/SE-1, SE1/R10: DESIGN_v1 cited the requirement as it read then; DESIGN_v2 answers to the newest.
+        old = "# Design - v1\n\nThe age (REQ1/UI-2).\n"
+        f = self.doctor(self.changed(**{"docs/DESIGN_v1.md": old, "docs/DESIGN_v2.md": "# Design - v2\n"}))
+        self.assertEqual(finding(f, "citations").state, se.PASS)
+        f = self.doctor(self.changed(**{"docs/DESIGN_v1.md": "# Design - v1\n", "docs/DESIGN_v2.md": old}))
+        self.assertEqual(finding(f, "citations").state, se.FAIL)
+        self.assertIn("DESIGN_v2.md", finding(f, "citations").text)
+        f = self.doctor(self.changed(**{"docs/DESIGN_v1.md": old}))  # the only design is the current one
+        self.assertEqual(finding(f, "citations").state, se.FAIL)
+
     def test_history_cites_the_version_in_force_when_it_was_written(self):
         # REQ1/SE-1, SE1/R10: a FINDINGS entry and a done queue row keep the citation they were written
         # with; rewriting them to the newest version would make them false (PR #1's question, 2026-10-29)

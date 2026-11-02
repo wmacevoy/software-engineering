@@ -389,8 +389,14 @@ def check_citations(repo, req, version, ids):
     bare, stale, ahead, unknown = [], [], [], []
     pat = re.compile(r"(?:(REQ(\d+))/)?\b(" + "|".join(map(re.escape, ids)) + r")\b")
     copy, _ = find_copy(repo)  # the working agreement's own examples (REQ2/UI-1) are not citations
-    for f in tracked_files(repo):
+    files = tracked_files(repo)
+    design = re.compile(r"DESIGN_v(\d+)\.md$")
+    designs = [int(m.group(1)) for m in (design.match(f.name) for f in files) if m]
+    for f in files:
         if f.resolve() == req.resolve() or not is_text(f) or f.name.startswith("REQUIREMENTS_v"):
+            continue
+        old = design.match(f.name)  # a superseded design cites requirements as they read then, as FINDINGS does
+        if old and int(old.group(1)) < max(designs):
             continue
         if f.name == "AGENTS.md" or f.name == "se.py" or (copy and f.resolve() == copy.resolve()):
             continue
