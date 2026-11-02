@@ -265,8 +265,8 @@ What has been seen, so far, is nearby and not this. A check of what survived a c
 on planted gaps, then passed 28 of 29 real compactions, in many of which, by the author's account,
 harm happened ([GAPS](../GAPS.md#1-the-handoff-check-passed-nearly-every-real-compaction)). That is
 a proxy failing, not an essential K1 shown. This principle is the author's decision, with
-[no trial of its own yet](../GAPS.md#decided-without-a-trial-essential-k1-2026-11-02). Wrong if a
-proxy, optimized hard, keeps agreeing with its judges: then it was never essential, so convert it.
+[no trial of its own yet](../GAPS.md#decided-without-a-trial-essential-k1-2026-11-02). Wrong if,
+across projects, no proxy is found that judges reject once it is optimized hard.
 
 > **Ask:** "When this number is perfect, what could still be wrong, and who would tell us?"
 

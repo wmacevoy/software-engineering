@@ -56,8 +56,8 @@ guide that [SE1/W10](guide/08-work.md#w10) asks for; the guide itself is in `gui
   the URL, the date, the checksum, and whether the reviewer opened it
   ([SE1/D13](guide/05-design.md#d13)). Reviews of the guide are proposals and live in
   `archive/reviews/`; what survives one goes into the principles, GAPS, and the CHANGELOG.
-- **Changes to the guide's meaning rest on evidence**: a field report in GAPS, or a trial; an
-  untested idea goes into GAPS as open, not into a principle.
+- **A change to the guide's meaning needs recorded evidence**, a field report in GAPS or a trial, **or
+  an explicitly attributed author decision**, with missing trials left open in GAPS.
 - **Commits.** One concern per commit; an agent commits, pushes, or tags only when asked; the
   trailer credits the agent, the author signs ([SE1/A7](guide/10-agents.md#a7)).
 - **Accepted known issues:** `templates/CONTRIBUTING.md` renders as raw Markdown on the site, and

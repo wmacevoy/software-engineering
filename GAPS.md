@@ -575,6 +575,10 @@ judge the results. If the two keep agreeing as the score rises, the proxy conver
 is wrong. Also open: whether teams mark many requirements *(judged)* to escape writing numbers, which
 would make U10 the vague requirement [SE1/R2](guide/04-requirements.md#r2) forbids, under a new name.
 
+U10's first falsifier relabeled any success as "never essential", so it could not fail; a review by
+Codex said so. The author took a new one, drafted by Claude Opus 5.5, on 2026-11-02: across projects, no
+proxy is found that judges reject once it is optimized hard.
+
 ## Decided without a trial: a finding must change something, 2026-11-02
 
 The author chose this over a chapter on learning, from the four principles on
@@ -583,7 +587,9 @@ The author chose this over a chapter on learning, from the four principles on
 a rule is worst placed to see it failing, stays open as #5 of the
 [tribes report](#field-report-agent-tribes-and-checks-2026-10-28); its practical half is the line in
 W11. **Open:** whether findings with no *Changed* line are relearned more often. Nothing here has
-measured it.
+measured it. W13's first title, "A finding that changes no rule, test, or check is a lesson not
+learned", was stricter than its body; a review by Codex said so, and the author took the present one,
+drafted by Claude Opus 5.5, on 2026-11-02.
 
 ## Decided without a trial: mission and shape, 2026-11-02
 

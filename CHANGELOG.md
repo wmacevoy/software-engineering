@@ -32,8 +32,7 @@ yours.
   decision, 2026-11-02, with no trial of its own yet
   ([GAPS](GAPS.md#decided-without-a-trial-essential-k1-2026-11-02)).
 
-- [SE1/W13](guide/08-work.md#w13) A finding that changes no rule, test, or check is a lesson not
-  learned. The author's decision, 2026-11-02, taken from the proposed chapter on learning, which stays
+- [SE1/W13](guide/08-work.md#w13) A finding closes with what it changed, or why it changed nothing. The author's decision, 2026-11-02, taken from the proposed chapter on learning, which stays
   a record on `proposal/learning-chapter`; [SE1/U9](guide/02-unknowing.md#u9) stays as it was. Untested.
 
 ### Changed
@@ -56,6 +55,10 @@ yours.
 - `se --post`, on a compaction, no longer reports `0 time(s)` and `?` when the transcript has not caught
   up (FINDINGS 2026-11-02): it waits briefly, then says what it does not know. It also prints the
   mission and shape from the latest requirements.
+- `CONTRIBUTING.md`: a change to the guide's meaning needs recorded evidence or an explicitly attributed
+  author decision, with missing trials left open in GAPS. It said an untested idea could not enter a
+  principle, which U10 and W13 did. The author's decision, from a review by Codex.
+- `se`'s citations row leaves a kept review (`REVIEW-*`) alone, as it does FINDINGS.
 - `se --post` says a multiplexer keeps terminal processes, not that the session survives; what the
   runner itself keeps is not inspected. `tools/check.py` holds README's index to the headings both ways
   (REQ1/ID-1).

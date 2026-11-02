@@ -325,7 +325,7 @@ A reconstruction that marks nothing as inferred is claiming more than it knows.
 
 > **Ask:** "Which of these reasons did somebody say, and which did we make up?"
 
-### <a id="w13"></a>W13. A finding that changes no rule, test, or check is a lesson not learned
+### <a id="w13"></a>W13. A finding closes with what it changed, or why it changed nothing
 
 *New in v1.4 (unreleased).*
 
