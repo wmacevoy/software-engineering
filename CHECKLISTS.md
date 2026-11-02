@@ -81,6 +81,8 @@ keep the two in step)
       same change.
 - [ ] New behavior that can fail has a way to make it fail on demand.
 - [ ] It is one concern, and the description says what was deliberately left out.
+- [ ] The description lists the requirements and decisions it must not break, and the reviewer asked
+      about each by ID and its words.
 - [ ] Someone other than the author reviewed it. For an agent-drafted change, the human who reads
       all of it and signs counts; a one-way door deserves a second human.
 - [ ] It is signed by a person who has read all of it.

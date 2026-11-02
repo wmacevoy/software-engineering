@@ -40,7 +40,9 @@ yours.
 
 - [SE1/W11](guide/08-work.md#w11) A requirement marked *(judged)* is passed by its named judge's
   recorded verdict on this version; tests on it may veto but cannot pass it, and an agent records a
-  verdict but never gives one. CHECKLISTS, AGENTS.md, and the requirements template follow.
+  verdict but never gives one. A change's description also lists the requirements and decisions it
+  must not break, and the reviewer asks about each by ID and its words, the author's decision before
+  a trial has a negative control (GAPS). CHECKLISTS, AGENTS.md, and the requirements template follow.
 - [SE1/U2](guide/02-unknowing.md#u2) K1 to K0 now says some K1 will not convert.
 - [SE1/R2](guide/04-requirements.md#r2) Where what matters is a judgment, write down who judges it.
 

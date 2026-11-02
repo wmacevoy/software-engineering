@@ -270,6 +270,10 @@ Starting skeletons for the four, and for the repository guide, are listed in the
   same change. Documentation that drifts is worse than none, because people trust it.
 - New behavior that can fail has a way to make it fail on demand.
 - It is one concern, and its description says what was deliberately left out.
+- Its description lists the requirements and decisions it must not break, and the reviewer asks about
+  each by ID and its words. Asked only about the requirements in general, fresh readers saw a
+  violated decision in 5 of 36 reviews; 31 more saw it once it was named
+  ([GAPS](../GAPS.md#5-reviewers-are-asked-about-the-requirement-a-change-serves-not-the-ones-it-must-not-break)).
 - Someone other than the author reviewed it. For an agent-drafted change, the human who reads all of it
   and signs counts; a one-way door deserves a second human.
 - It is signed by a person who has read all of it and stands behind it.
@@ -286,7 +290,8 @@ works when the author reviews their own diff first, the change is small enough t
 sitting, it comes back within a day, and style is left to the formatter and linter
 ([SE1/O3](07-operating.md#o3)). Reviewers ask three questions, in order:
 
-1. Does it do what the requirement says, and does the test prove it?
+1. Does it do what the requirement says, does the test prove it, and does it keep each requirement
+   and decision it must not break?
 2. Could the next maintainer read this in a month and explain why it is here?
 3. What does it make harder later?
 

@@ -199,6 +199,9 @@ version, not on demonstrating range.
 - **A requirement marked *(judged)* is passed by its named judge, not by a test.** Your tests on it
   may veto. Record the judge's verdict, with the version and date; never give one, and never read a
   green proxy as a yes. (SE1/W11)
+- **Name what the change must not break.** Your report lists the requirements and decisions at risk,
+  each by ID and its words, so a reviewer can ask about each. An ID alone survives a summary that
+  lost its meaning. (SE1/W11)
 - **Never weaken an assertion to make a test pass.** If you think a test is wrong, that is a
   stop-and-ask.
 - **Keep new tests repeatable.** No wall clock, no unseeded randomness, no shared mutable state, no

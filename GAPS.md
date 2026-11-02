@@ -447,8 +447,9 @@ review, and the probe did that part for the reader. [SE1/W11](guide/08-work.md#w
 definition of done ask whether a change satisfies "a stated requirement"; neither asks about the
 requirements it must not break.
 
-**Open:** worth a line in W11 ("list the requirements and decisions the change must not break, and
-ask about each by ID") once a trial has a negative control.
+**Closed:** the author's decision, 2026-11-02: [SE1/W11](guide/08-work.md#w11) has the line, before a
+trial has a negative control, because asking by name costs a sentence. **Open:** the false-alarm rate;
+the probe that named D-9 also flagged the two stores closest to compliant.
 
 ### 6. An ID survives a summary; its meaning does not
 
@@ -573,3 +574,13 @@ has a price nobody has measured: a person's time at each release, for each judge
 judge the results. If the two keep agreeing as the score rises, the proxy converts and U10's example
 is wrong. Also open: whether teams mark many requirements *(judged)* to escape writing numbers, which
 would make U10 the vague requirement [SE1/R2](guide/04-requirements.md#r2) forbids, under a new name.
+
+## Decided without a trial: a finding must change something, 2026-11-02
+
+The author chose this over a chapter on learning, from the four principles on
+`proposal/learning-chapter`: its L3 became [SE1/W13](guide/08-work.md#w13), and its L1 and L2 stay in
+[SE1/U9](guide/02-unknowing.md#u9), where most of their text already was. L4, that the one who follows
+a rule is worst placed to see it failing, stays open as #5 of the
+[tribes report](#field-report-agent-tribes-and-checks-2026-10-28); its practical half is the line in
+W11. **Open:** whether findings with no *Changed* line are relearned more often. Nothing here has
+measured it.
