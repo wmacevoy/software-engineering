@@ -359,6 +359,14 @@ class TestDoctorRed(Fixture):
         self.assertEqual(finding(f, "citations").state, se.FAIL)
         self.assertIn("stale", finding(f, "citations").text)
 
+    def test_a_kept_review_keeps_its_citations(self):
+        # SE1/R10: a review is kept as written, so what it quotes cannot be rewritten to the newest version.
+        old = "It reads REQ1/UI-2.\n"
+        f = self.doctor(self.changed(**{"archive/reviews/REVIEW-v1-other.md": old}))
+        self.assertEqual(finding(f, "citations").state, se.PASS)
+        f = self.doctor(self.changed(**{"archive/reviews/NOTES.md": old}))
+        self.assertEqual(finding(f, "citations").state, se.FAIL)
+
     def test_a_superseded_design_keeps_its_citations(self):
         # REQ1/SE-1, SE1/R10: DESIGN_v1 cited the requirement as it read then; DESIGN_v2 answers to the newest.
         old = "# Design - v1\n\nThe age (REQ1/UI-2).\n"

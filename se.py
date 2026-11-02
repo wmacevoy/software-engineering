@@ -384,10 +384,10 @@ def check_working_set(repo):
 
 
 def is_history(name, line):
-    """A FINDINGS entry or a done queue row cites a requirement as it read when the record was written;
+    """A FINDINGS entry, a kept review, or a done queue row cites a requirement as it read when written;
     rewriting the citation to the newest version would make the record false. R10 versions the
     requirement, not the history of it."""
-    return name == "FINDINGS.md" or (name == "QUEUE.md" and re.search(r"\|\s*done\b", line, re.I) is not None)
+    return name == "FINDINGS.md" or name.startswith("REVIEW-") or (name == "QUEUE.md" and re.search(r"\|\s*done\b", line, re.I) is not None)
 
 
 def check_citations(repo, req, version, ids):
