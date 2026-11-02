@@ -497,9 +497,9 @@ class TestPost(unittest.TestCase):
         # SE1/D9: a summary can lose them. A template's blank and a line left to fill are not printed.
         Path(self.repo, "docs").mkdir(exist_ok=True)
         Path(self.repo, "docs/REQUIREMENTS_v1.md").write_text(
-            "# R\n\n## Mission\n\n- **MISSION-1** *(since v1)* *(judged)* Drivers go straight to a lot.\n"
+            "# R\n\n## Mission\n\n- **AIM-1** *(since v1)* *(judged)* Drivers go straight to a lot.\n"
             "  Judge: the supervisor. Veto: a thing.\n\n## Shape\n\nHeld by: Ann.\n\n"
-            "- **SHAPE-1** *(since v1)* *(judged)* _A rule._ Judge: _the holder_.\n- **SHAPE-2** *(since v1)* One error envelope.\n"
+            "- **RULE-1** *(since v1)* *(judged)* _A rule._ Judge: _the holder_.\n- **RULE-2** *(since v1)* One error envelope.\n"
             "- **Says no to:** *to fill.*\n\n## The pain\n\n- not this\n")
         t = Path(self.tmp.name, "t.jsonl")
         t.write_text(self.record(self.JUST_NOW))
@@ -594,6 +594,15 @@ class TestHookAndSelf(unittest.TestCase):
     def test_parse_table(self):
         rows = se.parse_table("| # | Status | Since |\n| - | - | - |\n| 1 | ready | 2026-10-01 |\n")
         self.assertEqual(rows, [{"#": "1", "status": "ready", "since": "2026-10-01"}])
+
+
+class TestThisRepository(unittest.TestCase):
+    def test_its_own_citations_are_versioned(self):
+        # SE1/R10: a fixture of mine named real IDs bare, and only the doctor saw it (FINDINGS 2026-11-02).
+        repo = Path(__file__).resolve().parents[1]
+        req, version, ids = se.latest_requirements(repo)
+        row = se.check_citations(repo, req, version, ids)
+        self.assertEqual(row.state, se.PASS, row.text)
 
 
 if __name__ == "__main__":
