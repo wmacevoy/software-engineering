@@ -24,9 +24,11 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.4.1 — unreleased
+## v1.4.1 — 2026-11-02
 
-[Changes on main since v1.4](https://github.com/wmacevoy/software-engineering/compare/v1.4...main)
+[Full diff from v1.4](https://github.com/wmacevoy/software-engineering/compare/v1.4...v1.4.1). No
+principle, AGENTS.md, or template changed; copies at v1.4 are current. No review by another family
+for this patch: it changes no guide text.
 
 **For copies:** nothing to re-copy. No principle, AGENTS.md, or template changed; copies at v1.4 are current.
 
