@@ -173,3 +173,9 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
   the check now runs the citations row on this repository, so a bare ID in a fixture goes red before a
   doctor is asked. `se` still cannot check who wrote a verdict, or which version of the work it covers.
 
+## 2026-11-02 — Verdicts on the mission and the shape
+
+Given by their judge on `REQUIREMENTS_v3` as sent, and recorded here by an agent (SE1/U10).
+
+- REQ3/MISSION-1 verdict: pass, by Warren MacEvoy, 2026-11-02
+- REQ3/SHAPE-1 verdict: pass, by Warren MacEvoy, 2026-11-02

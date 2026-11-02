@@ -1,9 +1,8 @@
 # Requirements — v3
 
 What must be observably true of this repository, and what is not being built. Changes only with
-the client; a change is a new version (`REQUIREMENTS_v4.md`), never an edit to this one.
-v3 adds the Mission and the Shape, drafted 2026-11-02 at the author's request and not yet sent: the
-author words them, and until then this version may still change. No mechanism changes, so the design
+the client; a change in meaning is a new version (`REQUIREMENTS_v4.md`); a spelling or lint fix is not.
+v3 adds the Mission and the Shape, sent 2026-11-02. No mechanism changes, so the design
 stays [DESIGN_v2](DESIGN_v2.md). Everything else is carried over from
 [REQUIREMENTS_v2](REQUIREMENTS_v2.md) unchanged and keeps the version it was introduced in. Written
 2026-10-28 by joining late ([SE1/W12](../guide/08-work.md#w12)): every requirement below is read
@@ -12,7 +11,7 @@ off what the checker, `se`, CI, and the release procedure already enforce, and i
 
 Client: Warren MacEvoy, the author, who is also the maintainer. The proxy for the users
 ([SE1/H5](../guide/09-people.md#h5)): adopters, through the doctor's rows and the field reports in
-[GAPS.md](../GAPS.md), and the fall 2026 course. Date sent: not yet · *Tell us what is wrong
+[GAPS.md](../GAPS.md), and the fall 2026 course. Date sent: 2026-11-02 · *Tell us what is wrong
 with it.*
 
 ## Glossary
@@ -27,7 +26,7 @@ with it.*
 | Review | A proposal about the guide, kept in `archive/reviews/`; never an edit to it. |
 | The check | `sh tools/check.sh`: the checker, the since check, `se --self`, the tests. |
 | Working set | This directory: these requirements, the design, the queue, the findings. |
-| Mission | What this project is for, in one sentence only the client can change. |
+| Mission | The intentions this project is aimed at, stated broadly. Only the client can change it. |
 | Shape | The few rules that let someone guess the next part from the last, held by one named person. |
 
 ## Mission
@@ -35,7 +34,7 @@ with it.*
 - **MISSION-1** *(since v3)* *(judged)* SE1 is the foundation any software project can start from.
   Judge: the author, on the guide and its field reports, at each minor release. Veto: a field report
   in [GAPS](../GAPS.md) of a kind of project SE1 could not start, unanswered at that release.
-  *"Any" cannot be proven, only not yet refuted; the wording is the author's to change.*
+  *"Any" cannot be proven, only not yet refuted.*
 
 ## Shape
 
@@ -44,8 +43,13 @@ Held by: Warren MacEvoy.
 - **SHAPE-1** *(since v3)* *(judged)* You can guess the next part from the last: every principle is
   one idea with an ID and a reason, and most end with a question to ask out loud. Judge: the holder,
   at each minor release. Veto: the check, on the heading grammar and the index (REQ1/ID-1).
-- **Says no to:** *the author's to fill.*
-- **Exceptions:** *the author's to fill.*
+- **Says no to:**
+  - A chapter on learning: W13 and a line in W11 carry its practical part (the author, 2026-11-02).
+  - A framework for other guides: `se` serves SE1's documents (Non-goals).
+  - A second copy of the course essays: one set of principles, cited by ID (Non-goals).
+  - A runtime beyond Python and git for contributors (REQ2/CHK-4).
+- **Exceptions:**
+  - U8 stays where it is, because moving an ID is SE2 (the author, 2026-10-28).
 
 ## The pain
 
@@ -106,7 +110,7 @@ the repository as it stands unless the client confirms it.
   source, and the passage relied on. An entry for a source not opened says so.
 - **SRC-2** *(since v1)* *(inferred)* A review is kept in `archive/reviews/` and edits nothing;
   what survives it enters the principles, GAPS, and the CHANGELOG by its own commits.
-- **SRC-3** *(since v1)* *(inferred)* A principle's meaning changes only on evidence recorded in
+- **SRC-3** *(since v1)* A principle's meaning changes only on evidence recorded in
   GAPS, a field report or a trial, or on the author's stated decision; the CHANGELOG entry names it.
 
 **Checks**
@@ -178,15 +182,15 @@ testing was Claude-only and asks others to push back.
 ## Assumptions (K4s), read back to the client
 
 - "We're assuming the Markdown is the source and the site is only a rendering, so a rendering
-  defect is never fixed in the source. True?" — *(not yet answered)*
+  defect is never fixed in the source. True?" — yes: the author, 2026-11-02.
 - "We're assuming adopters copy AGENTS.md unchanged and put local rules in their own guide. True?"
-  — *(not yet answered)*
+  — yes: the author, 2026-11-02.
 - "We're assuming a patch release never changes a copy, so copies keep the minor's label. True?" —
-  *(not yet answered)*
-- "We're assuming reviews are proposals and never edit the live guide. True?" — *(not yet
-  answered)*
+  yes: the author, 2026-11-02.
+- "We're assuming reviews are proposals and never edit the live guide. True?" —
+  yes: the author, 2026-11-02.
 - "We're assuming a principle changes meaning only on recorded evidence or your stated decision.
-  True?" — *(not yet answered)*
+  True?" — yes: the author took that wording for `CONTRIBUTING.md`, 2026-11-02.
 
 ## Scope decisions
 
@@ -209,7 +213,7 @@ testing was Claude-only and asks others to push back.
 
 ## Not yet answered
 
-- Which runner besides Claude Code the doctor should know — nobody has tried one but Codex, once.
+- Which runner besides Claude Code the doctor should know — nobody has tried one but Codex, in two reviews.
 - Whether `se` belongs in this repository or beside it, once a second guide uses it.
 
 ## Deferred
