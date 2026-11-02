@@ -292,11 +292,36 @@ class PlantedInHistory(Repo):
 
 
 class NoOtherRuntime(unittest.TestCase):
+    """REQ2/CHK-4: contributing needs Python and git. These allow what is used, so any other runtime is refused,
+    not only Node, the one that used to be here (Codex, 2026-11-02: ruby passed the first version of this)."""
+    SCRIPT = re.compile(r"""(?:set -e|cd "|py=\$\(command -v python3|"\$py" )""")
+    ACTION = re.compile(r"actions/(?:checkout|setup-python)@")
+    RUN = re.compile(r"(?:sh tools/check\.sh|\./se --version|\./se\.ps1 --version)$")
+
+    def script_lines_outside(self, text):
+        lines = [l.strip() for l in text.splitlines() if l.strip() and not l.lstrip().startswith("#")]
+        return [l for l in lines if not self.SCRIPT.match(l)]
+
+    def workflow_lines_outside(self, text):
+        out = []
+        for line in text.splitlines():
+            step = re.match(r"\s*(?:- )?(uses|run):\s*(.*)", line)
+            if step and not (self.ACTION if step.group(1) == "uses" else self.RUN).match(step.group(2)):
+                out.append(line.strip())
+        return out
+
+    def source(self, name):
+        with open(os.path.join(GUIDE, name), encoding="utf-8") as fh:
+            return fh.read()
+
     def test_the_check_names_no_runtime_but_python(self):
-        # REQ2/CHK-4: contributing needs Python and git; a Node step would come back here first.
-        for name in ("tools/check.sh", ".github/workflows/check.yml"):
-            with open(os.path.join(GUIDE, name), encoding="utf-8") as fh:
-                self.assertNotRegex(fh.read(), r"(?i)\bnode\b|setup-node|\bnpm\b", name)
+        self.assertEqual(self.script_lines_outside(self.source("tools/check.sh")), [])
+        self.assertEqual(self.workflow_lines_outside(self.source(".github/workflows/check.yml")), [])
+
+    def test_another_runtime_would_be_refused(self):
+        self.assertEqual(self.script_lines_outside("#!/bin/sh\nruby tools/check.rb\n"), ["ruby tools/check.rb"])
+        self.assertEqual(self.workflow_lines_outside("      - uses: actions/setup-node@v4\n        run: npm test\n"),
+                         ["- uses: actions/setup-node@v4", "run: npm test"])
 
 
 if __name__ == "__main__":
