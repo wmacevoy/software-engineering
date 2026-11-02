@@ -33,7 +33,7 @@ find the guide using one of these loosely, that is a bug.
 | **Digest** | A content hash that names an exact image (per platform) rather than a tag that can move. |
 | **Essential complexity**  | Complexity in the problem; it survives every rewrite.                                              |
 | **Essential K1** | A known unknown that no amount of looking settles, because the answer is a judgment someone makes on meeting the thing ([SE1/U10](guide/02-unknowing.md#u10)). |
-| **Expand / contract** | Changing a shape in steps: add the new beside the old, move every reader, then remove the old. |
+| **Expand / contract** | Changing an interface in steps: add the new beside the old, move every reader, then remove the old. |
 | **Feature flag** | A setting that turns a feature on or off without a new deploy. |
 | **Fence**               | A checkpoint that proves something: a demo, a check that exits nonzero, a deploy. A meeting is not one. |
 | **Health check** | An endpoint that reports whether the app is working; split into *liveness* and *readiness* (below). A deploy is *health-gated* when it waits for it. |
@@ -52,6 +52,7 @@ find the guide using one of these loosely, that is a bug.
 | **Local / sharded / global state** | Created and destroyed by one test / partitioned so each test owns a slice / shared by everyone. |
 | **Manifest / lock**     | What you are compatible with / what you actually resolved and ran.                                   |
 | **Medicine** | A practice that lessens the cost of a kind of not-knowing. Nothing here cures one: a K3 factory and the unknown unknown are lived with, not fixed ([SE1/U7](guide/02-unknowing.md#u7)). |
+| **Mission** | What this project is for, in one sentence only the client can change; almost always *judged* ([SE1/D9](guide/05-design.md#d9), [SE1/U10](guide/02-unknowing.md#u10)). |
 | **Mock** | A stand-in for a real component, used so its consumer can be built and tested first. A good one misbehaves on request. (Also called a fake or stand-in; this guide says mock.) |
 | **Monotonic clock**     | A clock that only moves forward and does not jump when the wall clock is corrected.                  |
 | **Observable**          | Checkable from outside, without reading the source.                                                  |
@@ -71,6 +72,7 @@ find the guide using one of these loosely, that is a bug.
 | **Serve / rule**        | From embedded testing: code that answers questions from values (serve), versus the few lines that command the world — I/O, clocks, globals (rule). See SE1/D7. |
 | **Signature (digital)** | A value computed from a message with a private key; anyone with the public key can check who sent it and that it was not altered. It proves origin, not truth. |
 | **Small waterfall**     | Careful, front-loaded work — exact requirement, design on paper, independent review, done once — run around a one-way door inside an otherwise iterative process. |
+| **Shape** | The few rules that let someone guess the next part from the last, held by one named person ([SE1/D9](guide/05-design.md#d9)). For what one part promises another, see **contract**. |
 | **Spike**               | A time-boxed investigation of one question, whose code is thrown away. A descent on purpose.        |
 | **Symptom alert** | An alert on what users experience — errors, latency, stale data — rather than on an internal cause. |
 | **Technical debt**      | Carry taken on knowingly, to be repaid.                                                              |

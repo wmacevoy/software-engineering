@@ -305,7 +305,7 @@ class TestDoctorRed(Fixture):
         self.assertEqual(finding(f, "queue").state, se.NONE)
 
     def test_working_set_in_another_guides_shape(self):
-        # REQ1/SE-1: a docs/ in another guide's shape is named, not reported as if nothing were there (FINDINGS 2026-10-28)
+        # REQ1/SE-1: a docs/ in another guide's layout is named, not reported as if nothing were there (FINDINGS 2026-10-28)
         f = self.doctor(self.changed(**{"docs/REQUIREMENTS_v2.md": None, "docs/DESIGN_v1.md": None,
                                         "docs/QUEUE.md": None, "docs/FINDINGS.md": None, "tests/test_ui.py": "# nothing\n",
                                         "docs/QUESTION_v1.md": "# Question\n", "docs/PLAN_v1.md": "# Plan\n",
@@ -314,7 +314,7 @@ class TestDoctorRed(Fixture):
         row = finding(f, "working set")
         self.assertEqual(row.state, se.NONE)
         self.assertIn("QUESTION_v1", row.text)
-        self.assertIn("not SE1's shape", row.text)
+        self.assertIn("not SE1's layout", row.text)
 
     def test_bare_citation(self):
         f = self.doctor(self.changed(**{"tests/test_ui.py": "# UI-1 covered, REQ2/UI-2 covered\n"}))

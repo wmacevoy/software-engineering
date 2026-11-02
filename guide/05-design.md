@@ -238,7 +238,7 @@ requirement. Anything you maintain that is not on that page should be able to sa
 
 ### <a id="d9"></a>D9. Conceptual integrity: one coherent design beats every good idea
 
-*Since v1.0 (2026-10-20).*
+*Changed in v1.4 (unreleased).*
 
 People understand systems **by analogy**: learn how one part works, then guess how the next part
 works. Coherence is what makes the guess right. Every place the guess fails is something to memorize
@@ -269,6 +269,14 @@ produces it and no test checks it. One person holds the whole shape, and most of
 no — especially to good ideas ([SE1/H3](09-people.md#h3)). This is also why agents author and humans
 own the structure: each agent session sees a part, and ten locally reasonable designs compose into
 something nobody can hold ([SE1/A8](10-agents.md#a8)).
+
+**Coherent around what? The mission.** One sentence at the top of the requirements says what this
+project is for, and only the client can change it. Beside it goes the shape: the few rules that let
+someone guess the next part from the last, with who holds them, what they say no to, and the
+exceptions. Unwritten, the shape leaves with the person holding it, and no summary can carry what was
+never written. A good idea that serves the mission and breaks the shape gets a no, and so does one
+that fits the shape and serves nothing. A mission rarely has a test that can pass it
+([SE1/U10](02-unknowing.md#u10)).
 
 > **Ask:** "Is that the same thing we called something else on Tuesday?"
 

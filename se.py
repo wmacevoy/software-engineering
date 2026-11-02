@@ -354,13 +354,13 @@ def check_working_set(repo):
     req, version, ids = latest_requirements(repo)
     if not req:
         docs = Path(repo) / "docs"
-        # Name what is there when it is not SE1's shape: a project that follows another guide (QUESTION_vN,
-        # LEDGER, ...) was told "no REQUIREMENTS" as if docs/ were empty. se checks SE1's shape only.
+        # Name what is there when it is not SE1's layout: a project that follows another guide (QUESTION_vN,
+        # LEDGER, ...) was told "no REQUIREMENTS" as if docs/ were empty. se checks SE1's layout only.
         others = sorted(p.stem for p in docs.glob("*.md")) if docs.is_dir() else []
         others = [n for n in others if n not in ("QUEUE", "FINDINGS") and not re.match(r"(REQUIREMENTS|DESIGN)_v\d+$", n)]
         if others:
             shown = ", ".join(others[:5]) + (f" and {len(others) - 5} more" if len(others) > 5 else "")
-            return Finding("working set", "SE1/W10", NONE, f"no docs/REQUIREMENTS_vN.md; docs/ holds {shown}, which is not SE1's shape",
+            return Finding("working set", "SE1/W10", NONE, f"no docs/REQUIREMENTS_vN.md; docs/ holds {shown}, which is not SE1's layout",
                            "if the project follows another guide, that guide's checker says whether its set is complete; "
                            "se checks SE1's (REQUIREMENTS_vN, DESIGN_vN, QUEUE, FINDINGS) only")
         return Finding("working set", "SE1/W10", NONE, "no docs/REQUIREMENTS_vN.md",

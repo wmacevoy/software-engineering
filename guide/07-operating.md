@@ -227,9 +227,9 @@ steps ([SE1/O7](#o7)).
 
 ### <a id="o7"></a>O7. Change data and interfaces in steps that can each be undone
 
-*Since v1.0 (2026-10-20).*
+*Since v1.4 (unreleased).*
 
-The outages that hurt most come from changing a shape that something else depends on — a schema, an
+The outages that hurt most come from changing an interface that something else depends on — a schema, an
 API, a message format — in one move. During any deploy, old and new versions run at the same time;
 for a fleet of devices or a set of browsers with cached pages, that mixed state is the normal
 condition, not a moment. So:
@@ -239,7 +239,7 @@ condition, not a moment. So:
   later remove it. Every step can be rolled back on its own.
 - **Code that reads data must tolerate what it did not write**: ignore unknown fields, give missing
   ones a default, and never change what an existing field *means* ([SE1/D11](05-design.md#d11)).
-- **Deprecate on a schedule.** Announce, measure who still uses the old shape, and remove it only
+- **Deprecate on a schedule.** Announce, measure who still uses the old one, and remove it only
   when that number is zero or the date agreed has passed.
 - **Size migrations against the data.** A migration that scans a table of hundreds of millions of
   rows may not fit in any window you have ([SE1/D12](05-design.md#d12)); measure it on a copy first.

@@ -45,9 +45,17 @@ yours.
   a trial has a negative control (GAPS). CHECKLISTS, AGENTS.md, and the requirements template follow.
 - [SE1/U2](guide/02-unknowing.md#u2) K1 to K0 now says some K1 will not convert.
 - [SE1/R2](guide/04-requirements.md#r2) Where what matters is a judgment, write down who judges it.
+- [SE1/D9](guide/05-design.md#d9) Coherence answers to a written mission, and the shape is written
+  beside it with its holder, what it says no to, and its exceptions. The author's decision, untried
+  ([GAPS](GAPS.md#decided-without-a-trial-mission-and-shape-2026-11-02)). [SE1/U10](guide/02-unknowing.md#u10)
+  says a real project's mission is almost always essential K1. CHECKLISTS, ADOPT, AGENTS.md, and the
+  requirements template follow.
 
 ### Also changed
 
+- "Shape" now has one defined meaning, D9's. What one part promises another is its contract or its
+  interface: [SE1/H4](guide/09-people.md#h4), [SE1/O7](guide/07-operating.md#o7),
+  [SE1/W5](guide/08-work.md#w5), GLOSSARY, CHECKLISTS, and `se`, which says a repository's *layout*.
 - `se --doctor`'s trace row reports *(judged)* requirements apart, each with its latest recorded verdict:
   a test naming one is not coverage, and no test naming one is not a gap (queue #11). A verdict is a
   line with the versioned ID, the word *verdict*, and a date, outside a test file.

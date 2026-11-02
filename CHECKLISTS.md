@@ -38,6 +38,8 @@ work moves from one kind of step to the next.
 - [ ] Every input has an answer for absent, late, wrong, and lying.
       ([SE1/R6](guide/04-requirements.md#r6))
 - [ ] A glossary exists. ([SE1/D9](guide/05-design.md#d9))
+- [ ] The mission and the shape are written, the mission has a judge, and the shape has a holder.
+      ([SE1/D9](guide/05-design.md#d9), [SE1/U10](guide/02-unknowing.md#u10))
 - [ ] Every "must" is named by a test, or by a `QUEUE` item to write one.
       ([SE1/R11](guide/04-requirements.md#r11))
 
@@ -60,7 +62,7 @@ work moves from one kind of step to the next.
 **Before splitting work between people (or agents)**
 
 - [ ] The seam is named.
-- [ ] Its shape is written: schema, signature, error codes, and what happens when the other side is
+- [ ] Its contract is written: schema, signature, error codes, and what happens when the other side is
       absent, late, wrong, or lying.
 - [ ] A mock exists that misbehaves on request.
 - [ ] A test exists that fails today.
@@ -186,7 +188,7 @@ wrong (K3) ([SE1/H9](guide/09-people.md#h9), [SE1/H12](guide/09-people.md#h12), 
 **Before changing a schema or an interface** ([SE1/O7](guide/07-operating.md#o7),
 [SE1/D11](guide/05-design.md#d11))
 
-- [ ] The change is expand-then-contract: old and new shapes coexist until every reader has moved.
+- [ ] The change is expand-then-contract: old and new versions coexist until every reader has moved.
 - [ ] Readers ignore unknown fields and default missing ones; no existing field changes meaning.
 - [ ] The migration and its rollback have been run, timed, on production-sized data.
 

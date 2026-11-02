@@ -94,7 +94,7 @@ twice in an afternoon.**
 
 ### <a id="w5"></a>W5. Flatten the schedule: a dependency is an unwritten interface
 
-*Since v1.0 (2026-10-20).*
+*Since v1.4 (unreleased).*
 
 Drywall goes up after plumbing because the pipe occupies the space the wall will cover. Every arrow
 in a physical schedule is, at bottom, a fact about mass. Software is massless: you can write code
@@ -104,7 +104,7 @@ the world. It is a fact about the design: **B does not know what A will look lik
 
 | The dependency says          | The artifact that dissolves it                    |
 | ---------------------------- | ------------------------------------------------- |
-| "B needs A's shape"          | an interface — signature, schema, error codes     |
+| "B needs to know A's form"   | an interface — signature, schema, error codes     |
 | "B needs A to answer"        | a mock that answers, and misbehaves on request    |
 | "B isn't done until A works" | a test that fails today and passes when A arrives |
 

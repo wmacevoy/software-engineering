@@ -584,3 +584,17 @@ a rule is worst placed to see it failing, stays open as #5 of the
 [tribes report](#field-report-agent-tribes-and-checks-2026-10-28); its practical half is the line in
 W11. **Open:** whether findings with no *Changed* line are relearned more often. Nothing here has
 measured it.
+
+## Decided without a trial: mission and shape, 2026-11-02
+
+The author asked where the shape of [SE1/D9](guide/05-design.md#d9) is written so that it moves with
+the project. It was nowhere: D9 had one person holding it, and "foundations of any software project",
+the author's statement of what SE1 is for, appeared in no file. The author chose the word *mission*
+and said: "mission on a real project is almost always an essential k1." Decided as D9's paragraph on
+the mission and a bullet in [SE1/U10](guide/02-unknowing.md#u10). Drafted with Claude Opus 5.5, which
+proposed the sections' place at the top of the requirements, so that they cannot be quietly edited.
+
+**Open:** whether a written mission and shape change what happens. Nothing has measured a project with
+them against one without, or whether they survive a handoff better than the rest of a document. SE1's
+own REQ3/MISSION-1 is judged by its author, and most field reports so far come from the author's projects,
+so a project by someone else in an unfamiliar domain would test it harder.

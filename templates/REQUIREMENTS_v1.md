@@ -17,6 +17,27 @@ Ten to thirty terms, one line each. A new noun is a decision
 | ------ | ------- |
 | _term_ | _one line_ |
 
+## Mission
+
+One sentence: what this project is for. Only the client can change it. It is almost always passed by
+a person's judgment and not by a test, so name the judge and the occasion
+([SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/08-work.md#w11)).
+
+- **MISSION-1** *(since v1)* *(judged)* _One sentence._ Judge: _who_, on _what_, at _when_. Veto: _what
+  would stop the work_.
+
+## Shape
+
+The few rules that let someone guess the next part from the last
+([SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/05-design.md#d9)). Mechanisms
+go in the design, citing these.
+
+Held by: _one named person_
+
+- **SHAPE-1** *(since v1)* *(judged)* _A rule that holds across the parts._ Judge: _the holder_, at _when_.
+- **Says no to:** _good ideas this refuses, and why_
+- **Exceptions:** _each with its reason_
+
 ## The pain
 
 What happens today when it goes wrong, who gets the call, and what they say.

@@ -11,7 +11,7 @@ partner and a grader, the ideas still apply at smaller size:
 | ----------------------- | --------------------------------------------------------------------------------- |
 | the client              | the assignment's author — ask them the questions in SE1/R3, by email or office hours |
 | roles ([SE1/H3](#h3))       | split them two ways, and swap at the halfway point                                |
-| the contract ([SE1/H4](#h4)) | the function signatures and data shapes you agree on before splitting the work  |
+| the contract ([SE1/H4](#h4)) | the function signatures and data formats you agree on before splitting the work  |
 | the demo ([SE1/H8](#h8))    | showing a running build to someone outside the pair before the due date           |
 | bad news ([SE1/H9](#h9))    | telling your partner the day you are stuck, not the night before it is due        |
 
@@ -87,14 +87,14 @@ living in one head. That is not the cost of rotation; it is the point.
 
 ### <a id="h4"></a>H4. The interface between two people is a contract
 
-*Changed in v1.2 (2026-10-28).*
+*Changed in v1.2 (2026-10-28); text since v1.4 (unreleased).*
 
 The interface between two developers is the same object as the interface between two modules
 ([SE1/D10](05-design.md#d10)). "I'll build the collector, you build the driver page" names two
 components and no seam, and schedules an argument for week nine. Before splitting work:
 
 1. **Name the seam** — the call between the pieces, not the pieces.
-2. **Write its shape** — signature, schema, error codes, and what happens when the other side is
+2. **Write its contract** — signature, schema, error codes, and what happens when the other side is
    absent, late, wrong, or lying. Check it in.
 3. **Write the mock that misbehaves on request** — accepts, refuses, hangs.
 4. **Write the test that fails today** and passes when the real thing arrives.

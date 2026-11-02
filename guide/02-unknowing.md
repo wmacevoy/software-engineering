@@ -256,6 +256,10 @@ whether anyone comes back" names what it cannot see ([SE1/U4](#u4)).
 - **A proxy may veto; only the judge may pass.** A failed proxy stops the work. A perfect one earns
   a look. The verdict belongs to a version, so a later change makes it stale
   ([SE1/W11](08-work.md#w11)).
+- **A real project's mission is almost always one.** "Drivers go straight to a lot with space" has no
+  number that finishes it. Arrivals counted and minutes saved may veto it, and neither says it is met.
+  So the mission is a *(judged)* requirement, and its judge is the client
+  ([SE1/D9](05-design.md#d9)). This is the author's judgment, untried.
 
 What has been seen, so far, is nearby and not this. A check of what survived a compaction went 4/4
 on planted gaps, then passed 28 of 29 real compactions, in many of which, by the author's account,
