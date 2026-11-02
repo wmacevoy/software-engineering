@@ -713,7 +713,7 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
         fragile = True
         reasons.append("a local terminal with no tmux or screen: a closed lid or a crash likely ends this session (inferred from the terminal, not from the runner)")
     else:
-        reasons.append("under a multiplexer: the session survives a dropped connection or a closed window")
+        reasons.append("under a multiplexer: terminal processes survive a dropped connection or a closed window; what the runner itself keeps is not inspected")
     src, pct, prevented = power()
     if src == "battery":
         fragile = True

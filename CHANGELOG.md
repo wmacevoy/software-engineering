@@ -56,6 +56,9 @@ yours.
 - `se --post`, on a compaction, no longer reports `0 time(s)` and `?` when the transcript has not caught
   up (FINDINGS 2026-11-02): it waits briefly, then says what it does not know. It also prints the
   mission and shape from the latest requirements.
+- `se --post` says a multiplexer keeps terminal processes, not that the session survives; what the
+  runner itself keeps is not inspected. `tools/check.py` holds README's index to the headings both ways
+  (REQ1/ID-1).
 - "Shape" now has one defined meaning, D9's. What one part promises another is its contract or its
   interface: [SE1/H4](guide/09-people.md#h4), [SE1/O7](guide/07-operating.md#o7),
   [SE1/W5](guide/08-work.md#w5), GLOSSARY, CHECKLISTS, and `se`, which says a repository's *layout*.

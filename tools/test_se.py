@@ -556,6 +556,14 @@ class TestPost(unittest.TestCase):
         self.assertEqual(verdict, "fragile")
         self.assertTrue(any("closed lid" in l for l in lines))
 
+    def test_a_multiplexer_is_not_said_to_save_the_session(self):
+        # Codex, 2026-11-02: tmux keeps terminal processes; what the runner keeps was never looked at.
+        lines, verdict = self.post({"TMUX": "1"})
+        said = "\n".join(lines)
+        self.assertIn("terminal processes survive", said)
+        self.assertIn("what the runner itself keeps is not inspected", said)
+        self.assertNotIn("the session survives a dropped", said)
+
     def test_multiplexer_on_ac_with_room_is_robust(self):
         lines, verdict = self.post({"TMUX": "1"}, power=("ac", 100, True))
         self.assertEqual(verdict, "robust")
