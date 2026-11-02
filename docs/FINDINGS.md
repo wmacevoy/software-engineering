@@ -173,6 +173,25 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
   the check now runs the citations row on this repository, so a bare ID in a fixture goes red before a
   doctor is asked. `se` still cannot check who wrote a verdict, or which version of the work it covers.
 
+## 2026-11-02 — A manual `/compact` fired the hook, and the fix said what it could know
+
+- **What happened:** the owner ran `/compact` in the session building v1.4, after the release commit. The
+  transcript records the trigger as `manual`, 277,342 tokens replaced with 11,939, at 23:34:58. `SessionStart`
+  with source `compact` ran `se --post`, and the agent's next turn opened with `YOU WERE COMPACTED just now.
+  The transcript has not recorded it yet, so its size is not known here (1 earlier on record)`, then the
+  mission and shape from the source. Each part was true: one earlier compaction was on record, and no count
+  or size was invented, where the idle compaction had printed `0 time(s)` and `? tokens`. The owner saw the
+  hooks fire.
+- **Kind:** K1 (the fix from the entry above, tried on the case it was written for).
+- **Cost:** none.
+- **Findable by:** what found it: comparing the hook's words with the transcript at a real compaction.
+- **Changed:** the README and queue #4 now say a manual `/compact` was seen. This also bears on the open
+  question about the wait, and changed nothing in `se`: the hook ran 2,206 ms, so the two-second wait ran out,
+  and it finished at 58.096, 9 ms before the boundary's timestamp of 58.105. That is the likely cause above
+  seen again, and it suggests the record cannot arrive during the wait, which then costs two seconds per
+  compaction for nothing. One run, inferred from timestamps, with no harm done, so the wait stays until
+  someone looks. The doctor still cannot tell a fired hook from a configured one.
+
 ## 2026-11-02 — Verdicts on the mission and the shape
 
 Given by their judge on `REQUIREMENTS_v3` as sent, and recorded here by an agent (SE1/U10).

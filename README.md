@@ -303,8 +303,8 @@ any rule.
 - **What has been seen to fail.** The checker, on six planted breakages; `se`, on a fixture per
   check; CI on three platforms and two Pythons. A test never seen red proves nothing
   ([SE1/T3](guide/06-testing.md#t3)), so these were.
-- **What has not.** One hook has been seen to fire on a real compaction, an idle one, on 2026-11-02 in
-  this repository ([FINDINGS](docs/FINDINGS.md)); a manual `/compact` has not, and every other hook is
+- **What has not.** One hook has been seen to fire on real compactions, an idle one and a manual
+  `/compact`, on 2026-11-02 in this repository ([FINDINGS](docs/FINDINGS.md)); every other hook is
   still "configured, not seen to fire", as the doctor says. Nothing has been tried
   with an agent other than Claude except two reviews by OpenAI Codex, the second finding 4 of 5
   planted defects ([the method](archive/reviews/REVIEW-METHOD-other-family.md)). U8 and U9
