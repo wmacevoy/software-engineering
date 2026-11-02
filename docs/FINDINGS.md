@@ -151,3 +151,25 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
   ever helps is unknown until the next real compaction. It also prints the mission and shape from the
   source (SE1/D9). The README says what was seen. Open: a manual `/compact` is still unobserved, and the
   doctor cannot tell a fired hook from a configured one.
+
+## 2026-11-02 — Codex found 4 of 5 planted defects, then real ones the check had passed
+
+- **What happened:** the second review by another family, on a copy with five defects planted. It found
+  4 of 5, and missed the weakened phrase test in `ADOPT.md`, a file it did not read
+  ([the method](../archive/reviews/REVIEW-METHOD-other-family.md)). With the plants filtered, it reproduced
+  a real failure: `REQ1/MISSION-1 verdict rejected 2020-01-01` passed the trace row for a requirement that
+  began in v3. It also showed the README index check letting a contradictory entry through, and a test named
+  "no runtime but Python" that refused only Node. Its report also noted the doctor's citations row red on
+  a test fixture written the same day: the check had passed, so the drafter reported the row without
+  rerunning the doctor.
+- **Kind:** K3: a green check read as covering what it did not look at, each time. The row said "passed
+  by a person" for a line no person had to give.
+- **Cost:** small: about three minutes of the reviewer's time, then the fixes.
+- **Findable by:** executing the rule with a value it should refuse, which is what the reviewer did. It
+  would not have been found by more cases of what the rule allows.
+- **Changed:** a verdict needs an outcome, the requirement's current version, and `by` a judge
+  (REQ1/SE-1); the check holds README's index to the headings both ways (REQ1/ID-1) and allows only the
+  runtimes contributing uses (REQ2/CHK-4); `se --post` no longer says a multiplexer saves the session; and
+  the check now runs the citations row on this repository, so a bare ID in a fixture goes red before a
+  doctor is asked. `se` still cannot check who wrote a verdict, or which version of the work it covers.
+

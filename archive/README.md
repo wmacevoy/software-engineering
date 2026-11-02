@@ -54,3 +54,4 @@ what was opened, and what was only read.
 | [REVIEW-v1.2-candidate.md](reviews/REVIEW-v1.2-candidate.md) | the v1.2 drafter's trace: decisions, commits, the three readers' results, the release |
 | [REVIEW-v1.2.1-codex.md](reviews/REVIEW-v1.2.1-codex.md) | the first review by an agent of another family (OpenAI Codex, 2026-10-28, three minutes): AGENTS.md against its own rules, and how it works in that runner |
 | [REVIEW-METHOD-other-family.md](reviews/REVIEW-METHOD-other-family.md) | how that review was set up and read, with the brief verbatim, so the next can be run the same way; the planted-defect run still to make |
+| [REVIEW-v1.4-codex.md](reviews/REVIEW-v1.4-codex.md) | the second review by OpenAI Codex, 2026-11-02, of a copy with five planted defects; kept as written, so **its findings 1 to 4 describe plants, not the guide**. The score, 4 of 5 found, is in the method |

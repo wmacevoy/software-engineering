@@ -93,7 +93,7 @@ whether the reviewer reports that as it is counts as a finding about the reviewe
 4. **Carry findings over by hand**, one concern per commit, as a pull request would be; the review
    file itself goes into `archive/reviews/`.
 
-## The second run, not yet made: planted defects
+## The second run, planted defects: made 2026-11-02, 4 of 5 found
 
 Before the reviewer runs, plant four or five defects the checker cannot see, of different kinds,
 and keep the key outside the clone: a number in GAPS that contradicts its archive extraction; an
@@ -104,3 +104,32 @@ set is the reviewer's sensitivity, measured before its real findings are weighed
 planted ones out and what remains is the review. This is the compaction project's planted-claims
 method ([SE1/T3](../../guide/06-testing.md#t3)) turned on a reviewer. The cost is that the reviewer
 reads a slightly wrong guide; the author chose the honest run first.
+
+**What happened.** OpenAI Codex (codex-cli 0.166.0), about three minutes, 20 commands, 88,407 tokens,
+on a clone whose history was rewritten so the plants would not show in a diff. The review is
+[REVIEW-v1.4-codex.md](REVIEW-v1.4-codex.md), kept as written. The fourth plant changed before the run,
+because a hook had by then really fired: the copy claimed a manual `/compact` had been seen too.
+
+| Plant | Found | Where |
+| ----- | ----- | ----- |
+| `GAPS.md`: 13 of 20, where the extraction says 19 | yes | its finding 2 |
+| `GAPS.md`: "across three compactions", against A11 | yes | its finding 1 |
+| `archive/royce-1970.md`: the warning "two pages later", against W2 | yes | its finding 4 |
+| `README.md`: a manual `/compact` seen, against FINDINGS and the queue | yes | its finding 3 |
+| `ADOPT.md`: the phrase test weakened | no; the sentence never appears in its log | none |
+
+**How far to trust 4 of 5.** Five plants is a small set. The brief said the copy might differ from the
+release, so a reader not warned might find fewer. The brief named `GAPS.md`, `README.md`, `archive/`, and
+`guide/`, and not `ADOPT.md`, so the miss says more about the brief than about the reader. Next time, name
+every file a plant is in as part of the scope, or none.
+
+**What the setup needed.** Codex's sandbox limited writes and not reads, so the real repository beside
+the clone, and the drafter's transcripts, could have shown it the plants. The runner hid them in a private
+mount namespace, and ran a probe through the real binary first: hidden, no network, no writes outside.
+The probe passed, with Codex warning that bubblewrap was not installed; which sandbox it used instead was
+not looked into. No command in its log reached outside the clone. The builder and runner stay out of this
+repository.
+
+**What survived.** Filtering the four, one bug reproduced and two gaps confirmed were fixed, each in its own
+commit; a mistake of the drafter's that the doctor saw and the check did not was fixed too, and none of
+its findings was shown false. What is left is queue #13.

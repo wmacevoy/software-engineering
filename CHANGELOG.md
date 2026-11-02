@@ -59,6 +59,8 @@ yours.
 - `se --post` says a multiplexer keeps terminal processes, not that the session survives; what the
   runner itself keeps is not inspected. `tools/check.py` holds README's index to the headings both ways
   (REQ1/ID-1).
+- `archive/reviews/REVIEW-v1.4-codex.md`: a second review by OpenAI Codex, on a copy with five planted
+  defects, of which it found four; the method records the score, and queue #13 what is left.
 - "Shape" now has one defined meaning, D9's. What one part promises another is its contract or its
   interface: [SE1/H4](guide/09-people.md#h4), [SE1/O7](guide/07-operating.md#o7),
   [SE1/W5](guide/08-work.md#w5), GLOSSARY, CHECKLISTS, and `se`, which says a repository's *layout*.
