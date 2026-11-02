@@ -15,7 +15,7 @@ factory ([SE1/U7](guide/02-unknowing.md#u7)), so every change is visible in thre
 
 `tools/check.py` keeps the three in step, and compares every principle with the last release tag:
 one whose text changed must have a marker for a later release, or — for wording only — be named
-under that release's *Also changed*. Work toward a release goes under `## v1.4 — unreleased`; give it
+under that release's *Also changed*. Work toward a release goes under `## v1.5 — unreleased`; give it
 a date when you tag it. Within SE1, a minor release may add principles, reword them, or extend what
 they ask; it never moves an ID ([principle index](README.md#principle-index)). A patch release
 (`v1.2.1`) changes no principle, no AGENTS.md, and no template: copies keep the minor's label, and
@@ -24,7 +24,16 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.4 — unreleased
+## v1.4 — 2026-11-02
+
+[Full diff from v1.3.2](https://github.com/wmacevoy/software-engineering/compare/v1.3.2...v1.4) ·
+102 principles
+
+**For copies:** re-copy AGENTS.md (it adds *(judged)* requirements and the form of a verdict, naming what
+a change must not break, and asking before changing the mission or the shape), `se.py`, and the templates,
+which now link to v1.4; the requirements template adds Mission and Shape, and *(judged)*. Add a Mission
+and a Shape at your next requirements version. A verdict is one line: the versioned ID, `verdict: pass` or
+`verdict: fail`, `by` the judge, and the date. Contributing to the guide needs Python and git, not Node.
 
 ### New
 

@@ -94,7 +94,7 @@ twice in an afternoon.**
 
 ### <a id="w5"></a>W5. Flatten the schedule: a dependency is an unwritten interface
 
-*Since v1.4 (unreleased).*
+*Since v1.4 (2026-11-02).*
 
 Drywall goes up after plumbing because the pipe occupies the space the wall will cover. Every arrow
 in a physical schedule is, at bottom, a fact about mass. Software is massless: you can write code
@@ -254,7 +254,7 @@ Starting skeletons for the four, and for the repository guide, are listed in the
 
 ### <a id="w11"></a>W11. Done means all of it, one concern per change, reviewed by someone else
 
-*Changed in v1.4 (unreleased).*
+*Changed in v1.4 (2026-11-02).*
 
 **A definition of done is a checklist a change fully passes — not most of it.** A typical one:
 
@@ -327,7 +327,7 @@ A reconstruction that marks nothing as inferred is claiming more than it knows.
 
 ### <a id="w13"></a>W13. A finding closes with what it changed, or why it changed nothing
 
-*New in v1.4 (unreleased).*
+*New in v1.4 (2026-11-02).*
 
 `FINDINGS` is the only document reality writes ([SE1/W10](#w10)), and the retro's fear is "we already
 learned this once" ([SE1/H4](09-people.md#h4)). The fear is retired only when the finding changes

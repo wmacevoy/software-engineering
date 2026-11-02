@@ -87,7 +87,7 @@ living in one head. That is not the cost of rotation; it is the point.
 
 ### <a id="h4"></a>H4. The interface between two people is a contract
 
-*Changed in v1.2 (2026-10-28); text since v1.4 (unreleased).*
+*Changed in v1.2 (2026-10-28); text since v1.4 (2026-11-02).*
 
 The interface between two developers is the same object as the interface between two modules
 ([SE1/D10](05-design.md#d10)). "I'll build the collector, you build the driver page" names two

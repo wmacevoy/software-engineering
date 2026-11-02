@@ -307,9 +307,9 @@ any rule.
   this repository ([FINDINGS](docs/FINDINGS.md)); a manual `/compact` has not, and every other hook is
   still "configured, not seen to fire", as the doctor says. Nothing has been tried
   with an agent other than Claude except two reviews by OpenAI Codex, the second finding 4 of 5
-  planted defects ([the method](archive/reviews/REVIEW-METHOD-other-family.md)). The two newest principles, U8 and U9,
+  planted defects ([the method](archive/reviews/REVIEW-METHOD-other-family.md)). U8 and U9
   rest on one author's observation and one project's trials, and say what would show them wrong.
-  U10 and W13, unreleased, rest on the author's decision, with no trial of their own yet.
+  U10 and W13 rest on the author's decision, with no trial of their own yet.
 - **What would show it wrong.** Each GAPS entry states its falsifier. The ones that matter most: a
   transition instrument with a ceiling that shows no loss across a compaction; a check that runs
   without the agent choosing to and still leaves the work unchanged; an agent of another family

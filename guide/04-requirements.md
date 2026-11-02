@@ -38,7 +38,7 @@ may be about trusting a number, not about a map.
 
 ### <a id="r2"></a>R2. Specific and wrong beats vague and safe
 
-*Changed in v1.4 (unreleased).*
+*Changed in v1.4 (2026-11-02).*
 
 Requirements do not exist, even in principle, until someone writes a candidate down. The client
 cannot tell you what should happen when a sensor goes silent, because they have never thought about
@@ -272,7 +272,7 @@ week nine.
 
 ### <a id="r10"></a>R10. Version requirements; a change in meaning is a new version
 
-*Changed in v1.4 (unreleased).*
+*Changed in v1.4 (2026-11-02).*
 
 A superseded requirement is not deleted knowledge. Editing in place destroys the before-picture, and
 the diff between `v1` and `v2` is the most useful conversation you will ever have with the client.

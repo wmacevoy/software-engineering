@@ -227,7 +227,7 @@ steps ([SE1/O7](#o7)).
 
 ### <a id="o7"></a>O7. Change data and interfaces in steps that can each be undone
 
-*Since v1.4 (unreleased).*
+*Since v1.4 (2026-11-02).*
 
 The outages that hurt most come from changing an interface that something else depends on — a schema, an
 API, a message format — in one move. During any deploy, old and new versions run at the same time;

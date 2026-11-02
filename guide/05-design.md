@@ -238,7 +238,7 @@ requirement. Anything you maintain that is not on that page should be able to sa
 
 ### <a id="d9"></a>D9. Conceptual integrity: one coherent design beats every good idea
 
-*Changed in v1.4 (unreleased).*
+*Changed in v1.4 (2026-11-02).*
 
 People understand systems **by analogy**: learn how one part works, then guess how the next part
 works. Coherence is what makes the guess right. Every place the guess fails is something to memorize

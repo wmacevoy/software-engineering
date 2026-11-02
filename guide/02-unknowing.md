@@ -27,7 +27,7 @@ K4 is not on that ladder at all. It is a decision, and usually a good one.
 
 ### <a id="u2"></a>U2. Building is discovering, in the right order and at the right price, which category each part of the problem belongs to
 
-*Changed in v1.4 (unreleased).*
+*Changed in v1.4 (2026-11-02).*
 
 Every practice in this guide is a way of moving something **toward K0** — from a more expensive
 category to a cheaper one — before it charges full price:
@@ -234,7 +234,7 @@ the same three medicines:
 
 ### <a id="u10"></a>U10. Some K1 is essential: a proxy taken for K0 is K3
 
-*New in v1.4 (unreleased).*
+*New in v1.4 (2026-11-02).*
 
 Most K1 ends when someone spends the time ([SE1/U2](#u2)). Some does not. "Is this layout usable
 and appealing?" is not a fact waiting to be looked up; it is a judgment someone makes on meeting the
