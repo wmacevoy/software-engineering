@@ -82,7 +82,7 @@ repository, make it load at every start, and start the working set from the temp
 | `templates/`                       | starting points: [REQUIREMENTS](templates/REQUIREMENTS_v1.md), [DESIGN](templates/DESIGN_v1.md), [QUEUE](templates/QUEUE.md), [FINDINGS](templates/FINDINGS.md), [CONTRIBUTING](templates/CONTRIBUTING.md) |
 | [GAPS.md](GAPS.md)                 | where the guide fell short in the field, and how each gap was closed |
 | [archive/](archive/README.md)      | the sources behind the claims: URL, date, checksum, and the passage relied on |
-| `docs/`                            | this repository's own working set: [REQUIREMENTS_v1](docs/REQUIREMENTS_v1.md), [DESIGN_v1](docs/DESIGN_v1.md), the [QUEUE](docs/QUEUE.md), and [FINDINGS](docs/FINDINGS.md) |
+| `docs/`                            | this repository's own working set: [REQUIREMENTS_v2](docs/REQUIREMENTS_v2.md), [DESIGN_v2](docs/DESIGN_v2.md), the [QUEUE](docs/QUEUE.md), and [FINDINGS](docs/FINDINGS.md) |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | this repository's guide: how to run, check, and reset it, the release procedure, and where things are |
 
 ## The running example
@@ -276,11 +276,11 @@ If you remember nothing else, each of these can be asked out loud, and each has 
 
 ## Changing this guide
 
-The guide follows its own advice. Run `node tools/check.js` before committing: it fails if a link or
+The guide follows its own advice. Run `python3 tools/check.py` before committing: it fails if a link or
 anchor is broken, a principle is cited from the wrong chapter, or this index no longer matches the
 chapter headings. `python3 -I tools/test_se.py` tests `se.py`, and `python3 se.py --self` checks
 that its embedded hash matches AGENTS.md, which the release commit pins. The marker under every
-principle is written by `node tools/since.js --write` from the release tags and checked by
+principle is written by `python3 tools/since.py --write` from the release tags and checked by
 `--check`; after a release, run `--write` again so the new tag's date lands. Reviews of the guide are
 proposals; they live in [archive/reviews/](archive/README.md#reviews), and what survives one goes
 into the principles, GAPS, and the CHANGELOG. Reword freely; never reuse an ID for a different idea.
@@ -311,7 +311,7 @@ any rule.
   transition instrument with a ceiling that shows no loss across a compaction; a check that runs
   without the agent choosing to and still leaves the work unchanged; an agent of another family
   for which these rules make the work worse.
-- **How to check it yourself.** `node tools/check.js` here; `./se --doctor` in your repository;
+- **How to check it yourself.** `python3 tools/check.py` here; `./se --doctor` in your repository;
   the archive's checksums against a fresh fetch; and the reviews in
   [archive/reviews/](archive/README.md#reviews), which say what each reader opened and what it
   only read.

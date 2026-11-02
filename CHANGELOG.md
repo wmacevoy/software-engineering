@@ -7,13 +7,13 @@ factory ([SE1/U7](guide/02-unknowing.md#u7)), so every change is visible in thre
 - **Under the principle's heading**, as *New in v1.1 (date).* or *Changed in v1.1 (date).* — the
   release that last changed its meaning, a person's claim — or, where none did, *Since v1.0 (date).*,
   git's answer: the release at which the principle's current text first appeared. When wording moved
-  later without the meaning, the line adds *text since*. `tools/since.js` writes these from the tags
+  later without the meaning, the line adds *text since*. `tools/since.py` writes these from the tags
   and `--check` verifies them, so a principle that reads as unchanged says since when, and no marker
   can drift.
 - **In every copy**: AGENTS.md and the templates link to the release they came from, so a copy that
   is behind says so.
 
-`tools/check.js` keeps the three in step, and compares every principle with the last release tag:
+`tools/check.py` keeps the three in step, and compares every principle with the last release tag:
 one whose text changed must have a marker for a later release, or — for wording only — be named
 under that release's *Also changed*. Work toward a release goes under `## v1.4 — unreleased`; give it
 a date when you tag it. Within SE1, a minor release may add principles, reword them, or extend what
@@ -39,6 +39,14 @@ yours.
   verdict but never gives one. CHECKLISTS, AGENTS.md, and the requirements template follow.
 - [SE1/U2](guide/02-unknowing.md#u2) K1 to K0 now says some K1 will not convert.
 - [SE1/R2](guide/04-requirements.md#r2) Where what matters is a judgment, write down who judges it.
+
+### Also changed
+
+- Contributing needs Python and git, not Node, the author's decision of 2026-11-02 (REQ2/CHK-4).
+  `tools/check.py`, `since.py`, and `bodies.py` replace their `.js` versions, which ran beside them on
+  every release tag and on targeted and random breakages with identical output before they were
+  removed. `tools/test_check.py` now plants a breakage per rule. Adopters are unaffected: `se` never
+  needed Node.
 
 ## v1.3.2 — 2026-10-29
 

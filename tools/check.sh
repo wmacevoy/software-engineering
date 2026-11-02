@@ -4,7 +4,8 @@
 set -e
 cd "$(dirname "$0")/.."
 py=$(command -v python3 2>/dev/null || command -v python)
-node tools/check.js
-node tools/since.js --check
+"$py" -I tools/check.py
+"$py" -I tools/since.py --check
 "$py" se.py --self
 "$py" -I tools/test_se.py
+"$py" -I tools/test_check.py
