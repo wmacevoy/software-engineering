@@ -26,6 +26,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 import urllib.request
 from collections import namedtuple
 from pathlib import Path
@@ -36,6 +37,7 @@ AGENTS_SHA256 = "feba28c50a5ceb9355f64175864cb08450690feed78d10b303205c13da068af
 GUIDE_REPO = "wmacevoy/software-engineering"
 LOW_DISK_GB = 10        # warn below (invented)
 NO_DISK_GB = 2          # fail below (invented)
+COMPACTION_NEW_SECONDS = 120  # a record this recent is the compaction that fired the hook (invented)
 STALE_DAYS = 7          # a queue row in progress this long with no movement is torn work (invented)
 CACHE_STALE_DAYS = 30   # a release check older than this is reported as stale (invented)
 
@@ -612,7 +614,7 @@ def transcript_for(repo, hook_input):
 
 
 def read_transcript(path):
-    """(compactions: list of (pre, post, trigger), context_tokens_estimate)"""
+    """(compactions: list of (pre, post, trigger, timestamp), context_tokens_estimate)"""
     comps, ctx = [], None
     try:
         with open(path, encoding="utf8", errors="replace") as f:
@@ -625,7 +627,7 @@ def read_transcript(path):
                     continue
                 meta = ev.get("compactMetadata")
                 if isinstance(meta, dict):
-                    comps.append((meta.get("preTokens"), meta.get("postTokens"), meta.get("trigger")))
+                    comps.append((meta.get("preTokens"), meta.get("postTokens"), meta.get("trigger"), ev.get("timestamp")))
                 if ev.get("type") == "assistant":
                     u = (ev.get("message") or {}).get("usage") or {}
                     if u:
@@ -633,6 +635,30 @@ def read_transcript(path):
     except OSError:
         pass
     return comps, ctx
+
+
+def is_this_compaction(comp, now):
+    """Does this transcript record belong to the compaction that fired the hook, and not an earlier one?"""
+    try:
+        when = dt.datetime.fromisoformat(str(comp[3]).replace("Z", "+00:00"))
+        return abs((now - when).total_seconds()) <= COMPACTION_NEW_SECONDS
+    except (ValueError, TypeError):
+        return False
+
+
+def mission_and_shape(repo):
+    """The mission and shape as written, for an agent whose summary may have lost them (SE1/D9)."""
+    req, _, _ = latest_requirements(repo)
+    if not req:
+        return []
+    text, found = read(req), []
+    for name in ("Mission", "Shape"):
+        m = re.search(rf"^##\s+{name}\s*$(.*?)(?=^##\s|\Z)", text, re.M | re.S)
+        for item in re.split(r"^- ", m.group(1), flags=re.M)[1:] if m else []:
+            item = re.split(r"\s+Judge:", " ".join(item.split()))[0]
+            if not re.search(r"(?:^|\s)_\S|\*\*[^*]+:\*\*\s*\*", item):  # a template's blank, or a line left to fill
+                found.append(f"  {item}")
+    return [f"the mission and shape, from {req.name}; the source, not your summary (SE1/D9):"] + found if found else []
 
 
 def torn_state(repo, today=None):
@@ -656,7 +682,7 @@ def torn_state(repo, today=None):
     return out
 
 
-def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk, transcript=None, today=None):
+def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk, transcript=None, today=None, now=None, sleep=time.sleep):
     """Lines of the self test, and the verdict ('fragile'|'robust')."""
     env = os.environ if env is None else env
     hook_input = hook_input or {}
@@ -696,13 +722,29 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
     comps, ctx = read_transcript(t) if t else ([], None)
     source = hook_input.get("source")
     own = bool(hook_input.get("transcript_path"))  # a hook names the session's transcript; by hand we guess the newest
-    if source == "compact" or (comps and source != "startup"):
-        pre, post_, trig = comps[-1] if comps else (None, None, None)
+    recorded = True
+    if source == "compact":  # the hook can run before the transcript has this compaction (FINDINGS 2026-11-02)
+        now = now or dt.datetime.now(dt.timezone.utc)
+        for _ in range(10):
+            recorded = bool(comps) and is_this_compaction(comps[-1], now)
+            if recorded or not t:
+                break
+            sleep(0.2)
+            comps, ctx = read_transcript(t)
+    if source == "compact" and not recorded:
+        fragile = True
+        lines.append(f"YOU WERE COMPACTED just now. The transcript has not recorded it yet, so its size is not known here "
+                     f"({len(comps)} earlier on record). Everything above this line is recalled, not observed; the source "
+                     "wins (SE1/A11).")
+        lines += mission_and_shape(repo)
+    elif source == "compact" or (comps and source != "startup"):
+        pre, post_, trig, _ = comps[-1] if comps else (None, None, None, None)
         fragile = True
         if own or source == "compact":
             lines.append(f"YOU WERE COMPACTED: {len(comps)} time(s) this session; the last ({trig}) replaced "
                          f"{pre or '?'} tokens with {post_ or '?'}. Everything above this line is recalled, not "
                          "observed; the source wins (SE1/A11).")
+            lines += mission_and_shape(repo)
         else:
             reasons.append(f"the newest transcript for this repository records {len(comps)} compaction(s), the last "
                            f"({trig}) replacing {pre or '?'} tokens with {post_ or '?'}; if that is your session, your "

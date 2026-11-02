@@ -449,9 +449,74 @@ class TestPost(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
-    def post(self, env, power=("none", None, False), free=100.0, hook=None, transcript=None):
-        return se.post(self.repo, hook_input=hook, env=env, power=lambda: power,
-                       disk=lambda p: (free, 500.0), transcript=transcript, today=TODAY)
+    def post(self, env, power=("none", None, False), free=100.0, hook=None, transcript=None, sleep=lambda s: None):
+        return se.post(self.repo, hook_input=hook, env=env, power=lambda: power, disk=lambda p: (free, 500.0),
+                       transcript=transcript, today=TODAY, now=self.NOW, sleep=sleep)
+
+    NOW = se.dt.datetime(2026, 11, 2, 20, 45, 44, tzinfo=se.dt.timezone.utc)
+    JUST_NOW = "2026-11-02T20:45:43.726Z"
+
+    @staticmethod
+    def record(when, pre=431381, post=12837):
+        return json.dumps({"type": "system", "timestamp": when,
+                           "compactMetadata": {"trigger": "auto", "preTokens": pre, "postTokens": post}}) + "\n"
+
+    def test_a_compaction_not_yet_in_the_transcript_is_not_counted_as_none(self):
+        # As seen on the first real compaction (FINDINGS 2026-11-02): the hook ran before the record was there.
+        t = Path(self.tmp.name, "t.jsonl")
+        t.write_text("")
+        lines, verdict = self.post({"TMUX": "1"}, hook={"source": "compact"}, transcript=t)
+        self.assertEqual(verdict, "fragile")
+        self.assertTrue(lines[0].startswith("YOU WERE COMPACTED just now"))
+        self.assertIn("has not recorded it", lines[0])
+        for wrong in ("0 time", "None", "? tokens"):
+            self.assertNotIn(wrong, lines[0])
+
+    def test_an_earlier_compaction_is_not_reported_as_this_one(self):
+        t = Path(self.tmp.name, "t.jsonl")
+        t.write_text(self.record("2026-11-02T18:00:00.000Z", pre=999111))
+        lines, verdict = self.post({"TMUX": "1"}, hook={"source": "compact"}, transcript=t)
+        self.assertIn("1 earlier on record", lines[0])
+        self.assertNotIn("999111", lines[0])
+
+    def test_the_hook_waits_briefly_for_the_record(self):
+        t = Path(self.tmp.name, "t.jsonl")
+        t.write_text("")
+        lines, verdict = self.post({"TMUX": "1"}, hook={"source": "compact"}, transcript=t,
+                                   sleep=lambda s: t.write_text(self.record(self.JUST_NOW)))
+        self.assertTrue(lines[0].startswith("YOU WERE COMPACTED: 1 time"))
+        self.assertIn("431381", lines[0])
+
+    def test_a_timestamp_it_cannot_read_is_not_this_compaction(self):
+        t = Path(self.tmp.name, "t.jsonl")
+        t.write_text(self.record("not a date", pre=999111))
+        lines, verdict = self.post({"TMUX": "1"}, hook={"source": "compact"}, transcript=t)
+        self.assertNotIn("999111", lines[0])
+
+    def test_after_a_compaction_the_mission_and_shape_come_from_the_source(self):
+        # SE1/D9: a summary can lose them. A template's blank and a line left to fill are not printed.
+        Path(self.repo, "docs").mkdir(exist_ok=True)
+        Path(self.repo, "docs/REQUIREMENTS_v1.md").write_text(
+            "# R\n\n## Mission\n\n- **MISSION-1** *(since v1)* *(judged)* Drivers go straight to a lot.\n"
+            "  Judge: the supervisor. Veto: a thing.\n\n## Shape\n\nHeld by: Ann.\n\n"
+            "- **SHAPE-1** *(since v1)* *(judged)* _A rule._ Judge: _the holder_.\n- **SHAPE-2** *(since v1)* One error envelope.\n"
+            "- **Says no to:** *to fill.*\n\n## The pain\n\n- not this\n")
+        t = Path(self.tmp.name, "t.jsonl")
+        t.write_text(self.record(self.JUST_NOW))
+        for text in (self.record(self.JUST_NOW), ""):  # recorded yet or not
+            t.write_text(text)
+            lines, verdict = self.post({"TMUX": "1"}, hook={"source": "compact"}, transcript=t)
+            self.assertIn("REQUIREMENTS_v1.md", lines[1])
+            self.assertIn("Drivers go straight to a lot.", lines[2])
+            self.assertNotIn("Judge", lines[2])
+            self.assertIn("One error envelope", lines[3])
+            self.assertFalse(any(x in "\n".join(lines) for x in ("A rule", "to fill", "not this")))
+
+    def test_with_no_mission_nothing_is_said_of_one(self):
+        t = Path(self.tmp.name, "t.jsonl")
+        t.write_text(self.record(self.JUST_NOW))
+        lines, verdict = self.post({"TMUX": "1"}, hook={"source": "compact"}, transcript=t)
+        self.assertFalse(any("mission and shape" in l for l in lines))
 
     def test_local_terminal_without_a_multiplexer_is_fragile(self):
         lines, verdict = self.post({})
@@ -490,7 +555,7 @@ class TestPost(unittest.TestCase):
 
     def test_compaction_is_announced_first(self):
         t = Path(self.tmp.name, "t.jsonl")
-        t.write_text(json.dumps({"type": "user", "compactMetadata": {"trigger": "auto", "preTokens": 300000, "postTokens": 20000}}) + "\n")
+        t.write_text(self.record(self.JUST_NOW, pre=300000, post=20000))
         lines, verdict = self.post({"TMUX": "1"}, hook={"source": "compact"}, transcript=t)
         self.assertEqual(verdict, "fragile")
         self.assertTrue(lines[0].startswith("YOU WERE COMPACTED: 1 time"))

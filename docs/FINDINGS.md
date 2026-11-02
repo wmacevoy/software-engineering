@@ -129,3 +129,25 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
   were seen to catch the mutants they were written for. CI then failed both Windows jobs: report paths came out with backslashes, which the
   Node tools did too and nothing had tested. Forward slashes everywhere, then all six jobs green (run
   41506991552, queue #12). The cause was inferred from that fix, since the failing log was not read.
+
+## 2026-11-02 — A hook fired on a real compaction, and misreported it
+
+- **What happened:** the first compaction seen with a hook wired, in the session building v1.4. Nothing
+  was running after 19:50:43; compaction began at about 20:44:40 and ended at 20:45:43, about 54 minutes
+  in, replacing 431,381 tokens with 12,837. The transcript's `compactMetadata` records the trigger as
+  `auto`; that it was the idle compaction is inferred from the timing. `SessionStart` with source
+  `compact` ran `se --post` 0.1 seconds after the boundary's timestamp, and the agent's next turn opened
+  with `YOU WERE COMPACTED` and SE1/A11's rule. The agent took its summary as recalled and went to the
+  transcript. The alarm was right and its numbers were wrong: `0 time(s)`, `(None)`, `? tokens with ?`,
+  where the transcript shows one compaction and the figures above.
+- **Kind:** K3 (the wrong count passed for true until this run, because a simulated `source: compact`
+  was the only test, and it printed the same line).
+- **Cost:** none to the work; the source was read before anything relied on the count.
+- **Findable by:** compare the hook's words with the transcript at the first real compaction. The
+  likely cause, inferred and not shown, is that the boundary reaches the file after the hook has read it.
+- **Changed:** `se --post` waits up to two seconds for the record, and otherwise says the transcript has
+  not recorded it, without a count or a size; a record older than two minutes is not taken for this
+  compaction. Fixtures cover each case, including the record arriving during the wait. Whether the wait
+  ever helps is unknown until the next real compaction. It also prints the mission and shape from the
+  source (SE1/D9). The README says what was seen. Open: a manual `/compact` is still unobserved, and the
+  doctor cannot tell a fired hook from a configured one.
