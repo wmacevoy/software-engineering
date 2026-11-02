@@ -126,4 +126,6 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
   slugs and whitespace: whitespace identical; slugs differ on 14,049 codepoints, all unassigned in
   Python 3.11's Unicode 14 and assigned later in Node 24's, so a heading using one could slug
   differently. What Node can no longer referee is fixed in `tools/test_check.py`, and these fixtures
-  were seen to catch the mutants they were written for. Not seen: Python 3.9, macOS, Windows (queue #12).
+  were seen to catch the mutants they were written for. CI then failed both Windows jobs: report paths came out with backslashes, which the
+  Node tools did too and nothing had tested. Forward slashes everywhere, then all six jobs green (run
+  41506991552, queue #12). The cause was inferred from that fix, since the failing log was not read.
