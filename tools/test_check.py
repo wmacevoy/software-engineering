@@ -195,6 +195,14 @@ class Planted(Repo):
         self.assertIn("v9.9", out)
         self.assertEqual(before, self.read(UNKNOWING), "--write refused, yet wrote")
 
+    def test_since_refuses_in_utf8_whatever_the_code_page(self):
+        # Windows with Python 3.9 wrote the refusal's em dash to stderr as cp1252 (FINDINGS 2026-11-02).
+        self.no_section()
+        self.plant(UNKNOWING, self.U1_CLAIMS_V9_9)
+        rc, out = self.tool("tools/since.py", "--write", env=dict(os.environ, PYTHONIOENCODING="cp1252"), isolated=False)
+        self.assertEqual(rc, 2, out)
+        self.assertIn("## vX.Y \u2014 unreleased", out)
+
     def test_since_check_says_why_it_has_no_release_to_name(self):
         self.no_section()
         self.plant(UNKNOWING, self.U1_CLAIMS_V9_9)

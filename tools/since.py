@@ -21,6 +21,7 @@ import subprocess
 import sys
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # Windows' default code page cannot print every link
+sys.stderr.reconfigure(encoding="utf-8", errors="replace")  # nor is it what a reader of these bytes expects
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # beside this file, even under -I
 from bodies import HEADING, MARKER, bodies, read  # noqa: E402
 

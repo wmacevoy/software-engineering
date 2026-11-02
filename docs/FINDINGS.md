@@ -207,6 +207,19 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
   `--check` says the same. Fixtures cover both states and both legitimate paths, `--as` and a named section; the
   refusals failed first, and a mutant that writes chapter by chapter is caught (queue #14, v1.4.1).
 
+## 2026-11-02 — v1.4.1 went out red on one CI job, because the tag went up with the commit
+
+- **What happened:** `main` and `v1.4.1` were pushed together, and `windows-latest` with Python 3.9 then failed on
+  both, with the other five jobs green. The likely cause: the new refusal prints an em dash to stderr, `since.py`
+  set UTF-8 only on stdout, and the test decodes both as UTF-8. Forcing cp1252 here gives byte `0x97` and that
+  decoding error. The runner's log was not read, since it needs a login, so this is inferred until the job goes green.
+- **Kind:** K3 (the same class as the 2026-10-28 hash on that platform; a green local run felt like enough).
+- **Cost:** a public tag whose check fails on one platform. The refusal itself works there; `se` and the copies
+  are untouched.
+- **Findable by:** CI on a branch before the tag. Pushing them together meant the tag was public before the
+  matrix ran, and a tag is not moved.
+- **Changed:** `since.py` sets UTF-8 on stderr too, with a test that forces cp1252 and was seen to fail first.
+
 ## 2026-11-02 — Verdicts on the mission and the shape
 
 Given by their judge on `REQUIREMENTS_v3` as sent, and recorded here by an agent (SE1/U10).
