@@ -11,7 +11,9 @@ Usage: python3 tools/since.py            print the expected marker for every pri
 A New/Changed kind is a person's claim about meaning and is kept as written; this tool adds the
 release's date and, when the wording moved later without the meaning, "text since". A principle
 changed after the newest tag gets the unreleased section's name from CHANGELOG.md; the checker
-still demands a New/Changed claim or an *Also changed* line for it. Needs the release tags."""
+still demands a New/Changed claim or an *Also changed* line for it. With no release to name, because
+CHANGELOG.md has no unreleased section or a claim names a release that is neither a tag nor that
+section, --write refuses, writes nothing, and says what to add. Needs the release tags."""
 import datetime
 import os
 import re
@@ -58,7 +60,7 @@ guide = os.path.join(root, "guide")
 chapters = ([os.path.normpath(os.path.join(root, f)) for f in named] if named else
             [os.path.join(guide, n) for n in sorted(os.listdir(guide)) if re.search(r"^[0-9][0-9]-.*\.md$", n)])
 
-problems, written = 0, 0
+problems, written, unnamed, pending = 0, 0, [], []
 for path in chapters:
     rel = os.path.relpath(path, root).replace(os.sep, "/")
     text = read(path)
@@ -74,9 +76,13 @@ for path in chapters:
                 break
             since = t
         text_since = (since, date_of[since]) if since else (unreleased, "unreleased")
+        if not since and not top:
+            unnamed.append(f"{pid}, changed since {tags[-1]}")
         index = next(i for i, l in enumerate(lines) if (lambda m: m and m.group(2) == pid)(HEADING.search(l)))
         mk = MARKER.search(lines[index + 2]) if index + 2 < len(lines) else None
         human = (mk.group(1), mk.group(2)) if mk and mk.group(1) != "Since" else None
+        if human and human[1] not in tags and not (top and human[1] == top.group(1)):
+            unnamed.append(f"{pid}, whose marker names {human[1]}")
         if human:
             d = date_of[human[1]] if human[1] in tags else "unreleased"
             extra = f"; text since {text_since[0]} ({text_since[1]})" if text_since[0] != human[1] else ""
@@ -102,10 +108,19 @@ for path in chapters:
             else:
                 lines[index + 1:index + 1] = ["", line]
                 written += 1
-        with open(path, "w", encoding="utf-8", newline="") as fh:
-            fh.write("\n".join(lines))
+        pending.append((path, "\n".join(lines)))
+why = (f"since: no release to name for {'; '.join(unnamed)}. Add `## vX.Y — unreleased` to CHANGELOG.md, "
+       "or, for a release commit before its tag, run --write --as vX.Y.") if unnamed else None
 if mode == "check":
     print(f"{len(chapters)} chapters, {problems} marker(s) differ from git")
+    if why and problems:
+        print(why)
     sys.exit(1 if problems else 0)
 if mode == "write":
+    if why:  # one chapter's refusal stops them all, so a refused run leaves nothing half-written
+        print(f"{why} Nothing written.", file=sys.stderr)
+        sys.exit(2)
+    for path, text in pending:
+        with open(path, "w", encoding="utf-8", newline="") as fh:
+            fh.write(text)
     print(f"{written} marker(s) written")

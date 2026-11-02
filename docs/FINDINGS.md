@@ -192,6 +192,21 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
   compaction for nothing. One run, inferred from timestamps, with no harm done, so the wait stays until
   someone looks. The doctor still cannot tell a fired hook from a configured one.
 
+## 2026-11-02 — `since --write` wrote markers that name no release
+
+- **What happened:** during the v1.4 release commit, before the tag, a test ran `since --write` in its copy
+  of the repository and wrote `text since unreleased (unreleased)` into ten markers, which made a second test
+  fail for a reason of its own. Run in a copy, the same thing happened after the tag, on any changed principle,
+  while CHANGELOG.md has no unreleased section, which is the state right after every release. `--write` then
+  disagreed with its own `--check`.
+- **Kind:** K3 (a fallback string took the place of a release, and looked like one).
+- **Cost:** a release-time scare, settled by testing a tagged copy. No bad marker was committed, since the checker
+  goes red on them.
+- **Findable by:** a fixture with no unreleased section; every earlier fixture had a section or a tag to name.
+- **Changed:** in either state `--write` refuses with exit 2, writes nothing in any chapter, and says what to add;
+  `--check` says the same. Fixtures cover both states and both legitimate paths, `--as` and a named section; the
+  refusals failed first, and a mutant that writes chapter by chapter is caught (queue #14, v1.4.1).
+
 ## 2026-11-02 — Verdicts on the mission and the shape
 
 Given by their judge on `REQUIREMENTS_v3` as sent, and recorded here by an agent (SE1/U10).

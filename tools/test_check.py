@@ -159,6 +159,65 @@ class Planted(Repo):
         self.assertEqual(rc, 0, out)
         self.green("tools/since.py", "--check")
 
+    # SE1/U7: a marker names a release. With no release to name, --write refuses and touches nothing.
+    NO_SECTION = staticmethod(lambda t: re.sub(r"^(## v[0-9.]+ — )unreleased$", r"\g<1>2026-01-01", t, flags=re.M))
+    SECTION = staticmethod(lambda t: t.replace("\n## v", "\n## v9.9 — unreleased\n\n## v", 1))
+    U1_CLAIMS_V9_9 = staticmethod(lambda t: re.sub(
+        r'(<a id="u1"></a>[^\n]*\n\n)\*[^\n]*\*\n', r"\1*Changed in v9.9 (2026-01-01).*\n", t, count=1))
+    FEEDBACK = "guide/03-feedback.md"
+
+    def no_section(self):  # written not to need editing at a release: there may or may not be a section today
+        self.saved.setdefault("CHANGELOG.md", self.read("CHANGELOG.md"))
+        self.write("CHANGELOG.md", self.NO_SECTION(self.read("CHANGELOG.md")))
+
+    def test_since_refuses_a_change_with_no_section_to_name_it(self):
+        # Two chapters, the writable one first: one chapter's refusal must stop the others too.
+        self.no_section()
+        marker = re.compile(r"\*Since v\d+\.\d+(\.\d+)? \([^)]*\)\.\*\n\n", re.M)
+        self.plant(UNKNOWING, lambda t: marker.sub("", t, count=1))
+        self.plant(self.FEEDBACK, lambda t: re.sub(r'(<a id="f1"></a>[^\n]*\n\n\*[^\n]*\*\n\n)', r"\1Planted. ", t, count=1))
+        before = self.read(UNKNOWING), self.read(self.FEEDBACK)
+        rc, out = self.tool("tools/since.py", "--write")
+        self.assertEqual(rc, 2, out)
+        self.assertIn("F1", out)
+        self.assertIn("## vX.Y — unreleased", out)
+        self.assertIn("--as", out)
+        self.assertEqual(before, (self.read(UNKNOWING), self.read(self.FEEDBACK)), "--write refused, yet wrote")
+
+    def test_since_refuses_a_marker_naming_no_release(self):
+        # A release commit before its tag, without --as: the claim names a release git does not have yet.
+        self.no_section()
+        self.plant(UNKNOWING, self.U1_CLAIMS_V9_9)
+        before = self.read(UNKNOWING)
+        rc, out = self.tool("tools/since.py", "--write")
+        self.assertEqual(rc, 2, out)
+        self.assertIn("U1", out)
+        self.assertIn("v9.9", out)
+        self.assertEqual(before, self.read(UNKNOWING), "--write refused, yet wrote")
+
+    def test_since_check_says_why_it_has_no_release_to_name(self):
+        self.no_section()
+        self.plant(UNKNOWING, self.U1_CLAIMS_V9_9)
+        self.red("## vX.Y — unreleased", "tools/since.py", "--check")
+
+    def test_since_as_names_the_release_being_made(self):
+        self.plant(UNKNOWING, self.U1_CLAIMS_V9_9)
+        rc, out = self.tool("tools/since.py", "--write", "--as", "v9.9")
+        self.assertEqual(rc, 0, out)
+        self.assertNotIn("unreleased", re.search(r'<a id="u1"></a>[^\n]*\n\n(\*[^\n]*\*)', self.read(UNKNOWING)).group(1))
+
+    def test_since_names_the_unreleased_section(self):
+        self.no_section()
+        self.plant("CHANGELOG.md", self.SECTION)
+        self.plant(UNKNOWING, self.U1_CLAIMS_V9_9)
+        self.plant(UNKNOWING, lambda t: t.replace("K0 costs nothing", "K0 costs little", 1))
+        self.plant(self.FEEDBACK, lambda t: re.sub(r'(<a id="f1"></a>[^\n]*\n\n\*[^\n]*\*\n\n)', r"\1Planted. ", t, count=1))
+        rc, out = self.tool("tools/since.py", "--write")
+        self.assertEqual(rc, 0, out)
+        self.assertIn("*Changed in v9.9 (unreleased).*", self.read(UNKNOWING))
+        self.assertIn("*Since v9.9 (unreleased).*", self.read(self.FEEDBACK))
+        self.green("tools/since.py", "--check")
+
 
 class EveryReport(Repo):
     """One breakage per line the checker can report that the tests above do not reach. This

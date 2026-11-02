@@ -24,6 +24,18 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.4.1 — unreleased
+
+[Changes on main since v1.4](https://github.com/wmacevoy/software-engineering/compare/v1.4...main)
+
+**For copies:** nothing to re-copy. No principle, AGENTS.md, or template changed; copies at v1.4 are current.
+
+### Also changed
+
+- `tools/since.py --write` refuses, and writes nothing, when it has no release to name: CHANGELOG.md has no
+  unreleased section, or a marker names a release that is neither a tag nor that section. It used to write
+  `(unreleased)` as if it were one (FINDINGS 2026-11-02). `--check` says why too.
+
 ## v1.4 — 2026-11-02
 
 [Full diff from v1.3.2](https://github.com/wmacevoy/software-engineering/compare/v1.3.2...v1.4) ·
