@@ -318,9 +318,15 @@ if latest and top == latest and len(latest.split(".")) == 3:
         problem(f"patch release  {latest} needs its minor's tag {patch_base} (git fetch --tags)")
 
 readme = read(os.path.join(root, "README.md"))
+index = [line for line in readme.splitlines() if line.startswith(f"- [**{VERSION}/")]
 for line in headings:
-    if line not in readme:
+    if line not in index:
         problem(f"README index out of date: {line}")
+for i, line in enumerate(index):
+    if line not in headings:
+        problem(f"README index lists a principle no heading has: {line}")
+    elif line in index[:i]:
+        problem(f"README index lists this twice: {line}")
 
 
 # A copy that is ahead of its label says nothing (SE1/U7): every principle AGENTS.md and the

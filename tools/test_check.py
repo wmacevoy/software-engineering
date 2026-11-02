@@ -189,6 +189,8 @@ class EveryReport(Repo):
             "wrong version  GLOSSARY.md: (SE2": glossary("(SE2/U1)"),
             "unknown ID     GLOSSARY.md: (SE1": glossary("(SE1/U99)"),
             "unversioned    GLOSSARY.md: (U1": glossary("(U1)"),
+            "README index lists a principle no heading has": lambda: self.append("README.md", "\n- [**SE1/U1**](guide/02-unknowing.md#u1) A contradictory title\n"),
+            "README index lists this twice": lambda: self.append("README.md", "\n" + re.search(r"^- \[\*\*SE1/U1\*\*\].*$", self.read("README.md"), re.M).group(0) + "\n"),
             "title number": lambda: self.plant(self.FEEDBACK, lambda t: t.replace("# 3. ", "# 4. ", 1)),
             "chapter label": glossary("[3. Planted](guide/03-feedback.md)"),
             "not a raw link": llms("[x](https://example.com/a)"),
