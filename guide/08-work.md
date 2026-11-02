@@ -319,6 +319,24 @@ A reconstruction that marks nothing as inferred is claiming more than it knows.
 
 > **Ask:** "Which of these reasons did somebody say, and which did we make up?"
 
+### <a id="w13"></a>W13. A finding that changes no rule, test, or check is a lesson not learned
+
+*New in v1.4 (unreleased).*
+
+`FINDINGS` is the only document reality writes ([SE1/W10](#w10)), and the retro's fear is "we already
+learned this once" ([SE1/H4](09-people.md#h4)). The fear is retired only when the finding changes
+something that will still be there when the people who learned it are not: a rule, a test, a check
+that can refuse the change, or a line in the agent file. Every finding therefore ends with what it
+changed, or with why it changed nothing, which is itself a decision to record. The cheapest change is
+the one that catches the same class of error in a cheaper loop ([SE1/F3](03-feedback.md#f3)).
+
+*Who claims this, and what would show it wrong.* The author's decision, 2026-11-02. Every entry in
+this repository's own `docs/FINDINGS.md` carries a *Changed* line, and the template asks for one; no
+trial has tested whether findings without one are relearned. *Wrong if:* a project whose findings
+change nothing relearns them no more often than one whose findings do.
+
+> **Ask:** "What did the last finding change, and would it hold if everyone here left?"
+
 
 ---
 

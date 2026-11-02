@@ -137,7 +137,7 @@ the repository as it stands unless the client confirms it.
 
 ## Operating envelope
 
-- **Scale:** 101 principles in 10 chapters, about 40 Markdown files, 7 archive entries, 7 reviews;
+- **Scale:** 102 principles in 10 chapters, about 40 Markdown files, 7 archive entries, 7 reviews;
   in two years perhaps 120 principles and a second major version *(invented)*.
 - **Speed:** the full check under one minute locally and under three in CI *(invented)*.
 - **Recovery:** git; nothing else holds state. A bad release is followed by a patch, never

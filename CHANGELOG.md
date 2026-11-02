@@ -32,6 +32,10 @@ yours.
   decision, 2026-11-02, with no trial of its own yet
   ([GAPS](GAPS.md#decided-without-a-trial-essential-k1-2026-11-02)).
 
+- [SE1/W13](guide/08-work.md#w13) A finding that changes no rule, test, or check is a lesson not
+  learned. The author's decision, 2026-11-02, taken from the proposed chapter on learning, which stays
+  a record on `proposal/learning-chapter`; [SE1/U9](guide/02-unknowing.md#u9) stays as it was. Untested.
+
 ### Changed
 
 - [SE1/W11](guide/08-work.md#w11) A requirement marked *(judged)* is passed by its named judge's
