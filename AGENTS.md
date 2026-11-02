@@ -96,8 +96,8 @@ memory was your own. (SE1/A11)
 *For the repository owner:* this section only works if it is already in the agent's context when it
 resumes; a file the agent would have to open is a file it will not open. Load it at every start, for
 example by importing a copy of AGENTS.md kept inside the working directory from CLAUDE.md: an
-import from outside the working directory may load nothing, and say nothing. Then check that it
-loaded: a fresh session, asked without opening any file, can quote a line of it. Make the handoff
+import from outside the working directory may load nothing, and say nothing. Another runner has its
+own way, and these examples are Claude Code's. Then check that it loaded: a fresh session, asked without opening any file, can quote a line of it. Make the handoff
 check a hook that runs without the agent choosing to run it: in trials, agents told in this file to
 run a guard read the line, and none ran it (SE1/A11).
 

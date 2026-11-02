@@ -270,8 +270,9 @@ no — especially to good ideas ([SE1/H3](09-people.md#h3)). This is also why ag
 own the structure: each agent session sees a part, and ten locally reasonable designs compose into
 something nobody can hold ([SE1/A8](10-agents.md#a8)).
 
-**Coherent around what? The mission.** One sentence at the top of the requirements says what this
-project is for, and only the client can change it. Beside it goes the shape: the few rules that let
+**Coherent around what? The mission.** At the top of the requirements, it states broadly the
+intentions this project is aimed at, the requirements below it make them specific, and only the
+client can change it. Beside it goes the shape: the few rules that let
 someone guess the next part from the last, with who holds them, what they say no to, and the
 exceptions. Unwritten, the shape leaves with the person holding it, and no summary can carry what was
 never written. A good idea that serves the mission and breaks the shape gets a no, and so does one

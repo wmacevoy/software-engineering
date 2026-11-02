@@ -164,7 +164,7 @@ should use a different form, such as `REQ2/UI-1`, so they are never confused wit
 - [**SE1/R7**](guide/04-requirements.md#r7) Scale, recovery, and availability are answered whether or not anyone writes them down
 - [**SE1/R8**](guide/04-requirements.md#r8) Security, law, and ethics are always requirements
 - [**SE1/R9**](guide/04-requirements.md#r9) Write down what you decided not to do
-- [**SE1/R10**](guide/04-requirements.md#r10) Version requirements; never edit them in place
+- [**SE1/R10**](guide/04-requirements.md#r10) Version requirements; a change in meaning is a new version
 - [**SE1/R11**](guide/04-requirements.md#r11) An API is the set of observables your acceptance tests need
 
 **[5. Design](guide/05-design.md)**
@@ -298,8 +298,8 @@ any rule.
 - **What it rests on.** Field reports from the author's own projects, and trials with small
   numbers: four to ten runs per arm, one model, one task each. [GAPS.md](GAPS.md) records the nulls
   and the contaminated controls beside the results. Every source behind a claim is in
-  [archive/](archive/README.md), with its checksum and whether the reviewer opened it; two entries
-  say "not opened".
+  [archive/](archive/README.md), with whether the reviewer opened it, and its checksum where the bytes were
+  fetched; two entries say "not opened", and `archive/brown-1948.md` has no checksum.
 - **What has been seen to fail.** The checker, on six planted breakages; `se`, on a fixture per
   check; CI on three platforms and two Pythons. A test never seen red proves nothing
   ([SE1/T3](guide/06-testing.md#t3)), so these were.

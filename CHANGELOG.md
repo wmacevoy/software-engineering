@@ -44,6 +44,9 @@ yours.
   a trial has a negative control (GAPS). CHECKLISTS, AGENTS.md, and the requirements template follow.
 - [SE1/U2](guide/02-unknowing.md#u2) K1 to K0 now says some K1 will not convert.
 - [SE1/R2](guide/04-requirements.md#r2) Where what matters is a judgment, write down who judges it.
+- [SE1/R10](guide/04-requirements.md#r10) A change in meaning is a new version; a spelling or lint fix
+  is an edit named in the commit. The author's decision, 2026-11-02; a review had asked (CT4 in
+  `archive/reviews/REVIEW-v1.1-fable.md`). The requirements template and CONTRIBUTING follow.
 - [SE1/D9](guide/05-design.md#d9) Coherence answers to a written mission, and the shape is written
   beside it with its holder, what it says no to, and its exceptions. The author's decision, untried
   ([GAPS](GAPS.md#decided-without-a-trial-mission-and-shape-2026-11-02)). [SE1/U10](guide/02-unknowing.md#u10)
@@ -59,6 +62,8 @@ yours.
   author decision, with missing trials left open in GAPS. It said an untested idea could not enter a
   principle, which U10 and W13 did. The author's decision, from a review by Codex.
 - `se`'s citations row leaves a kept review (`REVIEW-*`) alone, as it does FINDINGS.
+- AGENTS.md says its loading examples are Claude Code's, and that another runner has its own way; README
+  says which archive entries have no checksum. From a review by Codex.
 - `se --post` says a multiplexer keeps terminal processes, not that the session survives; what the
   runner itself keeps is not inspected. `tools/check.py` holds README's index to the headings both ways
   (REQ1/ID-1).

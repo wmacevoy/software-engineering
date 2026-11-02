@@ -270,14 +270,16 @@ week nine.
 
 > **Ask:** "What did we decide against, and where would someone find that?"
 
-### <a id="r10"></a>R10. Version requirements; never edit them in place
+### <a id="r10"></a>R10. Version requirements; a change in meaning is a new version
 
-*Changed in v1.1 (2026-10-20).*
+*Changed in v1.4 (unreleased).*
 
 A superseded requirement is not deleted knowledge. Editing in place destroys the before-picture, and
 the diff between `v1` and `v2` is the most useful conversation you will ever have with the client.
 Once a second party depends on a statement, changing it is a version, not an edit — the same rule as
-a published interface ([SE1/D11](05-design.md#d11)).
+a published interface ([SE1/D11](05-design.md#d11)). A spelling error or a lint changes no meaning:
+fix it in place and name it in the commit. If anyone could read the sentence differently afterward,
+it is a version.
 
 **Cite the version that last changed it.** A requirement is cited as `REQ2/UI-1`: UI-1 as worded in
 `REQUIREMENTS_v2`. Each requirement carries the version that last changed it — `UI-1` *(since v2)* —

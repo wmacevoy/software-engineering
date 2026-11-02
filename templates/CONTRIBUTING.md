@@ -25,7 +25,7 @@ it short and true: a change that makes a line here untrue updates it in the same
 ## Rules for this repository
 
 Constraints the code cannot show: _for example, no code from GPL sources; `gen/` is generated, never
-edited; requirements are versioned, never edited in place._
+edited; a change in a requirement's meaning is a new version._
 
 ## Where things are
 

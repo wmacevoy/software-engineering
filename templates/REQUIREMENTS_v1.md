@@ -1,7 +1,7 @@
 # Requirements — v1
 
-What must be observably true, and what is not being built. Changes only with the client; a change is
-a new version (`REQUIREMENTS_v2.md`), never an edit to this one. See
+What must be observably true, and what is not being built. Changes only with the client; a change in
+meaning is a new version (`REQUIREMENTS_v2.md`); a spelling or lint fix is not. See
 [SE1/R1–R11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/04-requirements.md).
 
 Client (the one voice who can decide — or, with none in the room, the named proxy for the users; see
@@ -19,11 +19,12 @@ Ten to thirty terms, one line each. A new noun is a decision
 
 ## Mission
 
-One sentence: what this project is for. Only the client can change it. It is almost always passed by
+The intentions this project is aimed at, stated broadly; the requirements below make them specific.
+Only the client can change it. It is almost always passed by
 a person's judgment and not by a test, so name the judge and the occasion
 ([SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.3/guide/08-work.md#w11)).
 
-- **MISSION-1** *(since v1)* *(judged)* _One sentence._ Judge: _who_, on _what_, at _when_. Veto: _what
+- **MISSION-1** *(since v1)* *(judged)* _The intentions, stated broadly._ Judge: _who_, on _what_, at _when_. Veto: _what
   would stop the work_.
 
 ## Shape
