@@ -263,3 +263,7 @@ Given by their judge on `REQUIREMENTS_v3` as sent, and recorded here by an agent
   that got through as blocked, because it looked for the file after cleaning it up; its author caught that on
   reading, before the test that now fails on it. Seen on real namespaces, without a reviewer; not on macOS or
   Windows.
+- **Red on Windows first (run 41672924422).** Both Windows jobs failed on the branch and the other four passed.
+  The log needs a login, so the cause is inferred: a citation's location was built from a native path, so the
+  report said `docs\NOTES.md:1` beside `vendor/other`, and the new test expected a slash. **Changed:** the location
+  is always written with slashes. Found by the matrix on a branch, before any tag, as v1.4.1 taught.

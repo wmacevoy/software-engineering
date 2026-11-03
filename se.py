@@ -432,7 +432,7 @@ def check_citations(repo, req, version, ids):
         for i, line in enumerate(read(f).splitlines(), 1):
             last = None  # list shorthand: in `REQ2/UI-1, UI-2`, the bare ID takes the version named before it
             for m in pat.finditer(line):
-                where = f"{f.relative_to(repo)}:{i}"
+                where = f"{f.relative_to(repo).as_posix()}:{i}"
                 ver = m.group(2) or last
                 if m.group(2):
                     last = m.group(2)
