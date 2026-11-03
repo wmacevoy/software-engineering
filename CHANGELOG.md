@@ -24,6 +24,19 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.4.2 — 2026-11-03
+
+[Full diff from v1.4.1](https://github.com/wmacevoy/software-engineering/compare/v1.4.1...v1.4.2). No
+principle, AGENTS.md, or template changed; copies at v1.4 are current. No review by another family
+for this patch: it changes no guide text.
+
+**For copies:** nothing to re-copy.
+
+### Also changed
+
+- `tools/since.py` writes stderr as UTF-8, as it does stdout. v1.4.1's check failed on `windows-latest` with
+  Python 3.9, the other five jobs green (FINDINGS 2026-11-02).
+
 ## v1.4.1 — 2026-11-02
 
 [Full diff from v1.4](https://github.com/wmacevoy/software-engineering/compare/v1.4...v1.4.1). No

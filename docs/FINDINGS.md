@@ -218,7 +218,8 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
   are untouched.
 - **Findable by:** CI on a branch before the tag. Pushing them together meant the tag was public before the
   matrix ran, and a tag is not moved.
-- **Changed:** `since.py` sets UTF-8 on stderr too, with a test that forces cp1252 and was seen to fail first.
+- **Changed:** `since.py` sets UTF-8 on stderr too, with a test that forces cp1252 and was seen to fail first (v1.4.2). v1.4.2's
+  commit ran the whole matrix on a branch before its tag existed. `v1.4.1` stays where it is, red on that job.
 
 ## 2026-11-02 — Verdicts on the mission and the shape
 
