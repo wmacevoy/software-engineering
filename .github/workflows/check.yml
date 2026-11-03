@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0   # the check compares principles with the last release tag
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python }}
       # The same script a contributor runs locally (O3); no dependencies to install.
