@@ -24,6 +24,25 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.4.4 — 2026-11-03
+
+[Full diff from v1.4.3](https://github.com/wmacevoy/software-engineering/compare/v1.4.3...v1.4.4). No
+principle, AGENTS.md, or template changed; copies at v1.4 are current. No review by another family
+for this patch: it changes no guide text.
+
+**For copies:** nothing to re-copy but `se.py` itself. A repository that vendors another under `vendor/` should,
+since its citations row may be failing on lines that are not its own.
+
+### Also changed
+
+- `se --doctor` leaves out trees under a top-level `vendor/` when it reads citations, tests, and verdicts, and the
+  citations and trace rows name what they left out. Before this, a vendored test could cover a requirement of the same
+  name, and a vendored verdict could pass a judged one. `dm.py` has its own scanner and is not changed (FINDINGS 2026-11-03).
+- `se --post` names the multiplexer it finds, and knows Zellij; not run under one.
+- A citation's location is written with slashes on every platform.
+- [The method for a review by another family](archive/reviews/REVIEW-METHOD-other-family.md) says what its isolation
+  must prove, with `tools/probe_isolation.py`, seen red and green on Linux and not run on macOS or Windows.
+
 ## v1.4.3 — 2026-11-03
 
 [Full diff from v1.4.2](https://github.com/wmacevoy/software-engineering/compare/v1.4.2...v1.4.3). No
