@@ -24,9 +24,11 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.4.3 — unreleased
+## v1.4.3 — 2026-11-03
 
-[Changes on main since v1.4.2](https://github.com/wmacevoy/software-engineering/compare/v1.4.2...main)
+[Full diff from v1.4.2](https://github.com/wmacevoy/software-engineering/compare/v1.4.2...v1.4.3). No
+principle, AGENTS.md, or template changed; copies at v1.4 are current. No review by another family
+for this patch: it changes no guide text.
 
 **For copies:** nothing to re-copy but `se.py` itself, whenever you next do.
 
