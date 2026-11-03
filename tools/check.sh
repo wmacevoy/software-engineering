@@ -9,3 +9,4 @@ py=$(command -v python3 2>/dev/null || command -v python)
 "$py" se.py --self
 "$py" -I tools/test_se.py
 "$py" -I tools/test_check.py
+"$py" -I tools/test_probe_isolation.py

@@ -28,7 +28,7 @@ guide that [SE1/W10](guide/08-work.md#w10) asks for; the guide itself is in `gui
   On Windows, run it from Git Bash, which comes with git.
 
   It runs `tools/check.py`, `tools/since.py --check`, `se.py --self`, `tools/test_se.py`,
-  and `tools/test_check.py`, with the interpreter `se` would choose.
+  `tools/test_check.py`, and `tools/test_probe_isolation.py`, with the interpreter `se` would choose.
 
 - **Success prints:** `N files, 102 principles, 0 problems` · `10 chapters, 0 marker(s) differ
   from git` · `se --self: AGENTS.md matches vX.Y` · `OK`, twice.
@@ -77,6 +77,7 @@ guide that [SE1/W10](guide/08-work.md#w10) asks for; the guide itself is in `gui
   at a release.
 - **Sources and reviews:** `archive/`.
 - **Tools:** `tools/check.py`, `tools/since.py`, `tools/bodies.py` (shared by both),
-  `tools/test_se.py`, `tools/test_check.py`.
+  `tools/test_se.py`, `tools/test_check.py`, `tools/probe_isolation.py` (for a review by another
+  family, not part of the check), `tools/test_probe_isolation.py`.
 - **Agents:** there is no `CLAUDE.md` here, so Claude Code reads `AGENTS.md` by itself; other
   runners load it as they do. Read it, then this file, before acting.

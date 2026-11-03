@@ -258,3 +258,8 @@ Given by their judge on `REQUIREMENTS_v3` as sent, and recorded here by an agent
   Windows container would be missed, and so, probably, would Podman, which has neither (recollection). A miss
   reports *fragile*, so the cost is more care than needed. Docker is installed on this machine, but this user
   is refused its socket, so nothing was run in a container; a detection added now would be one more guess.
+- **The review's isolation (queue #21).** The method named no way to repeat it off Linux. **Changed:** the
+  method says what must be shown, and `tools/probe_isolation.py` shows it. The first draft graded a write
+  that got through as blocked, because it looked for the file after cleaning it up; its author caught that on
+  reading, before the test that now fails on it. Seen on real namespaces, without a reviewer; not on macOS or
+  Windows.
