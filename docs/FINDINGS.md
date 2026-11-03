@@ -253,3 +253,8 @@ Given by their judge on `REQUIREMENTS_v3` as sent, and recorded here by an agent
   2026-11-03), so a test that read it as a number would miss it; `env.get` sees it. **Changed:** the
   report names which of tmux, screen, or Zellij it found. Not run under Zellij. Others, such as `dtach`, are
   still called no multiplexer.
+- **Containers (queue #20).** No change proposed. A Linux image is Linux inside on any host, so `/.dockerenv`
+  and the cgroup file still apply under Docker on macOS or Windows; that is reasoning, and not run. A native
+  Windows container would be missed, and so, probably, would Podman, which has neither (recollection). A miss
+  reports *fragile*, so the cost is more care than needed. Docker is installed on this machine, but this user
+  is refused its socket, so nothing was run in a container; a detection added now would be one more guess.
