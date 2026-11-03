@@ -13,6 +13,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 GUIDE = Path(__file__).resolve().parent.parent
 spec = importlib.util.spec_from_file_location("se", GUIDE / "se.py")
@@ -490,9 +491,9 @@ class TestPost(unittest.TestCase):
     def tearDown(self):
         self.tmp.cleanup()
 
-    def post(self, env, power=("none", None, False), free=100.0, hook=None, transcript=None, sleep=lambda s: None):
+    def post(self, env, power=("none", None, False), free=100.0, hook=None, transcript=None, sleep=lambda s: None, **kw):
         return se.post(self.repo, hook_input=hook, env=env, power=lambda: power, disk=lambda p: (free, 500.0),
-                       transcript=transcript, today=TODAY, now=self.NOW, sleep=sleep)
+                       transcript=transcript, today=TODAY, now=self.NOW, sleep=sleep, **kw)
 
     NOW = se.dt.datetime(2026, 11, 2, 20, 45, 44, tzinfo=se.dt.timezone.utc)
     JUST_NOW = "2026-11-02T20:45:43.726Z"
@@ -575,6 +576,101 @@ class TestPost(unittest.TestCase):
     def test_multiplexer_on_ac_with_room_is_robust(self):
         lines, verdict = self.post({"TMUX": "1"}, power=("ac", 100, True))
         self.assertEqual(verdict, "robust")
+
+    # Cross-platform: what `se --post` reads must exist on Linux, macOS, and Windows, or it says it did not look.
+    def test_transcript_size_needs_no_du(self):
+        real = se.run
+        denied = lambda cmd, **kw: (127, "") if cmd[0] == "du" else real(cmd, **kw)
+        with tempfile.TemporaryDirectory() as home:
+            (Path(home) / ".claude" / "projects").mkdir(parents=True)
+            with mock.patch.object(se.Path, "home", return_value=Path(home)), mock.patch.object(se, "run", denied), \
+                    mock.patch.object(se, "tree_bytes", return_value=1.5e9):
+                lines, _ = self.post({"TMUX": "1", "CLAUDECODE": "1"})
+        self.assertIn("transcripts in ~/.claude/projects: 1.5 GB", "\n".join(lines))
+
+    def test_tree_bytes_adds_every_file_and_gives_up_on_time(self):
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "a" / "b").mkdir(parents=True)
+            (Path(d) / "x").write_bytes(b"1" * 10)
+            (Path(d) / "a" / "b" / "y").write_bytes(b"2" * 32)
+            self.assertEqual(se.tree_bytes(d), 42)
+            self.assertIsNone(se.tree_bytes(d, seconds=-1))
+
+    def test_the_real_power_reading_runs_here(self):
+        # Real on each of CI's three platforms: not what it reads, which a runner cannot vary, but that it reads.
+        src, pct, prevented = se.default_power()
+        self.assertIn(src, ("ac", "battery", "none"))
+        self.assertIn(prevented, (True, False, None))
+
+    def test_windows_power_status(self):
+        self.assertEqual(se.power_windows(0, 8, 40), ("battery", 40, None))
+        self.assertEqual(se.power_windows(1, 8, 90), ("ac", 90, None))
+        self.assertEqual(se.power_windows(1, 128, 255), ("none", None, None))
+        self.assertEqual(se.power_windows(0, 255, 255), ("none", None, None))
+        self.assertEqual(se.power_windows(0, 8, 255), ("battery", None, None))
+
+    def power_supply(self, root, name, **files):
+        (root / name).mkdir()
+        for k, v in files.items():
+            (root / name / k).write_text(v + "\n")
+
+    def test_linux_finds_the_battery_by_type_not_by_name(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            self.power_supply(root, "AC", type="Mains")
+            self.power_supply(root, "hidpp_battery_0", type="Battery", scope="Device", status="Discharging", capacity="5")
+            self.assertEqual(se.power_linux(root, lambda: None), ("none", None, None))
+            self.power_supply(root, "CMB0", type="Battery", status="Discharging", capacity="61")
+            self.assertEqual(se.power_linux(root, lambda: None), ("battery", 61, None))
+
+    def test_linux_any_discharging_battery_counts(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            self.power_supply(root, "BAT0", type="Battery", status="Not charging", capacity="99")
+            self.power_supply(root, "BAT1", type="Battery", status="Discharging", capacity="30")
+            self.assertEqual(se.power_linux(root, lambda: True), ("battery", 30, True))
+            self.assertEqual(se.power_linux(root / "none", lambda: True), ("none", None, None))
+
+    # The columns as systemd-inhibit printed them here, 2026-11-03, with WHAT wide enough for its longest value.
+    INHIBIT_HEAD = "WHO                          UID USER PID COMM            WHAT       WHY                         MODE\n"
+
+    def test_linux_sleep_is_prevented_only_by_a_blocking_sleep_inhibitor(self):
+        row = "Someone                      0   root 915 someone         {:<10} {:<27} {}\n\n1 inhibitors listed.\n"
+        said = lambda what, why, mode: se.sleep_blocked(self.INHIBIT_HEAD + row.format(what, why, mode))
+        self.assertIs(said("sleep", "a job", "block"), True)
+        self.assertIs(said("idle:sleep", "a job", "block"), True)
+        self.assertIs(said("sleep", "wait for it", "delay"), False)
+        self.assertIs(said("shutdown", "no sleep here", "block"), False)
+        self.assertIs(se.sleep_blocked("No inhibitors.\n"), False)
+        self.assertIs(se.sleep_blocked(""), None)
+
+    def test_not_looking_at_sleep_does_not_say_it_is_not_prevented(self):
+        lines, _ = self.post({"TMUX": "1"}, power=("ac", 80, None))
+        said = "\n".join(lines)
+        self.assertIn("sleep not inspected", said)
+        self.assertNotIn("sleep not prevented", said)
+
+    def test_each_platform_is_told_its_own_way_to_stay_awake(self):
+        found = lambda name: "/bin/" + name
+        self.assertIn("caffeinate", se.stay_awake("darwin", found))
+        self.assertIn("systemd-inhibit", se.stay_awake("linux", found))
+        self.assertIsNone(se.stay_awake("linux", lambda name: None))
+        self.assertIn("power settings", se.stay_awake("win32", found))
+
+    def test_windows_is_not_told_to_run_tmux_as_if_it_had_it(self):
+        lines, _ = self.post({}, platform="win32")
+        self.assertIn("tmux in WSL", lines[-1])
+        lines, _ = self.post({}, platform="linux")
+        self.assertIn("run under tmux or screen", lines[-1])
+
+    def test_the_fallback_transcript_folder_can_exist_on_windows(self):
+        self.assertEqual(se.project_slug("/home/me/my-repo"), "-home-me-my-repo")
+        self.assertEqual(se.project_slug("C:\\Users\\me\\repo"), "C--Users-me-repo")
+
+    def test_the_hook_names_the_python_windows_has(self):
+        command = lambda platform: se.hook_entry(platform=platform)["hooks"]["SessionStart"][0]["hooks"][0]["command"]
+        self.assertEqual(command("linux"), "python3 se.py --post")
+        self.assertEqual(command("win32"), "python se.py --post")
 
     def test_battery_is_fragile(self):
         lines, verdict = self.post({"TMUX": "1"}, power=("battery", 40, True))

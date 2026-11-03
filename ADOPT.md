@@ -7,7 +7,7 @@ system; the working set in `docs/`; one check command that CI runs; and a defini
 adoptions start with code already written ([SE1/W12](guide/08-work.md#w12)), so most of the working
 set is rebuilt from the code and marked *(inferred)* until a person confirms it. The words used
 here are defined in [GLOSSARY.md](GLOSSARY.md). The guide's `se` runs this checklist: copy `se`,
-`se.ps1`, and `se.py` beside AGENTS.md, and `./se --doctor` says which steps are done, which are
+`se.ps1`, and `se.py` beside AGENTS.md, and `./se --doctor` (`.\se.ps1 --doctor` in PowerShell) says which steps are done, which are
 "none yet", and which are wrong; `./se --hook --write` makes the session's self test run at every
 start ([SE1/T2](guide/06-testing.md#t2)). Tested with Claude Code only, and its rows about loading
 and hooks describe Claude Code's configuration, the only runner inspected; observed loading, for

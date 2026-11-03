@@ -24,6 +24,19 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.4.3 — unreleased
+
+[Changes on main since v1.4.2](https://github.com/wmacevoy/software-engineering/compare/v1.4.2...main)
+
+**For copies:** nothing to re-copy but `se.py` itself, whenever you next do.
+
+### Also changed
+
+- `se --post` needs no `du`, reads the battery on Windows and every Linux system battery, reads Linux's sleep
+  inhibitors, and says "sleep not inspected" where nothing looked. Its advice, the hook's Python, and the fallback
+  transcript folder fit the platform. Windows' call has not run on a real battery (FINDINGS 2026-11-03).
+- `CONTRIBUTING.md` says to run the full check from Git Bash on Windows; `ADOPT.md` gives the PowerShell form of `se`.
+
 ## v1.4.2 — 2026-11-03
 
 [Full diff from v1.4.1](https://github.com/wmacevoy/software-engineering/compare/v1.4.1...v1.4.2). No

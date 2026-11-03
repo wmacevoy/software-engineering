@@ -25,6 +25,8 @@ guide that [SE1/W10](guide/08-work.md#w10) asks for; the guide itself is in `gui
   sh tools/check.sh
   ```
 
+  On Windows, run it from Git Bash, which comes with git.
+
   It runs `tools/check.py`, `tools/since.py --check`, `se.py --self`, `tools/test_se.py`,
   and `tools/test_check.py`, with the interpreter `se` would choose.
 

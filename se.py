@@ -589,7 +589,7 @@ def doctor(repo, online=True, cache_dir=None, fetch=default_fetch, today=None):
 # ---------------------------------------------------------------- the session's self test
 
 def default_power():
-    """('ac'|'battery'|'none', percent|None, sleep_prevented: bool)"""
+    """('ac'|'battery'|'none', percent|None, sleep_prevented: True|False|None), None where nothing here can say."""
     if sys.platform == "darwin":
         rc, out = run(["pmset", "-g", "batt"], timeout=5)
         if rc == 0 and "InternalBattery" in out:
@@ -598,12 +598,83 @@ def default_power():
             rc2, out2 = run(["pmset", "-g"], timeout=5)
             return src, int(pct.group(1)) if pct else None, "sleep prevented" in out2
         return "none", None, False
-    bats = list(Path("/sys/class/power_supply").glob("BAT*")) if Path("/sys/class/power_supply").exists() else []
-    if bats:
-        status = read(bats[0] / "status").strip().lower()
-        cap = read(bats[0] / "capacity").strip()
-        return ("battery" if status == "discharging" else "ac"), (int(cap) if cap.isdigit() else None), False
-    return "none", None, False
+    if sys.platform == "win32":
+        import ctypes  # only here: the standard library's way to the one call that needs no elevation
+
+        class Status(ctypes.Structure):  # SYSTEM_POWER_STATUS
+            _fields_ = [("ac", ctypes.c_ubyte), ("flag", ctypes.c_ubyte), ("percent", ctypes.c_ubyte),
+                        ("saver", ctypes.c_ubyte), ("life", ctypes.c_ulong), ("full", ctypes.c_ulong)]
+        status = Status()
+        if not ctypes.windll.kernel32.GetSystemPowerStatus(ctypes.byref(status)):
+            return "none", None, None
+        return power_windows(status.ac, status.flag, status.percent)
+    return power_linux(Path("/sys/class/power_supply"), linux_sleep_blocked)
+
+
+def power_windows(ac, flag, percent):
+    """From SYSTEM_POWER_STATUS. Whether sleep is prevented is `powercfg /requests`, which needs elevation: not asked."""
+    if flag in (128, 255):  # no system battery; unknown
+        return "none", None, None
+    return ("battery" if ac == 0 else "ac"), (None if percent == 255 else percent), None
+
+
+def power_linux(root, blocked):
+    """A system battery by its type, since the names vary, and a mouse's battery (scope Device) is not one."""
+    root = Path(root)
+    bats = [d for d in sorted(root.iterdir()) if read(d / "type").strip() == "Battery"
+            and read(d / "scope").strip().lower() != "device"] if root.is_dir() else []
+    if not bats:
+        return "none", None, None
+    draining = [d for d in bats if read(d / "status").strip().lower() == "discharging"]
+    cap = read((draining or bats)[0] / "capacity").strip()
+    return ("battery" if draining else "ac"), (int(cap) if cap.isdigit() else None), blocked()
+
+
+def sleep_blocked(listing):
+    """From `systemd-inhibit --list`: True if an inhibitor blocks sleep, False if none does, None if it did not answer.
+    A delay inhibitor only postpones sleep. Columns by the header's offsets, since WHY is free text."""
+    rows = listing.splitlines()
+    if not rows:
+        return None
+    head = rows[0]
+    if "WHAT" not in head or "WHY" not in head:
+        return False
+    what, why = head.index("WHAT"), head.index("WHY")
+    return any(r.rstrip().endswith(" block") and "sleep" in r[what:why].strip().split(":") for r in rows[1:])
+
+
+def linux_sleep_blocked():
+    rc, out = run(["systemd-inhibit", "--list", "--no-pager"], timeout=5)
+    return sleep_blocked(out) if rc == 0 else None
+
+
+def stay_awake(platform, which=shutil.which):
+    """This platform's way to keep the machine from sleeping, or None where there is none to name."""
+    if platform == "darwin":
+        return "`caffeinate -i` while the session runs"
+    if platform == "win32":
+        return "set sleep to never in the power settings while the session runs"
+    if which("systemd-inhibit"):
+        return "`systemd-inhibit --what=sleep <your command>` for the session"
+    return None
+
+
+def tree_bytes(path, seconds=10):
+    """Bytes in the files under path, or None if that takes too long: this runs in a hook, on any platform."""
+    stop, total, pending = time.monotonic() + seconds, 0, [path]
+    while pending:
+        if time.monotonic() > stop:
+            return None
+        try:
+            with os.scandir(pending.pop()) as entries:
+                for e in entries:
+                    if e.is_dir(follow_symlinks=False):
+                        pending.append(e.path)
+                    elif e.is_file(follow_symlinks=False):
+                        total += e.stat(follow_symlinks=False).st_size
+        except OSError:
+            continue  # a file gone mid-walk, or a folder not readable: an estimate, as the line says
+    return total
 
 
 def default_disk(path):
@@ -612,10 +683,15 @@ def default_disk(path):
     return u.free / 1e9, u.total / 1e9
 
 
+def project_slug(path):
+    """The folder name under ~/.claude/projects. A Windows drive's colon cannot be in a folder name."""
+    return re.sub(r"[/\\:]", "-", path)
+
+
 def transcript_for(repo, hook_input):
     if hook_input.get("transcript_path") and Path(hook_input["transcript_path"]).is_file():
         return Path(hook_input["transcript_path"])
-    slug = str(Path(repo).resolve()).replace("/", "-").replace("\\", "-")
+    slug = project_slug(str(Path(repo).resolve()))
     d = Path.home() / ".claude" / "projects" / slug
     files = sorted(d.glob("*.jsonl"), key=lambda p: p.stat().st_mtime) if d.is_dir() else []
     return files[-1] if files else None
@@ -690,7 +766,7 @@ def torn_state(repo, today=None):
     return out
 
 
-def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk, transcript=None, today=None, now=None, sleep=time.sleep):
+def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk, transcript=None, today=None, now=None, sleep=time.sleep, platform=sys.platform):
     """Lines of the self test, and the verdict ('fragile'|'robust')."""
     env = os.environ if env is None else env
     hook_input = hook_input or {}
@@ -719,7 +795,7 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
         fragile = True
         reasons.append(f"a laptop on battery ({pct}%)")
     elif src == "ac" and pct is not None:
-        reasons.append(f"a laptop on AC power ({pct}%){'; sleep prevented' if prevented else '; sleep not prevented'}")
+        reasons.append(f"a laptop on AC power ({pct}%){'; sleep not inspected' if prevented is None else '; sleep prevented' if prevented else '; sleep not prevented'}")
         if not prevented:
             fragile = True
     if claude:
@@ -771,9 +847,9 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
         reasons.append(f"disk {free:.0f} GB free of {total:.0f}")
     claude_dir = Path.home() / ".claude" / "projects"
     if claude and claude_dir.is_dir():
-        rc, out = run(["du", "-sk", str(claude_dir)], timeout=10)
-        if rc == 0 and out.split():
-            reasons.append(f"transcripts in ~/.claude/projects: {int(out.split()[0]) / 1e6:.1f} GB, and growing")
+        size = tree_bytes(claude_dir)
+        if size is not None:
+            reasons.append(f"transcripts in ~/.claude/projects: {size / 1e9:.1f} GB, and growing")
     torn = torn_state(repo, today)
     if torn:
         fragile = True
@@ -793,11 +869,12 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
                      "the source wins over the summary.")
         lessen = []
         if not mux and not container:
-            lessen.append("run under tmux or screen")
+            lessen.append("run under tmux in WSL" if platform == "win32" else "run under tmux or screen")
         if src == "battery":
             lessen.append("plug in")
-        if src != "none" and not prevented and sys.platform == "darwin":
-            lessen.append("`caffeinate -i` while the session runs")
+        awake = stay_awake(platform) if src != "none" and not prevented else None
+        if awake:
+            lessen.append(awake)
         if not container:
             lessen.append("a remote host where the session survives this machine")
         if free < LOW_DISK_GB:
@@ -812,7 +889,9 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
 
 # ---------------------------------------------------------------- hook, self, main
 
-def hook_entry(se_cmd="python3 se.py --post"):
+def hook_entry(se_cmd=None, platform=sys.platform):
+    # Windows' python3, where it answers at all, is often the Store's stub, which installs instead of running.
+    se_cmd = se_cmd or f"{'python' if platform == 'win32' else 'python3'} se.py --post"
     return {"hooks": {"SessionStart": [{"matcher": "startup|resume|compact",
                                         "hooks": [{"type": "command", "command": se_cmd}]}]}}
 

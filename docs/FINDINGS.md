@@ -221,6 +221,18 @@ the releases, the reviews. Blameless: say what would have found it, not who shou
 - **Changed:** `since.py` sets UTF-8 on stderr too, with a test that forces cp1252 and was seen to fail first (v1.4.2). v1.4.2's
   commit ran the whole matrix on a branch before its tag existed. `v1.4.1` stays where it is, red on that job.
 
+## 2026-11-03 — `se --post` looked at less than it said, off the platform it was written on
+
+- **What happened:** the owner asked about `du` and `pmset`. `du` does not exist on Windows, so the transcript
+  line vanished there with no word. Windows' battery was never read, so a laptop on battery was not fragile.
+  Linux read only `BAT*`, the first of them, and always said "sleep not prevented", having not looked.
+- **Kind:** K3 (an unexamined `False` read as a finding; CI's `--version` never reached this code).
+- **Cost:** none seen; no one has reported running it on such a machine.
+- **Findable by:** asking of each command what it does on the other two platforms. CI on three platforms did not
+  find it, because the tests inject the power reading and no job called the real one.
+- **Changed:** see queue #16. A test now calls the real reading on every CI job. That shows it runs, not that it is
+  right: a runner has no battery, so queue #17 stays open. What is left is in queue #18 to #21.
+
 ## 2026-11-02 — Verdicts on the mission and the shape
 
 Given by their judge on `REQUIREMENTS_v3` as sent, and recorded here by an agent (SE1/U10).
