@@ -610,6 +610,20 @@ class TestPost(unittest.TestCase):
         self.assertEqual(verdict, "fragile")
         self.assertTrue(any("closed lid" in l for l in lines))
 
+    def test_each_multiplexer_is_named(self):
+        # Zellij sets ZELLIJ to the string "0": zellij-client/src/lib.rs, read 2026-11-03. Not run under one.
+        for env, name in (({"TMUX": "/tmp/t,1,0"}, "tmux"), ({"STY": "1.pts"}, "screen"), ({"ZELLIJ": "0"}, "Zellij")):
+            with self.subTest(name=name):
+                lines, _ = self.post(env, power=("none", None, None))
+                said = "\n".join(lines)
+                self.assertIn(f"under a multiplexer ({name})", said)
+                self.assertNotIn("run under tmux or screen", said)
+
+    def test_no_multiplexer_names_the_three_it_looks_for(self):
+        lines, verdict = self.post({})
+        self.assertEqual(verdict, "fragile")
+        self.assertIn("no tmux, screen, or Zellij", "\n".join(lines))
+
     def test_a_multiplexer_is_not_said_to_save_the_session(self):
         # Codex, 2026-11-02: tmux keeps terminal processes; what the runner keeps was never looked at.
         lines, verdict = self.post({"TMUX": "1"})

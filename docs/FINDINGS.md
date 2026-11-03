@@ -249,3 +249,7 @@ Given by their judge on `REQUIREMENTS_v3` as sent, and recorded here by an agent
   what they left out. Only a top-level `vendor/`: elsewhere a false failure stays to be read. Nested or
   `third_party/` trees therefore still fail, and a repository that keeps its own files under `vendor/` has them
   skipped, named in the row. Not changed: `dm.py`, which is another repository's and has its own scanner.
+- **Zellij (queue #19).** Its client sets `ZELLIJ` to the string `"0"` (`zellij-client/src/lib.rs`, read
+  2026-11-03), so a test that read it as a number would miss it; `env.get` sees it. **Changed:** the
+  report names which of tmux, screen, or Zellij it found. Not run under Zellij. Others, such as `dtach`, are
+  still called no multiplexer.

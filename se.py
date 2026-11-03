@@ -798,7 +798,8 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
     lines, reasons, fragile, refuse = [], [], False, []
     claude = bool(env.get("CLAUDECODE"))
     runner = "Claude Code" if claude else "a runner that is not Claude Code (not inspected)"
-    mux = bool(env.get("TMUX") or env.get("STY"))
+    # Zellij sets ZELLIJ to "0", so this asks whether it is set, not whether it reads true.
+    mux = next((name for var, name in (("TMUX", "tmux"), ("STY", "screen"), ("ZELLIJ", "Zellij")) if env.get(var)), None)
     ssh = bool(env.get("SSH_CONNECTION") or env.get("SSH_TTY"))
     container = Path("/.dockerenv").exists() or bool(env.get("CI")) or bool(env.get("GITHUB_ACTIONS")) \
         or "docker" in read("/proc/1/cgroup") or "containerd" in read("/proc/1/cgroup")
@@ -808,12 +809,12 @@ def post(repo, hook_input=None, env=None, power=default_power, disk=default_disk
         reasons.append("container or CI: robust, and no human to ask")
     elif ssh and not mux:
         fragile = True
-        reasons.append("over SSH with no tmux or screen: a dropped connection likely ends this session (inferred from the terminal, not from the runner)")
+        reasons.append("over SSH with no tmux, screen, or Zellij: a dropped connection likely ends this session (inferred from the terminal, not from the runner)")
     elif not mux:
         fragile = True
-        reasons.append("a local terminal with no tmux or screen: a closed lid or a crash likely ends this session (inferred from the terminal, not from the runner)")
+        reasons.append("a local terminal with no tmux, screen, or Zellij: a closed lid or a crash likely ends this session (inferred from the terminal, not from the runner)")
     else:
-        reasons.append("under a multiplexer: terminal processes survive a dropped connection or a closed window; what the runner itself keeps is not inspected")
+        reasons.append(f"under a multiplexer ({mux}): terminal processes survive a dropped connection or a closed window; what the runner itself keeps is not inspected")
     src, pct, prevented = power()
     if src == "battery":
         fragile = True
