@@ -239,3 +239,13 @@ Given by their judge on `REQUIREMENTS_v3` as sent, and recorded here by an agent
 
 - REQ3/MISSION-1 verdict: pass, by Warren MacEvoy, 2026-11-02
 - REQ3/SHAPE-1 verdict: pass, by Warren MacEvoy, 2026-11-02
+
+## 2026-11-03 — Four limits: a vendored tree, Zellij, containers, and the review's isolation
+
+- **Vendored trees (queue #22).** `check_citations` read `../tribe`'s `vendor/compaction/` as its own and
+  failed. Looking for the cause showed two false passes that nobody had reported, both worse than the failure:
+  a vendored test naming a requirement counted as covering it, and a vendored verdict line could pass a judged
+  requirement of the same name. **Changed:** citations, trace, and verdicts read `own_files`; both rows name
+  what they left out. Only a top-level `vendor/`: elsewhere a false failure stays to be read. Nested or
+  `third_party/` trees therefore still fail, and a repository that keeps its own files under `vendor/` has them
+  skipped, named in the row. Not changed: `dm.py`, which is another repository's and has its own scanner.

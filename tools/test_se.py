@@ -215,6 +215,51 @@ class TestJudged(Fixture):
         self.assertNotIn("judged", row.text)
 
 
+class TestVendored(Fixture):
+    """A repository that vendors another reads its own citations, and says what it left out (queue #22;
+    `../tribe` at se v1.4.3, which vendors compaction with the same requirement names)."""
+
+    VENDORED = {"vendor/other/docs/FINDINGS.md": "UI-1 bare, and REQ9/UI-2 ahead of this repository's version\n"}
+
+    def test_a_vendored_trees_citations_are_not_this_repositorys(self):
+        f = finding(self.doctor(self.changed(**self.VENDORED)), "citations")
+        self.assertEqual(f.state, se.PASS, f.text)
+        self.assertIn("vendor/other", f.text)
+
+    def test_a_bad_citation_outside_the_tree_still_fails(self):
+        f = finding(self.doctor(self.changed(**self.VENDORED, **{"docs/NOTES.md": "UI-1 bare\n"})), "citations")
+        self.assertEqual(f.state, se.FAIL)
+        self.assertIn("docs/NOTES.md:1", f.text)
+        self.assertNotIn("vendor/other/docs", f.text)
+        self.assertIn("vendor/other", f.text)
+
+    def test_a_vendored_test_does_not_cover_this_repositorys_requirement(self):
+        files = self.changed(**{"tests/test_ui.py": "# REQ1/UI-1 only\n",
+                                "vendor/other/tests/test_ui.py": "# REQ2/UI-2\n"})
+        f = finding(self.doctor(files), "trace")
+        self.assertEqual(f.state, se.WARN, f.text)
+        self.assertIn("UI-2", f.text)
+        self.assertIn("vendor/other", f.text)
+
+    def test_a_vendored_verdict_does_not_pass_this_repositorys_judge(self):
+        req = GOOD["docs/REQUIREMENTS_v2.md"].replace("**UI-2** *(since v2)*", "**UI-2** *(since v2)* *(judged)*")
+        self.assertIn("*(judged)*", req)
+        files = self.changed(**{"docs/REQUIREMENTS_v2.md": req, "vendor/other/docs/FINDINGS.md":
+                                "REQ2/UI-2 verdict: pass, by Someone Else, 2026-10-27\n"})
+        f = finding(self.doctor(files), "trace")
+        self.assertIn("UI-2 (no verdict yet)", f.text)
+
+    def test_only_the_top_level_is_left_out(self):
+        # a nested vendor/ stays loud: a false failure can be read, a file silently unread cannot.
+        f = finding(self.doctor(self.changed(**{"src/vendor/x.md": "UI-1 bare\n"})), "citations")
+        self.assertEqual(f.state, se.FAIL)
+
+    def test_a_repository_with_nothing_vendored_says_nothing_of_it(self):
+        findings = self.doctor()
+        self.assertNotIn("left out", finding(findings, "citations").text)
+        self.assertNotIn("left out", finding(findings, "trace").text)
+
+
 class TestDoctorRed(Fixture):
     def test_missing_agents_md(self):
         f = self.doctor(self.changed(**{"AGENTS.md": None, "CLAUDE.md": "# none\n"}))

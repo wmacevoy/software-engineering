@@ -190,6 +190,27 @@ def tracked_files(repo):
     return [Path(repo) / f for f in out.split("\0") if f]
 
 
+def own_files(repo):
+    """(tracked files that are this repository's own, the vendored trees left out). A tree under a top-level
+    vendor/ is another repository's: its IDs, tests, and verdicts answer to its own requirements. Only the
+    top level, so a false failure elsewhere stays to be read; a file silently unread could not be."""
+    own, left_out = [], set()
+    for f in tracked_files(repo):
+        parts = f.relative_to(repo).parts
+        if parts[0] == "vendor" and len(parts) > 1:
+            left_out.add("/".join(parts[:2]))
+        else:
+            own.append(f)
+    return own, sorted(left_out)
+
+
+def left_out_note(left_out):
+    """What the row did not read, so its pass is not read as covering it (SE1/U7)."""
+    if not left_out:
+        return ""
+    return f"; left out, as vendored: {', '.join(left_out[:3])}" + (f" and {len(left_out) - 3} more" if len(left_out) > 3 else "")
+
+
 def is_text(path):
     return path.suffix.lower() in {".md", ".txt", ".py", ".js", ".mjs", ".cjs", ".jsx", ".ts", ".tsx",
                                    ".c", ".h", ".cpp", ".cc", ".cxx", ".hpp", ".hh", ".cs", ".kt", ".swift",
@@ -396,7 +417,8 @@ def check_citations(repo, req, version, ids):
     bare, stale, ahead, unknown = [], [], [], []
     pat = re.compile(r"(?:(REQ(\d+))/)?\b(" + "|".join(map(re.escape, ids)) + r")\b")
     copy, _ = find_copy(repo)  # the working agreement's own examples (REQ2/UI-1) are not citations
-    files = tracked_files(repo)
+    files, left_out = own_files(repo)
+    note = left_out_note(left_out)
     design = re.compile(r"DESIGN_v(\d+)\.md$")
     designs = [int(m.group(1)) for m in (design.match(f.name) for f in files) if m]
     for f in files:
@@ -429,9 +451,9 @@ def check_citations(repo, req, version, ids):
             parts.append(f"{len(bare)} unversioned: {bare[0]}")
         if ahead:
             parts.append(f"{len(ahead)} ahead of v{version}: {ahead[0]}")
-        return Finding("citations", "SE1/R10", FAIL, "; ".join(parts),
+        return Finding("citations", "SE1/R10", FAIL, "; ".join(parts) + note,
                        "cite the version that last changed the requirement: REQn/ID, never a bare ID")
-    return Finding("citations", "SE1/R10", PASS, f"every citation of the {len(ids)} requirement IDs is versioned and current", "")
+    return Finding("citations", "SE1/R10", PASS, f"every citation of the {len(ids)} requirement IDs is versioned and current{note}", "")
 
 
 def judged_ids(req):
@@ -449,7 +471,7 @@ def latest_verdicts(repo, judged, since):
     which version of the work it was given on, are not checked: the row names the judge for a person to read."""
     copy, _ = find_copy(repo)
     found = {}
-    for f in tracked_files(repo):
+    for f in own_files(repo)[0]:
         rel = str(f.relative_to(repo))
         if (not is_text(f) or re.search(r"test", rel, re.I) or f.name.startswith("REQUIREMENTS_v")
                 or f.name in ("AGENTS.md", "se.py") or (copy and f.resolve() == copy.resolve())):
@@ -480,7 +502,9 @@ def check_trace(repo, ids, judged=()):
         note = (f"; {len(judged)} judged, passed by a person and not by a test: "
                 + ", ".join(f"{i} (verdict {verdicts[i][1]} {verdicts[i][0]} by {verdicts[i][2]})" if i in verdicts else f"{i} (no verdict yet)" for i in judged[:5])
                 + (" ..." if len(judged) > 5 else ""))
-    tests = [f for f in tracked_files(repo) if is_text(f) and re.search(r"test", str(f.relative_to(repo)), re.I)]
+    files, left_out = own_files(repo)
+    note += left_out_note(left_out)
+    tests = [f for f in files if is_text(f) and re.search(r"test", str(f.relative_to(repo)), re.I)]
     text = "\n".join(read(f) for f in tests)
     without = [i for i in tested if not re.search(rf"REQ\d+/{re.escape(i)}\b", text)]
     if without:
