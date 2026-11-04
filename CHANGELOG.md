@@ -30,7 +30,7 @@ yours.
 104 principles. No review of this release by another family or by a subagent, and A12, the new D9 text, and D5's addition have no
 trial.
 
-**For copies:** re-copy AGENTS.md, which takes A12 under *Write for human attention* and *Finishing*, `se.py`, and the
+**For copies:** re-copy AGENTS.md, which says it is guidelines, not law, and takes A12 under *Write for human attention* and *Finishing*, `se.py`, and the
 templates, which now link to v1.6, and whose fundamental shape says that unstated, it iterates toward finished. A fundamental
 shape you already have that says nothing about this now reads that way ([SE1/D9](guide/05-design.md#d9)).
 

@@ -647,18 +647,17 @@ smallest change, but both are about the size of one change. Neither says an agen
 thing, including with a review, or that a guide or a project may aim to stop growing.
 
 The author, also 2026-11-04: "Agents: unless directed otherwise, prefer not to spend attention, and when spent, spend on reducing
-future attention by humans and agents." A12 says so, and the agent added that a decision belonging to a person still goes to them.
+future attention by humans and agents." A12 says so.
 
 **Closed, for v1.6:** [SE1/A12](guide/10-agents.md#a12), lines in AGENTS.md at the release commit, and REQ7/SHAPE-2 with its
 assumption, the author's yes to an agent's draft, 2026-11-04. The data-mining guide has it in its own shape too (its
-REQ2/SHAPE-3). The agent's draft kept it out of the template, because a project may not want to stop growing. The author corrected that: "a shape
+third guideline). The agent's draft kept it out of the template, because a project may not want to stop growing. The author corrected that: "a shape
 that does not iterate towards finished means anything built on top of it can never iterate towards finished either. using
 it is worth an unending spend of attention of humans and agents. unstated, assume towards finished." So
 [SE1/D9](guide/05-design.md#d9) and the template now say it of every fundamental shape. An agent raised that a project pinned to a release might finish against its pin. The
 author's answer: "medicine is long-term support, expressed in software as patch releases," and D9 says that. SE1's own patches so far went only to its newest minor, and it promises no line of support. **Declined for now,** the author, 2026-11-04: "this is a
-work in progress. goal of v2.0 is long term support." **Open:** nothing has tested the medicine. The agent added the
-guards: a false claim is never minutia, finishing excuses no check, the signer says when it is done, and
-what was left gets a line, because AGENTS.md asks for no silent omissions. It also added that REQ3/MISSION-1's veto wins over
+work in progress. goal of v2.0 is long term support." A subagent's review held that "unstated, assume it does" changes what an adopter's shape means with no new version, and proposed asking
+the client first. The author declined: "that's artifical gravity at work: your foundations moved. fine." ([SE1/W14](guide/08-work.md#w14)) **Open:** nothing has tested the medicine. The agent's draft also carried guards: a false claim is never minutia, finishing excuses no check, the signer says when it is done, and what was left gets a line. Three reviews, the author's among them, found them to be clauses closing loopholes, and the author cut them, 2026-11-04 (REQ8/SHAPE-3). It also added that REQ3/MISSION-1's veto wins over
 REQ7/SHAPE-2, since the mission's "any" pulls against stopping. TeX stays here and out of A12 until someone opens a source for
 `archive/` ([SE1/D13](guide/05-design.md#d13)).
 

@@ -3,7 +3,7 @@
 A working agreement for AI agents contributing to a repository that follows this guide. It is
 written to be copied into another repository as-is, or referenced from that repository's own agent
 file. Each rule cites the principle behind it by versioned ID — (SE1/A8), (SE1/D9) — so that a rule
-can be argued with rather than merely obeyed.
+can be argued with rather than merely obeyed. These are guidelines, not law: they point, and you decide.
 
 The IDs are defined in the guide at https://github.com/wmacevoy/software-engineering/tree/v1.6;
 `SE1` is its first major version, tagged `v1.x`, within which no ID moves. Its
@@ -228,8 +228,7 @@ version, not on demonstrating range. (SE1/A5)
 ## Finishing
 
 - **Work toward finished, not toward more.** Meet the *done* sentence, then stop. In a review, report what would
-  change what someone does, and say in a line what you left; a false claim always counts. This excuses no check,
-  and marks nothing done. (SE1/A12)
+  change what someone does. (SE1/A12)
 - **Leave the repository runnable.** If a change needs a manual step — a rebuild, a database reset —
   say so in the same breath.
 - **Update what the change made untrue** in the design and the repository guide, in the same change.
