@@ -5,11 +5,11 @@ written to be copied into another repository as-is, or referenced from that repo
 file. Each rule cites the principle behind it by versioned ID — (SE1/A8), (SE1/D9) — so that a rule
 can be argued with rather than merely obeyed.
 
-The IDs are defined in the guide at https://github.com/wmacevoy/software-engineering/tree/v1.5;
+The IDs are defined in the guide at https://github.com/wmacevoy/software-engineering/tree/v1.6;
 `SE1` is its first major version, tagged `v1.x`, within which no ID moves. Its
-[principle index](https://github.com/wmacevoy/software-engineering/blob/v1.5/README.md#principle-index)
+[principle index](https://github.com/wmacevoy/software-engineering/blob/v1.6/README.md#principle-index)
 lists them all, and each has an anchor in its chapter (for example, `guide/10-agents.md#a8`).
-This copy is from **v1.5**; what changed since, by ID, is in the guide's
+This copy is from **v1.6**; what changed since, by ID, is in the guide's
 [CHANGELOG](https://github.com/wmacevoy/software-engineering/blob/main/CHANGELOG.md).
 The Markdown in that repository is the canonical text; the site at
 https://wmacevoy.github.io/software-engineering/ renders the latest version for human readers.
@@ -17,7 +17,7 @@ https://wmacevoy.github.io/software-engineering/ renders the latest version for 
 The repository's own guide (`CLAUDE.md`, `CONTRIBUTING.md`, or equivalent) wins over this file where
 they disagree. It knows the local mechanics; this file only knows the principles. How to adopt this
 file, and what an agent should do where the adoption is only partly done, is in the guide's
-[ADOPT.md](https://github.com/wmacevoy/software-engineering/blob/v1.5/ADOPT.md).
+[ADOPT.md](https://github.com/wmacevoy/software-engineering/blob/v1.6/ADOPT.md).
 
 Drafted by Claude Opus 5.5 with Warren MacEvoy, 2026-10-19 to 2026-10-27, and revised with Claude
 Fable 5.1 on 2026-10-28; the human signs each release. These are rules an agent wrote for agents
@@ -75,7 +75,7 @@ one is a question for the human, not a task.
 - **If the repository has no requirements document, queue, check command, or `Non-goals`,** that
   absence is the first finding: say so once, treat the task's own text as the requirement for this
   task only, marked *(inferred)*, and do not stop on every task for it (SE1/W12). The guide's
-  [ADOPT.md](https://github.com/wmacevoy/software-engineering/blob/v1.5/ADOPT.md) says what to do
+  [ADOPT.md](https://github.com/wmacevoy/software-engineering/blob/v1.6/ADOPT.md) says what to do
   for each missing thing. Do not invent the missing thing to satisfy a rule.
 
 ## After a gap
@@ -145,6 +145,8 @@ do the work as asked. The human decides.
 
 Attention is the scarce resource — not tokens, not runtime, not lines of code. (SE1/A1, SE1/A6)
 
+- **Unless directed otherwise, prefer not to spend attention,** a person's or an agent's, and when you do, spend it on
+  reducing the attention humans and agents will need later. (SE1/A12)
 - **Smallest change that does the job.** Solve the problem in front of you. Related improvements you
   noticed are worth a sentence at the end, not a diff.
 - **Boring over clever.** When two versions work, ship the one that needs less explanation.
@@ -225,6 +227,9 @@ version, not on demonstrating range. (SE1/A5)
 
 ## Finishing
 
+- **Work toward finished, not toward more.** Meet the *done* sentence, then stop. In a review, report what would
+  change what someone does, and say in a line what you left; a false claim always counts. This excuses no check,
+  and marks nothing done. (SE1/A12)
 - **Leave the repository runnable.** If a change needs a manual step — a rebuild, a database reset —
   say so in the same breath.
 - **Update what the change made untrue** in the design and the repository guide, in the same change.

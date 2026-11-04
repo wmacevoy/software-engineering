@@ -15,7 +15,7 @@ factory ([SE1/U7](guide/02-unknowing.md#u7)), so every change is visible in thre
 
 `tools/check.py` keeps the three in step, and compares every principle with the last release tag:
 one whose text changed must have a marker for a later release, or — for wording only — be named
-under that release's *Also changed*. Work toward a release goes under `## v1.6 — unreleased`; give it
+under that release's *Also changed*. Work toward a release goes under `## v1.7 — unreleased`; give it
 a date when you tag it. Within SE1, a minor release may add principles, reword them, or extend what
 they ask; it never moves an ID ([principle index](README.md#principle-index)). A patch release
 (`v1.2.1`) changes no principle, no AGENTS.md, and no template: copies keep the minor's label, and
@@ -24,9 +24,15 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.6 — unreleased
+## v1.6 — 2026-11-04
 
-[Changes on main since v1.5](https://github.com/wmacevoy/software-engineering/compare/v1.5...main)
+[Full diff from v1.5](https://github.com/wmacevoy/software-engineering/compare/v1.5...v1.6) ·
+104 principles. No review of this release by another family or by a subagent, and A12, the new D9 text, and D5's addition have no
+trial.
+
+**For copies:** re-copy AGENTS.md, which takes A12 under *Write for human attention* and *Finishing*, `se.py`, and the
+templates, which now link to v1.6, and whose fundamental shape says that unstated, it iterates toward finished. A fundamental
+shape you already have that says nothing about this now reads that way ([SE1/D9](guide/05-design.md#d9)).
 
 ### New
 

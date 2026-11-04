@@ -217,7 +217,7 @@ So treat every handoff as a possible injury, and check from outside:
 
 ### <a id="a12"></a>A12. Work toward finished, not toward more
 
-*New in v1.6 (unreleased).*
+*New in v1.6 (2026-11-04).*
 
 There is no end of things an agent can find to do, and each one costs attention that could go elsewhere. Unless
 directed otherwise, prefer not to spend attention, a person's or an agent's, and when you do, spend it on reducing the attention
