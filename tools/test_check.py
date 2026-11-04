@@ -222,7 +222,9 @@ class Planted(Repo):
         top = re.search(r"^## (v[0-9.]+) — (\S+)$", self.read("CHANGELOG.md"), re.M)
         name = top.group(1) if top.group(2) == "unreleased" else "v9.9"
         heading = f"## {name} — {today}"
-        self.plant("CHANGELOG.md", lambda t: t.replace(top.group(0), heading if name == top.group(1) else f"{heading}\n\n{top.group(0)}", 1))
+        # By position: the changelog's introduction quotes the unreleased heading, in backticks, above the section itself.
+        new = heading if name == top.group(1) else f"{heading}\n\n{top.group(0)}"
+        self.plant("CHANGELOG.md", lambda t: t[:top.start()] + new + t[top.end():])
         self.plant(UNKNOWING, lambda t: self.U1_CLAIMS_V9_9(t).replace("Changed in v9.9", f"Changed in {name}", 1))
         self.plant(UNKNOWING, lambda t: t.replace("K0 costs nothing", "K0 costs little", 1))
         rc, out = self.tool("tools/since.py", "--write")  # --write is not eased: the release commit names itself with --as
