@@ -267,3 +267,17 @@ Given by their judge on `REQUIREMENTS_v3` as sent, and recorded here by an agent
   The log needs a login, so the cause is inferred: a citation's location was built from a native path, so the
   report said `docs\NOTES.md:1` beside `vendor/other`, and the new test expected a slash. **Changed:** the location
   is always written with slashes. Found by the matrix on a branch, before any tag, as v1.4.1 taught.
+
+## 2026-11-04 — The shape was not settled at v3, and a verdict on REQ4/SHAPE-1
+
+The author used *shape* first for what became the mission. The split into two words, and the v3 definition, were
+an agent's proposal, and commit 9c4ce15 called the whole change the author's decision, which claimed too much for
+the shape. The author's v3 pass was on that wording. On 2026-11-04 the author said what it is: an aesthetic, not a
+requirement, versioned like the others, and heavy, between the mission and the requirements. An agent drafted the
+sentence with the author; the agent's opinion was not the verdict. Given by their judge on `REQUIREMENTS_v4` as
+sent, and recorded here by an agent (SE1/U10).
+
+- REQ4/SHAPE-1 verdict: pass, by Warren MacEvoy, 2026-11-04
+
+**Changed:** REQUIREMENTS_v4. `GLOSSARY.md`, [SE1/D9](../guide/05-design.md#d9), and the requirements template
+still say "the few rules", and wait for the next minor release.
