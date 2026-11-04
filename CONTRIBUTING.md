@@ -30,7 +30,7 @@ guide that [SE1/W10](guide/08-work.md#w10) asks for; the guide itself is in `gui
   It runs `tools/check.py`, `tools/since.py --check`, `se.py --self`, `tools/test_se.py`,
   `tools/test_check.py`, and `tools/test_probe_isolation.py`, with the interpreter `se` would choose.
 
-- **Success prints:** `N files, 103 principles, 0 problems` · `10 chapters, 0 marker(s) differ
+- **Success prints:** `N files, 104 principles, 0 problems` · `10 chapters, 0 marker(s) differ
   from git` · `se --self: AGENTS.md matches vX.Y` · `OK`, twice.
 - **Instruments, and how each was seen to fire** ([SE1/T3](guide/06-testing.md#t3)): `test_check.py`
   plants a breakage per rule of the checker (a copy mislabeled, a principle reworded with no marker,
@@ -71,7 +71,7 @@ guide that [SE1/W10](guide/08-work.md#w10) asks for; the guide itself is in `gui
 - **The guide:** `guide/` (ten chapters), `README.md` (the argument and the principle index),
   `GLOSSARY.md`, `CHECKLISTS.md`, `READING.md`, `GAPS.md` (where the principles fell short in the
   field), `CHANGELOG.md` (what each release changed, by ID).
-- **This repository's working set:** `docs/REQUIREMENTS_v6.md`, `docs/DESIGN_v2.md`,
+- **This repository's working set:** `docs/REQUIREMENTS_v7.md`, `docs/DESIGN_v2.md`,
   `docs/QUEUE.md`, `docs/FINDINGS.md`. The requirements were read off the repository on 2026-10-28
   and are marked *(inferred)* until the author confirms them ([SE1/W12](guide/08-work.md#w12)).
 - **For adopters:** `AGENTS.md`, `ADOPT.md`, `templates/`, and `se`, `se.py`, `se.ps1`, all copied

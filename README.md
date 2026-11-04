@@ -82,7 +82,7 @@ repository, make it load at every start, and start the working set from the temp
 | `templates/`                       | starting points: [REQUIREMENTS](templates/REQUIREMENTS_v1.md), [DESIGN](templates/DESIGN_v1.md), [QUEUE](templates/QUEUE.md), [FINDINGS](templates/FINDINGS.md), [CONTRIBUTING](templates/CONTRIBUTING.md) |
 | [GAPS.md](GAPS.md)                 | where the guide fell short in the field, and how each gap was closed |
 | [archive/](archive/README.md)      | the sources behind the claims: URL, date, checksum, and the passage relied on |
-| `docs/`                            | this repository's own working set: [REQUIREMENTS_v6](docs/REQUIREMENTS_v6.md), [DESIGN_v2](docs/DESIGN_v2.md), the [QUEUE](docs/QUEUE.md), and [FINDINGS](docs/FINDINGS.md) |
+| `docs/`                            | this repository's own working set: [REQUIREMENTS_v7](docs/REQUIREMENTS_v7.md), [DESIGN_v2](docs/DESIGN_v2.md), the [QUEUE](docs/QUEUE.md), and [FINDINGS](docs/FINDINGS.md) |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | this repository's guide: how to run, check, and reset it, the release procedure, and where things are |
 
 ## The running example
@@ -256,6 +256,7 @@ should use a different form, such as `REQ2/UI-1`, so they are never confused wit
 - [**SE1/A9**](guide/10-agents.md#a9) Hand it the search-shaped work; keep the decisions
 - [**SE1/A10**](guide/10-agents.md#a10) Ask your agents, and write the answers down
 - [**SE1/A11**](guide/10-agents.md#a11) A summary is a concussion: check it from outside
+- [**SE1/A12**](guide/10-agents.md#a12) Work toward finished, not toward more
 
 ## Twelve questions
 
@@ -310,7 +311,7 @@ any rule.
   with an agent other than Claude except two reviews by OpenAI Codex, the second finding 4 of 5
   planted defects ([the method](archive/reviews/REVIEW-METHOD-other-family.md)). U8 and U9
   rest on one author's observation and one project's trials, and say what would show them wrong.
-  U10, W13, and W14 rest on the author's decision, with no trial of their own yet.
+  U10, W13, W14, and A12 rest on the author's decision, with no trial of their own yet.
 - **What would show it wrong.** Each GAPS entry states its falsifier. The ones that matter most: a
   transition instrument with a ceiling that shows no loss across a compaction; a check that runs
   without the agent choosing to and still leaves the work unchanged; an agent of another family

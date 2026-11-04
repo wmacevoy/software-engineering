@@ -628,7 +628,7 @@ and nothing reads what it means, so that says little. Its place on the ladder is
 statement; its *Says no to* cites REQ2/CHK-4, a requirement it is said to sit under. Nothing has counted whether moves
 in a lower layer force more changes above them than moves in a higher one, though git and citations could.
 
-## Proposed by the author, no trial: finish, 2026-11-04
+## Decided without a trial: finish, 2026-11-04
 
 Reviewing the data-mining guide's fundamental shape, a subagent returned a long list of small objections, including to
 "only" in a line of the shape. The author answered that a mission and a fundamental shape contain essential K1
@@ -646,11 +646,17 @@ than more.
 smallest change, but both are about the size of one change. Neither says an agent should aim to be finished with a
 thing, including with a review, or that a guide or a project may aim to stop growing.
 
-**Proposal:** say it in chapter 10, for agents, and consider a line in the fundamental shape of SE1 itself. The
-data-mining guide has added it to its own shape (its REQ2/SHAPE-3).
+**Closed, for v1.6:** [SE1/A12](guide/10-agents.md#a12), a line under *Finishing* in AGENTS.md at the release commit, and REQ7/SHAPE-2 with its
+assumption, the author's yes to an agent's draft, 2026-11-04. The data-mining guide has it in its own shape too (its
+REQ2/SHAPE-3). It is in SE1's shape and not the template's, because a project may not want to stop growing. The agent added the
+guards: a false claim is never minutia, finishing excuses no check, the signer says when it is done, and
+what was left gets a line, because AGENTS.md asks for no silent omissions. It also added that REQ3/MISSION-1's veto wins over
+REQ7/SHAPE-2, since the mission's "any" pulls against stopping. TeX stays here and out of A12 until someone opens a source for
+`archive/` ([SE1/D13](guide/05-design.md#d13)).
 
 **Open:** whether it holds. Nothing has measured whether agents told this finish sooner without missing more, and
-"minutia" is a judgment: the same review also found a marker that was simply wrong.
+"minutia" is a judgment: the same review also found a marker that was simply wrong. The evidence is one review, and asking a
+reviewer for objections may be what produced them. A trial is queued (#30).
 
 ## Proposed by the author, no trial: time zones, 2026-11-04
 

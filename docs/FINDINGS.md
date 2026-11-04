@@ -317,3 +317,8 @@ v1.5 would have. **Changed:** `--check` takes a top CHANGELOG section that is da
 the release being made, and prints a note saying so. A fixture covers it in whichever state the CHANGELOG is in, seen red
 first, and a wrong marker stays red. `--write` is unchanged and still refuses. **Cost:** a release commit nobody tags now
 passes, with only that note to show it; nothing fails for it.
+
+## 2026-11-04: finish, in the fundamental shape
+
+- **What happened:** reviewing the data-mining guide's fundamental shape, a subagent returned a long list of small objections, and the author answered that agents should work toward completion, not extension. **Changed:** [SE1/A12](../guide/10-agents.md#a12) and REQUIREMENTS_v7, sent 2026-11-04.
+- REQ7/SHAPE-2 verdict: pass, by Warren MacEvoy, 2026-11-04

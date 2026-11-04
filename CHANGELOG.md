@@ -24,6 +24,16 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.6 — unreleased
+
+[Changes on main since v1.5](https://github.com/wmacevoy/software-engineering/compare/v1.5...main)
+
+### New
+
+- [SE1/A12](guide/10-agents.md#a12) Work toward finished, not toward more. The author's decision, 2026-11-04, with no
+  trial of its own yet ([GAPS](GAPS.md#decided-without-a-trial-finish-2026-11-04)). REQ7/SHAPE-2 holds this guide to it. AGENTS.md takes
+  it under *Finishing* in the release commit, because the checker refuses a copy that cites an ID ahead of its label.
+
 ## v1.5 — 2026-11-04
 
 [Full diff from v1.4.4](https://github.com/wmacevoy/software-engineering/compare/v1.4.4...v1.5) ·
