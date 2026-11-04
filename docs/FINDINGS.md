@@ -325,7 +325,7 @@ passes, with only that note to show it; nothing fails for it.
 
 ## 2026-11-04 — Guidelines, not law
 
-A subagent's review, asked to read the new text literally, proposed clauses to close loopholes, and an agent backed them. The author: "SE are guidelines, not law. They are meant to point." **Changed:** REQUIREMENTS_v8, sent 2026-11-04, adds SHAPE-3, and the agent's guards in A12 came out. Given by their judge as "accept mission and shape", and recorded here by an agent (SE1/U10).
+A subagent's review, asked to read the new text literally, proposed clauses to close loopholes, and an agent backed them. The author: "SE are guidelines, not law. They are meant to point." **Changed:** REQUIREMENTS_v8, sent 2026-11-04, adds REQ8/SHAPE-3, and the agent's guards in A12 came out. Given by their judge as "accept mission and shape", and recorded here by an agent (SE1/U10).
 
 - REQ3/MISSION-1 verdict: pass, by Warren MacEvoy, 2026-11-04
 - REQ5/SHAPE-1 verdict: pass, by Warren MacEvoy, 2026-11-04

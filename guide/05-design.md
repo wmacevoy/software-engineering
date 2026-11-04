@@ -136,7 +136,7 @@ Wall clocks jump — corrected by time synchronization, adjusted for leap second
 worse: twice a year an hour never happens and an hour happens twice. So record a moment that has happened in
 UTC, keeping its offset if the local time matters, and convert to local at the edges, once. Keep a future local time as
 local time and zone, because the rules can change before it arrives. Decide what a "day" is and write it down: where
-clocks change, two days a year are 23 and 25 hours long. Test across both boundaries.
+clocks change, some days are not 24 hours long. Test across the boundaries.
 Almost every time bug is one instrument used where the other was required.
 
 > **Ask:** "Which clock is this, what happens when it jumps, and what is a day here?"

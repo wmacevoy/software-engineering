@@ -27,7 +27,7 @@ yours.
 ## v1.6 — 2026-11-04
 
 [Full diff from v1.5](https://github.com/wmacevoy/software-engineering/compare/v1.5...v1.6) ·
-104 principles. No review of this release by another family or by a subagent, and A12, the new D9 text, and D5's addition have no
+104 principles. No review by another family; subagents of the same family reviewed it, and A12, the new D9 text, and D5's addition have no
 trial.
 
 **For copies:** re-copy AGENTS.md, which says it is guidelines, not law, and takes A12 under *Write for human attention* and *Finishing*, `se.py`, and the

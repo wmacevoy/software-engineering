@@ -31,7 +31,7 @@ guide that [SE1/W10](guide/08-work.md#w10) asks for; the guide itself is in `gui
   `tools/test_check.py`, and `tools/test_probe_isolation.py`, with the interpreter `se` would choose.
 
 - **Success prints:** `N files, 104 principles, 0 problems` · `10 chapters, 0 marker(s) differ
-  from git` · `se --self: AGENTS.md matches vX.Y` · `OK`, twice.
+  from git` · `se --self: AGENTS.md matches vX.Y` · `OK`, three times.
 - **Instruments, and how each was seen to fire** ([SE1/T3](guide/06-testing.md#t3)): `test_check.py`
   plants a breakage per rule of the checker (a copy mislabeled, a principle reworded with no marker,
   an index line dropped, a broken link, a template citing an ID the release lacks, a rule inserted
