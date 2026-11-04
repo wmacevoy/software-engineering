@@ -658,15 +658,17 @@ REQ7/SHAPE-2, since the mission's "any" pulls against stopping. TeX stays here a
 "minutia" is a judgment: the same review also found a marker that was simply wrong. The evidence is one review, and asking a
 reviewer for objections may be what produced them. A trial is queued (#30).
 
-## Proposed by the author, no trial: time zones, 2026-11-04
+## Decided without a trial: time zones, 2026-11-04
 
 [SE1/D5](guide/05-design.md#d5) separates wall-clock time from elapsed time, and the guide says nothing about time zones
 or what a "day" is. The data-mining guide does, under a principle marked as reframing SE1/D5, and a review of it found
 that marker does not hold: DM1/D5 is about something SE1/D5 does not say. The author's word: time zones are "a common
 enough problem to state there", in SE1, and not only for data.
 
-**Proposal:** state it in SE1/D5 or nearby: store and compute in UTC with explicit offsets, convert to local time at
-the edges, once, decide what a "day" is, and test across both daylight-saving boundaries. Then DM1/D5's marker holds,
-and it can say only what data work changes.
+**Closed, for v1.6:** [SE1/D5](guide/05-design.md#d5) says it, the author's yes to an agent's draft, 2026-11-04. It is one idea
+with D5, which already said local time was worse and already asked which clock this is, so there is no new ID, and DM1/D5's
+marker holds: it can say only what data work changes. The agent changed two things from DM1's wording. "Store in UTC" is wrong
+for a future local time, because zone rules can change before it arrives, and "UTC with explicit offsets" was
+muddled, because UTC's offset is zero.
 
-**Open:** whether it is one idea with SE1/D5 or a principle of its own.
+**Open:** whether the wording changes what anyone builds. Nothing has tested it.

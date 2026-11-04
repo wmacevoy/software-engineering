@@ -107,7 +107,7 @@ carry a sequence number or version with each message and ignore anything older t
 
 ### <a id="d5"></a>D5. Wall-clock time and elapsed time are different instruments
 
-*Since v1.0 (2026-10-20).*
+*Changed in v1.6 (unreleased).*
 
 Split *"how old is this?"* into two fields:
 
@@ -133,10 +133,13 @@ If it says 12:02:00 instead, the age is still right, and the two-minute gap is h
 sensor's clock is broken.
 
 Wall clocks jump — corrected by time synchronization, adjusted for leap seconds — and local time is
-worse: twice a year an hour never happens and an hour happens twice.
+worse: twice a year an hour never happens and an hour happens twice. So record a moment that has happened in
+UTC, keeping its offset if the local time matters, and convert to local at the edges, once. Keep a future local time as
+local time and zone, because the rules can change before it arrives. Decide what a "day" is and write it down: where
+clocks change, two days a year are 23 and 25 hours long. Test across both boundaries.
 Almost every time bug is one instrument used where the other was required.
 
-> **Ask:** "Which clock is this, and what happens when it jumps?"
+> **Ask:** "Which clock is this, what happens when it jumps, and what is a day here?"
 
 ### <a id="d6"></a>D6. Derive instead of store; name the authority; record why
 

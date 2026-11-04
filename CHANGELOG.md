@@ -34,6 +34,11 @@ yours.
   trial of its own yet ([GAPS](GAPS.md#decided-without-a-trial-finish-2026-11-04)). REQ7/SHAPE-2 holds this guide to it. AGENTS.md takes
   it under *Finishing* in the release commit, because the checker refuses a copy that cites an ID ahead of its label.
 
+### Changed
+
+- [SE1/D5](guide/05-design.md#d5) Says what to do about time zones and what a "day" is: UTC for a moment that has happened, local
+  time and zone for a future one. The author's word, 2026-11-04 ([GAPS](GAPS.md#decided-without-a-trial-time-zones-2026-11-04)).
+
 ## v1.5 — 2026-11-04
 
 [Full diff from v1.4.4](https://github.com/wmacevoy/software-engineering/compare/v1.4.4...v1.5) ·
