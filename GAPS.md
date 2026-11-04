@@ -627,3 +627,40 @@ refuted by [SE1/D11](guide/05-design.md#d11): weight follows dependents and reve
 and nothing reads what it means, so that says little. Its place on the ladder is the author's
 statement; its *Says no to* cites REQ2/CHK-4, a requirement it is said to sit under. Nothing has counted whether moves
 in a lower layer force more changes above them than moves in a higher one, though git and citations could.
+
+## Proposed by the author, no trial: finish, 2026-11-04
+
+Reviewing the data-mining guide's fundamental shape, a subagent returned a long list of small objections, including to
+"only" in a line of the shape. The author answered that a mission and a fundamental shape contain essential K1
+([SE1/U10](guide/02-unknowing.md#u10)), that "only" is axiomatic, applied to prose, and that "agents also spend on
+minutia". The author's words on what follows: "a goal of agents should be to finish so attention can go elsewhere",
+and "agents should work towards completion, not extension". There is infinite space to spend attention, so finishing
+here gives room there, for agents and humans both. The author's example is Knuth's versioning of TeX, whose version
+numbers approach π (3.14...): each release is closer to done, not larger. Recalled, with no entry in `archive/` yet.
+
+The author also asked for its form: **iterate to completion, as a K4 held lightly: a useful reference point for a
+concept.** Nothing is ever complete, which is what makes it a K4; it is useful because it gives work a direction other
+than more.
+
+[SE1/A5](guide/10-agents.md#a5) warns against an abstraction for a change nobody asked for, and AGENTS.md asks for the
+smallest change, but both are about the size of one change. Neither says an agent should aim to be finished with a
+thing, including with a review, or that a guide or a project may aim to stop growing.
+
+**Proposal:** say it in chapter 10, for agents, and consider a line in the fundamental shape of SE1 itself. The
+data-mining guide has added it to its own shape (its REQ2/SHAPE-3).
+
+**Open:** whether it holds. Nothing has measured whether agents told this finish sooner without missing more, and
+"minutia" is a judgment: the same review also found a marker that was simply wrong.
+
+## Proposed by the author, no trial: time zones, 2026-11-04
+
+[SE1/D5](guide/05-design.md#d5) separates wall-clock time from elapsed time, and the guide says nothing about time zones
+or what a "day" is. The data-mining guide does, under a principle marked as reframing SE1/D5, and a review of it found
+that marker does not hold: DM1/D5 is about something SE1/D5 does not say. The author's word: time zones are "a common
+enough problem to state there", in SE1, and not only for data.
+
+**Proposal:** state it in SE1/D5 or nearby: store and compute in UTC with explicit offsets, convert to local time at
+the edges, once, decide what a "day" is, and test across both daylight-saving boundaries. Then DM1/D5's marker holds,
+and it can say only what data work changes.
+
+**Open:** whether it is one idea with SE1/D5 or a principle of its own.
