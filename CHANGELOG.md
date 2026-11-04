@@ -30,7 +30,8 @@ yours.
 
 **For copies:** re-copy AGENTS.md, whose order of authority now says earlier and later. A Shape section you already
 have stays as it is until your next requirements version, and `se` still reads it. Then rename it *Fundamental shape*, and
-read it as an aesthetic, not a list of rules: a change in its meaning is a new version.
+read it as an aesthetic, not a list of rules: a change in its meaning is a new version, which the holder proposes and
+the client makes.
 
 ### New
 

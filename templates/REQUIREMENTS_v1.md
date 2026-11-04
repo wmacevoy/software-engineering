@@ -33,7 +33,7 @@ The versioned and heavy aesthetic that decides what belongs here, through a few 
 ([SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/05-design.md#d9)). Mechanisms
 go in the design, citing it.
 
-Held by: _one named person_
+Held by: _one named person_. The holder proposes a change; the client makes it, in a new version.
 
 - **SHAPE-1** *(since v1)* *(judged)* _A guideline that holds across the parts._ Judge: _the holder_, at _when_.
 - **Says no to:** _good ideas this refuses, and why_
