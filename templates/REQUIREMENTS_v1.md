@@ -29,13 +29,13 @@ a person's judgment and not by a test, so name the judge and the occasion
 
 ## Shape
 
-The few rules that let someone guess the next part from the last
+The few guidelines that let someone guess the next part from the last
 ([SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/05-design.md#d9)). Mechanisms
 go in the design, citing these.
 
 Held by: _one named person_
 
-- **SHAPE-1** *(since v1)* *(judged)* _A rule that holds across the parts._ Judge: _the holder_, at _when_.
+- **SHAPE-1** *(since v1)* *(judged)* _A guideline that holds across the parts._ Judge: _the holder_, at _when_.
 - **Says no to:** _good ideas this refuses, and why_
 - **Exceptions:** _each with its reason_
 

@@ -238,7 +238,7 @@ requirement. Anything you maintain that is not on that page should be able to sa
 
 ### <a id="d9"></a>D9. Conceptual integrity: one coherent design beats every good idea
 
-*Changed in v1.4 (2026-11-02).*
+*Changed in v1.5 (unreleased).*
 
 People understand systems **by analogy**: learn how one part works, then guess how the next part
 works. Coherence is what makes the guess right. Every place the guess fails is something to memorize
@@ -272,7 +272,7 @@ something nobody can hold ([SE1/A8](10-agents.md#a8)).
 
 **Coherent around what? The mission.** At the top of the requirements, it states broadly the
 intentions this project is aimed at, the requirements below it make them specific, and only the
-client can change it. Beside it goes the shape: the few rules that let
+client can change it. Beside it goes the shape: the few guidelines that let
 someone guess the next part from the last, with who holds them, what they say no to, and the
 exceptions. Unwritten, the shape leaves with the person holding it, and no summary can carry what was
 never written. A good idea that serves the mission and breaks the shape gets a no, and so does one

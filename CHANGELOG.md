@@ -33,6 +33,10 @@ yours.
 - [SE1/W14](guide/08-work.md#w14) Artificial gravity: what sits lower weighs more. The author's decision,
   2026-11-04, with no trial of its own yet ([GAPS](GAPS.md#decided-without-a-trial-artificial-gravity-2026-11-04)).
 
+### Changed
+
+- [SE1/D9](guide/05-design.md#d9) The shape is "the few guidelines", not "the few rules". The author's word, 2026-11-04.
+
 ## v1.4.4 — 2026-11-03
 
 [Full diff from v1.4.3](https://github.com/wmacevoy/software-engineering/compare/v1.4.3...v1.4.4). No
