@@ -275,7 +275,7 @@ intentions this project is aimed at, the requirements built on it make them spec
 client can change it. Next comes the shape, the versioned and heavy aesthetic that decides what belongs
 here, through a few guidelines; a sign it is working is that someone can guess the next part from the last. With it go who holds
 it, what it says no to, and the exceptions. It changes only by a new version, and moving it can move
-everything built on it ([SE1/W14](08-work.md#w14)). Unwritten, the shape leaves with the person holding it, and no summary can carry what was
+everything built on it ([SE1/W14](08-work.md#w14)). Mission and shape are requirements, the heaviest to move. Unwritten, the shape leaves with the person holding it, and no summary can carry what was
 never written. A good idea that serves the mission and breaks the shape gets a no, and so does one
 that fits the shape and serves nothing. A mission rarely has a test that can pass it
 ([SE1/U10](02-unknowing.md#u10)).

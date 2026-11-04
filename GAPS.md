@@ -622,7 +622,7 @@ design; and the paragraph on what can be noticed mechanically. The title and wha
 review by a subagent of the same family, 2026-11-04. It held that the first title, "what sits lower weighs more", is
 refuted by [SE1/D11](guide/05-design.md#d11): weight follows dependents and reversibility, not height alone.
 
-**Open:** whether it holds. The one case to hand is small: moving REQ4/SHAPE-1 moved its verdict and two pointers,
+**Open:** whether it holds. The one case to hand is small: moving the shape from v3 to v4 moved its verdict and two pointers,
 and nothing reads what the shape means, so that says little. The shape's place on the ladder is the author's
 statement; its *Says no to* cites REQ2/CHK-4, a requirement it is said to sit under. Nothing has counted whether moves
 in a lower layer force more changes above them than moves in a higher one, though git and citations could.

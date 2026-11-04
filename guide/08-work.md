@@ -355,7 +355,8 @@ because each is made with the ones beneath it in view:
 Read it from the bottom up: each layer rests on what is to its left, so *lower* means *to the left*. The
 mission says what the project is aimed at. The shape is the aesthetic that decides what belongs
 ([SE1/D9](05-design.md#d9)). Requirements make the aim specific, a design answers them, and development
-follows the design. **None of them is frozen, but moving one can move everything above it.**
+follows the design. Mission and shape are requirements too, the heaviest to move. **None of them is frozen, but
+moving one can move everything above it.**
 
 So weight is a price, not a ban, and height is not all of it: a schema with data in it sits at the top of
 this ladder and is still a one-way door ([SE1/D11](05-design.md#d11)). Move a lower layer on purpose: by its owner, in a new version, and then

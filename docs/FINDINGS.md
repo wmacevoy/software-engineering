@@ -290,3 +290,13 @@ wrote the change did not say so. Found by reading the row's sentence against the
 **Changed:** one definition in D9, `GLOSSARY.md`, and the template; W14's title, direction, and what would show it wrong;
 AGENTS.md's order of authority says earlier and later; v4's date and its "unchanged" sentence, as lint, by the author's
 word. What needs a v5 is queue row 27.
+
+## 2026-11-04 — The mission and the shape are requirements
+
+The author: "as written mission and shape are in requirements, they are just the most heavy requirements to move.
+This avoids a v2.0." The sentence "An aesthetic, not a requirement" in REQ4/SHAPE-1 was the agent's. The author had said
+"not a requirement" of including machine tests, and the agent stretched it to the whole shape, and the entries above
+repeat it. **Changed:** REQUIREMENTS_v5, W14, and D9 say so; what is left is queue row 27. Given by their judge on
+`REQUIREMENTS_v5` as sent, and recorded here by an agent (SE1/U10).
+
+- REQ5/SHAPE-1 verdict: pass, by Warren MacEvoy, 2026-11-04
