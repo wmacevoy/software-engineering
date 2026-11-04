@@ -31,7 +31,7 @@ a person's judgment and not by a test, so name the judge and the occasion
 
 The versioned and heavy aesthetic that decides what belongs here, through a few guidelines; a sign it is working is that someone can guess the next part from the last
 ([SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/05-design.md#d9)). Mechanisms
-go in the design, citing it.
+go in the design, citing it. Unstated, it iterates toward finished.
 
 Held by: _one named person_. The holder proposes a change; the client makes it, in a new version.
 

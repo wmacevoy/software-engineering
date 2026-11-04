@@ -241,7 +241,7 @@ requirement. Anything you maintain that is not on that page should be able to sa
 
 ### <a id="d9"></a>D9. Conceptual integrity: one coherent design beats every good idea
 
-*Changed in v1.5 (2026-11-04).*
+*Changed in v1.6 (unreleased).*
 
 People understand systems **by analogy**: learn how one part works, then guess how the next part
 works. Coherence is what makes the guess right. Every place the guess fails is something to memorize
@@ -278,7 +278,9 @@ intentions this project is aimed at, the requirements built on it make them spec
 client can change it. Next comes the fundamental shape, the versioned and heavy aesthetic that decides what belongs
 here, through a few guidelines; a sign it is working is that someone can guess the next part from the last. With it go who holds
 it, what it says no to, and the exceptions. It changes only by a new version, and moving it can move
-everything built on it ([SE1/W14](08-work.md#w14)). Mission and fundamental shape are requirements, the heaviest to move. Unwritten, the fundamental shape leaves with the person holding it, and no summary can carry what was
+everything built on it ([SE1/W14](08-work.md#w14)). **A fundamental shape iterates toward finished ([SE1/A12](10-agents.md#a12)), and unstated, assume it does.** One that does not
+means nothing built on it can finish either, so using it is worth an unending spend of attention, by humans and agents. The medicine is long-term support, expressed in
+software as patch releases: what is built on it pins a release that takes fixes and no new meaning, and can finish there. Mission and fundamental shape are requirements, the heaviest to move. Unwritten, the fundamental shape leaves with the person holding it, and no summary can carry what was
 never written. A good idea that serves the mission and breaks the fundamental shape gets a no, and so does one
 that fits the fundamental shape and serves nothing. A mission rarely has a test that can pass it
 ([SE1/U10](02-unknowing.md#u10)).

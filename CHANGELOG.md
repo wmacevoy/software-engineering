@@ -36,6 +36,8 @@ yours.
 
 ### Changed
 
+- [SE1/D9](guide/05-design.md#d9) A fundamental shape iterates toward finished, and unstated, assume it does; the medicine for one that does not is
+  long-term support, expressed as patch releases. The template says the first part too. The author's word, 2026-11-04 ([GAPS](GAPS.md#decided-without-a-trial-finish-2026-11-04)).
 - [SE1/D5](guide/05-design.md#d5) Says what to do about time zones and what a "day" is: UTC for a moment that has happened, local
   time and zone for a future one. The author's word, 2026-11-04 ([GAPS](GAPS.md#decided-without-a-trial-time-zones-2026-11-04)).
 
