@@ -308,3 +308,12 @@ a dozen places. The author named the term instead, and "fundamental" appeared no
 sent 2026-11-04, and the guide say it. `se.py` reads both headings, because five requirements documents in `../compaction`,
 `../data-mining`, and `../tribe` say `## Shape`; a test holds both, seen red first. The risk is that people shorten it, so
 the glossary says "shape" alone never means this. Nothing checks that.
+
+## 2026-11-04 — A minor release could not pass CI before its tag
+
+Since v1.4.1 the practice is CI on the commit, then the tag. A minor's release commit carries dated markers, and
+`since --check` read dates only from tags, so it was red until tagged; v1.4 went up with its tag for this reason, and
+v1.5 would have. **Changed:** `--check` takes a top CHANGELOG section that is dated, untagged, and newer than every tag as
+the release being made, and prints a note saying so. A fixture covers it in whichever state the CHANGELOG is in, seen red
+first, and a wrong marker stays red. `--write` is unchanged and still refuses. **Cost:** a release commit nobody tags now
+passes, with only that note to show it; nothing fails for it.

@@ -3,6 +3,7 @@
 and must turn the tool red (SE1/T3; REQ1/REL-1, REL-3, ID-3, REQ2/REL-4, CHK-4). Written not to need
 editing at a release: it finds the current labels instead of naming them.
 Run: python3 -I tools/test_check.py"""
+import datetime
 import os
 import re
 import shutil
@@ -23,6 +24,12 @@ class Repo(unittest.TestCase):
         cls.tmp = tempfile.mkdtemp()
         cls.repo = os.path.join(cls.tmp, "repo")
         shutil.copytree(GUIDE, cls.repo, ignore=shutil.ignore_patterns("__pycache__", ".claude"))
+        # On a release commit before its tag, these tests would each see that one release's markers as unnamed. The
+        # copy is tagged as it will be; `since --check` on the real tree is what covers the untagged state.
+        with open(os.path.join(cls.repo, "CHANGELOG.md"), encoding="utf-8") as fh:
+            top = re.search(r"^## (v[0-9.]+) — [0-9-]+$", fh.read(), re.M)
+        if top:
+            subprocess.run(["git", "-C", cls.repo, "tag", top.group(1)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     @classmethod
     def tearDownClass(cls):
@@ -207,6 +214,36 @@ class Planted(Repo):
         self.no_section()
         self.plant(UNKNOWING, self.U1_CLAIMS_V9_9)
         self.red("## vX.Y — unreleased", "tools/since.py", "--check")
+
+    def test_since_check_passes_a_release_commit_before_its_tag(self):
+        # So CI can pass on the very commit that gets tagged (FINDINGS 2026-11-04). The top section becomes the release
+        # being made, dated today, as a release commit does: a made-up one above a tagged section, or today's unreleased one.
+        today = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+        top = re.search(r"^## (v[0-9.]+) — (\S+)$", self.read("CHANGELOG.md"), re.M)
+        name = top.group(1) if top.group(2) == "unreleased" else "v9.9"
+        heading = f"## {name} — {today}"
+        self.plant("CHANGELOG.md", lambda t: t.replace(top.group(0), heading if name == top.group(1) else f"{heading}\n\n{top.group(0)}", 1))
+        self.plant(UNKNOWING, lambda t: self.U1_CLAIMS_V9_9(t).replace("Changed in v9.9", f"Changed in {name}", 1))
+        self.plant(UNKNOWING, lambda t: t.replace("K0 costs nothing", "K0 costs little", 1))
+        rc, out = self.tool("tools/since.py", "--write")  # --write is not eased: the release commit names itself with --as
+        self.assertEqual(rc, 2, out)
+        self.assertIn("--as", out)
+        rc, out = self.tool("tools/since.py", "--write", "--as", name)
+        self.assertEqual(rc, 0, out)
+        rc, out = self.tool("tools/since.py", "--check")
+        self.assertEqual(rc, 0, out)
+        self.assertIn(f"{name} is dated in CHANGELOG.md and has no tag yet", out)
+        # Still a check: a marker that is wrong stays red.
+        self.plant(UNKNOWING, lambda t: t.replace(f"*Changed in {name} ({today})", f"*Changed in {name} (2001-01-01)", 1))
+        self.red("marker(s) differ from git", "tools/since.py", "--check")
+
+    def test_since_check_takes_only_a_dated_newer_section_as_the_release_being_made(self):
+        self.no_section()
+        for heading in ("## v9.9 — unreleased", "## v0.1 — 2026-01-01"):
+            with self.subTest(heading=heading):
+                self.write("CHANGELOG.md", self.NO_SECTION(self.saved["CHANGELOG.md"]).replace("\n## v", f"\n{heading}\n\n## v", 1))
+                rc, out = self.tool("tools/since.py", "--check")
+                self.assertNotIn("has no tag yet", out)
 
     def test_since_as_names_the_release_being_made(self):
         self.plant(UNKNOWING, self.U1_CLAIMS_V9_9)

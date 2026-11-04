@@ -54,6 +54,7 @@ the client makes.
 - [SE1/F4](guide/03-feedback.md#f4) links to W14: the gravity a project makes for itself is a cost, not a signal.
 - AGENTS.md's *Authority, in order* says earlier and later, not higher and lower, which W14 uses the other way round.
 - AGENTS.md gives the PowerShell form of `se` where it first names it.
+- `since --check` accepts a release commit before its tag, and says so, so CI can pass on the commit that gets tagged.
 
 ## v1.4.4 — 2026-11-03
 

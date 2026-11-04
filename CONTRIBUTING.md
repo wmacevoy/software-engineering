@@ -52,8 +52,9 @@ guide that [SE1/W10](guide/08-work.md#w10) asks for; the guide itself is in `gui
   release commit: date the CHANGELOG section and give it the full-diff link and the principle
   count; relabel AGENTS.md and the templates to the tag; set `RELEASE` and `AGENTS_SHA256` in
   `se.py` (`se --self` is red until you do); run `python3 tools/since.py --write --as vX.Y` so the
-  markers carry the release's date before the tag exists; then tag, push the tag with `main`, and
-  watch CI. Copies read *For copies* under the release in the CHANGELOG.
+  markers carry the release's date before the tag exists. `since --check` takes a dated, untagged top
+  section as the release being made and says so, so push the commit on a branch, and tag it and push the
+  tag with `main` only when all six CI jobs pass on it. Copies read *For copies* under the release in the CHANGELOG.
 - **Sources.** A number or a quotation in the guide cites an entry in `archive/`, which records
   the URL, the date, the checksum, and whether the reviewer opened it
   ([SE1/D13](guide/05-design.md#d13)). Reviews of the guide are proposals and live in

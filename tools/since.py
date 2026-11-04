@@ -13,7 +13,9 @@ release's date and, when the wording moved later without the meaning, "text sinc
 changed after the newest tag gets the unreleased section's name from CHANGELOG.md; the checker
 still demands a New/Changed claim or an *Also changed* line for it. With no release to name, because
 CHANGELOG.md has no unreleased section or a claim names a release that is neither a tag nor that
-section, --write refuses, writes nothing, and says what to add. Needs the release tags."""
+section, --write refuses, writes nothing, and says what to add. --check treats a top CHANGELOG section that
+is dated, untagged, and newer than every tag as the release being made, and says so, so that CI can pass on
+the commit that gets tagged. Needs the release tags."""
 import datetime
 import os
 import re
@@ -45,6 +47,7 @@ if not tags:
     sys.exit(2)
 date_of = {t: (git("log", "-1", "--format=%cs", t) or "").strip() for t in tags}
 argv = sys.argv[1:]
+mode = "write" if "--write" in argv else "check" if "--check" in argv else "print"
 as_release = argv[argv.index("--as") + 1] if "--as" in argv and argv.index("--as") + 1 < len(argv) else None
 if "--as" in argv:  # a release being made: the working tree is it
     if not as_release or not re.search(r"^v[0-9]+\.[0-9]+(\.[0-9]+)?$", as_release):
@@ -53,9 +56,15 @@ if "--as" in argv:  # a release being made: the working tree is it
     if as_release not in tags:
         tags.append(as_release)
     date_of[as_release] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
+making = None
+if mode == "check" and not as_release:  # a release commit before its tag: only --check, so --write still refuses
+    newest = re.search(r"^## (v[0-9]+\.[0-9]+(?:\.[0-9]+)?) — (\S+)$", read(os.path.join(root, "CHANGELOG.md")), re.M)
+    if newest and newest.group(2) != "unreleased" and newest.group(1) not in tags and version_key(newest.group(1)) > version_key(tags[-1]):
+        as_release = making = newest.group(1)
+        tags.append(as_release)
+        date_of[as_release] = newest.group(2)
 top = re.search(r"^## (v[0-9]+\.[0-9]+(?:\.[0-9]+)?) — unreleased$", read(os.path.join(root, "CHANGELOG.md")), re.M)
 unreleased = top.group(1) if top else "unreleased"
-mode = "write" if "--write" in argv else "check" if "--check" in argv else "print"
 named = [a for i, a in enumerate(argv) if not a.startswith("--") and (i == 0 or argv[i - 1] != "--as")]
 guide = os.path.join(root, "guide")
 chapters = ([os.path.normpath(os.path.join(root, f)) for f in named] if named else
@@ -113,6 +122,8 @@ for path in chapters:
 why = (f"since: no release to name for {'; '.join(unnamed)}. Add `## vX.Y — unreleased` to CHANGELOG.md, "
        "or, for a release commit before its tag, run --write --as vX.Y.") if unnamed else None
 if mode == "check":
+    if making:  # said every time: a release commit nobody tagged must not read as released
+        print(f"note: {making} is dated in CHANGELOG.md and has no tag yet; checked as the release being made")
     print(f"{len(chapters)} chapters, {problems} marker(s) differ from git")
     if why and problems:
         print(why)
