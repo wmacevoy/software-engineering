@@ -646,7 +646,10 @@ than more.
 smallest change, but both are about the size of one change. Neither says an agent should aim to be finished with a
 thing, including with a review, or that a guide or a project may aim to stop growing.
 
-**Closed, for v1.6:** [SE1/A12](guide/10-agents.md#a12), a line under *Finishing* in AGENTS.md at the release commit, and REQ7/SHAPE-2 with its
+The author, also 2026-11-04: "Agents: unless directed otherwise, prefer not to spend attention, and when spent, spend on reducing
+future attention by humans and agents." A12 says so, and the agent added that a decision belonging to a person still goes to them.
+
+**Closed, for v1.6:** [SE1/A12](guide/10-agents.md#a12), lines in AGENTS.md at the release commit, and REQ7/SHAPE-2 with its
 assumption, the author's yes to an agent's draft, 2026-11-04. The data-mining guide has it in its own shape too (its
 REQ2/SHAPE-3). The agent's draft kept it out of the template, because a project may not want to stop growing. The author corrected that: "a shape
 that does not iterate towards finished means anything built on top of it can never iterate towards finished either. using

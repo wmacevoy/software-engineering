@@ -219,13 +219,15 @@ So treat every handoff as a possible injury, and check from outside:
 
 *New in v1.6 (unreleased).*
 
-There is no end of things an agent can find to do, and each one costs attention that could go elsewhere. Aim to
-finish: the *done* sentence met, and the findings that would change what someone does. Say in a line what you left.
+There is no end of things an agent can find to do, and each one costs attention that could go elsewhere. Unless
+directed otherwise, prefer not to spend attention, a person's or an agent's, and when you do, spend it on reducing the attention
+humans and agents will need later. Aim to finish: the *done* sentence met, and the findings that would change what someone does. Say in a line what you left.
 That a thing can be finished is a K4, held lightly: nothing ever is, and the falsehood is useful because it gives
 work a direction other than more.
 
 Finishing is not stopping early. A false claim is never minutia, a check not run is not finished
-([SE1/A2](#a2)), and the person who signs the work says when it is done ([SE1/A7](#a7)).
+([SE1/A2](#a2)), a decision that belongs to a person still goes to them, and the person who signs the work says when it is
+done ([SE1/A7](#a7)).
 
 > **Ask:** "What would someone do differently because of this? If nothing, why is it still open?"
 

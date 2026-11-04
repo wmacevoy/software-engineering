@@ -30,7 +30,8 @@ yours.
 
 ### New
 
-- [SE1/A12](guide/10-agents.md#a12) Work toward finished, not toward more. The author's decision, 2026-11-04, with no
+- [SE1/A12](guide/10-agents.md#a12) Work toward finished, not toward more: unless directed otherwise, prefer not to spend attention, and spend it on
+  reducing future attention. The author's decision, 2026-11-04, with no
   trial of its own yet ([GAPS](GAPS.md#decided-without-a-trial-finish-2026-11-04)). REQ7/SHAPE-2 holds this guide to it. AGENTS.md takes
   it under *Finishing* in the release commit, because the checker refuses a copy that cites an ID ahead of its label.
 
