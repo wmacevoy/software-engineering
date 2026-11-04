@@ -73,7 +73,7 @@ the wrong thing." Only a person looking at the running thing does.
 
 ### <a id="f4"></a>F4. Nothing has mass, so build the signals
 
-*Since v1.5 (unreleased).*
+*Since v1.5 (2026-11-04).*
 
 Mass supplies error signals for free: a bad structure sags, cracks, or falls down, and nobody has to
 be clever to notice. **Software has no gravity, so nothing collapses to tell you.** A bad design

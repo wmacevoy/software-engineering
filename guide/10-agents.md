@@ -85,7 +85,7 @@ code cannot say *why*, and everything durable in the working set, where both kin
 
 ### <a id="a5"></a>A5. Spend the speed on lowering the cost of testing now, and of understanding and changing later
 
-*Changed in v1.5 (unreleased).*
+*Changed in v1.5 (2026-11-04).*
 
 Fixtures, harnesses, seed data, fault scripts, conformance checks, the boring second and third test
 case. The simple version a newcomer can read, in the code you were asked to change. That work

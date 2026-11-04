@@ -15,7 +15,7 @@ factory ([SE1/U7](guide/02-unknowing.md#u7)), so every change is visible in thre
 
 `tools/check.py` keeps the three in step, and compares every principle with the last release tag:
 one whose text changed must have a marker for a later release, or — for wording only — be named
-under that release's *Also changed*. Work toward a release goes under `## v1.5 — unreleased`; give it
+under that release's *Also changed*. Work toward a release goes under `## v1.6 — unreleased`; give it
 a date when you tag it. Within SE1, a minor release may add principles, reword them, or extend what
 they ask; it never moves an ID ([principle index](README.md#principle-index)). A patch release
 (`v1.2.1`) changes no principle, no AGENTS.md, and no template: copies keep the minor's label, and
@@ -24,11 +24,14 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.5 — unreleased
+## v1.5 — 2026-11-04
 
-[Changes on main since v1.4.4](https://github.com/wmacevoy/software-engineering/compare/v1.4.4...main)
+[Full diff from v1.4.4](https://github.com/wmacevoy/software-engineering/compare/v1.4.4...v1.5) ·
+103 principles. No review by another family for this release: the author chose to go without one, and a subagent of
+the same family reviewed the fundamental shape and W14, before the rename and A5's change (FINDINGS 2026-11-04).
 
-**For copies:** re-copy AGENTS.md, whose order of authority now says earlier and later. A Shape section you already
+**For copies:** re-copy AGENTS.md, whose order of authority now says earlier and later, `se.py`, and the templates,
+which now link to v1.5. A Shape section you already
 have stays as it is until your next requirements version, and `se` still reads it. Then rename it *Fundamental shape*, and
 read it as an aesthetic, not a list of rules: a change in its meaning is a new version, which the holder proposes and
 the client makes.

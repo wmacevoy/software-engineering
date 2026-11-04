@@ -31,9 +31,9 @@ import urllib.request
 from collections import namedtuple
 from pathlib import Path
 
-RELEASE = "v1.4"
+RELEASE = "v1.5"
 # sha256 of AGENTS.md at RELEASE. `se --self` checks it in the guide's tree; the release commit sets it.
-AGENTS_SHA256 = "5247c7b534cd6166134fa90abb371019efd8bff1d0206b571d10524acaa8723d"
+AGENTS_SHA256 = "5292cacbac038e9574cf4bee1841c1385cbef11b79876355825fdf999f5110e5"
 GUIDE_REPO = "wmacevoy/software-engineering"
 LOW_DISK_GB = 10        # warn below (invented)
 NO_DISK_GB = 2          # fail below (invented)

@@ -2,16 +2,16 @@
 
 What must be observably true, and what is not being built. Changes only with the client; a change in
 meaning is a new version (`REQUIREMENTS_v2.md`); a spelling or lint fix is not. See
-[SE1/R1–R11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/04-requirements.md).
+[SE1/R1–R11](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/04-requirements.md).
 
 Client (the one voice who can decide — or, with none in the room, the named proxy for the users; see
-[SE1/H5](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/09-people.md#h5)): _name_
+[SE1/H5](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/09-people.md#h5)): _name_
 · Date sent: _yyyy-mm-dd_ · *Tell us what is wrong with it.*
 
 ## Glossary
 
 Ten to thirty terms, one line each. A new noun is a decision
-([SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/05-design.md#d9)).
+([SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/05-design.md#d9)).
 
 | Term   | Meaning |
 | ------ | ------- |
@@ -22,7 +22,7 @@ Ten to thirty terms, one line each. A new noun is a decision
 The intentions this project is aimed at, stated broadly; the requirements built on it make them specific.
 Only the client can change it. It is almost always passed by
 a person's judgment and not by a test, so name the judge and the occasion
-([SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w11)).
+([SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w11)).
 
 - **MISSION-1** *(since v1)* *(judged)* _The intentions, stated broadly._ Judge: _who_, on _what_, at _when_. Veto: _what
   would stop the work_.
@@ -30,7 +30,7 @@ a person's judgment and not by a test, so name the judge and the occasion
 ## Fundamental shape
 
 The versioned and heavy aesthetic that decides what belongs here, through a few guidelines; a sign it is working is that someone can guess the next part from the last
-([SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/05-design.md#d9)). Mechanisms
+([SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/05-design.md#d9)). Mechanisms
 go in the design, citing it.
 
 Held by: _one named person_. The holder proposes a change; the client makes it, in a new version.
@@ -52,14 +52,14 @@ Every kind of person, including those not in the room, and anyone treated differ
 Numbered, observable, with numbers. Prefix by area with at least two letters and a hyphen (`UI-1`,
 `COL-1`, …), and mark each with the version that last changed it. Cite them with that version —
 `REQ1/UI-1` — in tests, commits, and the queue
-([SE1/R10](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/04-requirements.md#r10)). Mark
+([SE1/R10](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/04-requirements.md#r10)). Mark
 invented numbers *(invented)*, and requirements read off existing code rather than agreed with the
 client *(inferred)*
-([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w12)). Mark a
+([SE1/W12](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w12)). Mark a
 requirement that only a person's judgment can pass *(judged)*, and name the judge and the occasion
-([SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w11)). Tests
+([SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/08-work.md#w11)). Tests
 name these IDs; this document never lists its tests
-([SE1/R11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/04-requirements.md#r11)).
+([SE1/R11](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/04-requirements.md#r11)).
 
 - **UI-1** *(since v1)* _A sentence a different team could satisfy a different way, checkable from
   outside._
@@ -109,6 +109,6 @@ Guesses nobody has agreed to.
 ## Deferred
 
 Wanted and agreed, but not in this version — named so it is not mistaken for an oversight
-([SE1/R9](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/04-requirements.md#r9)).
+([SE1/R9](https://github.com/wmacevoy/software-engineering/blob/v1.5/guide/04-requirements.md#r9)).
 
 - _Not yet: …_ — _reason, and what would trigger it_

@@ -345,7 +345,7 @@ change nothing relearns them no more often than one whose findings do.
 
 ### <a id="w14"></a>W14. Moving a lower layer can move what is built on it
 
-*New in v1.5 (unreleased).*
+*New in v1.5 (2026-11-04).*
 
 Software has no mass ([SE1/F4](03-feedback.md#f4)), but a project's decisions have an artificial gravity,
 because each is made with the ones beneath it in view:
