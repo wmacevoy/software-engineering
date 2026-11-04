@@ -36,6 +36,7 @@ find the guide using one of these loosely, that is a bug.
 | **Expand / contract** | Changing an interface in steps: add the new beside the old, move every reader, then remove the old. |
 | **Feature flag** | A setting that turns a feature on or off without a new deploy. |
 | **Fence**               | A checkpoint that proves something: a demo, a check that exits nonzero, a deploy. A meeting is not one. |
+| **Fundamental shape** | The versioned and heavy aesthetic that decides what belongs here, through a few guidelines held by one named person; a sign it is working is that someone can guess the next part from the last ([SE1/D9](guide/05-design.md#d9)). For what one part promises another, see **contract**. "Shape" alone is plain English and never means this. |
 | **Health check** | An endpoint that reports whether the app is working; split into *liveness* and *readiness* (below). A deploy is *health-gated* when it waits for it. |
 | **Idempotency key** | A unique value a caller attaches to a request so that sending it twice has the effect of sending it once. |
 | **Idempotent**          | Doing it twice equals doing it once.                                                                 |
@@ -72,7 +73,6 @@ find the guide using one of these loosely, that is a bug.
 | **Serve / rule**        | From embedded testing: code that answers questions from values (serve), versus the few lines that command the world — I/O, clocks, globals (rule). See SE1/D7. |
 | **Signature (digital)** | A value computed from a message with a private key; anyone with the public key can check who sent it and that it was not altered. It proves origin, not truth. |
 | **Small waterfall**     | Careful, front-loaded work — exact requirement, design on paper, independent review, done once — run around a one-way door inside an otherwise iterative process. |
-| **Shape** | The versioned and heavy aesthetic that decides what belongs here, through a few guidelines held by one named person; a sign it is working is that someone can guess the next part from the last ([SE1/D9](guide/05-design.md#d9)). For what one part promises another, see **contract**. |
 | **Spike**               | A time-boxed investigation of one question, whose code is thrown away. A descent on purpose.        |
 | **Symptom alert** | An alert on what users experience — errors, latency, stale data — rather than on an internal cause. |
 | **Technical debt**      | Carry taken on knowingly, to be repaid.                                                              |

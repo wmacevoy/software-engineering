@@ -258,26 +258,26 @@ happen at a few thousand lines, long before it is "large."
 Keep a glossary of ten to thirty terms at the top of the requirements. Treat a **new noun** as an
 event that needs a decision: a new thing, or a second name for a thing we have?
 
-**It shows up second in shape.** One error envelope on every endpoint. Retryability stated
-explicitly rather than inferred from a status code. One README per component, all the same shape.
+**It shows up second in uniformity.** One error envelope on every endpoint. Retryability stated
+explicitly rather than inferred from a status code. One README per component, all the same form.
 Stable IDs that grep from a test back to the sentence that demanded it. **If everything is uniform,
 the one weird thing is a signal. If nothing is uniform, the weird thing is invisible.** An exception
 is fine when it is written down with its reason.
 
 **Somebody has to hold it.** Coherence lives *between* the parts, so no amount of careful local work
-produces it and no test checks it. One person holds the whole shape, and most of that job is saying
+produces it and no test checks it. One person holds the fundamental shape, and most of that job is saying
 no — especially to good ideas ([SE1/H3](09-people.md#h3)). This is also why agents author and humans
 own the structure: each agent session sees a part, and ten locally reasonable designs compose into
 something nobody can hold ([SE1/A8](10-agents.md#a8)).
 
 **Coherent around what? The mission.** At the top of the requirements, it states broadly the
 intentions this project is aimed at, the requirements built on it make them specific, and only the
-client can change it. Next comes the shape, the versioned and heavy aesthetic that decides what belongs
+client can change it. Next comes the fundamental shape, the versioned and heavy aesthetic that decides what belongs
 here, through a few guidelines; a sign it is working is that someone can guess the next part from the last. With it go who holds
 it, what it says no to, and the exceptions. It changes only by a new version, and moving it can move
-everything built on it ([SE1/W14](08-work.md#w14)). Mission and shape are requirements, the heaviest to move. Unwritten, the shape leaves with the person holding it, and no summary can carry what was
-never written. A good idea that serves the mission and breaks the shape gets a no, and so does one
-that fits the shape and serves nothing. A mission rarely has a test that can pass it
+everything built on it ([SE1/W14](08-work.md#w14)). Mission and fundamental shape are requirements, the heaviest to move. Unwritten, the fundamental shape leaves with the person holding it, and no summary can carry what was
+never written. A good idea that serves the mission and breaks the fundamental shape gets a no, and so does one
+that fits the fundamental shape and serves nothing. A mission rarely has a test that can pass it
 ([SE1/U10](02-unknowing.md#u10)).
 
 > **Ask:** "Is that the same thing we called something else on Tuesday?"

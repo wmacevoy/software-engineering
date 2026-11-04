@@ -583,27 +583,30 @@ class TestPost(unittest.TestCase):
     def test_after_a_compaction_the_mission_and_shape_come_from_the_source(self):
         # SE1/D9: a summary can lose them. A template's blank and a line left to fill are not printed.
         Path(self.repo, "docs").mkdir(exist_ok=True)
-        Path(self.repo, "docs/REQUIREMENTS_v1.md").write_text(
-            "# R\n\n## Mission\n\n- **AIM-1** *(since v1)* *(judged)* Drivers go straight to a lot.\n"
-            "  Judge: the supervisor. Veto: a thing.\n\n## Shape\n\nHeld by: Ann.\n\n"
-            "- **RULE-1** *(since v1)* *(judged)* _A rule._ Judge: _the holder_.\n- **RULE-2** *(since v1)* One error envelope.\n"
-            "- **Says no to:** *to fill.*\n\n## The pain\n\n- not this\n")
         t = Path(self.tmp.name, "t.jsonl")
-        t.write_text(self.record(self.JUST_NOW))
-        for text in (self.record(self.JUST_NOW), ""):  # recorded yet or not
-            t.write_text(text)
-            lines, verdict = self.post({"TMUX": "1"}, hook={"source": "compact"}, transcript=t)
-            self.assertIn("REQUIREMENTS_v1.md", lines[1])
-            self.assertIn("Drivers go straight to a lot.", lines[2])
-            self.assertNotIn("Judge", lines[2])
-            self.assertIn("One error envelope", lines[3])
-            self.assertFalse(any(x in "\n".join(lines) for x in ("A rule", "to fill", "not this")))
+        # "Shape" is the heading in documents written before v1.5, which the rename must not silence.
+        for heading in ("Fundamental shape", "Shape"):
+            Path(self.repo, "docs/REQUIREMENTS_v1.md").write_text(
+                "# R\n\n## Mission\n\n- **AIM-1** *(since v1)* *(judged)* Drivers go straight to a lot.\n"
+                f"  Judge: the supervisor. Veto: a thing.\n\n## {heading}\n\nHeld by: Ann.\n\n"
+                "- **RULE-1** *(since v1)* *(judged)* _A rule._ Judge: _the holder_.\n- **RULE-2** *(since v1)* One error envelope.\n"
+                "- **Says no to:** *to fill.*\n\n## The pain\n\n- not this\n")
+            for text in (self.record(self.JUST_NOW), ""):  # recorded yet or not
+                with self.subTest(heading=heading, recorded=bool(text)):
+                    t.write_text(text)
+                    lines, verdict = self.post({"TMUX": "1"}, hook={"source": "compact"}, transcript=t)
+                    self.assertIn("the mission and fundamental shape", lines[1])
+                    self.assertIn("REQUIREMENTS_v1.md", lines[1])
+                    self.assertIn("Drivers go straight to a lot.", lines[2])
+                    self.assertNotIn("Judge", lines[2])
+                    self.assertIn("One error envelope", lines[3])
+                    self.assertFalse(any(x in "\n".join(lines) for x in ("A rule", "to fill", "not this")))
 
     def test_with_no_mission_nothing_is_said_of_one(self):
         t = Path(self.tmp.name, "t.jsonl")
         t.write_text(self.record(self.JUST_NOW))
         lines, verdict = self.post({"TMUX": "1"}, hook={"source": "compact"}, transcript=t)
-        self.assertFalse(any("mission and shape" in l for l in lines))
+        self.assertFalse(any("fundamental shape" in l for l in lines))
 
     def test_local_terminal_without_a_multiplexer_is_fragile(self):
         lines, verdict = self.post({})

@@ -38,7 +38,7 @@ work moves from one kind of step to the next.
 - [ ] Every input has an answer for absent, late, wrong, and lying.
       ([SE1/R6](guide/04-requirements.md#r6))
 - [ ] A glossary exists. ([SE1/D9](guide/05-design.md#d9))
-- [ ] The mission and the shape are written, the mission has a judge, and the shape has a holder.
+- [ ] The mission and the fundamental shape are written, the mission has a judge, and the fundamental shape has a holder.
       ([SE1/D9](guide/05-design.md#d9), [SE1/U10](guide/02-unknowing.md#u10))
 - [ ] Every "must" is named by a test, or by a `QUEUE` item to write one.
       ([SE1/R11](guide/04-requirements.md#r11))

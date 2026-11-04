@@ -29,8 +29,8 @@ yours.
 [Changes on main since v1.4.4](https://github.com/wmacevoy/software-engineering/compare/v1.4.4...main)
 
 **For copies:** re-copy AGENTS.md, whose order of authority now says earlier and later. A Shape section you already
-have stays as it is until your next requirements version, and read it then as an aesthetic, not a list of rules: a
-change in its meaning is a new version.
+have stays as it is until your next requirements version, and `se` still reads it. Then rename it *Fundamental shape*, and
+read it as an aesthetic, not a list of rules: a change in its meaning is a new version.
 
 ### New
 
@@ -41,7 +41,8 @@ change in its meaning is a new version.
 
 - [SE1/A5](guide/10-agents.md#a5) Spend the speed on lowering the cost of testing now, and of understanding and changing later. It adds the simple version, and a guard against
   abstractions for a change nobody has asked for. The author's word, 2026-11-04; the guard was an agent's proposal, kept.
-- [SE1/D9](guide/05-design.md#d9) The shape is the versioned and heavy aesthetic that decides what belongs, through a few guidelines; that
+- [SE1/D9](guide/05-design.md#d9) The shape is now the *fundamental shape*, easy to find, and "shape" alone is plain
+  English. It is the versioned and heavy aesthetic that decides what belongs, through a few guidelines; that
   someone can guess the next part is a sign it is working, not its definition. The author's word, 2026-11-04.
 
 ### Also changed

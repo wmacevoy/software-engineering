@@ -117,7 +117,7 @@ to people (SE1/W4, SE1/D11):
 - It introduces a new noun into the domain vocabulary — one that would appear in the requirements'
   glossary or be shown to a user, not a class or variable name — or reuses an existing word for a
   new thing. (SE1/D9)
-- It would change the mission or the shape, or adds something they say no to. (SE1/D9)
+- It would change the mission or the fundamental shape, or adds something they say no to. (SE1/D9)
 - It touches secrets, keys, authentication, authorization, or what data about people is collected or
   kept. (SE1/R8, SE1/O8)
 - It would copy code from outside the repository, or from a source whose license you cannot state —

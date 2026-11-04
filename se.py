@@ -755,18 +755,18 @@ def is_this_compaction(comp, now):
 
 
 def mission_and_shape(repo):
-    """The mission and shape as written, for an agent whose summary may have lost them (SE1/D9)."""
+    """The mission and fundamental shape as written, for an agent whose summary may have lost them (SE1/D9)."""
     req, _, _ = latest_requirements(repo)
     if not req:
         return []
     text, found = read(req), []
-    for name in ("Mission", "Shape"):
+    for name in ("Mission", "(?:Fundamental s|S)hape"):  # plain "Shape": documents from before v1.5
         m = re.search(rf"^##\s+{name}\s*$(.*?)(?=^##\s|\Z)", text, re.M | re.S)
         for item in re.split(r"^- ", m.group(1), flags=re.M)[1:] if m else []:
             item = re.split(r"\s+Judge:", " ".join(item.split()))[0]
             if not re.search(r"(?:^|\s)_\S|\*\*[^*]+:\*\*\s*\*", item):  # a template's blank, or a line left to fill
                 found.append(f"  {item}")
-    return [f"the mission and shape, from {req.name}; the source, not your summary (SE1/D9):"] + found if found else []
+    return [f"the mission and fundamental shape, from {req.name}; the source, not your summary (SE1/D9):"] + found if found else []
 
 
 def torn_state(repo, today=None):

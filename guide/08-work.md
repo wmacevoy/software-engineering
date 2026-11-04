@@ -350,12 +350,12 @@ change nothing relearns them no more often than one whose findings do.
 Software has no mass ([SE1/F4](03-feedback.md#f4)), but a project's decisions have an artificial gravity,
 because each is made with the ones beneath it in view:
 
-`mission < shape < requirements < design < develop`
+`mission < fundamental shape < requirements < design < develop`
 
 Read it from the bottom up: each layer rests on what is to its left, so *lower* means *to the left*. The
-mission says what the project is aimed at. The shape is the aesthetic that decides what belongs
+mission says what the project is aimed at. The fundamental shape is the aesthetic that decides what belongs
 ([SE1/D9](05-design.md#d9)). Requirements make the aim specific, a design answers them, and development
-follows the design. Mission and shape are requirements too, the heaviest to move. **None of them is frozen, but
+follows the design. Mission and fundamental shape are requirements too, the heaviest to move. **None of them is frozen, but
 moving one can move everything above it.**
 
 So weight is a price, not a ban, and height is not all of it: a schema with data in it sits at the top of
@@ -363,7 +363,7 @@ this ladder and is still a one-way door ([SE1/D11](05-design.md#d11)). Move a lo
 walk up and see what no longer holds. What you learn higher up is often the reason to move it. But code
 that quietly disagrees with its design has not moved the design; it has only drifted from it.
 
-Part of the walk can be mechanical: a new version of a requirement, or of the shape, makes its older
+Part of the walk can be mechanical: a new version of a requirement, or of the fundamental shape, makes its older
 citations stale and asks for a new verdict ([SE1/R10](04-requirements.md#r10)). Nothing notices what else its
 meaning moved, so a person walks that.
 

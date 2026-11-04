@@ -27,7 +27,7 @@ a person's judgment and not by a test, so name the judge and the occasion
 - **MISSION-1** *(since v1)* *(judged)* _The intentions, stated broadly._ Judge: _who_, on _what_, at _when_. Veto: _what
   would stop the work_.
 
-## Shape
+## Fundamental shape
 
 The versioned and heavy aesthetic that decides what belongs here, through a few guidelines; a sign it is working is that someone can guess the next part from the last
 ([SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/05-design.md#d9)). Mechanisms

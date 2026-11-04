@@ -139,7 +139,7 @@ the missing thing to satisfy a rule.
       ([SE1/R9](guide/04-requirements.md#r9))
 - [ ] The repository guide maps AGENTS.md's nouns to this repository.
       ([SE1/D9](guide/05-design.md#d9))
-- [ ] The mission and the shape are written by their owner, or marked *(inferred)* until the owner
+- [ ] The mission and the fundamental shape are written by their owner, or marked *(inferred)* until the owner
       confirms them. ([SE1/D9](guide/05-design.md#d9))
 - [ ] The client, or the proxy for the users, is named. ([SE1/H5](guide/09-people.md#h5))
 - [ ] Done is defined, and CI runs the check command. ([SE1/W11](guide/08-work.md#w11),

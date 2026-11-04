@@ -300,3 +300,11 @@ repeat it. **Changed:** REQUIREMENTS_v5, W14, and D9 say so; what is left is que
 `REQUIREMENTS_v5` as sent, and recorded here by an agent (SE1/U10).
 
 - REQ5/SHAPE-1 verdict: pass, by Warren MacEvoy, 2026-11-04
+
+## 2026-11-04 — The term is the fundamental shape
+
+Policing "shape" through the guide, as queue row 26 first proposed, treated the wrong side: the word is plain English in
+a dozen places. The author named the term instead, and "fundamental" appeared nowhere in the guide. **Changed:** REQUIREMENTS_v6,
+sent 2026-11-04, and the guide say it. `se.py` reads both headings, because five requirements documents in `../compaction`,
+`../data-mining`, and `../tribe` say `## Shape`; a test holds both, seen red first. The risk is that people shorten it, so
+the glossary says "shape" alone never means this. Nothing checks that.
