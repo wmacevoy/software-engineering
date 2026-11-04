@@ -20,7 +20,8 @@ In order. Each step is small, and the repository is better after any of them tha
 
 1. **Copy AGENTS.md at the release it names, and keep it current.** The copy says which release it
    came from, so a copy that is behind says so ([SE1/U7](guide/02-unknowing.md#u7)). When a newer
-   release appears, read *For copies* under it in [CHANGELOG.md](CHANGELOG.md) and re-copy. Do not
+   release appears, the doctor warns; read *For copies* under it in [CHANGELOG.md](CHANGELOG.md) and re-copy. A
+   *Foundation* line in the fundamental shape pins a release and sets how much warns (the requirements template). Do not
    edit the copy: local rules go in the repository guide, which wins over it where they disagree.
    Point the repository guide's and the design's links to the guide at the new release. A
    requirements version keeps the links it was written with, since only a spelling or lint fix edits

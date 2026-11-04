@@ -230,7 +230,24 @@ def settings(repo):
 
 # ---------------------------------------------------------------- the doctor's checks
 
+def foundation_pin(repo):
+    """What the fundamental shape's Foundation line pins: (name, [major, minor, patch] as far as written), or None."""
+    req, _, _ = latest_requirements(repo)
+    section = re.search(r"^##\s+(?:Fundamental )?[Ss]hape\s*$(.*?)(?=^##\s|\Z)", read(req), re.M | re.S) if req else None
+    m = re.search(r"\*\*Foundation:\*\*\s*`?(SE(\d+(?:\.\d+){0,2})?)(?![\w.])", section.group(1)) if section else None
+    return (m.group(1), [int(x) for x in m.group(2).split(".")] if m.group(2) else []) if m else None
+
+
 def check_copy(repo, rel):
+    """The row itself; a pin to an exact release is marked on whatever it says, since nothing else warns of its cost."""
+    f = copy_row(repo, rel)
+    pin = foundation_pin(repo)
+    if pin and len(pin[1]) == 3 and f.state != FAIL:
+        return f._replace(text=f"FRAGILE, pinned to exactly {pin[0]}: it takes no fix, and nothing warns of a newer release; {f.text}")
+    return f
+
+
+def copy_row(repo, rel):
     path, label = find_copy(repo)
     if not path:
         return Finding("working agreement", "SE1/U7", FAIL, "no AGENTS.md, and CLAUDE.md imports none",
@@ -248,18 +265,29 @@ def check_copy(repo, rel):
     known = rel.get("sha", {}).get(label) or (AGENTS_SHA256 if label == RELEASE else None)
     where = str(path.relative_to(repo)) if str(path).startswith(str(repo)) else str(path)
     minor = lambda v: tuple(int(x) for x in v[1:].split(".")[:2])
+    pin = foundation_pin(repo)
+    if pin and any(a != b for a, b in zip(pin[1][:2], minor(label))):
+        return Finding("working agreement", "SE1/U7", FAIL, f"{where} is {label}, and the fundamental shape's Foundation says {pin[0]}",
+                       "re-copy it at the Foundation's release, or move the Foundation in a new requirements version")
     if rel.get("sha", {}).get(newest) == digest:  # the same text as the newest release: current, whatever the label
         return Finding("working agreement", "SE1/U7", PASS, f"{where} is {label}, the same text as {newest}, the newest release", "")
-    if label != newest and minor(label) < minor(newest):
-        return Finding("working agreement", "SE1/U7", FAIL, f"{where} is {label}; {newest} is out",
-                       f"read *For copies* under {newest} in the guide's CHANGELOG, then re-copy")
+    behind = label != newest and minor(label) < minor(newest)
+    # Unpinned or SE1.7: any newer minor warns. SE1 or SE: only a new major. SE1.7.3: nothing does.
+    warns = behind and (not pin or len(pin[1]) == 2 or (len(pin[1]) < 2 and minor(label)[0] < minor(newest)[0]))
+    if warns:
+        how = "then move the Foundation and re-copy" if pin else ("then re-copy, or set how much warns: "
+                                                                  "the Foundation line in the requirements template")
+        return Finding("working agreement", "SE1/U7", WARN, f"{where} is {label}; {newest} is out",
+                       f"read *For copies* under {newest} in the guide's CHANGELOG, {how}")
     if known and digest != known:
         return Finding("working agreement", "SE1/U7", FAIL, f"{where} says {label} but its text differs from the release's",
                        "it was edited, or copied from an unreleased commit; local rules go in the repository guide")
     if not known:
         return Finding("working agreement", "SE1/U7", WARN, f"{where} is {label}; its text could not be compared "
                        "(no hash for that release here)", "run with the network once to fetch the release's hash")
-    return Finding("working agreement", "SE1/U7", PASS, f"{where} is {label}, the newest known, unedited", "")
+    if behind:
+        return Finding("working agreement", "SE1/U7", PASS, f"{where} is {label}, unedited, as its Foundation {pin[0]} allows; {newest} is out", "")
+    return Finding("working agreement", "SE1/U7", PASS, f"{where} is {label}, unedited; the newest known is {newest}", "")
 
 
 def check_loads(repo):

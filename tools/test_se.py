@@ -268,8 +268,56 @@ class TestDoctorRed(Fixture):
     def test_copy_behind_the_newest_release(self):
         repo = make_repo(self.tmp.name, self.changed(**{"AGENTS.md": AGENTS_TEXT.replace(AGENTS_LABEL, "v0.9")}))
         rel = {"latest": AGENTS_LABEL, "sha": {}}
-        self.assertEqual(se.check_copy(repo, rel).state, se.FAIL)
+        self.assertEqual(se.check_copy(repo, rel).state, se.WARN)  # REQ1/REL-2: reported; moving is the project's choice
         self.assertIn("is out", se.check_copy(repo, rel).text)
+
+    def pinned(self, pin, latest, label="v1.7", extra=""):
+        text = AGENTS_TEXT.replace(AGENTS_LABEL, label)
+        req = GOOD["docs/REQUIREMENTS_v2.md"].replace("## Requirements", f"## Fundamental shape\n\n- **Foundation:** {pin}\n\n## Requirements", 1)
+        repo = make_repo(tempfile.mkdtemp(dir=self.tmp.name), self.changed(**{"AGENTS.md": text, "docs/REQUIREMENTS_v2.md": req}))
+        sha = {label: se.sha256(Path(repo, "AGENTS.md"))}
+        if extra:
+            with open(Path(repo, "AGENTS.md"), "a", encoding="utf-8") as fh:
+                fh.write(extra)
+        return se.check_copy(repo, {"latest": latest, "sha": sha})
+
+    def test_the_foundation_line_sets_what_warns(self):
+        # REQ1/REL-2: every row still names the newer release; the pin decides only whether it warns
+        for pin, latest, state in (("SE1.7.3", "v1.8", se.PASS), ("SE1.7.3", "v2.0", se.PASS), ("SE1.7", "v1.7.4", se.PASS),
+                                   ("SE1.7", "v1.8", se.WARN), ("SE1.7", "v2.0", se.WARN), ("SE1", "v1.8", se.PASS),
+                                   ("SE1", "v2.0", se.WARN), ("SE", "v1.8", se.PASS), ("SE", "v2.0", se.WARN)):
+            with self.subTest(pin=pin, latest=latest):
+                f = self.pinned(pin, latest)
+                self.assertEqual(f.state, state, f.text)
+                self.assertIn(latest, f.text)
+                self.assertEqual("FRAGILE" in f.text, pin == "SE1.7.3", f.text)
+
+    def test_a_pinned_copy_that_warns_says_to_move_the_foundation(self):
+        self.assertIn("move the Foundation", self.pinned("SE1.7", "v1.8").fix)
+
+    def test_an_exact_pin_is_marked_fragile_when_nothing_is_newer(self):
+        f = self.pinned("SE1.7.3", "v1.7.3")
+        self.assertEqual(f.state, se.PASS)
+        self.assertIn("FRAGILE", f.text)
+
+    def test_a_copy_that_disagrees_with_its_foundation_fails(self):
+        for pin in ("SE1.6", "SE1.6.2", "SE2"):
+            with self.subTest(pin=pin):
+                f = self.pinned(pin, "v1.8")
+                self.assertEqual(f.state, se.FAIL, f.text)
+                self.assertIn(pin, f.text)
+
+    def test_a_pin_does_not_excuse_an_edited_copy(self):
+        for pin in ("SE1.7.3", "SE1.7", "SE1"):
+            with self.subTest(pin=pin):
+                f = self.pinned(pin, "v1.7", extra="\n- a local rule\n")
+                self.assertEqual(f.state, se.FAIL, f.text)
+                self.assertIn("differs", f.text)
+
+    def test_the_templates_blank_foundation_is_no_pin(self):
+        f = self.pinned("_SE1.7.3, say_", "v1.8")
+        self.assertEqual(f.state, se.WARN, f.text)
+        self.assertNotIn("FRAGILE", f.text)
 
     def test_patch_release_with_the_same_text_is_current(self):
         repo = make_repo(self.tmp.name)

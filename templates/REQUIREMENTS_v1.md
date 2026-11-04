@@ -36,6 +36,7 @@ go in the design, citing it. Unstated, it iterates toward finished.
 Held by: _one named person_. The holder proposes a change; the client makes it, in a new version.
 
 - **SHAPE-1** *(since v1)* *(judged)* _A guideline that holds across the parts._ Judge: _the holder_, at _when_.
+- **Foundation:** _the SE release this rests on: `SE1.7.3` pins it exactly and is fragile, since it takes no fix; `SE1.7` warns of a newer minor; `SE1` or `SE` warns only of a new major. Left out, any newer release warns._
 - **Says no to:** _good ideas this refuses, and why_
 - **Exceptions:** _each with its reason_
 

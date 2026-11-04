@@ -45,8 +45,13 @@ shape you already have that says nothing about this now reads that way ([SE1/D9]
 
 - [SE1/D9](guide/05-design.md#d9) A fundamental shape iterates toward finished, and unstated, assume it does; the medicine for one that does not is
   long-term support, expressed as patch releases. The template says the first part too. The author's word, 2026-11-04 ([GAPS](GAPS.md#decided-without-a-trial-finish-2026-11-04)).
-- [SE1/D5](guide/05-design.md#d5) Says what to do about time zones and what a "day" is: UTC for a moment that has happened, local
-  time and zone for a future one. The author's word, 2026-11-04 ([GAPS](GAPS.md#decided-without-a-trial-time-zones-2026-11-04)).
+- [SE1/D5](guide/05-design.md#d5) Says what to do about time zones and what a "day" is: UTC for a moment that has happened, local time and zone for a future local time. Drafted by an agent, accepted by the author, 2026-11-04 ([GAPS](GAPS.md#decided-without-a-trial-time-zones-2026-11-04)).
+
+### Also changed
+
+- `se --doctor` warns of a copy behind the newest release, and no longer fails it: moving is the project's choice. A *Foundation* line
+  in an adopter's fundamental shape pins a release: `SE1.7.3` exactly, marked fragile; `SE1.7` warns of a newer minor; `SE1` or `SE`
+  warns only of a new major. A copy that disagrees with its Foundation fails. The author's word, 2026-11-04.
 
 ## v1.5 — 2026-11-04
 
