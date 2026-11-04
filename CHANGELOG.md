@@ -24,6 +24,15 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.5 — unreleased
+
+[Changes on main since v1.4.4](https://github.com/wmacevoy/software-engineering/compare/v1.4.4...main)
+
+### New
+
+- [SE1/W14](guide/08-work.md#w14) Artificial gravity: what sits lower weighs more. The author's decision,
+  2026-11-04, with no trial of its own yet ([GAPS](GAPS.md#decided-without-a-trial-artificial-gravity-2026-11-04)).
+
 ## v1.4.4 — 2026-11-03
 
 [Full diff from v1.4.3](https://github.com/wmacevoy/software-engineering/compare/v1.4.3...v1.4.4). No

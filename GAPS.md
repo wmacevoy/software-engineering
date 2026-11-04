@@ -604,3 +604,16 @@ proposed the sections' place at the top of the requirements, so that they cannot
 them against one without, or whether they survive a handoff better than the rest of a document. SE1's
 own REQ3/MISSION-1 is judged by its author, and most field reports so far come from the author's projects,
 so a project by someone else in an unfamiliar domain would test it harder.
+
+## Decided without a trial: artificial gravity, 2026-11-04
+
+[SE1/F4](guide/03-feedback.md#f4) says software has no gravity, so nothing collapses to tell you. The author
+named the exception a project makes for itself: "there is one kind of artificial gravity of software: mission <
+requirements < design < develop. they don't have to remain frozen, but moving one below can move everything above
+it." On 2026-11-04 the author put the shape between the mission and the requirements, and decided this as
+[SE1/W14](guide/08-work.md#w14). Drafted with Claude Opus 5.5, which added that what is learned higher up is often
+the reason to move a lower layer, so that the principle would not read as waterfall; the author kept it.
+
+**Open:** whether it holds. The one case to hand is small: moving REQ4/SHAPE-1 moved its verdict and two pointers,
+and nothing reads what the shape means, so that says little about its weight. What would show it wrong was
+proposed by the agent: projects that often change a lower layer without having to revisit what sits above it.

@@ -215,15 +215,18 @@ class Planted(Repo):
         self.assertNotIn("unreleased", re.search(r'<a id="u1"></a>[^\n]*\n\n(\*[^\n]*\*)', self.read(UNKNOWING)).group(1))
 
     def test_since_names_the_unreleased_section(self):
-        self.no_section()
-        self.plant("CHANGELOG.md", self.SECTION)
-        self.plant(UNKNOWING, self.U1_CLAIMS_V9_9)
+        # The real section when there is one: a principle new in it must stay named, so a second section would refuse.
+        found = re.search(r"^## (v[0-9.]+) — unreleased$", self.read("CHANGELOG.md"), re.M)
+        name = found.group(1) if found else "v9.9"
+        if not found:
+            self.plant("CHANGELOG.md", self.SECTION)
+        self.plant(UNKNOWING, lambda t: self.U1_CLAIMS_V9_9(t).replace("Changed in v9.9", f"Changed in {name}", 1))
         self.plant(UNKNOWING, lambda t: t.replace("K0 costs nothing", "K0 costs little", 1))
         self.plant(self.FEEDBACK, lambda t: re.sub(r'(<a id="f1"></a>[^\n]*\n\n\*[^\n]*\*\n\n)', r"\1Planted. ", t, count=1))
         rc, out = self.tool("tools/since.py", "--write")
         self.assertEqual(rc, 0, out)
-        self.assertIn("*Changed in v9.9 (unreleased).*", self.read(UNKNOWING))
-        self.assertIn("*Since v9.9 (unreleased).*", self.read(self.FEEDBACK))
+        self.assertIn(f"*Changed in {name} (unreleased).*", self.read(UNKNOWING))
+        self.assertIn(f"*Since {name} (unreleased).*", self.read(self.FEEDBACK))
         self.green("tools/since.py", "--check")
 
 

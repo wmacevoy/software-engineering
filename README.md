@@ -226,6 +226,7 @@ should use a different form, such as `REQ2/UI-1`, so they are never confused wit
 - [**SE1/W11**](guide/08-work.md#w11) Done means all of it, one concern per change, reviewed by someone else
 - [**SE1/W12**](guide/08-work.md#w12) Joining late: rebuild the working set, and mark what you inferred
 - [**SE1/W13**](guide/08-work.md#w13) A finding closes with what it changed, or why it changed nothing
+- [**SE1/W14**](guide/08-work.md#w14) Artificial gravity: what sits lower weighs more
 
 **[9. People](guide/09-people.md)**
 
@@ -309,7 +310,7 @@ any rule.
   with an agent other than Claude except two reviews by OpenAI Codex, the second finding 4 of 5
   planted defects ([the method](archive/reviews/REVIEW-METHOD-other-family.md)). U8 and U9
   rest on one author's observation and one project's trials, and say what would show them wrong.
-  U10 and W13 rest on the author's decision, with no trial of their own yet.
+  U10, W13, and W14 rest on the author's decision, with no trial of their own yet.
 - **What would show it wrong.** Each GAPS entry states its falsifier. The ones that matter most: a
   transition instrument with a ceiling that shows no loss across a compaction; a check that runs
   without the agent choosing to and still leaves the work unchanged; an agent of another family
