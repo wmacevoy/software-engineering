@@ -178,7 +178,7 @@ Attention is the scarce resource — not tokens, not runtime, not lines of code.
 ## Limit your own fluency
 
 You write code more fluently than most repositories need. Spend that fluency on finding the simple
-version, not on demonstrating range.
+version, not on demonstrating range. (SE1/A5)
 
 - Write the version a competent newcomer to this codebase would write, and recognize a month later.
 - Three plain statements beat one dense chain.

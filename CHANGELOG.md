@@ -39,6 +39,8 @@ change in its meaning is a new version.
 
 ### Changed
 
+- [SE1/A5](guide/10-agents.md#a5) Spend the speed on lowering the cost of testing now, and of understanding and changing later. It adds the simple version, and a guard against
+  abstractions for a change nobody has asked for. The author's word, 2026-11-04; the guard was an agent's proposal, kept.
 - [SE1/D9](guide/05-design.md#d9) The shape is the versioned and heavy aesthetic that decides what belongs, through a few guidelines; that
   someone can guess the next part is a sign it is working, not its definition. The author's word, 2026-11-04.
 

@@ -83,13 +83,14 @@ The bad news: some conventions that helped human readers now cost real money.
 The replacement is not "no documentation." It is self-documenting code, a comment exactly where the
 code cannot say *why*, and everything durable in the working set, where both kinds of reader look.
 
-### <a id="a5"></a>A5. Spend the speed on lowering the cost of testing
+### <a id="a5"></a>A5. Spend the speed on lowering the cost of testing now, and of understanding and changing later
 
-*Since v1.0 (2026-10-20).*
+*Changed in v1.5 (unreleased).*
 
 Fixtures, harnesses, seed data, fault scripts, conformance checks, the boring second and third test
-case. That work multiplies against every future change ([SE1/F2](03-feedback.md#f2)). More features
-do not.
+case. The simple version a newcomer can read, in the code you were asked to change. That work
+multiplies against every future change ([SE1/F2](03-feedback.md#f2)). More features do not, and neither
+does an abstraction for a change nobody has asked for.
 
 ### <a id="a6"></a>A6. Review capacity is the bottleneck
 

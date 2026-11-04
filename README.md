@@ -249,7 +249,7 @@ should use a different form, such as `REQ2/UI-1`, so they are never confused wit
 - [**SE1/A2**](guide/10-agents.md#a2) An agent is a K3 factory; never let confidence substitute for a run
 - [**SE1/A3**](guide/10-agents.md#a3) An agent arrives knowing nothing and leaves remembering nothing
 - [**SE1/A4**](guide/10-agents.md#a4) Context is a budget, and it resets every session
-- [**SE1/A5**](guide/10-agents.md#a5) Spend the speed on lowering the cost of testing
+- [**SE1/A5**](guide/10-agents.md#a5) Spend the speed on lowering the cost of testing now, and of understanding and changing later
 - [**SE1/A6**](guide/10-agents.md#a6) Review capacity is the bottleneck
 - [**SE1/A7**](guide/10-agents.md#a7) Delegation is not abdication
 - [**SE1/A8**](guide/10-agents.md#a8) Agents move the human up the waterfall
