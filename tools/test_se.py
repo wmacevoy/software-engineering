@@ -585,7 +585,7 @@ class TestPost(unittest.TestCase):
         Path(self.repo, "docs").mkdir(exist_ok=True)
         t = Path(self.tmp.name, "t.jsonl")
         # "Shape" is the heading in documents written before v1.5, which the rename must not silence.
-        for heading in ("Fundamental shape", "Shape"):
+        for heading in ("Fundamental shape", "Fundamental Shape", "Shape"):
             Path(self.repo, "docs/REQUIREMENTS_v1.md").write_text(
                 "# R\n\n## Mission\n\n- **AIM-1** *(since v1)* *(judged)* Drivers go straight to a lot.\n"
                 f"  Judge: the supervisor. Veto: a thing.\n\n## {heading}\n\nHeld by: Ann.\n\n"

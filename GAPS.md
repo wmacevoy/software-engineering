@@ -612,7 +612,8 @@ so a project by someone else in an unfamiliar domain would test it harder.
 [SE1/F4](guide/03-feedback.md#f4) says software has no gravity, so nothing collapses to tell you. The author
 named the exception a project makes for itself: "there is one kind of artificial gravity of software: mission <
 requirements < design < develop. they don't have to remain frozen, but moving one below can move everything above
-it." On 2026-11-04 the author put the shape between the mission and the requirements, and decided this as
+it." On 2026-11-04 the author put the fundamental shape, then called the shape, between the mission and the requirements,
+and decided this as
 [SE1/W14](guide/08-work.md#w14).
 
 **Drafted by Claude Opus 5.5, and kept by the author:** that each layer is made with the ones beneath it in view;
@@ -622,7 +623,7 @@ design; and the paragraph on what can be noticed mechanically. The title and wha
 review by a subagent of the same family, 2026-11-04. It held that the first title, "what sits lower weighs more", is
 refuted by [SE1/D11](guide/05-design.md#d11): weight follows dependents and reversibility, not height alone.
 
-**Open:** whether it holds. The one case to hand is small: moving the shape from v3 to v4 moved its verdict and two pointers,
-and nothing reads what the shape means, so that says little. The shape's place on the ladder is the author's
+**Open:** whether it holds. The one case to hand is small: moving the fundamental shape from v3 to v4 moved its verdict and two pointers,
+and nothing reads what it means, so that says little. Its place on the ladder is the author's
 statement; its *Says no to* cites REQ2/CHK-4, a requirement it is said to sit under. Nothing has counted whether moves
 in a lower layer force more changes above them than moves in a higher one, though git and citations could.

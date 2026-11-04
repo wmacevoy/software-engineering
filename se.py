@@ -760,7 +760,7 @@ def mission_and_shape(repo):
     if not req:
         return []
     text, found = read(req), []
-    for name in ("Mission", "(?:Fundamental s|S)hape"):  # plain "Shape": documents from before v1.5
+    for name in ("Mission", "(?:Fundamental )?[Ss]hape"):  # plain "Shape": documents from before v1.5
         m = re.search(rf"^##\s+{name}\s*$(.*?)(?=^##\s|\Z)", text, re.M | re.S)
         for item in re.split(r"^- ", m.group(1), flags=re.M)[1:] if m else []:
             item = re.split(r"\s+Judge:", " ".join(item.split()))[0]
