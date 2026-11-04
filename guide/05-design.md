@@ -271,10 +271,11 @@ own the structure: each agent session sees a part, and ten locally reasonable de
 something nobody can hold ([SE1/A8](10-agents.md#a8)).
 
 **Coherent around what? The mission.** At the top of the requirements, it states broadly the
-intentions this project is aimed at, the requirements below it make them specific, and only the
-client can change it. Beside it goes the shape: the few guidelines that let
-someone guess the next part from the last, with who holds them, what they say no to, and the
-exceptions. Unwritten, the shape leaves with the person holding it, and no summary can carry what was
+intentions this project is aimed at, the requirements built on it make them specific, and only the
+client can change it. Next comes the shape, the versioned and heavy aesthetic that decides what belongs
+here, through a few guidelines; a sign it is working is that someone can guess the next part from the last. With it go who holds
+it, what it says no to, and the exceptions. It changes only by a new version, and moving it can move
+everything built on it ([SE1/W14](08-work.md#w14)). Unwritten, the shape leaves with the person holding it, and no summary can carry what was
 never written. A good idea that serves the mission and breaks the shape gets a no, and so does one
 that fits the shape and serves nothing. A mission rarely has a test that can pass it
 ([SE1/U10](02-unknowing.md#u10)).

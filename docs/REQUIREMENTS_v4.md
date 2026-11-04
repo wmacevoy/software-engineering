@@ -4,14 +4,14 @@ What must be observably true of this repository, and what is not being built. Ch
 the client; a change in meaning is a new version (`REQUIREMENTS_v5.md`); a spelling or lint fix is not.
 v4 restates SHAPE-1 from the author's sentence and defines the Shape as an aesthetic with weight, sent 2026-11-04.
 No mechanism changes, so the design stays [DESIGN_v2](DESIGN_v2.md). Everything else is carried over from
-[REQUIREMENTS_v3](REQUIREMENTS_v3.md) unchanged and keeps the version it was introduced in. Written
+[REQUIREMENTS_v3](REQUIREMENTS_v3.md) unchanged, but for a pointer to the Shape on one non-goal, and keeps the version it was introduced in. Written
 2026-10-28 by joining late ([SE1/W12](../guide/08-work.md#w12)): every requirement below is read
 off what the checker, `se`, CI, and the release procedure already enforce, and is marked
 *(inferred)* until the client confirms it. See [SE1/R1–R11](../guide/04-requirements.md).
 
 Client: Warren MacEvoy, the author, who is also the maintainer. The proxy for the users
 ([SE1/H5](../guide/09-people.md#h5)): adopters, through the doctor's rows and the field reports in
-[GAPS.md](../GAPS.md), and the fall 2026 course. Date sent: 2026-11-02 · *Tell us what is wrong
+[GAPS.md](../GAPS.md), and the fall 2026 course. Date sent: 2026-11-04 · *Tell us what is wrong
 with it.*
 
 ## Glossary

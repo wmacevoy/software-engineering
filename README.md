@@ -226,7 +226,7 @@ should use a different form, such as `REQ2/UI-1`, so they are never confused wit
 - [**SE1/W11**](guide/08-work.md#w11) Done means all of it, one concern per change, reviewed by someone else
 - [**SE1/W12**](guide/08-work.md#w12) Joining late: rebuild the working set, and mark what you inferred
 - [**SE1/W13**](guide/08-work.md#w13) A finding closes with what it changed, or why it changed nothing
-- [**SE1/W14**](guide/08-work.md#w14) Artificial gravity: what sits lower weighs more
+- [**SE1/W14**](guide/08-work.md#w14) Moving a lower layer can move what is built on it
 
 **[9. People](guide/09-people.md)**
 

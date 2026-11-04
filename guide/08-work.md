@@ -343,29 +343,33 @@ change nothing relearns them no more often than one whose findings do.
 
 > **Ask:** "What did the last finding change, and would it hold if everyone here left?"
 
-### <a id="w14"></a>W14. Artificial gravity: what sits lower weighs more
+### <a id="w14"></a>W14. Moving a lower layer can move what is built on it
 
 *New in v1.5 (unreleased).*
 
-Software has no mass ([SE1/F4](03-feedback.md#f4)), but a project's decisions do, because each is made
-in terms of the one beneath it:
+Software has no mass ([SE1/F4](03-feedback.md#f4)), but a project's decisions have an artificial gravity,
+because each is made with the ones beneath it in view:
 
 `mission < shape < requirements < design < develop`
 
-The mission says what the project is aimed at. The shape is the aesthetic that decides what belongs
+Read it from the bottom up: each layer rests on what is to its left, so *lower* means *to the left*. The
+mission says what the project is aimed at. The shape is the aesthetic that decides what belongs
 ([SE1/D9](05-design.md#d9)). Requirements make the aim specific, a design answers them, and development
 follows the design. **None of them is frozen, but moving one can move everything above it.**
 
-So weight is a price, not a ban. Move a lower layer on purpose: by its owner, in a new version, and then
+So weight is a price, not a ban, and height is not all of it: a schema with data in it sits at the top of
+this ladder and is still a one-way door ([SE1/D11](05-design.md#d11)). Move a lower layer on purpose: by its owner, in a new version, and then
 walk up and see what no longer holds. What you learn higher up is often the reason to move it. But code
 that quietly disagrees with its design has not moved the design; it has only drifted from it.
 
-Part of the walk can be mechanical: a moved requirement makes older citations stale
-([SE1/R10](04-requirements.md#r10)). Nothing notices a moved mission or shape, so a person walks those.
+Part of the walk can be mechanical: a new version of a requirement, or of the shape, makes its older
+citations stale and asks for a new verdict ([SE1/R10](04-requirements.md#r10)). Nothing notices what else its
+meaning moved, so a person walks that.
 
-*Who claims this, and what would show it wrong.* The author's decision, 2026-11-03 and 2026-11-04, with
-no trial ([GAPS](../GAPS.md#decided-without-a-trial-artificial-gravity-2026-11-04)). *Wrong if:* projects
-often change a lower layer without having to revisit what sits above it.
+*Who claims this, and what would show it wrong.* The ladder and its rule are the author's, 2026-11-03 and
+2026-11-04, with no trial; the rest was drafted by an agent and kept by the author
+([GAPS](../GAPS.md#decided-without-a-trial-artificial-gravity-2026-11-04)). *Wrong if:* counted across
+versions, moves in a lower layer force no more changes above them than moves in a higher one.
 
 > **Ask:** "What sits above this, and who has looked at it since it moved?"
 

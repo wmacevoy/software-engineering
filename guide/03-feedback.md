@@ -73,11 +73,12 @@ the wrong thing." Only a person looking at the running thing does.
 
 ### <a id="f4"></a>F4. Nothing has mass, so build the signals
 
-*Since v1.0 (2026-10-20).*
+*Since v1.5 (unreleased).*
 
 Mass supplies error signals for free: a bad structure sags, cracks, or falls down, and nobody has to
 be clever to notice. **Software has no gravity, so nothing collapses to tell you.** A bad design
-holds itself up indefinitely, at full speed, with the tests passing.
+holds itself up indefinitely, at full speed, with the tests passing. The one gravity a project makes for
+itself ([SE1/W14](08-work.md#w14)) is a cost, not a signal.
 
 Every feedback loop in this chapter exists to replace a signal that mass would have given away. None
 of them arrive by default.

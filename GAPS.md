@@ -593,6 +593,8 @@ drafted by Claude Opus 5.5, on 2026-11-02.
 
 ## Decided without a trial: mission and shape, 2026-11-02
 
+*Corrected 2026-11-04: the shape as defined below was an agent's proposal, and the author settled it later ([FINDINGS](docs/FINDINGS.md#2026-11-04--the-shape-was-not-settled-at-v3-and-a-verdict-on-req4shape-1)).*
+
 The author asked where the shape of [SE1/D9](guide/05-design.md#d9) is written so that it moves with
 the project. It was nowhere: D9 had one person holding it, and "foundations of any software project",
 the author's statement of what SE1 is for, appeared in no file. The author chose the word *mission*
@@ -611,9 +613,16 @@ so a project by someone else in an unfamiliar domain would test it harder.
 named the exception a project makes for itself: "there is one kind of artificial gravity of software: mission <
 requirements < design < develop. they don't have to remain frozen, but moving one below can move everything above
 it." On 2026-11-04 the author put the shape between the mission and the requirements, and decided this as
-[SE1/W14](guide/08-work.md#w14). Drafted with Claude Opus 5.5, which added that what is learned higher up is often
-the reason to move a lower layer, so that the principle would not read as waterfall; the author kept it.
+[SE1/W14](guide/08-work.md#w14).
+
+**Drafted by Claude Opus 5.5, and kept by the author:** that each layer is made with the ones beneath it in view;
+"weight is a price"; moving by the owner, in a new version, then walking up; that what is learned higher up is often
+the reason to move a lower layer, so that the principle would not read as waterfall; that code can drift from its
+design; and the paragraph on what can be noticed mechanically. The title and what would show it wrong came from a
+review by a subagent of the same family, 2026-11-04. It held that the first title, "what sits lower weighs more", is
+refuted by [SE1/D11](guide/05-design.md#d11): weight follows dependents and reversibility, not height alone.
 
 **Open:** whether it holds. The one case to hand is small: moving REQ4/SHAPE-1 moved its verdict and two pointers,
-and nothing reads what the shape means, so that says little about its weight. What would show it wrong was
-proposed by the agent: projects that often change a lower layer without having to revisit what sits above it.
+and nothing reads what the shape means, so that says little. The shape's place on the ladder is the author's
+statement; its *Says no to* cites REQ2/CHK-4, a requirement it is said to sit under. Nothing has counted whether moves
+in a lower layer force more changes above them than moves in a higher one, though git and citations could.

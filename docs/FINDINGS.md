@@ -281,3 +281,12 @@ sent, and recorded here by an agent (SE1/U10).
 
 **Changed:** REQUIREMENTS_v4. `GLOSSARY.md`, [SE1/D9](../guide/05-design.md#d9), and the requirements template
 still say "the few rules", and wait for the next minor release.
+
+## 2026-11-04 — A review of the shape and W14 found two definitions and a title the guide refutes
+
+A subagent of the same family reviewed `shape-test` read-only; its main quotations were opened at the source, and its
+experiments were not rerun. Row 25 had been marked done when its own done sentence was not met, and the agent that
+wrote the change did not say so. Found by reading the row's sentence against the files.
+**Changed:** one definition in D9, `GLOSSARY.md`, and the template; W14's title, direction, and what would show it wrong;
+AGENTS.md's order of authority says earlier and later; v4's date and its "unchanged" sentence, as lint, by the author's
+word. What needs a v5 is queue row 27.

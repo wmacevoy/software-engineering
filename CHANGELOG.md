@@ -28,14 +28,24 @@ yours.
 
 [Changes on main since v1.4.4](https://github.com/wmacevoy/software-engineering/compare/v1.4.4...main)
 
+**For copies:** re-copy AGENTS.md, whose order of authority now says earlier and later. A Shape section you already
+have stays as it is until your next requirements version, and read it then as an aesthetic, not a list of rules: a
+change in its meaning is a new version.
+
 ### New
 
-- [SE1/W14](guide/08-work.md#w14) Artificial gravity: what sits lower weighs more. The author's decision,
+- [SE1/W14](guide/08-work.md#w14) Moving a lower layer can move what is built on it. The author's decision,
   2026-11-04, with no trial of its own yet ([GAPS](GAPS.md#decided-without-a-trial-artificial-gravity-2026-11-04)).
 
 ### Changed
 
-- [SE1/D9](guide/05-design.md#d9) The shape is "the few guidelines", not "the few rules". The author's word, 2026-11-04.
+- [SE1/D9](guide/05-design.md#d9) The shape is the versioned and heavy aesthetic that decides what belongs, through a few guidelines; that
+  someone can guess the next part is a sign it is working, not its definition. The author's word, 2026-11-04.
+
+### Also changed
+
+- [SE1/F4](guide/03-feedback.md#f4) links to W14: the gravity a project makes for itself is a cost, not a signal.
+- AGENTS.md's *Authority, in order* says earlier and later, not higher and lower, which W14 uses the other way round.
 
 ## v1.4.4 — 2026-11-03
 

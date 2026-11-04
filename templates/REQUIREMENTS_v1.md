@@ -19,7 +19,7 @@ Ten to thirty terms, one line each. A new noun is a decision
 
 ## Mission
 
-The intentions this project is aimed at, stated broadly; the requirements below make them specific.
+The intentions this project is aimed at, stated broadly; the requirements built on it make them specific.
 Only the client can change it. It is almost always passed by
 a person's judgment and not by a test, so name the judge and the occasion
 ([SE1/W11](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/08-work.md#w11)).
@@ -29,9 +29,9 @@ a person's judgment and not by a test, so name the judge and the occasion
 
 ## Shape
 
-The few guidelines that let someone guess the next part from the last
+The versioned and heavy aesthetic that decides what belongs here, through a few guidelines; a sign it is working is that someone can guess the next part from the last
 ([SE1/D9](https://github.com/wmacevoy/software-engineering/blob/v1.4/guide/05-design.md#d9)). Mechanisms
-go in the design, citing these.
+go in the design, citing it.
 
 Held by: _one named person_
 

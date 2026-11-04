@@ -41,8 +41,8 @@ one concern at a time, nothing bundled in that wasn't asked for.
 
 ## Authority, in order
 
-When sources disagree, the higher one wins. A lower source that contradicts a higher one is a
-question for the human, not a task.
+When sources disagree, the earlier one on this list wins. A later source that contradicts an earlier
+one is a question for the human, not a task.
 
 1. **What the human says in this session** — after you have pointed out any conflict with the
    requirements once. If they still say proceed, proceed, and note the conflict in your report.
