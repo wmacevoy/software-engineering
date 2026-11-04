@@ -46,6 +46,7 @@ change in its meaning is a new version.
 
 - [SE1/F4](guide/03-feedback.md#f4) links to W14: the gravity a project makes for itself is a cost, not a signal.
 - AGENTS.md's *Authority, in order* says earlier and later, not higher and lower, which W14 uses the other way round.
+- AGENTS.md gives the PowerShell form of `se` where it first names it.
 
 ## v1.4.4 — 2026-11-03
 

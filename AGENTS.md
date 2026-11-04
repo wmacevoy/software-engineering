@@ -56,8 +56,8 @@ one is a question for the human, not a task.
 
 ## Before you start
 
-- **If the repository has `./se`, look for its self test's report in your context** (a `SessionStart`
-  hook puts it there, where one is installed); if there is none, run `./se --post` once. It says
+- **If the repository has `./se` (`.\se.ps1` in PowerShell), look for its self test's report in your context** (a
+  `SessionStart` hook puts it there, where one is installed); if there is none, run `./se --post` once. It says
   whether this session can be torn and what rules follow; work by them. `./se --doctor` says what
   the repository lacks. (SE1/T2, SE1/U7)
 - **Read the repository guide** for how to run, test, and reset the system. If there is no way to
