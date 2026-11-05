@@ -14,7 +14,7 @@ labels `K0`–`K4` are used throughout the guide.
 
 ---
 
-### <a id="u1"></a>U1. K0 through K3 are in order of expense; K4 is a choice
+### <a id="u1"></a>SE1/U1. K0 through K3 are in order of expense; K4 is a choice
 
 *Since v1.0 (2026-10-20).*
 
@@ -25,7 +25,7 @@ worst possible moment.
 
 K4 is not on that ladder at all. It is a decision, and usually a good one.
 
-### <a id="u2"></a>U2. Building is discovering, in the right order and at the right price, which category each part of the problem belongs to
+### <a id="u2"></a>SE1/U2. Building is discovering, in the right order and at the right price, which category each part of the problem belongs to
 
 *Changed in v1.4 (2026-11-02).*
 
@@ -42,7 +42,7 @@ category to a cheaper one — before it charges full price:
 
 > **Ask:** "Which category is this part of the problem in — and what is the cheapest way to move it?"
 
-### <a id="u3"></a>U3. K3 is the one to be afraid of
+### <a id="u3"></a>SE1/U3. K3 is the one to be afraid of
 
 *Since v1.0 (2026-10-20).*
 
@@ -64,7 +64,7 @@ rule: you have not seen it work until you have seen it say no.
 
 > **Ask:** "What would I see if I were wrong about this — and have I looked?"
 
-### <a id="u4"></a>U4. Every abstraction rests on chosen falsehoods; write down where they are load-bearing
+### <a id="u4"></a>SE1/U4. Every abstraction rests on chosen falsehoods; write down where they are load-bearing
 
 *Since v1.0 (2026-10-20).*
 
@@ -87,7 +87,7 @@ was load-bearing.** A K4 you have chosen is an asset; the same falsehood held un
 
 > **Ask:** "What are we assuming here that we know is not quite true — and where is that written?"
 
-### <a id="u5"></a>U5. Estimate the category, not the task
+### <a id="u5"></a>SE1/U5. Estimate the category, not the task
 
 *Since v1.0 (2026-10-20).*
 
@@ -106,7 +106,7 @@ find out what you don't know, then give a range for the rest.
 
 > **Ask:** "Is this an estimate, a range, or a time box?"
 
-### <a id="u6"></a>U6. Nothing important may live only in a head
+### <a id="u6"></a>SE1/U6. Nothing important may live only in a head
 
 *Since v1.1 (2026-10-20).*
 
@@ -123,7 +123,7 @@ stands**, in the repository, versioned with the code ([SE1/W10](08-work.md#w10),
 > **Ask:** "If the person who knows this vanished on Friday, what could the rest of us not do on
 > Monday?"
 
-### <a id="u7"></a>U7. Find the K3 factories: anything that keeps saying "fine" with no way to say "wrong"
+### <a id="u7"></a>SE1/U7. Find the K3 factories: anything that keeps saying "fine" with no way to say "wrong"
 
 *Changed in v1.2 (2026-10-28).*
 
@@ -167,7 +167,7 @@ Three medicines, each the opposite of what makes a factory:
 
 > **Ask:** "What here would keep saying 'fine' if it were wrong?"
 
-### <a id="u8"></a>U8. Leave whitespace: an agenda finds only what it looks for
+### <a id="u8"></a>SE1/U8. Leave whitespace: an agenda finds only what it looks for
 
 *New in v1.2 (2026-10-28).*
 
@@ -195,7 +195,7 @@ nothing about the new work. Wrong if a session with no task finds nothing a task
 
 > **Ask:** "When did someone last look at this with no task in hand, and what did they find?"
 
-### <a id="u9"></a>U9. Rules change: a rule says who made it, when, and what would show it wrong
+### <a id="u9"></a>SE1/U9. Rules change: a rule says who made it, when, and what would show it wrong
 
 *New in v1.2 (2026-10-28).*
 
@@ -232,7 +232,7 @@ the same three medicines:
 > **Ask:** "Which rule here changed last, who measured it, and what would show it wrong?"
 
 
-### <a id="u10"></a>U10. Some K1 is essential: a proxy taken for K0 is K3
+### <a id="u10"></a>SE1/U10. Some K1 is essential: a proxy taken for K0 is K3
 
 *New in v1.4 (2026-11-02).*
 

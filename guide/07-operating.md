@@ -44,7 +44,7 @@ and rollbacks below belong to someone else; [SE1/O11](#o11) says what replaces t
 
 ---
 
-### <a id="o1"></a>O1. Repeatability is also a property of the environment
+### <a id="o1"></a>SE1/O1. Repeatability is also a property of the environment
 
 *Since v1.0 (2026-10-20).*
 
@@ -80,7 +80,7 @@ If nothing varies across your users' machines, the container gives the stronger 
 
 > **Ask:** "Which architecture did CI actually run on — and what did the build resolve?"
 
-### <a id="o2"></a>O2. In the manifest, say what you are compatible with; in the lock, record what you ran; commit both
+### <a id="o2"></a>SE1/O2. In the manifest, say what you are compatible with; in the lock, record what you ran; commit both
 
 *Since v1.0 (2026-10-20).*
 
@@ -121,7 +121,7 @@ Install with the command that refuses drift: `npm ci`, `cargo build --locked`, `
 
 > **Ask:** "What does a CVE in a dependency cost us, in hours?"
 
-### <a id="o3"></a>O3. CI runs the command you run, everywhere you ship — and enforces what matters
+### <a id="o3"></a>SE1/O3. CI runs the command you run, everywhere you ship — and enforces what matters
 
 *Since v1.0 (2026-10-20).*
 
@@ -145,7 +145,7 @@ its attention on what no tool can see ([SE1/F3](03-feedback.md#f3), [SE1/W11](08
 
 > **Ask:** "Is CI running the command I run, on the machines I ship to?"
 
-### <a id="o4"></a>O4. Every failure needs a signal a person will see — and believe
+### <a id="o4"></a>SE1/O4. Every failure needs a signal a person will see — and believe
 
 *Since v1.0 (2026-10-20).*
 
@@ -180,7 +180,7 @@ watching them fire.
 
 > **Ask:** "If this broke at 3am, what would tell us — and would anyone believe it?"
 
-### <a id="o5"></a>O5. Handle failure on purpose: timeouts, bounded retries, and a stated fallback
+### <a id="o5"></a>SE1/O5. Handle failure on purpose: timeouts, bounded retries, and a stated fallback
 
 *Since v1.0 (2026-10-20).*
 
@@ -207,7 +207,7 @@ Every call across a network needs a stated answer for absent, late, wrong, and l
 
 > **Ask:** "What does this call do when the other side is slow — and how many times will we retry?"
 
-### <a id="o6"></a>O6. A deploy is a test whose failure is an outage
+### <a id="o6"></a>SE1/O6. A deploy is a test whose failure is an outage
 
 *Since v1.0 (2026-10-20).*
 
@@ -225,7 +225,7 @@ steps ([SE1/O7](#o7)).
 
 > **Ask:** "Has the rollback been run, and how long did it take?"
 
-### <a id="o7"></a>O7. Change data and interfaces in steps that can each be undone
+### <a id="o7"></a>SE1/O7. Change data and interfaces in steps that can each be undone
 
 *Since v1.4 (2026-11-02).*
 
@@ -247,7 +247,7 @@ condition, not a moment. So:
 
 > **Ask:** "Can the previous version still run against the data after this change?"
 
-### <a id="o8"></a>O8. Secure by default
+### <a id="o8"></a>SE1/O8. Secure by default
 
 *Since v1.0 (2026-10-20).*
 
@@ -271,7 +271,7 @@ the common attacks expensive before anyone has to be clever:
 
 > **Ask:** "What can an attacker reach from here, and have we tried?"
 
-### <a id="o9"></a>O9. In an incident, restore service first; learn afterward
+### <a id="o9"></a>SE1/O9. In an incident, restore service first; learn afterward
 
 *Since v1.0 (2026-10-20).*
 
@@ -287,7 +287,7 @@ the common attacks expensive before anyone has to be clever:
 
 > **Ask:** "What is the fastest way to stop the harm — and who is leading?"
 
-### <a id="o10"></a>O10. Measure before you optimize; test at the scale you promised
+### <a id="o10"></a>SE1/O10. Measure before you optimize; test at the scale you promised
 
 *Since v1.0 (2026-10-20).*
 
@@ -301,7 +301,7 @@ when the code changes.
 
 > **Ask:** "Have we run it at the peak we promised, against data the size we will have?"
 
-### <a id="o11"></a>O11. A release you cannot roll back is a one-way door; ship it like one
+### <a id="o11"></a>SE1/O11. A release you cannot roll back is a one-way door; ship it like one
 
 *Since v1.0 (2026-10-20).*
 

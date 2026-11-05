@@ -6,7 +6,7 @@ operational rules are collected in [AGENTS.md](../AGENTS.md).
 
 ---
 
-### <a id="a1"></a>A1. Producing code got cheaper faster than knowing it is right
+### <a id="a1"></a>SE1/A1. Producing code got cheaper faster than knowing it is right
 
 *Since v1.0 (2026-10-20).*
 
@@ -16,7 +16,7 @@ specification, verification, review, ownership. The bottleneck is no longer typi
 
 > **Ask:** "Now that writing this is cheap, what is the expensive part?"
 
-### <a id="a2"></a>A2. An agent is a K3 factory; never let confidence substitute for a run
+### <a id="a2"></a>SE1/A2. An agent is a K3 factory; never let confidence substitute for a run
 
 *Since v1.1 (2026-10-20).*
 
@@ -31,7 +31,7 @@ run and one to reset.
 
 > **Ask:** "Was this run, or only reasoned about?"
 
-### <a id="a3"></a>A3. An agent arrives knowing nothing and leaves remembering nothing
+### <a id="a3"></a>SE1/A3. An agent arrives knowing nothing and leaves remembering nothing
 
 *Changed in v1.2 (2026-10-28).*
 
@@ -57,7 +57,7 @@ there has failed [SE1/U6](02-unknowing.md#u6) at a new address.
 > **Ask:** "What would a competent stranger need to read to get this right the first time — and is it
 > written down?"
 
-### <a id="a4"></a>A4. Context is a budget, and it resets every session
+### <a id="a4"></a>SE1/A4. Context is a budget, and it resets every session
 
 *Since v1.0 (2026-10-20).*
 
@@ -83,7 +83,7 @@ The bad news: some conventions that helped human readers now cost real money.
 The replacement is not "no documentation." It is self-documenting code, a comment exactly where the
 code cannot say *why*, and everything durable in the working set, where both kinds of reader look.
 
-### <a id="a5"></a>A5. Spend the speed on lowering the cost of testing now, and of understanding and changing later
+### <a id="a5"></a>SE1/A5. Spend the speed on lowering the cost of testing now, and of understanding and changing later
 
 *Changed in v1.5 (2026-11-04).*
 
@@ -92,7 +92,7 @@ case. The simple version a newcomer can read, in the code you were asked to chan
 multiplies against every future change ([SE1/F2](03-feedback.md#f2)). More features do not, and neither
 does an abstraction for a change nobody has asked for.
 
-### <a id="a6"></a>A6. Review capacity is the bottleneck
+### <a id="a6"></a>SE1/A6. Review capacity is the bottleneck
 
 *Since v1.0 (2026-10-20).*
 
@@ -100,7 +100,7 @@ An agent will happily produce three hundred lines. A diff you cannot review is a
 sign. Ask for the smallest change that does the job, one concern at a time, with nothing bundled in
 that was not asked for ([SE1/W11](08-work.md#w11)). Make rejection cheap.
 
-### <a id="a7"></a>A7. Delegation is not abdication
+### <a id="a7"></a>SE1/A7. Delegation is not abdication
 
 *Since v1.0 (2026-10-20).*
 
@@ -114,7 +114,7 @@ defend it. **Working code nobody can explain is a liability, not an asset.**
   it.* Both are true, and they are different claims ([SE1/D13](05-design.md#d13)).
 - The agent does not commit, push, or publish unless asked. A push is a publication.
 
-### <a id="a8"></a>A8. Agents move the human up the waterfall
+### <a id="a8"></a>SE1/A8. Agents move the human up the waterfall
 
 *Since v1.0 (2026-10-20).*
 
@@ -136,7 +136,7 @@ agent adds a boolean column and a table and is done before anyone has opened the
 study](09-people.md#case-study-it-does-the-vip-spaces-too-right)). The costing comes before the
 prompt.
 
-### <a id="a9"></a>A9. Hand it the search-shaped work; keep the decisions
+### <a id="a9"></a>SE1/A9. Hand it the search-shaped work; keep the decisions
 
 *Since v1.0 (2026-10-20).*
 
@@ -149,7 +149,7 @@ prompt.
 | translation packs, boilerplate, glue                                    | the vocabulary — a new noun is a decision                    |
 | the retro questions                                                     | the retro                                                    |
 
-### <a id="a10"></a>A10. Ask your agents, and write the answers down
+### <a id="a10"></a>SE1/A10. Ask your agents, and write the answers down
 
 *Since v1.0 (2026-10-20).*
 
@@ -166,7 +166,7 @@ them. That is how an agent joins a team: not by remembering, but by the team wri
 would have needed to remember. Treat the answers as proposals from something with no stake in the
 outcome.
 
-### <a id="a11"></a>A11. A summary is a concussion: check it from outside
+### <a id="a11"></a>SE1/A11. A summary is a concussion: check it from outside
 
 *New in v1.2 (2026-10-28).*
 
@@ -215,7 +215,7 @@ So treat every handoff as a possible injury, and check from outside:
 > **Ask:** "What did this summary drop, and what would tell us?"
 
 
-### <a id="a12"></a>A12. Work toward finished, not toward more
+### <a id="a12"></a>SE1/A12. Work toward finished, not toward more
 
 *New in v1.6 (2026-11-04).*
 

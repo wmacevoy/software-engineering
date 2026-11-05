@@ -128,6 +128,11 @@ class Planted(Repo):
                 self.tearDown()
                 self.saved = {}
 
+    def test_a_heading_carries_its_citation(self):
+        # So a grep for SE1/U1 reaches the definition (SE1/D9, "Stable IDs that grep").
+        self.plant(UNKNOWING, lambda t: re.sub(r'(<a id="u1"></a>)SE1/', r"\1", t, count=1))
+        self.red("so a grep for the citation reaches the definition")
+
     def test_new_principle_needs_a_changelog_entry(self):
         self.plant("guide/03-feedback.md", lambda t: t.replace(
             "\n\n---\n", '\n\n### <a id="f99"></a>F99. Planted\n\nText.\n\n---\n', 1))

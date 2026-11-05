@@ -116,6 +116,8 @@ for f in sorted(p for p in files if in_dir(p, "guide")):
         if m.group(2) in defined_in:
             problem(f"{m.group(2)} defined twice")
         defined_in[m.group(2)] = f
+        if f"</a>{VERSION}/{m.group(2)}. " not in line:
+            problem(f"heading        {m.group(2)}: write {VERSION}/{m.group(2)}, so a grep for the citation reaches the definition")
         headings.append(f"- [**{VERSION}/{m.group(2)}**](guide/{os.path.basename(f)}#{m.group(1)}) {m.group(3)}")
         # The marker, if any, is the first paragraph under the heading.
         mk = MARKER.search(lines[i + 2]) if i + 2 < len(lines) else None

@@ -6,7 +6,9 @@ import re
 WS = "\t\n\x0b\x0c\r \u00a0\u1680" + "".join(map(chr, range(0x2000, 0x200b))) + "\u2028\u2029\u202f\u205f\u3000\ufeff"
 _RUN = re.compile(f"[{WS}]+")
 
-HEADING = re.compile(r'^### <a id="([a-z0-9]+)"></a>([A-Z][0-9]+)\. ([^\n\r\u2028\u2029]*)$')
+# The SE1/ is optional because older tags have none; tools/check.py requires it in the tree.
+_CITED = re.compile(r"(</a>)SE[0-9]+/")
+HEADING = re.compile(r'^### <a id="([a-z0-9]+)"></a>(?:SE[0-9]+/)?([A-Z][0-9]+)\. ([^\n\r\u2028\u2029]*)$')
 # The marker is the first paragraph under a heading. New/Changed is a person's claim that the
 # release changed the principle's meaning; Since is written by tools/since.py when no such claim
 # exists. Each carries the release's date, and, when the wording moved later without the meaning,
@@ -31,7 +33,7 @@ def collapse(text):
 
 def bodies(text):
     """A principle's text: its heading to the next heading or horizontal rule, without its marker,
-    whitespace collapsed so rewrapping is not a change. The rule matters: the `---` after a chapter's
+    whitespace collapsed so rewrapping is not a change, and the heading's SE1/ left out so adding it was not one. The rule matters: the `---` after a chapter's
     last principle is not its text, or adding a principle after it would "change" it (v1.2's A10)."""
     out = {}
     current, buf = None, []
@@ -46,6 +48,6 @@ def bodies(text):
             flush()
             current, buf = (m.group(2) if m else None), []
         if current:
-            buf.append(line)
+            buf.append(_CITED.sub(r"\1", line, count=1) if m else line)
     flush()
     return out

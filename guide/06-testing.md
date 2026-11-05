@@ -14,7 +14,7 @@ Terms used here:
 
 ---
 
-### <a id="t1"></a>T1. A test is a fear with a name
+### <a id="t1"></a>SE1/T1. A test is a fear with a name
 
 *Since v1.0 (2026-10-20).*
 
@@ -36,7 +36,7 @@ If you cannot say which row a test belongs to, find the row or delete the test
 
 > **Ask:** "Which fear does this test retire, and have I ever seen it fail?"
 
-### <a id="t2"></a>T2. Climb the reliability ladder: a reliable thing checks itself
+### <a id="t2"></a>SE1/T2. Climb the reliability ladder: a reliable thing checks itself
 
 *Since v1.0 (2026-10-20).*
 
@@ -69,7 +69,7 @@ part is a system that has noticed it is insane and keeps answering.
 
 > **Ask:** "Does the thing say so when it is broken?"
 
-### <a id="t3"></a>T3. A test that cannot fail proves nothing
+### <a id="t3"></a>SE1/T3. A test that cannot fail proves nothing
 
 *Since v1.1 (2026-10-20).*
 
@@ -92,7 +92,7 @@ prove the flag reached the compiler.
 
 > **Ask:** "Have I seen this test fail — and this instrument fire?"
 
-### <a id="t4"></a>T4. A loop you do not trust is worse than none
+### <a id="t4"></a>SE1/T4. A loop you do not trust is worse than none
 
 *Since v1.0 (2026-10-20).*
 
@@ -105,7 +105,7 @@ The same holds for production alarms ([SE1/O4](07-operating.md#o4)).
 
 > **Ask:** "When this goes red, does everyone believe it?"
 
-### <a id="t5"></a>T5. Repeatability is a property of the state a test touches
+### <a id="t5"></a>SE1/T5. Repeatability is a property of the state a test touches
 
 *Since v1.2 (2026-10-28).*
 
@@ -143,7 +143,7 @@ hide in plain sight:
 
 > **Ask:** "What does this test write, and who else can read it?"
 
-### <a id="t6"></a>T6. The mock and the real thing answer to the same test
+### <a id="t6"></a>SE1/T6. The mock and the real thing answer to the same test
 
 *Since v1.0 (2026-10-20).*
 
@@ -165,7 +165,7 @@ yet. Two rules keep it honest:
 
 > **Ask:** "Does the mock fail the way the real thing fails — and does one test check both?"
 
-### <a id="t7"></a>T7. Test user interfaces by pulling the logic out first
+### <a id="t7"></a>SE1/T7. Test user interfaces by pulling the logic out first
 
 *Since v1.0 (2026-10-20).*
 
@@ -188,7 +188,7 @@ differently on another architecture.
 
 > **Ask:** "What logic is hiding in this UI that could be tested as a function?"
 
-### <a id="t8"></a>T8. When you don't know how to build it, write the tests that would pass when it works
+### <a id="t8"></a>SE1/T8. When you don't know how to build it, write the tests that would pass when it works
 
 *Since v1.0 (2026-10-20).*
 
@@ -207,7 +207,7 @@ parts.
 
 > **Ask:** "What test would pass if this worked?"
 
-### <a id="t9"></a>T9. A bug you cannot reproduce is a rumor
+### <a id="t9"></a>SE1/T9. A bug you cannot reproduce is a rumor
 
 *Since v1.0 (2026-10-20).*
 
@@ -229,7 +229,7 @@ this one. That is the shape of nearly all good engineering investment.
 
 > **Ask:** "Can I make it happen on purpose?"
 
-### <a id="t10"></a>T10. Let the machine generate the cases you would not think of
+### <a id="t10"></a>SE1/T10. Let the machine generate the cases you would not think of
 
 *Since v1.0 (2026-10-20).*
 
@@ -247,7 +247,7 @@ wrong. Three techniques check the rest, and each is cheap to start:
 
 > **Ask:** "What rule must hold for every input — and does a test check it?"
 
-### <a id="t11"></a>T11. When someone else owns "correct," test against their implementation
+### <a id="t11"></a>SE1/T11. When someone else owns "correct," test against their implementation
 
 *Since v1.0 (2026-10-20).*
 

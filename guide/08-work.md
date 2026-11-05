@@ -5,7 +5,7 @@ what deadlines do to people, and the failure that looks exactly like progress.
 
 ---
 
-### <a id="w1"></a>W1. Every method runs the same six steps; they differ in batch size and in where the tests are
+### <a id="w1"></a>SE1/W1. Every method runs the same six steps; they differ in batch size and in where the tests are
 
 *Since v1.0 (2026-10-20).*
 
@@ -24,7 +24,7 @@ The order is right in every method: you cannot design against a requirement you 
 deploy what you have not built. The disagreement is about **how much goes through each step at
 once** and **whether the test comes at the end or inside every step.**
 
-### <a id="w2"></a>W2. Waterfall is correct when the only real test is expensive
+### <a id="w2"></a>SE1/W2. Waterfall is correct when the only real test is expensive
 
 *Since v1.2 (2026-10-28).*
 
@@ -46,7 +46,7 @@ a discipline looks like when it cannot afford to be wrong twice.
 
 K2 is guaranteed on every project, and waterfall schedules its arrival for the last step.
 
-### <a id="w3"></a>W3. Iterative work puts a test inside every step
+### <a id="w3"></a>SE1/W3. Iterative work puts a test inside every step
 
 *Since v1.0 (2026-10-20).*
 
@@ -72,7 +72,7 @@ There is no Maintain step. After the first deploy, every iteration is maintenanc
 - **The demo is the only instrument for "wrong product"** ([SE1/F3](03-feedback.md#f3)).
 - **The outer loop's product is knowledge**: K2 converted to K1 at the cheapest available price.
 
-### <a id="w4"></a>W4. Choose how carefully to work per decision, by the cost of being wrong once
+### <a id="w4"></a>SE1/W4. Choose how carefully to work per decision, by the cost of being wrong once
 
 *Since v1.0 (2026-10-20).*
 
@@ -92,7 +92,7 @@ twice in an afternoon.**
 
 > **Ask:** "What does it cost to be wrong about this once?"
 
-### <a id="w5"></a>W5. Flatten the schedule: a dependency is an unwritten interface
+### <a id="w5"></a>SE1/W5. Flatten the schedule: a dependency is an unwritten interface
 
 *Since v1.4 (2026-11-02).*
 
@@ -120,7 +120,7 @@ stands in for a missing component.
 
 > **Ask:** "Is this arrow a fact about the world, or an interface nobody wrote down?"
 
-### <a id="w6"></a>W6. Build a thin vertical slice first, then thicken it
+### <a id="w6"></a>SE1/W6. Build a thin vertical slice first, then thicken it
 
 *Since v1.0 (2026-10-20).*
 
@@ -134,7 +134,7 @@ what they say.
 Carry the load-bearing idea in the first slice (here, signed readings), so the bridge is tested
 under the weight it will have to bear.
 
-### <a id="w7"></a>W7. Deadlines produce an avoidance gradient; change the terrain, not the willpower
+### <a id="w7"></a>SE1/W7. Deadlines produce an avoidance gradient; change the terrain, not the willpower
 
 *Changed in v1.2 (2026-10-28).*
 
@@ -163,7 +163,7 @@ how most projects fail.
 
 > **Ask:** "What would make the last week before this deadline boring?"
 
-### <a id="w8"></a>W8. Don't fall down the waterfall
+### <a id="w8"></a>SE1/W8. Don't fall down the waterfall
 
 *Since v1.0 (2026-10-20).*
 
@@ -207,7 +207,7 @@ requirement:
 
 > **Ask:** "What will I know when this spike stops?" — and — "What has the client objected to so far?"
 
-### <a id="w9"></a>W9. An iteration is time-boxed, ends on a fence, and produces four things
+### <a id="w9"></a>SE1/W9. An iteration is time-boxed, ends on a fence, and produces four things
 
 *Since v1.0 (2026-10-20).*
 
@@ -221,7 +221,7 @@ a spiral. An iteration that produces three of these is not done:
 
 And one question at the end: *what can we delete?* ([SE1/D12](05-design.md#d12))
 
-### <a id="w10"></a>W10. Keep the working set in the repository
+### <a id="w10"></a>SE1/W10. Keep the working set in the repository
 
 *Since v1.0 (2026-10-20).*
 
@@ -252,7 +252,7 @@ already learned this once." A document that retires no fear should be dropped, n
 Starting skeletons for the four, and for the repository guide, are listed in the
 [README](../README.md#contents).
 
-### <a id="w11"></a>W11. Done means all of it, one concern per change, reviewed by someone else
+### <a id="w11"></a>SE1/W11. Done means all of it, one concern per change, reviewed by someone else
 
 *Changed in v1.4 (2026-11-02).*
 
@@ -302,7 +302,7 @@ refactor's tests must have been seen to fail — [SE1/T3](06-testing.md#t3)).
 
 > **Ask:** "Could I review this in one sitting?"
 
-### <a id="w12"></a>W12. Joining late: rebuild the working set, and mark what you inferred
+### <a id="w12"></a>SE1/W12. Joining late: rebuild the working set, and mark what you inferred
 
 *Since v1.0 (2026-10-20).*
 
@@ -325,7 +325,7 @@ A reconstruction that marks nothing as inferred is claiming more than it knows.
 
 > **Ask:** "Which of these reasons did somebody say, and which did we make up?"
 
-### <a id="w13"></a>W13. A finding closes with what it changed, or why it changed nothing
+### <a id="w13"></a>SE1/W13. A finding closes with what it changed, or why it changed nothing
 
 *New in v1.4 (2026-11-02).*
 
@@ -343,7 +343,7 @@ change nothing relearns them no more often than one whose findings do.
 
 > **Ask:** "What did the last finding change, and would it hold if everyone here left?"
 
-### <a id="w14"></a>W14. Moving a lower layer can move what is built on it
+### <a id="w14"></a>SE1/W14. Moving a lower layer can move what is built on it
 
 *New in v1.5 (2026-11-04).*
 

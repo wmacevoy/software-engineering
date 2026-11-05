@@ -12,7 +12,7 @@ Two words used precisely in this chapter:
 
 ---
 
-### <a id="r1"></a>R1. Keep the pain; test the solution
+### <a id="r1"></a>SE1/R1. Keep the pain; test the solution
 
 *Since v1.0 (2026-10-20).*
 
@@ -36,7 +36,7 @@ may be about trusting a number, not about a map.
 
 > **Ask:** "What happens today when this goes wrong, and who gets the call?"
 
-### <a id="r2"></a>R2. Specific and wrong beats vague and safe
+### <a id="r2"></a>SE1/R2. Specific and wrong beats vague and safe
 
 *Changed in v1.4 (2026-11-02).*
 
@@ -67,7 +67,7 @@ text it pointed at has moved ([SE1/R10](#r10)).
 
 > **Ask:** "Could the client read this sentence and say 'no'?"
 
-### <a id="r3"></a>R3. Ask the questions nobody volunteers — the ones that could invalidate the plan, first
+### <a id="r3"></a>SE1/R3. Ask the questions nobody volunteers — the ones that could invalidate the plan, first
 
 *Since v1.0 (2026-10-20).*
 
@@ -89,7 +89,7 @@ Order matters. **Questions whose answer could *invalidate* the plan come before 
 answer only *shapes* it.** Each is a sentence to ask in week one and a month to discover in week
 four.
 
-### <a id="r4"></a>R4. A requirement with no price attached is a wish
+### <a id="r4"></a>SE1/R4. A requirement with no price attached is a wish
 
 *Since v1.0 (2026-10-20).*
 
@@ -98,7 +98,7 @@ what it moves" is the answer to "we want everything."
 
 > **Ask:** "What does this sentence cost, and who agreed to pay it?"
 
-### <a id="r5"></a>R5. A requirement says what must be observably true; a design says how
+### <a id="r5"></a>SE1/R5. A requirement says what must be observably true; a design says how
 
 *Since v1.0 (2026-10-20).*
 
@@ -129,7 +129,7 @@ requirements.
 
 > **Ask:** "Could another team satisfy this a different way?"
 
-### <a id="r6"></a>R6. Every input has four failure cases: absent, late, wrong, and lying
+### <a id="r6"></a>SE1/R6. Every input has four failure cases: absent, late, wrong, and lying
 
 *Since v1.0 (2026-10-20).*
 
@@ -156,7 +156,7 @@ to find your K3.**
 
 > **Ask:** "What happens when this input is absent, late, wrong, or lying?"
 
-### <a id="r7"></a>R7. Scale, recovery, and availability are answered whether or not anyone writes them down
+### <a id="r7"></a>SE1/R7. Scale, recovery, and availability are answered whether or not anyone writes them down
 
 *Since v1.0 (2026-10-20).*
 
@@ -207,7 +207,7 @@ point — "the data on disk is the old version or the new one, never a mix" — 
 > **Ask:** "How many, in two years? How fast, at the peak? What happens when it breaks, and how long
 > to get back? How long may it be down, for whom?"
 
-### <a id="r8"></a>R8. Security, law, and ethics are always requirements
+### <a id="r8"></a>SE1/R8. Security, law, and ethics are always requirements
 
 *Since v1.2 (2026-10-28).*
 
@@ -251,7 +251,7 @@ are not adding a requirement; you are performing a migration.
 
 > **Ask:** "Who, outside this room, does this system keep a record about?"
 
-### <a id="r9"></a>R9. Write down what you decided not to do
+### <a id="r9"></a>SE1/R9. Write down what you decided not to do
 
 *Since v1.0 (2026-10-20).*
 
@@ -270,7 +270,7 @@ week nine.
 
 > **Ask:** "What did we decide against, and where would someone find that?"
 
-### <a id="r10"></a>R10. Version requirements; a change in meaning is a new version
+### <a id="r10"></a>SE1/R10. Version requirements; a change in meaning is a new version
 
 *Changed in v1.4 (2026-11-02).*
 
@@ -288,7 +288,7 @@ still exact and nothing is renamed. If v3 changes it, every `REQ2/UI-1` — in a
 a `QUEUE` item — is now visibly stale, and a search for it finds exactly the work to revisit. A
 design is cited the same way: `DESIGN_v2`, never a bare `DESIGN`.
 
-### <a id="r11"></a>R11. An API is the set of observables your acceptance tests need
+### <a id="r11"></a>SE1/R11. An API is the set of observables your acceptance tests need
 
 *Changed in v1.1 (2026-10-20).*
 

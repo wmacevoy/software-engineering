@@ -17,7 +17,7 @@ partner and a grader, the ideas still apply at smaller size:
 
 ---
 
-### <a id="h1"></a>H1. The team is a first-order variable
+### <a id="h1"></a>SE1/H1. The team is a first-order variable
 
 *Since v1.0 (2026-10-20).*
 
@@ -40,7 +40,7 @@ change, assumed by everything after. Make it on purpose and write it down.
 > **Ask:** "Does our team's shape match the system we want — and who is carrying more than one
 > person's share of what only they know?"
 
-### <a id="h2"></a>H2. A teammate fails the way an input fails
+### <a id="h2"></a>SE1/H2. A teammate fails the way an input fails
 
 *Since v1.0 (2026-10-20).*
 
@@ -59,7 +59,7 @@ Nobody sets out to lie. "It's basically done" is the human version of a sensor s
 successful response with nothing behind it changed. The defense is the same: do not trust the status
 field; check the age of the last thing that actually ran.
 
-### <a id="h3"></a>H3. Roles exist to retire fears; rotate them
+### <a id="h3"></a>SE1/H3. Roles exist to retire fears; rotate them
 
 *Since v1.0 (2026-10-20).*
 
@@ -85,7 +85,7 @@ iteration so knowledge spreads.
 Rotation costs a hand-off each iteration. The hand-off is where you discover which knowledge was
 living in one head. That is not the cost of rotation; it is the point.
 
-### <a id="h4"></a>H4. The interface between two people is a contract
+### <a id="h4"></a>SE1/H4. The interface between two people is a contract
 
 *Changed in v1.2 (2026-10-28); text since v1.4 (2026-11-02).*
 
@@ -121,7 +121,7 @@ is still data.
 
 > **Ask:** "What meeting keeps happening on the same topic?"
 
-### <a id="h5"></a>H5. The client knows the domain, and cannot see its edges
+### <a id="h5"></a>SE1/H5. The client knows the domain, and cannot see its edges
 
 *Since v1.0 (2026-10-20).*
 
@@ -165,7 +165,7 @@ did not write the requirement. Send them the requirements with the same sentence
 wrong with it*, and treat their bug reports as the read-back ([SE1/H6](#h6)): each one is a K3 you
 held about them.
 
-### <a id="h6"></a>H6. Read your assumptions to the client
+### <a id="h6"></a>SE1/H6. Read your assumptions to the client
 
 *Since v1.0 (2026-10-20).*
 
@@ -182,7 +182,7 @@ client answers most in two seconds, and one makes them stop and say "well, excep
 
 > **Ask:** "We're assuming X. True?"
 
-### <a id="h7"></a>H7. The first conversation: pain before solution, people before features, numbers before nouns
+### <a id="h7"></a>SE1/H7. The first conversation: pain before solution, people before features, numbers before nouns
 
 *Since v1.0 (2026-10-20).*
 
@@ -205,7 +205,7 @@ will not volunteer them, because in their world those are not "the app."
 (invented ones marked), a glossary, `Scope decisions`, `Non-goals`, and `Not yet answered` — sent
 with one sentence: *tell us what is wrong with it.*
 
-### <a id="h8"></a>H8. A demo is a test, so run it like one
+### <a id="h8"></a>SE1/H8. A demo is a test, so run it like one
 
 *Since v1.0 (2026-10-20).*
 
@@ -221,7 +221,7 @@ with one sentence: *tell us what is wrong with it.*
 Between demos, status is weekly, three lines, the same shape every time — done, next,
 risk-and-since-when — so the one that deviates is a signal.
 
-### <a id="h9"></a>H9. With bad news, the delay is the cost
+### <a id="h9"></a>SE1/H9. With bad news, the delay is the cost
 
 *Since v1.0 (2026-10-20).*
 
@@ -239,7 +239,7 @@ coming.
 
 > **Ask:** "How many days between knowing and telling?"
 
-### <a id="h10"></a>H10. Settle disagreements by category, then by reversibility
+### <a id="h10"></a>SE1/H10. Settle disagreements by category, then by reversibility
 
 *Since v1.0 (2026-10-20).*
 
@@ -255,7 +255,7 @@ Four moves, in order. Most arguments end at the first.
 4. **Disagree in the conversation, not in the commit.** Once decided, it goes into `Scope decisions`
    with its reason; reopening it requires new information, not a new mood.
 
-### <a id="h11"></a>H11. Being behind is a systems failure with a schedule
+### <a id="h11"></a>SE1/H11. Being behind is a systems failure with a schedule
 
 *Since v1.0 (2026-10-20).*
 
@@ -274,7 +274,7 @@ last, and the delay grows faster than the load.
 The most dangerous team member is the one carrying the project. Rotate the roles anyway, and pair
 them with the person who knows least.
 
-### <a id="h12"></a>H12. Fix the process, not the person
+### <a id="h12"></a>SE1/H12. Fix the process, not the person
 
 *Since v1.0 (2026-10-20).*
 

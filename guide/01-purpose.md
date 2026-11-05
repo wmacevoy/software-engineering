@@ -5,7 +5,7 @@ to name the fear it retires.
 
 ---
 
-### <a id="p1"></a>P1. Engineers make reliable things, on time, within resource constraints, managing discomfort for the team, the client, and the users
+### <a id="p1"></a>SE1/P1. Engineers make reliable things, on time, within resource constraints, managing discomfort for the team, the client, and the users
 
 *Since v1.0 (2026-10-20).*
 
@@ -15,7 +15,7 @@ fixed is not a plan; it is a wish with dates attached.
 
 > **Ask:** "Which of these is fixed, and which one moves when we are wrong?"
 
-### <a id="p2"></a>P2. Reliable is not correct
+### <a id="p2"></a>SE1/P2. Reliable is not correct
 
 *Since v1.0 (2026-10-20).*
 
@@ -40,7 +40,7 @@ same reason.)
 
 > **Ask:** "When this is broken, how does anyone find out?"
 
-### <a id="p3"></a>P3. Discomfort is a leading indicator
+### <a id="p3"></a>SE1/P3. Discomfort is a leading indicator
 
 *Since v1.0 (2026-10-20).*
 
@@ -57,7 +57,7 @@ data.
 
 > **Ask:** "Who is uncomfortable right now, and what are they afraid of?"
 
-### <a id="p4"></a>P4. Every practice retires a named fear
+### <a id="p4"></a>SE1/P4. Every practice retires a named fear
 
 *Since v1.0 (2026-10-20).*
 
@@ -91,7 +91,7 @@ Two consequences, and both are load-bearing:
 
 > **Ask:** "Which fear does this practice retire — and does it retire the risk, or only the fear?"
 
-### <a id="p5"></a>P5. The deliverable is not the code
+### <a id="p5"></a>SE1/P5. The deliverable is not the code
 
 *Since v1.0 (2026-10-20).*
 

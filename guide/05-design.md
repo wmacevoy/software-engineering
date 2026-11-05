@@ -5,7 +5,7 @@ smaller rules stop being arbitrary.
 
 ---
 
-### <a id="d1"></a>D1. State is the material
+### <a id="d1"></a>SE1/D1. State is the material
 
 *Since v1.0 (2026-10-20).*
 
@@ -33,7 +33,7 @@ that will stay easy.
 
 > **Ask:** "How much state can this change reach?"
 
-### <a id="d2"></a>D2. Anything that might be out of date is a cache
+### <a id="d2"></a>SE1/D2. Anything that might be out of date is a cache
 
 *Since v1.0 (2026-10-20).*
 
@@ -59,7 +59,7 @@ server consults — each is a different price for the same answer.
 
 > **Ask:** "What is this a copy of, and how stale can it get?"
 
-### <a id="d3"></a>D3. There is no single "now"
+### <a id="d3"></a>SE1/D3. There is no single "now"
 
 *Since v1.0 (2026-10-20).*
 
@@ -89,7 +89,7 @@ Beliefs that feel like K0 and are K3:
 
 > **Ask:** "How wrong may this copy be, and who finds out when it is?"
 
-### <a id="d4"></a>D4. Make operations idempotent
+### <a id="d4"></a>SE1/D4. Make operations idempotent
 
 *Since v1.0 (2026-10-20).*
 
@@ -105,7 +105,7 @@ carry a sequence number or version with each message and ignore anything older t
 
 > **Ask:** "What happens if this request is sent twice?"
 
-### <a id="d5"></a>D5. Wall-clock time and elapsed time are different instruments
+### <a id="d5"></a>SE1/D5. Wall-clock time and elapsed time are different instruments
 
 *Changed in v1.6 (2026-11-04).*
 
@@ -141,7 +141,7 @@ Almost every time bug is one instrument used where the other was required.
 
 > **Ask:** "Which clock is this, what happens when it jumps, and what is a day here?"
 
-### <a id="d6"></a>D6. Derive instead of store; name the authority; record why
+### <a id="d6"></a>SE1/D6. Derive instead of store; name the authority; record why
 
 *Since v1.0 (2026-10-20).*
 
@@ -158,7 +158,7 @@ Almost every time bug is one instrument used where the other was required.
 
 > **Ask:** "Which copy is authoritative — and could this be computed instead of stored?"
 
-### <a id="d7"></a>D7. Serve, don't rule: keep the logic away from the I/O
+### <a id="d7"></a>SE1/D7. Serve, don't rule: keep the logic away from the I/O
 
 *Since v1.0 (2026-10-20).*
 
@@ -204,7 +204,7 @@ something is hard to test, look for the rule tangled into the serve.
 
 > **Ask:** "What is the rule here, and what could serve?"
 
-### <a id="d8"></a>D8. Separate essential complexity from accidental complexity
+### <a id="d8"></a>SE1/D8. Separate essential complexity from accidental complexity
 
 *Since v1.0 (2026-10-20).*
 
@@ -239,7 +239,7 @@ requirement. Anything you maintain that is not on that page should be able to sa
 
 > **Ask:** "What requirement would have to disappear for this to go away?"
 
-### <a id="d9"></a>D9. Conceptual integrity: one coherent design beats every good idea
+### <a id="d9"></a>SE1/D9. Conceptual integrity: one coherent design beats every good idea
 
 *Changed in v1.6 (2026-11-04).*
 
@@ -287,7 +287,7 @@ that fits the fundamental shape and serves nothing. A mission rarely has a test 
 
 > **Ask:** "Is that the same thing we called something else on Tuesday?"
 
-### <a id="d10"></a>D10. Locality of reasoning: use a part correctly without reading inside it
+### <a id="d10"></a>SE1/D10. Locality of reasoning: use a part correctly without reading inside it
 
 *Since v1.0 (2026-10-20).*
 
@@ -330,7 +330,7 @@ What locality justifies:
 
 > **Ask:** "Can I use this without reading inside it — and does its contract say how it fails?"
 
-### <a id="d11"></a>D11. Once someone depends on an interface, it is a promise
+### <a id="d11"></a>SE1/D11. Once someone depends on an interface, it is a promise
 
 *Since v1.0 (2026-10-20).*
 
@@ -347,7 +347,7 @@ new version or a new name.
 
 > **Ask:** "Is this a one-way door? Who already depends on it?"
 
-### <a id="d12"></a>D12. Software is capital you carry
+### <a id="d12"></a>SE1/D12. Software is capital you carry
 
 *Since v1.0 (2026-10-20).*
 
@@ -377,7 +377,7 @@ uneventful steady state, and execute retention as a policy.
 
 > **Ask:** "What does this cost us every week for the next two years — and what can we delete?"
 
-### <a id="d13"></a>D13. Provenance: who said this, and can I check it later without asking them again?
+### <a id="d13"></a>SE1/D13. Provenance: who said this, and can I check it later without asking them again?
 
 *Since v1.0 (2026-10-20).*
 

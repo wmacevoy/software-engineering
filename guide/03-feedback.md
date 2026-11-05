@@ -6,7 +6,7 @@ write tests worth trusting is [6. Testing](06-testing.md).)
 
 ---
 
-### <a id="f1"></a>F1. The cost of a test decides the method
+### <a id="f1"></a>SE1/F1. The cost of a test decides the method
 
 *Since v1.0 (2026-10-20).*
 
@@ -26,7 +26,7 @@ twice in an afternoon ([SE1/W4](08-work.md#w4)).
 
 > **Ask:** "What does it cost to find out we are wrong about this — and to undo it?"
 
-### <a id="f2"></a>F2. The cost of a test is designed, not given
+### <a id="f2"></a>SE1/F2. The cost of a test is designed, not given
 
 *Since v1.0 (2026-10-20).*
 
@@ -49,7 +49,7 @@ information about the design, not about testing.*
 > **Ask:** "What would make this cheap to test — and what does its being expensive say about the
 > design?"
 
-### <a id="f3"></a>F3. Push each class of error down to the cheapest loop that can catch it
+### <a id="f3"></a>SE1/F3. Push each class of error down to the cheapest loop that can catch it
 
 *Since v1.0 (2026-10-20).*
 
@@ -71,7 +71,7 @@ the wrong thing." Only a person looking at the running thing does.
 
 > **Ask:** "What is the cheapest loop that could have caught this?"
 
-### <a id="f4"></a>F4. Nothing has mass, so build the signals
+### <a id="f4"></a>SE1/F4. Nothing has mass, so build the signals
 
 *Since v1.5 (2026-11-04).*
 
@@ -85,7 +85,7 @@ of them arrive by default.
 
 > **Ask:** "If this design were wrong, what would tell us — and when?"
 
-### <a id="f5"></a>F5. When a measure becomes a target, it stops measuring
+### <a id="f5"></a>SE1/F5. When a measure becomes a target, it stops measuring
 
 *Since v1.0 (2026-10-20).*
 

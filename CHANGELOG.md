@@ -24,6 +24,16 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
+## v1.7 — unreleased
+
+[Changes on main since v1.6](https://github.com/wmacevoy/software-engineering/compare/v1.6...main)
+
+### Also changed
+
+- Every principle's heading now carries its citation, `SE1/D5.`, so a grep for a citation reaches its definition, as
+  [SE1/D9](guide/05-design.md#d9) asks of IDs. Anchors and links are unchanged, and the checker does not count it as a change to any
+  principle. The author's word, 2026-11-05.
+
 ## v1.6 — 2026-11-04
 
 [Full diff from v1.5](https://github.com/wmacevoy/software-engineering/compare/v1.5...v1.6) ·
