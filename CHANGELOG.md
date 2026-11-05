@@ -30,6 +30,8 @@ yours.
 
 ### Also changed
 
+- ADOPT.md's first step vendors the guide at `vendor/se1` as a quick reference, because a guide that is somewhere else does not get
+  looked at, and AGENTS.md says what a grep there reaches. The author's word, 2026-11-05.
 - Every principle's heading now carries its citation, `SE1/D5.`, so a grep for a citation reaches its definition, as
   [SE1/D9](guide/05-design.md#d9) asks of IDs. Anchors and links are unchanged, and the checker does not count it as a change to any
   principle. The author's word, 2026-11-05.

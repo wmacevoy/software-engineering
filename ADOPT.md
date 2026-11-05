@@ -18,7 +18,19 @@ mind, and tell us.
 
 In order. Each step is small, and the repository is better after any of them than before.
 
-1. **Copy AGENTS.md at the release it names, and keep it current.** The copy says which release it
+1. **Vendor the guide as a quick reference, and copy AGENTS.md out of it.** A guide that is somewhere else does not get
+   looked at, by a person or an agent, and nobody notices what it says; here, a grep for `SE1/D5.` lands on the definition.
+   Take what a reader looks things up in, not the repository's own working files:
+
+   ```sh
+   git clone --depth 1 --branch <release> https://github.com/wmacevoy/software-engineering.git ../se1
+   mkdir -p vendor/se1
+   cp -r ../se1/guide ../se1/README.md ../se1/GLOSSARY.md ../se1/LICENSE ../se1/AGENTS.md vendor/se1/
+   cp vendor/se1/AGENTS.md .
+   ```
+
+   `se --doctor` leaves `vendor/` out of its rows. To move, do the same at the new release, and your own diff shows what
+   moved. The copy says which release it
    came from, so a copy that is behind says so ([SE1/U7](guide/02-unknowing.md#u7)). When a newer
    release appears, the doctor warns; read *For copies* under it in [CHANGELOG.md](CHANGELOG.md) and re-copy. A
    *Foundation* line in the fundamental shape pins a release and sets how much warns (the requirements template). Do not

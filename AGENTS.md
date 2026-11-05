@@ -8,7 +8,8 @@ can be argued with rather than merely obeyed. These are guidelines, not law: the
 The IDs are defined in the guide at https://github.com/wmacevoy/software-engineering/tree/v1.6;
 `SE1` is its first major version, tagged `v1.x`, within which no ID moves. Its
 [principle index](https://github.com/wmacevoy/software-engineering/blob/v1.6/README.md#principle-index)
-lists them all, and each has an anchor in its chapter (for example, `guide/10-agents.md#a8`).
+lists them all, and each has an anchor in its chapter (for example, `guide/10-agents.md#a8`). Where the guide is vendored, a
+grep for `SE1/A8.` in `vendor/se1` lands on the definition.
 This copy is from **v1.6**; what changed since, by ID, is in the guide's
 [CHANGELOG](https://github.com/wmacevoy/software-engineering/blob/main/CHANGELOG.md).
 The Markdown in that repository is the canonical text; the site at
