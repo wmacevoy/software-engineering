@@ -65,7 +65,8 @@ def rel(path):  # forward slashes on every platform, so a report and a git path 
 files = []
 for folder, dirs, names in os.walk(root):
     dirs[:] = sorted(d for d in dirs if d != ".git")
-    files += [os.path.join(folder, n) for n in sorted(names) if n.endswith(".md")]
+    # ".#" is an editor's lock on an open buffer, in Emacs a link to nothing: not a document, and not readable
+    files += [os.path.join(folder, n) for n in sorted(names) if n.endswith(".md") and not n.startswith(".#")]
 
 
 def in_dir(path, name):

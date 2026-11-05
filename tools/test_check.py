@@ -23,7 +23,7 @@ class Repo(unittest.TestCase):
     def setUpClass(cls):
         cls.tmp = tempfile.mkdtemp()
         cls.repo = os.path.join(cls.tmp, "repo")
-        shutil.copytree(GUIDE, cls.repo, ignore=shutil.ignore_patterns("__pycache__", ".claude"))
+        shutil.copytree(GUIDE, cls.repo, ignore=shutil.ignore_patterns("__pycache__", ".claude", ".#*"))
         # On a release commit before its tag, these tests would each see that one release's markers as unnamed. The
         # copy is tagged as it will be; `since --check` on the real tree is what covers the untagged state.
         with open(os.path.join(cls.repo, "CHANGELOG.md"), encoding="utf-8") as fh:
@@ -79,6 +79,15 @@ class Planted(Repo):
     def test_the_tree_itself_is_green(self):
         self.green()
         self.green("tools/since.py", "--check")
+
+    def test_an_editors_lock_file_is_not_a_document(self):
+        lock = os.path.join(self.repo, "docs", ".#REQUIREMENTS_v8.md")
+        try:
+            os.symlink("user@host.1234:1", lock)  # how Emacs marks an open buffer: a link to nothing
+        except OSError:
+            self.skipTest("this system will not make the link")
+        self.addCleanup(os.remove, lock)
+        self.green()
 
     def test_copy_mislabeled(self):
         self.plant("AGENTS.md", lambda t: re.sub(r"This copy is from \*\*v\d+\.\d+\*\*", "This copy is from **v0.1**", t))
