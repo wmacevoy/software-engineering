@@ -10,6 +10,8 @@ write tests worth trusting is [6. Testing](06-testing.md).)
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Where a test costs a million dollars, front-load analysis and sign-off; where it costs a second, loop. The cost is per decision, not per project: a route handler loops, a schema with real data under it gets care.
+
 You cannot build a second bridge to see whether the first one stands. A wind-tunnel hour is
 expensive, a chip mask set is expensive, a recall is catastrophic. So those disciplines front-load
 everything — analysis, simulation, review, sign-off — before anything is cut. That is not a bad
@@ -29,6 +31,8 @@ twice in an afternoon ([SE1/W4](08-work.md#w4)).
 ### <a id="f2"></a>SE1/F2. The cost of a test is designed, not given
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** The toolkit: pure functions with state at the edges, an injected clock, seeded randomness, faults on demand, one-command reset, conformance checked from outside, logs recording each decision's inputs. It multiplies against every future change. Hard to test is information about the design.
 
 Lowering it is ordinary engineering work with a known toolkit:
 
@@ -53,6 +57,8 @@ information about the design, not about testing.*
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Loops by cost: type checker, running it, unit, integration, review, client demo, production. When something slips through, ask which cheapest loop could have caught it and put a check there. "Wrong product" is caught only by a person at a demo.
+
 Testing is one feedback loop among several. Each has a cost, a latency, and a fidelity, and each
 catches a different class of error:
 
@@ -75,6 +81,8 @@ the wrong thing." Only a person looking at the running thing does.
 
 *Since v1.5 (2026-11-04).*
 
+> **Quick:** Nothing sags or cracks: a bad design holds itself up at full speed with the tests passing. Every signal a physical structure gives for free must be built on purpose. If this were wrong, what would tell us, and when?
+
 Mass supplies error signals for free: a bad structure sags, cracks, or falls down, and nobody has to
 be clever to notice. **Software has no gravity, so nothing collapses to tell you.** A bad design
 holds itself up indefinitely, at full speed, with the tests passing. The one gravity a project makes for
@@ -88,6 +96,8 @@ of them arrive by default.
 ### <a id="f5"></a>SE1/F5. When a measure becomes a target, it stops measuring
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Aim at coverage and get tests with no assertions; at velocity and estimates inflate; at "every requirement has a test" and get tests that assert nothing. Keep the reason attached to the rule wherever it appears; ask how you would cheaply fake it.
 
 Not because people are dishonest. Structurally: the measure was a proxy for something you cared
 about, and optimizing the proxy detaches it from the thing.

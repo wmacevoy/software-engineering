@@ -328,6 +328,22 @@ def check_loads(repo):
                    "copy AGENTS.md to the root, or import the copy from a CLAUDE.md")
 
 
+def check_quickref(repo):
+    """The condensed guide in every working agent's context. Only CLAUDE.md does it: a hook's output is capped at 10,000
+    characters, and over that the agent gets a path and a preview (../compaction, CLAUDE-CODE-DOCS-2026-10-27.md)."""
+    repo = Path(repo).resolve()
+    fix = "add a line `@vendor/se1/QUICKREF.md` to the root CLAUDE.md, beside `@AGENTS.md` (ADOPT.md step 2)"
+    claude = repo / "CLAUDE.md"
+    found = [p for p in claude_imports(claude) if p.name == "QUICKREF.md"] if claude.is_file() else []
+    if not found:
+        return Finding("quick reference", "SE1/A11", FAIL, "the root CLAUDE.md does not import QUICKREF.md, so a working agent can skip it", fix)
+    if not found[0].is_file():
+        return Finding("quick reference", "SE1/A11", FAIL, f"CLAUDE.md imports {found[0].name}, which is not there", fix)
+    return Finding("quick reference", "SE1/A11", PASS,
+                   "[Claude Code configuration] CLAUDE.md imports it, so it loads at each start and after each compaction; "
+                   "Explore and Plan start without CLAUDE.md. Observed loading: the phrase test (ADOPT.md step 2)", "")
+
+
 def hook_commands(s):
     """Yield (event, matcher, command) for every command hook in a settings dict."""
     for event, entries in (s.get("hooks") or {}).items():
@@ -625,6 +641,7 @@ def doctor(repo, online=True, cache_dir=None, fetch=default_fetch, today=None):
                    "" if rel["made"] else "run again with the network")]
     out.append(check_copy(repo, rel))
     out.append(check_loads(repo))
+    out.append(check_quickref(repo))
     out.append(check_hooks(repo))
     guide, cmd = check_guide(repo)
     out.append(guide)

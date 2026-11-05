@@ -9,6 +9,8 @@ to name the fear it retires.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Reliability, time, resources, and discomfort trade against each other; scope is the fifth and usually the honest one to move. A plan that does not say which is fixed, and which moves when wrong, is a wish with dates.
+
 Four constraints that trade against each other — reliability, time, resources, discomfort — and a
 fifth, **scope**, which is usually the honest one to move. A plan that does not say which of them is
 fixed is not a plan; it is a wish with dates attached.
@@ -18,6 +20,8 @@ fixed is not a plan; it is a wish with dates attached.
 ### <a id="p2"></a>SE1/P2. Reliable is not correct
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Correct means it matches the spec; reliable means it works amid bad inputs and failing parts, and says so when it does not. The unseen failure turns a fault into an outage: when this is broken, how does anyone find out?
 
 Correctness is a property of a program measured against a specification. Reliability is a property
 of a system running in a world that contains bad inputs, hostile inputs, failing hardware, wrong
@@ -44,6 +48,8 @@ same reason.)
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Fear degrades judgment, and a frightened team drops exactly the practices that would have saved it. Discomfort shows weeks before the schedule does; someone going quiet is data.
+
 | Whose      | What it looks like                              | What reduces it                          |
 | ---------- | ----------------------------------------------- | ---------------------------------------- |
 | The users  | confusion, wasted time, distrust of the answer  | the product actually being good          |
@@ -60,6 +66,8 @@ data.
 ### <a id="p4"></a>SE1/P4. Every practice retires a named fear
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Backups, tests, CI, review each retire one specific fear; if you cannot name it, find it or stop. Worse than useless is one that quiets the fear without reducing the risk: a backup never restored, a test that cannot fail.
 
 Backups, version control, tests, review, short iterations, demos, staging. Each is usually taught as
 a rule. Each is better understood as a way of retiring one specific fear — and you should be able to
@@ -94,6 +102,8 @@ Two consequences, and both are load-bearing:
 ### <a id="p5"></a>SE1/P5. The deliverable is not the code
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** The deliverable is the code plus a stranger's ability to run, reset, deploy, diagnose at 3am, and continue it in month seven. You are engineering the cost of the next change; write down why it is shaped this way while you know.
 
 It is the code plus the ability of someone else to run it, reset it, deploy it, diagnose it at 3am,
 and continue it in month seven. "It works on my machine" is a claim about a machine.

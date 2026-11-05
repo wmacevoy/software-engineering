@@ -9,7 +9,7 @@ The IDs are defined in the guide at https://github.com/wmacevoy/software-enginee
 `SE1` is its first major version, tagged `v1.x`, within which no ID moves. Its
 [principle index](https://github.com/wmacevoy/software-engineering/blob/v1.6/README.md#principle-index)
 lists them all, and each has an anchor in its chapter (for example, `guide/10-agents.md#a8`). Where the guide is vendored, a
-grep for `SE1/A8.` in `vendor/se1` lands on the definition.
+grep for `SE1/A8.` in `vendor/se1` lands on the definition, and `QUICKREF.md` there, loaded with this file, condenses it.
 This copy is from **v1.6**; what changed since, by ID, is in the guide's
 [CHANGELOG](https://github.com/wmacevoy/software-engineering/blob/main/CHANGELOG.md).
 The Markdown in that repository is the canonical text; the site at

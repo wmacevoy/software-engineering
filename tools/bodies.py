@@ -18,6 +18,8 @@ MARKER = re.compile(
     r"(?: \(([0-9]{4}-[0-9]{2}-[0-9]{2}|unreleased)\))?"
     r"(?:; text since (v[0-9]+\.[0-9]+(?:\.[0-9]+)?) \(([0-9]{4}-[0-9]{2}-[0-9]{2}|unreleased)\))?\.\*$"
 )
+# A principle's condensed form, for QUICKREF.md: not its text, so rewording one changes no marker.
+QUICK = re.compile(r"^> \*\*Quick:\*\* (.*)$")
 _ANY_HEADING = re.compile(r"^#{1,3} ")
 
 
@@ -40,7 +42,7 @@ def bodies(text):
 
     def flush():
         if current:
-            out[current] = collapse(" ".join(l for l in buf if not MARKER.search(l)))
+            out[current] = collapse(" ".join(l for l in buf if not MARKER.search(l) and not QUICK.search(l)))
 
     for line in text.split("\n"):
         m = HEADING.search(line)

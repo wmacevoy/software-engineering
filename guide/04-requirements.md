@@ -16,6 +16,8 @@ Two words used precisely in this chapter:
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** "We need an app that shows which lots have spaces" is a pain plus a guess, arriving confident so it triggers no investigation. Walk back to the pain: what happens today when it goes wrong, who gets the call? The real user may be someone else.
+
 You are handed a sentence: *"We need an app that shows which lots have spaces."* That sentence is
 not a requirement. It is a wish with a user interface already attached.
 
@@ -39,6 +41,8 @@ may be about trusting a number, not about a map.
 ### <a id="r2"></a>SE1/R2. Specific and wrong beats vague and safe
 
 *Changed in v1.4 (2026-11-02).*
+
+> **Quick:** The client cannot say what happens when a sensor goes silent until they read "the count freezes and shows as current" and say no. Draft to be wrong cheaply: numbered, versioned, observable, with numbers, invented ones marked. "Responsive and up to date" gets nodded at.
 
 Requirements do not exist, even in principle, until someone writes a candidate down. The client
 cannot tell you what should happen when a sensor goes silent, because they have never thought about
@@ -71,6 +75,8 @@ text it pointed at has moved ([SE1/R10](#r10)).
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Nobody volunteers: every kind of person it touches, how many in two years, what we are not building, absent/late/wrong/lying inputs, the bad day, how long it may be down, what data about people it keeps, who is affected outside the room. Ask those that could invalidate the plan first.
+
 None of these are about features. All of them get answers nobody offers unprompted.
 
 | Ask                                                          | Because                                                                     |
@@ -93,6 +99,8 @@ four.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Every sentence in a requirements document is a purchase someone must authorize. To "we want everything," answer "yes, and here is what it moves."
+
 Every sentence in a requirements document is a purchase someone has to authorize. "Yes, and here is
 what it moves" is the answer to "we want everything."
 
@@ -101,6 +109,8 @@ what it moves" is the answer to "we want everything."
 ### <a id="r5"></a>SE1/R5. A requirement says what must be observably true; a design says how
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Could another team satisfy it differently, and can you check it from outside without the source? A table name, library, or status code in a requirement is design. Editing a requirement to match what the code does is a design change in costume.
 
 A requirement cannot change without the client; a design can. Put a design decision in the
 requirements and you have promised the client a table name. Put a requirement in the design and
@@ -133,6 +143,8 @@ requirements.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Per input decide: absent (wait, serve stale, refuse?), late (how long is too long?), wrong (reject, clamp, flag?), lying (200 OK, frozen since Tuesday: how would anyone notice?). Unstated, whatever the HTTP library does becomes the product. A feature an input announces that you do not support gets refuse, read-only, or read-write, never "ignore."
+
 Most specifications describe the happy path and inherit the rest by accident — whatever the HTTP
 library happens to do on timeout becomes the product's behavior, chosen by nobody.
 
@@ -159,6 +171,8 @@ to find your K3.**
 ### <a id="r7"></a>SE1/R7. Scale, recovery, and availability are answered whether or not anyone writes them down
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Scale, speed, recovery, and availability: unwritten, the code answers them. Get the client's numbers with a horizon and do arithmetic on them. Recovery: what happens while it is down, and who, which command, how long to get back, real only if run and timed. Availability is a budget with period and beneficiary; unstated it is 100%, which forbids deploys.
 
 Unstated, the answer is whatever the implementation happened to do — chosen by nobody, discovered in
 production. All of them are **client answers**, not engineering choices, and on day one each costs a
@@ -211,6 +225,8 @@ point — "the data on disk is the old version or the new one, never a mix" — 
 
 *Since v1.2 (2026-10-28).*
 
+> **Quick:** Security, law, and ethics are requirements on every project; their absence looks like presence until a breach or regulator sets the deadline, and the harm cannot be undone. Ask early someone who knows the rule. Write the threat model; decide what you keep about people and how long; the safest record is one never kept.
+
 They are the easiest to postpone, because they are not software. No test fails without them, no user
 files a ticket for them, they compete with visible features, and their absence looks exactly like
 their presence until it doesn't. They are requirements on every project whether or not anyone states
@@ -255,6 +271,8 @@ are not adding a requirement; you are performing a migration.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Four lists, nearly free: scope decisions with reasons, non-goals, not yet answered, deferred. Each ends an argument permanently, and a week-four collision is found by grep rather than in review in week nine.
+
 Four short lists, each nearly free, each ending an argument permanently:
 
 | List                 | Holds                                                         |
@@ -274,6 +292,8 @@ week nine.
 
 *Changed in v1.4 (2026-11-02).*
 
+> **Quick:** Once someone depends on a statement, a change in meaning is a new version, not an edit; the diff is your best conversation with the client. Cite by the version that last changed it (REQ2/UI-1), so a change makes every stale citation findable by search.
+
 A superseded requirement is not deleted knowledge. Editing in place destroys the before-picture, and
 the diff between `v1` and `v2` is the most useful conversation you will ever have with the client.
 Once a second party depends on a statement, changing it is a version, not an edit — the same rule as
@@ -291,6 +311,8 @@ design is cited the same way: `DESIGN_v2`, never a bare `DESIGN`.
 ### <a id="r11"></a>SE1/R11. An API is the set of observables your acceptance tests need
 
 *Changed in v1.1 (2026-10-20).*
+
+> **Quick:** Story, criteria, an acceptance test written to fail today, then the observables that test needs: those fields and states are the API. A story with no test is a wish; a test with no story is accidental complexity. Name tests by versioned requirement ID; that is the trace.
 
 The chain from a story to an interface runs through five artifacts, and the step people skip is
 the one from the test to the observables it needs:

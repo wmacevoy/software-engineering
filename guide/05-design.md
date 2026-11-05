@@ -9,6 +9,8 @@ smaller rules stop being arbitrary.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Code is the description; what runs is state plus the rules that change it. State outlives its code, is shared, ages, and changes while observed. Difficulty is how much state a change can reach; list every piece: owner, copies, how stale, what the user sees meanwhile.
+
 Every discipline has a material whose properties explain its rules. Software's material is not
 code; code is the description. What actually runs is **state, plus the rules that change it.**
 
@@ -37,6 +39,8 @@ that will stay easy.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** A cache is any copy that might not match the original: a fetched variable, a count column, a login token carrying a role. Naming it one asks the right questions: how stale can it get, how would you know, what does the user see meanwhile?
+
 A cache is not something you install. It is **any copy of state that might not match the original**
 — a variable holding something fetched five minutes ago, an array a timer refreshes, a count column
 that duplicates what could be counted from other rows, a login token. Call it a cache and you
@@ -62,6 +66,8 @@ server consults — each is a different price for the same answer.
 ### <a id="d3"></a>SE1/D3. There is no single "now"
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Once state lives in two places, each copy is locally correct and they disagree. Ask not how to sync them but how wrong each may be and who gets told. A message may not arrive, or arrive twice, or out of order; a returned call does not prove the write.
 
 Once state lives in two places joined by a network, there is no shared present. The sensor knows a
 count; the collector knows what the sensor said four seconds ago; the browser knows what the server
@@ -93,6 +99,8 @@ Beliefs that feel like K0 and are K3:
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Make doing it twice equal doing it once, so "did that go through?" stops mattering. "Set to 37" is idempotent; "one car arrived" is not: the caller supplies a key, and the same key twice is one operation. For ordering, carry a sequence number.
+
 The defense against "it may arrive twice" is a design technique, not a warning: make doing it twice
 equal doing it once, and "did that go through?" stops being a question you have to answer.
 
@@ -108,6 +116,8 @@ carry a sequence number or version with each message and ignore anything older t
 ### <a id="d5"></a>SE1/D5. Wall-clock time and elapsed time are different instruments
 
 *Changed in v1.6 (2026-11-04).*
+
+> **Quick:** Wall-clock says when; a monotonic counter says how long. Compute staleness from elapsed times only (sender's reported age plus receiver's hold); receipt time alone is not enough, since a frozen sender gets a fresh receipt on every poll. Keep wall-clock too, so a disagreement reveals a broken sender. Record past moments in UTC, future local times with zone; decide what a day is; test the boundaries.
 
 Split *"how old is this?"* into two fields:
 
@@ -145,6 +155,8 @@ Almost every time bug is one instrument used where the other was required.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Anything computed cannot go stale: derive in one shared place rather than storing copies. Any value that exists twice needs a sentence saying which wins and that a mismatch is a fault. Put age in the data as a field. Record what a decision was based on.
+
 - **Derive instead of store.** Anything computed cannot go stale. Compute `available` as
   `capacity − occupancy` in one piece of SQL that every query reuses, and never in the browser. One
   place can be wrong instead of five.
@@ -161,6 +173,8 @@ Almost every time bug is one instrument used where the other was required.
 ### <a id="d7"></a>SE1/D7. Serve, don't rule: keep the logic away from the I/O
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Ruling code touches the world: sensor, socket, database, clock, globals. Serving code takes values and returns values. Keep ruling to a few thin lines at the edges; put the logic in pure functions testable with plain numbers. Hard to test means a rule is tangled into the serve.
 
 The phrase comes from embedded testing. Code that **rules** commands the world: it reads the sensor,
 the socket, the database, the clock, a global. Code that **serves** answers questions: a pure
@@ -208,6 +222,8 @@ something is hard to test, look for the rule tangled into the serve.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Essential complexity is in the problem (sensors lie, clocks disagree); accidental is yours (the bundler, five layers of indirection). What requirement would have to disappear for this to go away? "None" means accidental, and it must justify its carry; yours is invisible to you because you understand it.
+
 **Essential complexity is in the problem.** It survives every rewrite, framework, language, and
 model: sensors lie, clocks disagree, networks drop requests, users speak eight languages, devices
 cannot all be upgraded at once. You cannot engineer it away; you can only decide where to handle it.
@@ -242,6 +258,8 @@ requirement. Anything you maintain that is not on that page should be able to sa
 ### <a id="d9"></a>SE1/D9. Conceptual integrity: one coherent design beats every good idea
 
 *Changed in v1.6 (2026-11-04).*
+
+> **Quick:** People understand a system by guessing the next part from the last; once guessing stops working it is unmaintainable. One thing, one word; one word, one thing; a new noun is a decision. One person holds the shape and says no, even to good ideas; agents author, humans own it.
 
 People understand systems **by analogy**: learn how one part works, then guess how the next part
 works. Coherence is what makes the guess right. Every place the guess fails is something to memorize
@@ -291,6 +309,8 @@ that fits the fundamental shape and serves nothing. A mission rarely has a test 
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Can you use it correctly without reading inside? If not, the boundary is a lie. Leaks: failure (a timeout behind "returns a number"), time (a read that is a round-trip), meaning (200 OK is not "current"), trust. A contract that does not say how it fails has said nothing.
+
 The usual justification for interfaces is reuse. That reason is weaker than it sounds: reuse is a
 bonus when it happens, and code bent to serve two callers that only look alike can end up worse at
 both jobs. The real reason is arithmetic about human memory: nobody can hold a large system in their
@@ -334,6 +354,8 @@ What locality justifies:
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Renaming a variable is free; a format with data in it, a published URL, a distributed key are one-way doors. Once a second party depends on an interface it is a promise: changing a field's meaning is breaking even with the type unchanged, so version or rename.
+
 Renaming a variable is free to undo. A data format with data in it, a published URL, a distributed
 key, an artifact someone installed — those are **one-way doors**, and they get careful, front-loaded
 work ([SE1/W4](08-work.md#w4) says how to choose). Most arguments in software are conducted at the
@@ -350,6 +372,8 @@ new version or a new name.
 ### <a id="d12"></a>SE1/D12. Software is capital you carry
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** cost = build + carry × lifetime. Carry (every future reader, upgrade, CVE week) never shows on a schedule. A dependency is a permanent obligation; adding one is a proposal. Deletion is the highest-return work nobody schedules; ask each iteration. Data is heaviest; decide retention now.
 
 > **cost = build + (carry × lifetime)**
 
@@ -380,6 +404,8 @@ uneventful steady state, and execute retention as a policy.
 ### <a id="d13"></a>SE1/D13. Provenance: who said this, and can I check it later without asking them again?
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Evidence is "signed by a key in the registry, here is the check," not a feeling. A signature proves who said it and that it was unaltered, not that it is true. A human signature, "I read this and stand behind it," cannot be delegated.
 
 Every claim in a system has an author — a reading, a log record, a release artifact, a commit. The
 same question applies at every layer. Where the answer must hold up without trusting the network or

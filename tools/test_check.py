@@ -128,6 +128,25 @@ class Planted(Repo):
                 self.tearDown()
                 self.saved = {}
 
+    def test_every_principle_has_a_quick_line(self):
+        self.plant(UNKNOWING, lambda t: re.sub(r'(<a id="u1"></a>[^\n]*\n\n\*[^\n]*\*\n\n)> \*\*Quick:\*\*[^\n]*\n\n', r"\1", t, count=1))
+        self.red("U1: no Quick line")
+
+    def test_quickref_is_what_the_quick_lines_say(self):
+        self.saved.setdefault("QUICKREF.md", self.read("QUICKREF.md"))  # so --write below is undone with the rest
+        self.plant(UNKNOWING, lambda t: re.sub(r"(> \*\*Quick:\*\*) ", r"\1 Planted. ", t, count=1))
+        self.red("QUICKREF.md differs", "tools/quickref.py", "--check")
+        rc, out = self.tool("tools/quickref.py", "--write")
+        self.assertEqual(rc, 0, out)
+        self.green("tools/quickref.py", "--check")
+        self.assertIn("Planted. ", self.read("QUICKREF.md"))
+
+    def test_a_quick_line_is_not_a_change_to_its_principle(self):
+        self.saved.setdefault("QUICKREF.md", self.read("QUICKREF.md"))  # so --write below is undone with the rest
+        self.plant(UNKNOWING, lambda t: re.sub(r"(> \*\*Quick:\*\*) ", r"\1 Planted. ", t, count=1))
+        self.tool("tools/quickref.py", "--write")
+        self.green()
+
     def test_a_heading_carries_its_citation(self):
         # So a grep for SE1/U1 reaches the definition (SE1/D9, "Stable IDs that grep").
         self.plant(UNKNOWING, lambda t: re.sub(r'(<a id="u1"></a>)SE1/', r"\1", t, count=1))

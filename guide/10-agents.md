@@ -10,6 +10,8 @@ operational rules are collected in [AGENTS.md](../AGENTS.md).
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Producing code got cheap much faster than knowing it is right, so everything scarce moved to specification, verification, review, and ownership. The bottleneck is attention, not typing. Now that writing this is cheap, what is the expensive part?
+
 Agents move the economics in one direction: **the cost of producing code has fallen much faster than
 the cost of knowing the code is right.** Everything scarce migrates to the second half —
 specification, verification, review, ownership. The bottleneck is no longer typing. It is attention.
@@ -19,6 +21,8 @@ specification, verification, review, ownership. The bottleneck is no longer typi
 ### <a id="a2"></a>SE1/A2. An agent is a K3 factory; never let confidence substitute for a run
 
 *Since v1.1 (2026-10-20).*
+
+> **Quick:** Fluent, confident, plausible, occasionally wrong is the exact shape of K3, arriving faster than anyone checks. "This should work" is K3 by construction: run the check, and the human runs it again before signing. Give the agent one command to run and one to reset.
 
 Fluent, confident, plausible, and occasionally wrong is the precise shape of erroneous certainty,
 arriving faster than anyone can check it ([SE1/U3](02-unknowing.md#u3),
@@ -34,6 +38,8 @@ run and one to reset.
 ### <a id="a3"></a>SE1/A3. An agent arrives knowing nothing and leaves remembering nothing
 
 *Changed in v1.2 (2026-10-28).*
+
+> **Quick:** Every session starts from the repository: a constraint said only in chat, or in a private agent memory, does not exist next session, and the agent hands back a clean, tested violation of it. What the client says is written down before anything is built on it; the contract precedes the code.
 
 Every session starts from the repository. A constraint that lives only in a head is K2 to the agent
 ([SE1/U6](02-unknowing.md#u6)), and it will hand you a clean, tested, plausible violation of that
@@ -61,6 +67,8 @@ there has failed [SE1/U6](02-unknowing.md#u6) at a new address.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** "How does a competent stranger find the five files that matter in ten minutes?" is a repository property: component boundaries, a README per component, grep-able IDs. Doc-comments restating signatures, huge files, and commented-out code cost context, and stale prose reads like true prose. Comment only where the code cannot say why.
+
 On a real system an agent cannot read the whole project: it does not fit, and even where it fits,
 reading everything to change one thing is the wrong price. So *how does a competent stranger find
 the five files that matter, in ten minutes, without reading the other five hundred?* becomes a
@@ -87,6 +95,8 @@ code cannot say *why*, and everything durable in the working set, where both kin
 
 *Changed in v1.5 (2026-11-04).*
 
+> **Quick:** Spend the saved time on fixtures, harnesses, seed data, fault scripts, conformance checks, the boring second and third test case, and the simple version a newcomer can read. That multiplies against every future change; more features, and abstractions nobody asked for, do not.
+
 Fixtures, harnesses, seed data, fault scripts, conformance checks, the boring second and third test
 case. The simple version a newcomer can read, in the code you were asked to change. That work
 multiplies against every future change ([SE1/F2](03-feedback.md#f2)). More features do not, and neither
@@ -96,6 +106,8 @@ does an abstraction for a change nobody has asked for.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** A diff you cannot review is a diff you cannot sign. Ask for the smallest change that does the job, one concern, nothing bundled that was not asked for. Make rejection cheap.
+
 An agent will happily produce three hundred lines. A diff you cannot review is a diff you cannot
 sign. Ask for the smallest change that does the job, one concern at a time, with nothing bundled in
 that was not asked for ([SE1/W11](08-work.md#w11)). Make rejection cheap.
@@ -103,6 +115,8 @@ that was not asked for ([SE1/W11](08-work.md#w11)). Make rejection cheap.
 ### <a id="a7"></a>SE1/A7. Delegation is not abdication
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Whoever signs owns it. Read the whole diff, not the summary: the skipped line added a dependency or asserted nothing. A Co-Authored-By trailer credits the agent; the signature says "I read this and stand behind it." The agent does not commit, push, or publish unless asked.
 
 The person who signs the change owns it — and if they cannot explain it, they cannot maintain it or
 defend it. **Working code nobody can explain is a liability, not an asset.**
@@ -117,6 +131,8 @@ defend it. **Working code nobody can explain is a liability, not an asset.**
 ### <a id="a8"></a>SE1/A8. Agents move the human up the waterfall
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Agents are fastest at the bottom (code, tests, migrations) and at accidental complexity; at the top, where the work is conversation, law, and proportion, they search and draft but cannot decide. Humans own the structure; agents author and advise. Cost a scope collision before the prompt.
 
 Agents are fastest at the bottom of the waterfall — code, tests, fixtures, migrations. At the top,
 where the work is conversations with people, laws, and a client's sense of proportion, they can
@@ -140,6 +156,8 @@ prompt.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Hand it: the second and third test case, fixtures, fault scripts, "which assumptions does this sentence invalidate?", a migration from a written design, boilerplate. Keep: the first test, the requirement the harness checks, the decision about the answer, the schema and whether keeping the data is legal, the vocabulary, the retro.
+
 | Hand it                                                                 | Keep                                                         |
 | ----------------------------------------------------------------------- | ------------------------------------------------------------ |
 | the second and third test case, once the first is written               | the first one, which decides what the thing is               |
@@ -152,6 +170,8 @@ prompt.
 ### <a id="a10"></a>SE1/A10. Ask your agents, and write the answers down
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Ask the model you are using: what did you read that you should not have needed, what would have let you get this right the first time, what did you assume because nobody wrote it down? Put the answers in the repository, as proposals from something with no stake.
 
 Specific advice about prompting, how much to hand over, or what an agent can be trusted to do
 unsupervised has a short shelf life — this chapter's included. The durable move is to ask the model
@@ -169,6 +189,8 @@ outcome.
 ### <a id="a11"></a>SE1/A11. A summary is a concussion: check it from outside
 
 *New in v1.2 (2026-10-28).*
+
+> **Quick:** A compaction summary or handoff note is recalled, not observed, and the next context cannot tell by feel; in trials a wrong one sent every agent into a frozen change. What worked: a rule loaded at every start, or a check that ran on the work unasked. Where summary and source disagree, the source wins.
 
 Compaction, a resumed session, a handoff note: each gives the next context a summary written in the
 same fluent voice as everything else. Nothing in it marks which parts were observed and which were
@@ -218,6 +240,8 @@ So treat every handoff as a possible injury, and check from outside:
 ### <a id="a12"></a>SE1/A12. Work toward finished, not toward more
 
 *New in v1.6 (2026-11-04).*
+
+> **Quick:** There is no end of things an agent can find to do, each costing attention. Unless directed otherwise, prefer not to spend it; when you do, spend it reducing attention needed later. Aim for the done sentence met. If nothing would change because of this, why is it still open?
 
 There is no end of things an agent can find to do, and each one costs attention that could go elsewhere. Unless
 directed otherwise, prefer not to spend attention, a person's or an agent's, and when you do, spend it on reducing the attention

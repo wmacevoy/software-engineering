@@ -25,7 +25,7 @@ In order. Each step is small, and the repository is better after any of them tha
    ```sh
    git clone --depth 1 --branch <release> https://github.com/wmacevoy/software-engineering.git ../se1
    mkdir -p vendor/se1
-   cp -r ../se1/guide ../se1/README.md ../se1/GLOSSARY.md ../se1/LICENSE ../se1/AGENTS.md vendor/se1/
+   cp -r ../se1/guide ../se1/README.md ../se1/GLOSSARY.md ../se1/LICENSE ../se1/AGENTS.md ../se1/QUICKREF.md vendor/se1/
    cp vendor/se1/AGENTS.md .
    ```
 
@@ -39,7 +39,11 @@ In order. Each step is small, and the repository is better after any of them tha
    requirements version keeps the links it was written with, since only a spelling or lint fix edits
    it in place ([SE1/R10](guide/04-requirements.md#r10)), and the next version links the new release.
 
-2. **Make it load at every start** ([SE1/A11](guide/10-agents.md#a11)). In trials, a rule in a file
+2. **Make it load at every start, with the quick reference** ([SE1/A11](guide/10-agents.md#a11)). Every working agent reads
+   `QUICKREF.md`, the guide's one line per principle, so it can't be skipped. Write a root `CLAUDE.md` with two lines, `@AGENTS.md`
+   and `@vendor/se1/QUICKREF.md`: having a CLAUDE.md turns off Claude Code's own read of AGENTS.md, so import both. A root
+   CLAUDE.md and its imports are put back after each compaction. A hook will not do for this, because a hook's output is capped at
+   10,000 characters. Explore and Plan subagents start without CLAUDE.md. In trials, a rule in a file
    the agent was told to follow changed nothing, because the file was never opened; the same rule
    already in context worked ([GAPS](GAPS.md#6-a-summary-is-a-concussion)). Then check that it
    loads, with a test that does not depend on the tool: pick a phrase only AGENTS.md contains (any
@@ -140,6 +144,7 @@ the missing thing to satisfy a rule.
 
 ## Adoption checklist
 
+- [ ] A root CLAUDE.md imports AGENTS.md and QUICKREF.md, so every working agent has both at each start and after each compaction. ([SE1/A11](guide/10-agents.md#a11))
 - [ ] AGENTS.md is a copy of the release it names, unedited; local rules are in the repository
       guide. ([SE1/U7](guide/02-unknowing.md#u7))
 - [ ] It loads at every start: a phrase only it contains comes back in a fresh session.

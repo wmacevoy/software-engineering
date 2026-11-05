@@ -48,6 +48,8 @@ and rollbacks below belong to someone else; [SE1/O11](#o11) says what replaces t
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** An image tag is a family, not a file: it pulls different builds per architecture, and an unlocked install resolves differently next week. Pin digests per platform, lock dependencies, and choose: one platform, both, or "almost" with the load-bearing places written down.
+
 Same code, same tests, different machine. The question is whether the software *around* the code is
 the same.
 
@@ -83,6 +85,8 @@ If nothing varies across your users' machines, the container gives the stronger 
 ### <a id="o2"></a>SE1/O2. In the manifest, say what you are compatible with; in the lock, record what you ran; commit both
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** The manifest names the major.minor you are compatible with; the lock pins exact patch and hash; commit both; install with the command that refuses drift. Pin everything and never update and the software dies of neglect: schedule updates and let the suite follow each.
 
 ```
 manifest — a promise about compatibility      lock — a record of one resolution
@@ -125,6 +129,8 @@ Install with the command that refuses drift: `npm ci`, `cargo build --locked`, `
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** CI runs the same command you run, with the gate in the script, so no second recipe drifts. Build and run on every platform you ship to. A convention CI does not enforce is not a policy; enforce what matters so review attends to what no tool sees.
+
 Continuous integration is the idiot light with a URL ([SE1/T2](06-testing.md#t2)). It retires "it
 works on my machine" and "we only ever built it on one kind of machine." Two rules make it worth
 trusting:
@@ -148,6 +154,8 @@ its attention on what no tool can see ([SE1/F3](03-feedback.md#f3), [SE1/W11](08
 ### <a id="o4"></a>SE1/O4. Every failure needs a signal a person will see — and believe
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Logs explain decisions with their inputs, never holding secrets or personal data. Alerts on symptoms users feel, each naming a runbook; liveness and readiness separate. An alarm that fires when nothing is wrong is broken: tag injected faults, make maintenance a state, test each alert by injecting its fault.
 
 The second half of reliability is detectable error status. In production that means:
 
@@ -184,6 +192,8 @@ watching them fire.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Every remote call has an explicit timeout shorter than the caller's deadline. Retries are bounded, jittered, only on idempotent operations, at one layer. Per dependency choose fail-fast or degrade, visibly. Never swallow an error: a catch that logs and carries on serves wrong answers quietly.
+
 Every call across a network needs a stated answer for absent, late, wrong, and lying
 ([SE1/R6](04-requirements.md#r6)). In code, that means:
 
@@ -211,6 +221,8 @@ Every call across a network needs a stated answer for absent, late, wrong, and l
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** A deploy is finished when the thing reports healthy and the system notices, not a person: health-gated, automatic revert, the rollback timed before the window opens. Revert works only if the old code can read the new data.
+
 **A deploy is not finished when the bits land; it is finished when the thing reports healthy — and
 the system should be the one to notice.** Health-gated, with automatic revert, with the rollback
 timed *before* the maintenance window opens.
@@ -228,6 +240,8 @@ steps ([SE1/O7](#o7)).
 ### <a id="o7"></a>SE1/O7. Change data and interfaces in steps that can each be undone
 
 *Since v1.4 (2026-11-02).*
+
+> **Quick:** During any deploy old and new run at once; for devices and cached browsers that is normal. Expand, then contract: add alongside, write both, read either, backfill, switch, then remove, each step undoable. Readers tolerate unknown fields and never change a field's meaning. Rehearse migrations, timed, on production-sized data.
 
 The outages that hurt most come from changing an interface that something else depends on — a schema, an
 API, a message format — in one move. During any deploy, old and new versions run at the same time;
@@ -250,6 +264,8 @@ condition, not a moment. So:
 ### <a id="o8"></a>SE1/O8. Secure by default
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Least privilege per component and key. Secrets never in the repository, prompts, or logs; refer by name; a leaked one is rotated. Authorize every request on the server. A missing secret is an exit code, not a default. Demonstrate the threat model's attacks before trusting the defense.
 
 The threat model says who the adversary is ([SE1/R8](04-requirements.md#r8)); these defaults make
 the common attacks expensive before anyone has to be clever:
@@ -275,6 +291,8 @@ the common attacks expensive before anyone has to be clever:
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Mitigate before diagnosing: roll back, fail over, flag off, serve stale with its age. One leads, one communicates, status on a schedule. Runbooks are real only if run recently and timed. Afterward, write it up without blame in FINDINGS and change a test, alert, or runbook.
+
 - **Mitigate before diagnosing.** Roll back, fail over, turn the feature flag off, serve stale with
   its age. Understanding can wait until users are not paying for it.
 - **One person leads**, one person communicates, and everyone else works on what the lead asks.
@@ -291,6 +309,8 @@ the common attacks expensive before anyone has to be clever:
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Profile before optimizing; judge speed by the 95th or 99th percentile, not the average. But do run the load test at the peak the requirements state, on production-sized data, again when the data grows: an untested capacity requirement is a hope.
+
 Do not optimize what is not slow: measure first — with a profiler, which shows where the time
 actually goes — and note where it would matter. Judge speed by percentiles (the 95th or 99th), not
 averages: the average hides the slowest requests, and those are the ones users remember. But *do*
@@ -304,6 +324,8 @@ when the code changes.
 ### <a id="o11"></a>SE1/O11. A release you cannot roll back is a one-way door; ship it like one
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** A library, firmware, or file format is deployed by someone else, months later, and what it writes stays written after your fix. So each release gets a one-way door's care: a second reviewer, a checklist every time. Refuse unknown features rather than guess. Bug reports are your monitoring.
 
 Most of this chapter assumes a service you run: you deploy it, watch it, and put the previous
 version back. A library, firmware, an installed app, or a file format has none of that. The deploy

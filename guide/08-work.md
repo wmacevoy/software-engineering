@@ -9,6 +9,8 @@ what deadlines do to people, and the failure that looks exactly like progress.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Requirements, design, develop, test, deploy, maintain: the order is right in every method. Methods differ only in how much goes through each step at once and whether the test comes at the end or inside every step.
+
 | Step         | What it produces                                                                 | The question it answers        |
 | ------------ | -------------------------------------------------------------------------------- | ------------------------------ |
 | Requirements | numbered, observable statements of what must be true — and what is *not* being built | what, for whom, and how much |
@@ -27,6 +29,8 @@ once** and **whether the test comes at the end or inside every step.**
 ### <a id="w2"></a>SE1/W2. Waterfall is correct when the only real test is expensive
 
 *Since v1.2 (2026-10-28).*
+
+> **Quick:** Where the one real test costs a million dollars, moving everything checkable before it is right; waterfall is a discipline that cannot afford to be wrong twice. With cheap tests it schedules K2's arrival for the last step, at full price. Royce called his own drawing risky.
 
 Waterfall runs the six steps once, in order, each signed off before the next begins. Winston Royce
 drew it in 1970 and, in the sentence directly beneath the drawing, wrote that the implementation as
@@ -49,6 +53,8 @@ K2 is guaranteed on every project, and waterfall schedules its arrival for the l
 ### <a id="w3"></a>SE1/W3. Iterative work puts a test inside every step
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Each step tests itself: requirements by a client objecting to a precise claim; design by a contract, a misbehaving mock, a failing test; code by red then green; the iteration by a demo, the only instrument for "wrong product"; deploy by health gate and revert.
 
 The same steps in loops, with three latencies and three instruments:
 
@@ -76,6 +82,8 @@ There is no Maintain step. After the first deploy, every iteration is maintenanc
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** A route handler: change it, run it, keep or revert. A schema with real data, a published API, a distributed key, data about people: a small waterfall inside the loop, design on paper, review by someone not sharing your assumption, done once.
+
 | Decision                                      | Cost of being wrong once                         | How to work                                     |
 | --------------------------------------------- | ------------------------------------------------ | ----------------------------------------------- |
 | a route handler, a string, a query            | seconds to find out, seconds to undo             | loop: change it, run it, keep or revert         |
@@ -95,6 +103,8 @@ twice in an afternoon.**
 ### <a id="w5"></a>SE1/W5. Flatten the schedule: a dependency is an unwritten interface
 
 *Since v1.4 (2026-11-02).*
+
+> **Quick:** "Can't start B until A is done" is almost never a fact about the world; B does not know A's shape. An interface, a mock that misbehaves, and a test that fails today dissolve the arrow without A existing; then integrate continuously. Sequence around irreversibility, not incompleteness.
 
 Drywall goes up after plumbing because the pipe occupies the space the wall will cover. Every arrow
 in a physical schedule is, at bottom, a fact about mass. Software is massless: you can write code
@@ -124,6 +134,8 @@ stands in for a missing component.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** A thin vertical slice, click to query to response, for a parking-count system: one lot, one sensor with its fault control, the collector, the page showing live, stale, and unknown: built first, then widened. Horizontal layers all finish at the same time, never. Carry the load-bearing idea in the first slice so it is tested under real weight.
+
 A slice from click to route to query to response, built early and then widened, crosses the gap.
 Horizontal layers — all of the database, then all of the API, then all of the UI — finish at the
 same time: never. Iteration one of the parking system is one lot, one sensor with its control plane
@@ -137,6 +149,8 @@ under the weight it will have to bear.
 ### <a id="w7"></a>SE1/W7. Deadlines produce an avoidance gradient; change the terrain, not the willpower
 
 *Changed in v1.2 (2026-10-28).*
+
+> **Quick:** Fear rises sharply as a deadline nears, exactly when it produces skipped tests, bundled diffs, unreviewed merges. Change the conditions, not the willpower: make deploying routine and reversible, cross the gap early, put real fences along the way (a demo to an actual client, a check that exits nonzero; a status meeting proves nothing), and keep slack; a plan at 95% utilization cannot absorb a guaranteed K2.
 
 In a classic experiment, rats that had learned one end of an alley gives a shock were briefly held
 back by a light harness while running away from it, some near the shock point and some far from
@@ -166,6 +180,8 @@ how most projects fail.
 ### <a id="w8"></a>SE1/W8. Don't fall down the waterfall
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Falling down the waterfall is reaching design and code before the requirements. Tells that you are falling, before the client has objected to a numbered requirement: a schema or framework chosen, a "temporary" column, "privacy later," no non-goals. The railing back up: expensive questions first, answers written down, assumptions read back, then descend on purpose as a time-boxed spike with one question.
 
 The failure looks like a productive week. A team asked for a campus parking app has, by Tuesday, a
 normalized schema — `students`, `vehicles`, `sightings(plate, lot, seen_at)` — an index, a view that
@@ -211,6 +227,8 @@ requirement:
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** One to two weeks; when the period ends, scope moves, not the date. Not done without all four: a running thing from a clean reset, a diff to the requirements, a FINDINGS entry, a QUEUE with a done sentence per item. Then: what can we delete?
+
 One to two weeks. When the period ends, scope moves, not the date. Without the time box the loop is
 a spiral. An iteration that produces three of these is not done:
 
@@ -224,6 +242,8 @@ And one question at the end: *what can we delete?* ([SE1/D12](05-design.md#d12))
 ### <a id="w10"></a>SE1/W10. Keep the working set in the repository
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** REQUIREMENTS_vX, DESIGN_vX, QUEUE, FINDINGS: in the repository, versioned with the code, not in a wiki or chat. QUEUE is the shared cursor so two workers do not take one task; FINDINGS is the ledger only reality writes.
 
 The state of the project has to be observable from where every party stands
 ([SE1/U6](02-unknowing.md#u6)). Four documents, versioned alongside the code — not in a wiki, not in
@@ -255,6 +275,8 @@ Starting skeletons for the four, and for the repository guide, are listed in the
 ### <a id="w11"></a>SE1/W11. Done means all of it, one concern per change, reviewed by someone else
 
 *Changed in v1.4 (2026-11-02).*
+
+> **Quick:** Done is the whole checklist: a versioned requirement ID named, or chore; a test naming that ID, seen failing; clean checkout builds and full suite passes; docs it made untrue updated in the same change; one concern, with omissions stated; the decisions it must not break listed by ID, since reviewers rarely catch an unnamed one; reviewed by someone else; signed by a person who read all of it.
 
 **A definition of done is a checklist a change fully passes — not most of it.** A typical one:
 
@@ -306,6 +328,8 @@ refactor's tests must have been seen to fail — [SE1/T3](06-testing.md#t3)).
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Rebuilding a working set from code invents reasons. Write what the code observably does as requirements marked (inferred) until someone who can decide confirms; design from structure, reasons with a source or (inferred); FINDINGS from reverts and hotfixes; QUEUE from untested requirements; read it back.
+
 Most projects meet this guide with code already written. The working set can be rebuilt from the
 code and its history, but the rebuild has a trap: it invents reasons. A commit says what changed;
 *why* was in a head, and a reconstruction fills the gap with a plausible story — a K3 in the making
@@ -329,6 +353,8 @@ A reconstruction that marks nothing as inferred is claiming more than it knows.
 
 *New in v1.4 (2026-11-02).*
 
+> **Quick:** A finding retires "we already learned this once" only if it changes something that outlives the people who learned it: a rule, a test, a check that refuses the change. End every finding with what it changed, or why nothing.
+
 `FINDINGS` is the only document reality writes ([SE1/W10](#w10)), and the retro's fear is "we already
 learned this once" ([SE1/H4](09-people.md#h4)). The fear is retired only when the finding changes
 something that will still be there when the people who learned it are not: a rule, a test, a check
@@ -346,6 +372,8 @@ change nothing relearns them no more often than one whose findings do.
 ### <a id="w14"></a>SE1/W14. Moving a lower layer can move what is built on it
 
 *New in v1.5 (2026-11-04).*
+
+> **Quick:** mission < fundamental shape < requirements < design < develop: moving a lower one can move everything above. Move it on purpose, by its owner, in a new version, then walk up and see what no longer holds. Code that quietly disagrees with its design has drifted, not moved it.
 
 Software has no mass ([SE1/F4](03-feedback.md#f4)), but a project's decisions have an artificial gravity,
 because each is made with the ones beneath it in view:

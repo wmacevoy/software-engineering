@@ -30,6 +30,11 @@ yours.
 
 ### Also changed
 
+- [QUICKREF.md](QUICKREF.md) has one line per principle, about 5,000 words, extracted from a `> **Quick:**` line under each heading by
+  `tools/quickref.py`. Every working agent reads it: a root CLAUDE.md imports it, which puts it back after each compaction, and
+  `se --doctor` has a row for it. The author's word, 2026-11-05. Written by Claude Fable 5.1. On ten written situations, one
+  run each, a reader of it acted like a reader of the guide in 8 or 9, but a reader of nothing matched the guide in 7, so this does not show the
+  same behavior; it shows no large loss. Quick lines are not a principle's text, so no marker moved.
 - ADOPT.md's first step vendors the guide at `vendor/se1` as a quick reference, because a guide that is somewhere else does not get
   looked at, and AGENTS.md says what a grep there reaches. The author's word, 2026-11-05.
 - Every principle's heading now carries its citation, `SE1/D5.`, so a grep for a citation reaches its definition, as

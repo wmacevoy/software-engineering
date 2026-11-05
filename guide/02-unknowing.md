@@ -18,6 +18,8 @@ labels `K0`–`K4` are used throughout the guide.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** K0 is known and true. K1, the known unknown, is cheap: ask or look it up. K2, the unknown unknown, costs a rewrite. K3, erroneous certainty, costs everything built on it, found last. K4, a falsehood chosen knowingly, is not on the ladder; it is a decision.
+
 K0 costs nothing; you already know it. Finding out a K1 is cheap — you know the question, so you can
 look it up or ask. A K2 costs a rewrite, because it arrives as a surprise after you have built on
 the wrong picture. A K3 costs the most: whatever was built on top of the belief, discovered at the
@@ -28,6 +30,8 @@ K4 is not on that ladder at all. It is a decision, and usually a good one.
 ### <a id="u2"></a>SE1/U2. Building is discovering, in the right order and at the right price, which category each part of the problem belongs to
 
 *Changed in v1.4 (2026-11-02).*
+
+> **Quick:** Every practice moves something toward K0 before it charges full price: write K0 down; spike K1; expose K2 to reality early by integrating, demoing, asking a domain expert; meet K3 with evidence that could have said no; name each K4 and its blast radius.
 
 Every practice in this guide is a way of moving something **toward K0** — from a more expensive
 category to a cheaper one — before it charges full price:
@@ -45,6 +49,8 @@ category to a cheaper one — before it charges full price:
 ### <a id="u3"></a>SE1/U3. K3 is the one to be afraid of
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** K3 costs nothing at the time: no search starts, because you think there is nothing to look for. Only reality and someone who does not share your assumption find it. Run it rather than reason; a guard never seen to refuse has not been seen to work. To show a flaw, show it failing rather than argue it.
 
 K1 and K2 are honest. K3 is expensive precisely because it costs nothing at the time: no search is
 triggered, no question is asked, no ticket is filed. You are not looking, because as far as you know
@@ -67,6 +73,8 @@ rule: you have not seen it work until you have seen it say no.
 ### <a id="u4"></a>SE1/U4. Every abstraction rests on chosen falsehoods; write down where they are load-bearing
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** "The clock is right," "the token reflects the current role": nothing gets built without such falsehoods. Choose them deliberately; write where each is load-bearing and what breaks when it comes due. Chosen, an asset; held unknowingly, K3.
 
 An abstraction is a simplified picture you agree to work with — "a network call returns a value,"
 "`now()` tells the time" — and every simplified picture is false somewhere. You cannot build
@@ -91,6 +99,8 @@ was load-bearing.** A K4 you have chosen is an asset; the same falsehood held un
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** "Two days" usually means "if nothing I haven't thought of happens." Mostly-K0 work gets a number, K1 a range, K2 only a time box. Say which you are handing over; when unsure, time-box a spike, then give a range.
+
 "Two days" usually means "two days if nothing I haven't thought of happens" — a K0 statement about a
 schedule governed by K2.
 
@@ -110,6 +120,8 @@ find out what you don't know, then give a range for the rest.
 
 *Since v1.1 (2026-10-20).*
 
+> **Quick:** A constraint in one head is K3 for its holder, who thinks everyone knows, and K2 for everyone else, who cannot ask about what they do not know exists. Teammates leave; agents were never in the room. Put it in the repository.
+
 A constraint that exists only in one person's head fails in both directions at once. For its holder
 it is K3 — they believe everyone knows it. For everyone else it is K2 — you cannot ask about
 something you have no idea exists.
@@ -126,6 +138,8 @@ stands**, in the repository, versioned with the code ([SE1/W10](08-work.md#w10),
 ### <a id="u7"></a>SE1/U7. Find the K3 factories: anything that keeps saying "fine" with no way to say "wrong"
 
 *Changed in v1.2 (2026-10-28).*
+
+> **Quick:** A K3 factory keeps saying "fine" with no way to say "wrong": an alert never seen firing, an unversioned citation, a status with no since, a default nobody chose, torn work left looking current. Give it a way to fail and watch it once; make it age visibly; make its source checkable.
 
 A K3 is one wrong belief ([SE1/U3](#u3)). A **K3 factory** is whatever keeps producing them: a signal
 that says "fine," costs nothing to keep believing, and has no path by which it could say "wrong." It
@@ -171,6 +185,8 @@ Three medicines, each the opposite of what makes a factory:
 
 *New in v1.2 (2026-10-28).*
 
+> **Quick:** An agenda finds only what it looks for; K2 lives in what nobody asks about. Spend time with no task on purpose. For an agent: read the repository and what changed, and report what moved, tore, or went stale to FINDINGS or the queue, not code.
+
 An agenda is a search. It moves K1 to K0: you ask the question, you get the answer. K2 is what
 nobody is asking about, so a calendar with no empty space and a queue that always has a next item
 guarantee that the surprise arrives in the only place left, reality, at full price
@@ -198,6 +214,8 @@ nothing about the new work. Wrong if a session with no task finds nothing a task
 ### <a id="u9"></a>SE1/U9. Rules change: a rule says who made it, when, and what would show it wrong
 
 *New in v1.2 (2026-10-28).*
+
+> **Quick:** A rule reads the same whether measured, decided, or guessed. Beside one you will rely on, say who claims it, since when, and what would show it wrong. Doubt the newest first; supersede a wrong one with its reason, never edit silently.
 
 People learn, rules change, and what is is not what was. A rule is anything that tells a person or
 an agent what to do: a requirement, a scope decision, a convention, a line in an agent file, a
@@ -235,6 +253,8 @@ the same three medicines:
 ### <a id="u10"></a>SE1/U10. Some K1 is essential: a proxy taken for K0 is K3
 
 *New in v1.4 (2026-11-02).*
+
+> **Quick:** "Is this usable?" never converts to K0; a measurement near it is a proxy, and "usability is 92" stops the question, which is K3. Convert what converts; for the rest name the judge and the occasion. A proxy may veto; only the judge may pass.
 
 Most K1 ends when someone spends the time ([SE1/U2](#u2)). Some does not. "Is this layout usable
 and appealing?" is not a fact waiting to be looked up; it is a judgment someone makes on meeting the

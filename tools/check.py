@@ -16,7 +16,7 @@ import unicodedata
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # Windows' default code page cannot print every link
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # beside this file, even under -I
-from bodies import HEADING, MARKER, WS, bodies, read  # noqa: E402
+from bodies import HEADING, MARKER, QUICK, WS, bodies, read  # noqa: E402
 
 root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _V = r"v[0-9]+\.[0-9]+(?:\.[0-9]+)?"
@@ -119,6 +119,8 @@ for f in sorted(p for p in files if in_dir(p, "guide")):
         if f"</a>{VERSION}/{m.group(2)}. " not in line:
             problem(f"heading        {m.group(2)}: write {VERSION}/{m.group(2)}, so a grep for the citation reaches the definition")
         headings.append(f"- [**{VERSION}/{m.group(2)}**](guide/{os.path.basename(f)}#{m.group(1)}) {m.group(3)}")
+        if not (i + 4 < len(lines) and QUICK.search(lines[i + 4])):
+            problem(f"no quick line  {m.group(2)}: no Quick line under its marker")
         # The marker, if any, is the first paragraph under the heading.
         mk = MARKER.search(lines[i + 2]) if i + 2 < len(lines) else None
         if mk:
@@ -245,7 +247,7 @@ for key, ids in listed.items():
             problem(f"no marker      {pid}: CHANGELOG lists it under {key}, but its heading has no *New/Changed in {rel_name}* or later")
 if base is not None and base + total != len(defined_in):
     problem(f"principle count {len(defined_in)} = {base} in {releases[-1]} + {total} New? A new principle is missing from CHANGELOG.md")
-copies = ["AGENTS.md"] + [rel(f) for f in files if in_dir(f, "templates")]
+copies = ["AGENTS.md", "QUICKREF.md"] + [rel(f) for f in files if in_dir(f, "templates")]
 for f in copies:
     for m in re.finditer(r"software-engineering/(?:blob|tree)/(v[0-9]+\.[0-9]+)", read(os.path.join(root, f))):
         if m.group(1) != minor(latest):

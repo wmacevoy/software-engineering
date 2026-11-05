@@ -18,6 +18,8 @@ Terms used here:
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Configuration (missing at boot), status (broken now), input (absent, late, wrong, lying), output (impossible result), state (drifted into nonsense), time, space. If you cannot say which kind of fear a test retires, find it or delete the test, and watch it fail once.
+
 "Tests retire the fear that I broke something" is true of a suite and too coarse to act on. Testing
 is a family, and each member retires a different fear:
 
@@ -39,6 +41,8 @@ If you cannot say which row a test belongs to, find the row or delete the test
 ### <a id="t2"></a>SE1/T2. Climb the reliability ladder: a reliable thing checks itself
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** One pass/fail visible from across the room. Refuse to start if a precondition is missing, loudly: a missing secret is an exit code, not a dev default. Invariants checked in production, with a tested safe state. A mock per input that misbehaves on request. Time and space budgets asserted.
 
 The guidebook's ladder of six checks, stated for a microcontroller and generalized. Each
 generalization is usually something a larger system has forgotten to do — because, having gigabytes
@@ -73,6 +77,8 @@ part is a system that has noticed it is insane and keeps answering.
 
 *Since v1.1 (2026-10-20).*
 
+> **Quick:** Write the test, run it without the change, see red, then green. For code that already exists, break it on purpose and watch red. Same for sanitizers, coverage, and linters: each can be switched off silently, so make each fire once.
+
 Watch every test fail before you trust it: write it, run it against the code without the change, see
 red, then make it green. A test written after the fact and never observed red is a K3 factory
 ([SE1/U7](02-unknowing.md#u7)) with a green checkmark.
@@ -96,6 +102,8 @@ prove the flag reached the compiler.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Flaky tests train a team to ignore red, disarming the suite before the real failure. Unseeded randomness, the wall clock, shared mutable state, fixed ports are banned for that reason. Fix or quarantine the day it is found.
+
 Flaky tests train a team to ignore red, and after that the suite that would have caught the real
 failure has been disarmed. Unseeded randomness, the wall clock, shared mutable state, and fixed
 ports are banned from tests for this reason, not for tidiness ([SE1/T5](#t5)). Fix or quarantine a
@@ -108,6 +116,8 @@ The same holds for production alarms ([SE1/O4](07-operating.md#o4)).
 ### <a id="t5"></a>SE1/T5. Repeatability is a property of the state a test touches
 
 *Since v1.2 (2026-10-28).*
+
+> **Quick:** Repeatability belongs to the state a test touches. Local (created and destroyed) is safe; sharded (its own slice) is safe; global and written is a race condition, not a test. Fix in order: make it local, shard it, serialize and say why. Inject the clock.
 
 A flaky test trains a team to ignore red ([SE1/T4](#t4)). Repeatability is not a property of the
 test; it is a property of **the state the test touches**, and that state has exactly three scopes:
@@ -147,6 +157,8 @@ hide in plain sight:
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** A mock is a K4 about the real thing, false the day you write it. Make every mock misbehave on request (slow, down, stuck, wrong); run one conformance check against mock and real; integrate continuously, since a mock turns scheduling risk into integration risk.
+
 You cannot test input handling without controlling the input, and the code that reads the real input
 is exactly the code you want to test. The answer is a mock for every input that **misbehaves on
 request** — a sensor that can be told to be slow, down, stuck, wrong, flapping, or skewed — plus a
@@ -168,6 +180,8 @@ yet. Two rules keep it honest:
 ### <a id="t7"></a>SE1/T7. Test user interfaces by pulling the logic out first
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** UI tests are global-state tests in disguise: shared server, real clock, animations. Pull the logic out and test it as functions; then the DOM in a headless browser; then a person. Assert on text and state, not pixels.
 
 UI tests fail for one reason more than any other: they are global-state tests in disguise — a shared
 server, a shared browser, the real clock, animations of variable length. Every fix in [SE1/T5](#t5)
@@ -192,6 +206,8 @@ differently on another architecture.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Write the tests that would pass when it works; they say what the thing is and what it need not be. For each attack in the threat model, demonstrate it first; trust no defense until you have watched it refuse.
+
 Planning every detail is a waste; so is charging into the woods. The map is the tests: write the
 ones that would pass when the thing works, and they tell you what the thing is — including what it
 does not have to be. For adversaries, the same rule: **for each attack in your threat model, write
@@ -210,6 +226,8 @@ parts.
 ### <a id="t9"></a>SE1/T9. A bug you cannot reproduce is a rumor
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** You cannot fix a rumor, only change something and fail to observe the symptom, which feels like fixing. First move: reproduce, ideally as a failing test. If it will not, time-box, add logging of inputs at the suspected decision, write the open question in FINDINGS.
 
 You cannot fix a rumor. You can only change something and then fail to observe the symptom — which
 feels exactly like fixing it, and is the most common way a bug gets "fixed" twice.
@@ -233,6 +251,8 @@ this one. That is the shape of nearly all good engineering investment.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Examples check the cases you imagined, the ones you were least likely to get wrong. Property tests state a rule for every input and shrink failures; fuzzing automates wrong and lying inputs; mutation testing flips the code and reports which tests never noticed.
+
 Example-based tests check the cases you imagined, which are the ones you were least likely to get
 wrong. Three techniques check the rest, and each is cheap to start:
 
@@ -250,6 +270,8 @@ wrong. Three techniques check the rest, and each is cheap to start:
 ### <a id="t11"></a>SE1/T11. When someone else owns "correct," test against their implementation
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** When a format or protocol is owned elsewhere, its implementation is the only judge. Write with yours, read with theirs, and back; every disagreement is your bug or a FINDINGS entry the spec never mentioned. Pin its version; do not read its source on clean-room work.
 
 Some interfaces were defined by someone else: a file format, a wire protocol, a standard. Their
 specification is a K4 — it says what its authors meant. What everybody's data actually looks like is

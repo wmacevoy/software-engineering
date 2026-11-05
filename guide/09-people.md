@@ -21,6 +21,8 @@ partner and a grader, the ideas still apply at smaller size:
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** A system copies the communication structure of the team that built it, so choose the team's shape on purpose. Coordination grows with pairs, not heads, so adding people to a late project makes it later; the fix is a smaller written interface, not a meeting.
+
 - **The system will resemble the team.** A system's structure copies the communication structure of
   the organization that built it (Conway, 1968), because an interface between two components can
   only be as well specified as the conversation between the two people who own them. So a component
@@ -44,6 +46,8 @@ change, assumed by everything after. Make it on purpose and write it down.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Absent: nothing known to one head. Late: steps small enough that late shows in days. Wrong: review by someone not sharing the assumption. Lying: "basically done" is a sensor stuck at 200 OK; check the age of the last thing that actually ran.
+
 Every input needs an answer for absent, late, wrong, and lying ([SE1/R6](04-requirements.md#r6)). A
 teammate is an input, and a plan that works only when everyone is present, on time, right, and
 candid is not finished.
@@ -62,6 +66,8 @@ field; check the age of the last thing that actually ran.
 ### <a id="h3"></a>SE1/H3. Roles exist to retire fears; rotate them
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Architect holds the glossary and design and says no; Liaison is one voice to the client; Planner keeps the QUEUE with a done sentence per item; Toolsmith owns the cost of a test. Rotate each iteration: the hand-off reveals what lived in one head.
 
 A team of three to five needs no titles and four roles. Everyone writes code; the roles rotate every
 iteration so knowledge spreads.
@@ -88,6 +94,8 @@ living in one head. That is not the cost of rotation; it is the point.
 ### <a id="h4"></a>SE1/H4. The interface between two people is a contract
 
 *Changed in v1.2 (2026-10-28); text since v1.4 (2026-11-02).*
+
+> **Quick:** Before splitting work: name the seam, write its contract including absent/late/wrong/lying, write the mock that misbehaves, write the test that fails today, integrate daily. A meeting that keeps recurring on one topic means an interface is missing. Stand-up: done, next, blocked, since when, a discomfort if noticed.
 
 The interface between two developers is the same object as the interface between two modules
 ([SE1/D10](05-design.md#d10)). "I'll build the collector, you build the driver page" names two
@@ -124,6 +132,8 @@ is still data.
 ### <a id="h5"></a>SE1/H5. The client knows the domain, and cannot see its edges
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** The client knows the domain, pain, and money, and cannot tell you what happens in a case they never faced, or that their solution is a guess. They size a requirement by spaces and dollars; you size it by invalidated assumptions; the two are unrelated. Surprised: you failed; find the delay.
 
 | They know                                           | They cannot tell you                                         |
 | --------------------------------------------------- | ------------------------------------------------------------ |
@@ -169,6 +179,8 @@ held about them.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** Every scope decision and K4 is a sentence the team believes and the client was never asked. Read each back as a question: "We're assuming nobody has a claim on a space before their car is in it. True?" Most take two seconds; one gets "well, except…"
+
 The cheapest question in this guide. Every scope decision and every K4 in the requirements is a
 sentence the team believes and the client has never been asked about. Read them back as questions:
 
@@ -185,6 +197,8 @@ client answers most in two seconds, and one makes them stop and say "well, excep
 ### <a id="h7"></a>SE1/H7. The first conversation: pain before solution, people before features, numbers before nouns
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** The first client conversation: ninety minutes in week one, at the site: the pain (who gets the call), the census of every kind of person touched (the one teams skip), the bad day, the numbers with horizons, the edges, the assumptions read back. REQUIREMENTS_v1 within forty-eight hours: "tell us what is wrong with it."
 
 Ninety minutes, in week one, at the site if there is one. The questions are the ones in
 [SE1/R3](04-requirements.md#r3); this is the order to ask them in:
@@ -209,6 +223,8 @@ with one sentence: *tell us what is wrong with it.*
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** A demo is a test, so run it like one: the real system from the one-command reset; the client drives while you watch their hands; write every "huh" and "can it…" verbatim and cost them afterward; break something in front of them; read non-goals aloud; thirty minutes.
+
 1. **The real system**, from the one-command reset. Not slides, not a video, not a branch.
 2. **The client drives.** Watch their hands and face, not the screen.
 3. **Write down every "huh," "oh," "can it…," and "what about…" verbatim.** Do not answer in the
@@ -224,6 +240,8 @@ risk-and-since-when — so the one that deviates is a signal.
 ### <a id="h9"></a>SE1/H9. With bad news, the delay is the cost
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** A slip found in week two is planning; in week eleven it is a crisis. Within a day of knowing, to the person it affects, with a number and an option: drop the operator screen, or slip the demo a week. "I'm stuck" on day one costs a day.
 
 A two-week slip found in week two is a planning problem; the same slip found in week eleven is a
 crisis. The difference is entirely the reporting delay. So the rule is mechanical: **within a day of
@@ -243,6 +261,8 @@ coming.
 
 *Since v1.0 (2026-10-20).*
 
+> **Quick:** First, is it a category dispute (what requirement would have to disappear)? Then intensity by reversibility: a one-way door gets the whole team and a written decision; otherwise the role holder decides, with reason and revisit date. Still split and cheap: spike both. Reopening needs new information, not a mood.
+
 Four moves, in order. Most arguments end at the first.
 
 1. **Is it a category dispute?** *What requirement would have to disappear for this complexity to go
@@ -258,6 +278,8 @@ Four moves, in order. Most arguments end at the first.
 ### <a id="h11"></a>SE1/H11. Being behind is a systems failure with a schedule
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Someone behind is a queue near saturation: each new item waits longer than the last. Do not add work to the person who knows most. Redistribute, pair, or cut scope, in that order, with since when. Treat it as a character flaw and it recurs silently.
 
 A person who is behind is like a queue near full utilization: every new item waits longer than the
 last, and the delay grows faster than the load.
@@ -277,6 +299,8 @@ them with the person who knows least.
 ### <a id="h12"></a>SE1/H12. Fix the process, not the person
 
 *Since v1.0 (2026-10-20).*
+
+> **Quick:** Nobody is blamed for K2. A finding says "findable by X; X is now on the list," not who should have asked. A client who feels blamed stops volunteering the next surprise. To "I should have mentioned it": "You did. We didn't ask."
 
 Nobody is blamed for K2. A finding says *findable by X; X is now on the list* — not who should have
 asked. A client who feels blamed for a surprise stops volunteering the next one, and the next one is

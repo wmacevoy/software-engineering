@@ -326,6 +326,21 @@ class TestDoctorRed(Fixture):
         self.assertEqual(f.state, se.PASS)
         self.assertIn("same text", f.text)
 
+    def test_the_quick_reference_must_load(self):
+        # The author, 2026-11-05: read by all working agents, so it can't be skipped, and after each compaction.
+        f = self.doctor()
+        self.assertEqual(finding(f, "quick reference").state, se.FAIL)
+        self.assertIn("QUICKREF.md", finding(f, "quick reference").fix)
+
+    def test_the_quick_reference_imported_from_claude_md_passes(self):
+        f = self.doctor(self.changed(**{"CLAUDE.md": "@AGENTS.md\n@vendor/se1/QUICKREF.md\n", "vendor/se1/QUICKREF.md": "# q\n"}))
+        self.assertEqual(finding(f, "quick reference").state, se.PASS)
+        self.assertIn("Explore and Plan", finding(f, "quick reference").text)
+
+    def test_a_quick_reference_import_of_a_missing_file_fails(self):
+        f = self.doctor(self.changed(**{"CLAUDE.md": "@AGENTS.md\n@vendor/se1/QUICKREF.md\n"}))
+        self.assertEqual(finding(f, "quick reference").state, se.FAIL)
+
     def test_edited_copy(self):
         f = self.doctor(self.changed(**{"AGENTS.md": AGENTS_TEXT + "\n- a local rule\n"}))
         self.assertEqual(finding(f, "working agreement").state, se.FAIL)
