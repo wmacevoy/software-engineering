@@ -15,7 +15,7 @@ factory ([SE1/U7](guide/02-unknowing.md#u7)), so every change is visible in thre
 
 `tools/check.py` keeps the three in step, and compares every principle with the last release tag:
 one whose text changed must have a marker for a later release, or — for wording only — be named
-under that release's *Also changed*. Work toward a release goes under `## v1.7 — unreleased`; give it
+under that release's *Also changed*. Work toward a release goes under `## v1.8 — unreleased`; give it
 a date when you tag it. Within SE1, a minor release may add principles, reword them, or extend what
 they ask; it never moves an ID ([principle index](README.md#principle-index)). A patch release
 (`v1.2.1`) changes no principle, no AGENTS.md, and no template: copies keep the minor's label, and
@@ -24,9 +24,14 @@ the checker holds a patch to that.
 **If you keep a copy** of AGENTS.md or the templates, read *For copies* in each release newer than
 yours.
 
-## v1.7 — unreleased
+## v1.7 — 2026-11-05
 
-[Changes on main since v1.6](https://github.com/wmacevoy/software-engineering/compare/v1.6...main)
+[Full diff from v1.6](https://github.com/wmacevoy/software-engineering/compare/v1.6...v1.7) ·
+104 principles, none changed in meaning. No review by another family; the quick reference was tried on same-family readers, as below.
+
+**For copies:** re-copy AGENTS.md, `se.py`, and the templates, which now link to v1.7. Add QUICKREF.md beside AGENTS.md and import both
+from a root CLAUDE.md ([ADOPT.md](ADOPT.md) step 2): `se --doctor` fails a repository whose root CLAUDE.md does not import it. Each new
+agent that loads it starts about 5,000 words heavier. Vendoring the guide (ADOPT.md step 1) is the project's choice.
 
 ### Also changed
 
@@ -34,7 +39,8 @@ yours.
   `tools/quickref.py`. Every working agent reads it: a root CLAUDE.md imports it, which puts it back after each compaction, and
   `se --doctor` has a row for it. The author's word, 2026-11-05. Written by Claude Fable 5.1. On ten written situations, one
   run each, a reader of it acted like a reader of the guide in 8 or 9, but a reader of nothing matched the guide in 7, so this does not show the
-  same behavior; it shows no large loss. Quick lines are not a principle's text, so no marker moved.
+  same behavior; it shows no large loss. Quick lines are not a principle's text, so no marker moved. Seen once, after a compaction: new
+  general-purpose and `claude` subagents quoted it without opening a file; Explore and Plan subagents start without it.
 - ADOPT.md's first step vendors the guide at `vendor/se1` as a quick reference, because a guide that is somewhere else does not get
   looked at, and AGENTS.md says what a grep there reaches. The author's word, 2026-11-05.
 - Every principle's heading now carries its citation, `SE1/D5.`, so a grep for a citation reaches its definition, as
